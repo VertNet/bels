@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,9 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2018 President and Fellows of Harvard College"
-__version__ = "darwinize_header.py 2018-02-06T12:23-03:00"
-__kurator_content_type__ = "actor"
-__adapted_from__ = "actor_template.py"
+__copyright__ = "Copyright 2020 Rauthiflor LLC"
+__version__ = "darwinize_header.py 2020-12-18T22:44-03:00"
+__adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/darwinize_header.py"
 
 from dwca_vocab_utils import darwinize_list
 from dwca_utils import read_header
@@ -64,7 +63,7 @@ def darwinize_header(options):
         success - True if process completed successfully, otherwise False
         message - an explanation of the reason if success=False
     '''
-    #print '%s options: %s' % (__version__, options)
+    #print('%s options: %s' % (__version__, options))
 
     setup_actor_logging(options)
 
@@ -192,7 +191,7 @@ def darwinize_header(options):
             fieldnames=header)
         for row in read_csv_row(inputfile, inputdialect, encoding):
             writer.writerow(row)
-            #print 'row: %s' % row
+            #print('row: %s' % row)
 
     success = True
     artifacts['darwinized_header_file'] = outputfile
@@ -242,7 +241,7 @@ def main():
         s += ' -n yes'
         s += ' -f csv'
         s += ' -l DEBUG'
-        print '%s' % s
+        print('%s' % s)
         return
 
     optdict['workspace'] = options.workspace
@@ -252,11 +251,11 @@ def main():
     optdict['namespace'] = options.namespace
     optdict['format'] = options.format
     optdict['loglevel'] = options.loglevel
-    print 'optdict: %s' % optdict
+    print('optdict: %s' % optdict)
 
     # Append distinct new field names to Darwin Cloud vocab file
     response=darwinize_header(optdict)
-    print '\nresponse: %s' % response
+    print('\nresponse: %s' % response)
 
 if __name__ == '__main__':
     main()

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,9 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2018 President and Fellows of Harvard College"
-__version__ = "dwca_utils.py 2018-11-09T19:06-03:00"
-__kurator_content_type__ = "utility"
-__adapted_from__ = ""
+__copyright__ = "Copyright 2020 Rauthiflor LLC"
+__version__ = "dwca_utils.py 2020-12-18T22:53-03:00"
+__adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_utils.py"
 
 # This file contains common utility functions for dealing with the content of CSV and
 # TXT files.
@@ -35,7 +34,7 @@ import logging
 # which supports reading and writing unicode streams.
 try:
     import unicodecsv as csv
-except ImportError:
+except ImportError as e:
     import warnings
     s = "The unicodecsv package is required.\n"
     s += "pip install unicodecsv\n"
@@ -44,7 +43,7 @@ except ImportError:
 
 try:
     from chardet.universaldetector import UniversalDetector
-except ImportError:
+except ImportError as e:
     import warnings
     s = "The chardet package is required.\n"
     s += "pip install chardet\n"
@@ -54,7 +53,7 @@ except ImportError:
 # Unfortunately, pandas will not currently work under JYTHON due to the numpy dependency.
 # try:
 #     import pandas as pd
-# except ImportError:
+# except ImportError as e:
 #     import warnings
 #     s = "The pandas package is required.\n"
 #     s += "pip install pandas\n"
@@ -65,7 +64,7 @@ except ImportError:
 #     ''' Return the unicode representation of obj.'''
 #     try:
 #         return unicode(obj, *args)
-#     except UnicodeDecodeError:
+#     except UnicodeDecodeError as e:
 #         # obj is byte string
 #         ascii_text = str(obj).encode('string_escape')
 #         return unicode(ascii_text)
@@ -74,7 +73,7 @@ except ImportError:
 #     ''' Return the byte string representation of obj.'''
 #     try:
 #         return str(obj)
-#     except UnicodeEncodeError:
+#     except UnicodeEncodeError as e:
 #         # obj is unicode
 #         return unicode(obj).encode('unicode_escape')
 
@@ -217,7 +216,7 @@ def csv_file_dialect(fullpath):
                 dialect.lineterminator = '\r'
             else:
                 dialect.lineterminator = '\n'
-        except csv.Error, e:
+        except csv.Error as e:
             # Something went wrong, so let's try to read a few lines from the beginning of 
             # the file
             try:
@@ -233,7 +232,7 @@ def csv_file_dialect(fullpath):
                     found_doublequotes = True
                 dialect = csv.Sniffer().sniff(sample_text)
             # Sorry, couldn't figure it out. Let's treat it as csv
-            except csv.Error:
+            except csv.Error as e:
                 s = 'Unable to determine csv dialect in %s' % functionname
                 s += ' %s' % e
                 logging.debug(s)
@@ -375,8 +374,8 @@ def read_header(inputfile, dialect=None, encoding=None):
 
     # Try to determine the encoding of the inputfile.
     if encoding is None or len(encoding.strip()) == 0:
-        #print 'Going in to read_header() with encoding: %s' % encoding
-        #print 'for file %s' % inputfile
+        #print('Going in to read_header() with encoding: %s' % encoding)
+        #print()'for file %s' % inputfile)
         encoding = csv_file_encoding(inputfile)
         # csv_file_encoding() always returns an encoding if there is an input file.    
 
@@ -845,7 +844,7 @@ def csv_clean_whitespace(inputfile, outputfile, dialect=None, encoding=None, for
         logging.debug(s)
         return False
 
-    print dialect_attributes(dialect)
+    print(dialect_attributes(dialect))
 
     with open(outputfile, 'w') as outfile:
         writer = csv.DictWriter(outfile, dialect=outdialect, encoding='utf-8', 
@@ -857,7 +856,7 @@ def csv_clean_whitespace(inputfile, outputfile, dialect=None, encoding=None, for
             header=True, fieldnames=inputheader):
             for field in inputheader:
                 row[field]=collapse_whitespace(row[field])
-            print row
+            print(row)
             writer.writerow(row)
 
     s = 'File written to %s in %s.' % (outputfile, functionname)
@@ -915,7 +914,7 @@ def csv_clean_whitespace(inputfile, outputfile, dialect=None, encoding=None, for
 #         try:
 #             df.to_csv(outputfile, sep='\t', index=False, encoding='utf8', \
 #                 quoting=csv.QUOTE_NONE)
-#         except Exception, e:
+#         except Exception as e:
 #             s = 'File not written to %s in %s.\n%s' % (outputfile, functionname, e)
 #             logging.debug(s)
 #             return False
@@ -923,7 +922,7 @@ def csv_clean_whitespace(inputfile, outputfile, dialect=None, encoding=None, for
 #         try:
 #             df.to_csv(outputfile, sep=',', index=False, encoding='utf8', \
 #                 quoting=csv.QUOTE_MINIMAL)
-#         except Exception, e:
+#         except Exception as e:
 #             s = 'File not written to %s in %s.\n%s' % (outputfile, functionname, e)
 #             logging.debug(s)
 #             return False
@@ -1225,7 +1224,7 @@ def filter_non_printable(str, sub = ''):
 #             for line in infile:
 #                 newline = fix_text(line)
 #                 if line != newline:
-#                     print 'Changed line %s:\n%s\nto:\n%s' % (i, line, newline) 
+#                     print('Changed line %s:\n%s\nto:\n%s' % (i, line, newline))
 #                 i += 1
 #                 outfile.write(newline.encode('utf-8'))
 #     s = 'Output file written to %s in %s.' % (outputfile, functionname)
@@ -1329,8 +1328,8 @@ def extract_values_from_file(
     # Create a cleaned version of fields
     cleanfields = clean_header(fields)
 
-    #print 'cleanheader: %s' % cleanheader
-    #print 'cleanfields: %s' % cleanfields
+    #print('cleanheader: %s' % cleanheader)
+    #print('cleanfields: %s' % cleanfields)
 
     # Extract values from the rows in the input file
     for row in read_csv_row(inputfile, dialect, encoding, fieldnames=cleanheader):
@@ -1528,7 +1527,7 @@ def utf8_file_encoder(inputfile, outputfile, encoding=None):
             for line in indata:
                 try:
                     outdata.write( utf8_line_encoder(line, encoding) )
-                except UnicodeDecodeError, e:
+                except UnicodeDecodeError as e:
                     s = 'Failed to encode line #%s:\n%s\n' % (i, line)
                     s += 'from %s in encoding %s. ' % (inputfile, encoding)
                     s += 'Exception: %s %s' % (e, functionname)
@@ -1550,7 +1549,7 @@ def utf8_data_encoder(data, encoding):
     for line in data:
         try:
             yield utf8_line_encoder(line, encoding)
-        except UnicodeDecodeError, e:
+        except UnicodeDecodeError as e:
             s = 'Failed to encode line:\n%s\n' % line
             s += 'in encoding %s. ' % encoding
             s += 'Exception: %s %s' % (e, functionname)

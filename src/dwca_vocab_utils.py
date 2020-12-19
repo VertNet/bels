@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,9 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2017 President and Fellows of Harvard College"
-__version__ = "dwca_vocab_utils.py 2017-04-27T16:37-04:00"
-__kurator_content_type__ = "utility"
-__adapted_from__ = ""
+__copyright__ = "Copyright 2020 Rauthiflor LLC"
+__version__ = "dwca_vocab_utils.py 2020-12-18T22:48-03:00"
+__adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_vocab_utils.py"
 
 # This file contains common utility functions for dealing with the vocabulary management
 # for Darwin Core-related terms
@@ -207,7 +206,7 @@ def matching_vocab_dict_from_file(
         logging.debug(s)
         return None
 
-    #print 'checklist: %s' % checklist
+    #print('checklist: %s' % checklist)
 
     vocabdict = vocab_dict_from_file(vocabfile, key, separator, dialect, encoding)
     if vocabdict is None or len(vocabdict)==0:
@@ -215,7 +214,7 @@ def matching_vocab_dict_from_file(
         logging.debug(s)
         return None
 
-    #print 'vocabdict: %s' % vocabdict
+    #print('vocabdict: %s' % vocabdict)
 
     matchingvocabdict = {}
 
@@ -226,7 +225,7 @@ def matching_vocab_dict_from_file(
         else:
             try:
                 terms = value.split(separator)
-            except Exception , e:
+            except Exception as e:
                 s = 'Exception splitting value: %s Exception: %s ' % (value, e)
                 s += 'in %s' % functionname
                 logging.debug(s)
@@ -288,7 +287,7 @@ def missing_vocab_list_from_file(checklist, vocabfile, key, separator=None, dial
         else:
             try:
                 terms = value.split(separator)
-            except Exception , e:
+            except Exception as e:
                 s = 'Exception splitting value: %s Exception: %s ' % (value, e)
                 s += 'in %s' % functionname
                 logging.debug(s)
