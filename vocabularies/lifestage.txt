@@ -1,0 +1,930 @@
+lifestage	standard	vetted
+ 		1
+-		1
+--		1
+---		1
+-----		1
+  JUV.	juvenile	1
+ ?  JUV.	juvenile	1
+ 1/4		1
+ ADULT	adult	1
+ IMMATURE	immature	1
+ NO DATA GIVEN	unknown	1
+ NOT INDICATED	unknown	1
+ NOT RECORDED	unknown	1
+ ONE FOURTH		1
+ OR JUV.	juvenile	1
+ SHOWING BLOOD, SMALL  EMBRYO	embro	1
+ SMALL EMBRYOS	embro	1
+"	unknown	1
+"AD"	adult	1
+"AD." [= IM.]	adult	1
+"ADULT?"	adult	1
+"BIRD MATURE"	adult	1
+"CHECK"	unknown	1
+"IM"	immature	1
+"IM"[AD?]	immature	1
+"IM."	immature	1
+"IMMATURE" ON TAG; ADULT	immature	1
+"INCUB."	incubated	1
+"INCUBATED EGGS"	incubated	1
+"INCUBATED"	incubated	1
+"JUV"	juvenile	1
+"JUV. BY PLUMAGE"	juvenile	1
+"JUV."	juvenile	1
+"JUV." FIRST WINTER OF JUV.	juvenile	1
+"MATURE OR NEARLY SO, AT LEAST 2	adult	1
+"MATURE"	adult	1
+"YG"	young	1
+"YG"[?]	young	1
+"YNG OF YEAR"	young	1
+"YNG"	young	1
+(AD ?)	adult	1
+(AD)	adult	1
+(AD. ?)	adult	1
+(AD.)	adult	1
+(AD.?)	adult	1
+(AD?)	adult	1
+(BREEDING)	adult	1
+(CHECK MARK)		1
+(CHICK)	chick	1
+(IM ?)	immature	1
+(IM)	immature	1
+(IM. ?)	immature	1
+(IM.)	immature	1
+(IM?)	immature	1
+(IMM)	immature	1
+(IMM.)	immature	1
+(J?)	juvenile	1
+(JH)	juvenile	1
+(JUV)	juvenile	1
+(JUV. ?)	juvenile	1
+(JUV.)	juvenile	1
+(JUV?)	juvenile	1
+(JUVENAL X 1ST WINTER)	juvenile	1
+(LAYING)	adult	1
+(NESTL.)	nestling	1
+(NESTLING)	nestling	1
+(SEE CARD)		1
+(SEE ORIGINAL DATA CARD)		1
+*	unknown	1
+.	unknown	1
+..		1
+?	unknown	1
+-?	unknown	1
+? - HY		1
+? 1971HY		1
+? 2ND YR.		1
+? ADULT	adult	1
+? AGE 2 DAYS		1
+? AGE 6 DAYS		1
+? CHICK	chick	1
+? CHICK 3 DAYS OLD	chick	1
+? CHICK, 3 DAYS OLD	chick	1
+? CHICK, ALMOST FLEDGED	chick	1
+? IMM.	immature	1
+? YOUNG	young	1
+?/5 DAYS OLD		1
+?/IMM.	immature	1
+?/JUV.	juvenile	1
+??	unknown	1
+[ADULT ?] [FEMALE ?]	adult	1
+[ADULT ?] FEMALE	adult	1
+[ADULT ?] MALE	adult	1
+[ADULT FEMALE ?]	adult	1
+[ADULT]	adult	1
+[ADULT] FEMALE	adult	1
+[AGE ?] [SEX ?]	unknown	1
+[AGE ?] MALE	unknown	1
+[FEMALE ?]		1
+[IMMATURE ?] [SEX ?]	immature	1
+[IMMATURE ?] FEMALE	immature	1
+[IMMATURE ?] MALE	immature	1
+[IMMATURE MALE ?]	immature	1
+[IMMATURE]	immature	1
+[JUVENILE ?] FEMALE	juvenile	1
+[JUVENILE ?] MALE	juvenile	1
+[JUVENILE]	juvenile	1
+[MALE ?]		1
+[SEX ?]		1
+[SUBADULT ?] MALE	subadult	1
+[SUB-ADULT FEMALE ?]	subadult	1
+0		1
+0?		1
+1 AD.	adult	1
+1 DAY OLD	1 day old	1
+1 YG.	yearling	1
+10 DAYS OLD	10 days old	1
+10 LARVAE	larva	1
+12 DAYS OLD	12 days old	1
+1360		1
+16 YEAR OLD FEMALE		1
+18 DAYS	18 days	1
+18 DAYS OLD	18 days old	1
+1ST SPRING	1st spring	1
+1ST WINTER	1st winter	1
+1ST YEAR FEMALE	first year	1
+1ST YEAR MALE	first year	1
+2 NESTLINGS	nestlings	1
+2 NESTLINGS [SEX ?]	nestling	1
+2.5 YEARS OLD	2.5 years old	1
+21 DAYS	21 days	1
+25 DAYS OLD	25 days old	1
+2ND YEAR MALE	second year	1
+3 YEAR OLD	3 year old	1
+31.2	31.2	1
+3-5 DAYS OLD	3-5 days old	1
+3RD WINTER	3rd winter	1
+4 DAYS	4 days	1
+4 MONTHS OLD	4 months old	1
+4.3	4.3	1
+9.3	9.3	1
+A	adult	1
+A M	adult	1
+AD	adult	1
+AD.	adult	1
+ADFULT	adult	1
+ADULR	adult	1
+ADULT	adult	1
+ÀDULT	adult	1
+ADULT (?)	adult	1
+ADULT (15+ YRS. OLD)	adult	1
+ADULT (BREEDING)	adult	1
+ADULT (SY)	adult	1
+ADULT ?	adult	1
+ADULT ?)	adult	1
+ADULT [FEMALE ?]	adult	1
+ADULT [FEMALE?]	adult	1
+ADULT [FEMALE]	adult	1
+ADULT [MALE ?]	adult	1
+ADULT [MALE?]	adult	1
+ADULT [SEX ?]	adult	1
+ADULT 6 YRS	adult	1
+ADULT BREEDING	adult	1
+ADULT- BREEDING	adult	1
+ADULT F	adult	1
+ADULT FEMALE	adult	1
+ADULT FEMALE (BY SIZE)	adult	1
+ADULT FEMALE [= A MALE]	adult	1
+ADULT FEMALE, 240-208-80-17	adult	1
+ADULT MALE	adult	1
+ADULT MALE [= A FEMALE]	adult	1
+ADULT MALE [FEMALE ?]	adult	1
+ADULT MALE BY PLUMAGE	adult	1
+ADULT MALE(?), GONAD SHOT	adult	1
+ADULT N/A	adult	1
+ADULT(?)	adult	1
+ADULT/FEMALE	adult	1
+ADULT?	adult	1
+ADULT`	adult	1
+ADULT11.1 G	adult	1
+ADULTA	adult	1
+ADULTBY PLUMAGE	adult	1
+ADULTL	adult	1
+ADULTO	adult	1
+ADULTO; EN MUDA	adult, in molt	1
+ADULTS + NESTLINGS	adults | nestlings	1
+ADULTS, EGGS	adult, egg	1
+ADULY	adult	1
+ADUT	adult	1
+ADUTL	adult	1
+AFTER FOURTH YEAR	after fourth year	1
+AFTER HATCH YEAR	after hatch year	1
+AFTER SECOND YEAR	after second year	1
+AFTER THIRD YEAR	after third year	1
+AHY	adult	1
+AHY MALE	AHY	1
+AHY/ASY	adult	1
+AN	adult	1
+APPARENTLY ADULT	adult	1
+ASY	adult	1
+BASIC 2	Basic 2	1
+BASIC 4	Basic 4	1
+BREDDING	adult	1
+BREEDING	adult	1
+BREEDING ADULT	adult	1
+BREEDING ADULT FEMALE	adult	1
+CHICK	chick	1
+CHICK & EGGSHELL	chick	1
+CHICK 3-6 DAYS	chick	1
+COCHISE		1
+D2?	D2?	1
+DETERMINE	unknown	1
+DISSECT	unknown	1
+DOWNY	chick	1
+DOWNY CHICK	chick	1
+DOWNY YOUNG	chick	1
+DOWNY YOUNG [SEX ?]	downy young	1
+E	egg	1
+EG	egg	1
+EGG	egg	1
+EGG AND LARVAE	egg, larva	1
+EGG CASE	egg case	1
+EGG CASES	egg case	1
+EGG- CASES	egg case	1
+EGGCASE	egg case	1
+EGGCASES	egg case	1
+EGGS	eggs	1
+EGGS AND EMBRYO	egg, embryo	1
+EGGS AND LARVAE	egg, larva	1
+EGGS AND LARVS	egg, larva	1
+EGGS YOLK SAC LARVAE	egg yolk sac larva	1
+EGGS, EMBRYOS	egg, embryo	1
+EGGS/LARVAE	egg, larva	1
+EGGS/OVARIES	egg, ovary	1
+EM	embryo	1
+EMB 1 EMB. 18MM	adult	1
+EMB.	embryo	1
+EMBRYO	embryo	1
+EMBRYO + EGGS	embryo, egg	1
+EMBRYO DEAD	embryo	1
+EMBRYO DIED EARLY.	embryo	1
+EMBRYO, EGGS	embryo, egg	1
+EMBRYONIC	embryo	1
+EMBRYOS	embryo	1
+F	unknown	1
+F-	unknown	1
+F  ADULT	adult	1
+F  AGE 5 YRS.		1
+F (FLACID)		1
+F (FULL DEV. EGGS)	adult	1
+F (GRAN)		1
+F (GRAN.)		1
+F (HY)		1
+F (LF 15X8)		1
+F (LF=0.7)		1
+F (MP)		1
+F (NO EMB)		1
+F (OSE)		1
+F (PERF)		1
+F (PROBABLY)		1
+F ?	unknown	1
+F 10 DAYS OLD		1
+F 1971HY		1
+F 1976 HY		1
+F 1977HY		1
+F 1979HY		1
+F 1980 HY		1
+F 1980HY		1
+F 1981 HY		1
+F 1981HY		1
+F 1ST YEAR		1
+F 1ST YR.		1
+F 1ST YR. HY		1
+F 3 YRS.		1
+F 5 YR.		1
+F 6 DAYS OLD		1
+F 6 YRS.		1
+F 74HY		1
+F AD	adult	1
+F AD.	adult	1
+F AGE 3 YRS.		1
+F AGE 31 DAYS		1
+F AGE 7 YRS.		1
+F AGE 8 YRS.		1
+F AGE 9 YRS.		1
+F -CLASS IA-B		1
+F HATCHED ABOUT 1 JUNE, 1979		1
+F IMM	immature	1
+F IMM. YY	immature	1
+F IMMATURE	immature	1
+F JUV	juvenile	1
+F JUV.	juvenile	1
+F NO EMB		1
+F NO PL. SC.		1
+F PARTIAL IMM.	immature	1
+F S.AD.	adult	1
+F SUBAD.	subadult	1
+F SUBADULT	subadult	1
+F(?)/SUB-ADULT	subadult	1
+F(HY)		1
+F, 1ST YEAR		1
+F, NESTLING	nestling	1
+F.	unknown	1
+F/(YEARLING)	yearling	1
+F/08 DAYS OLD		1
+F/1 DAY OLD		1
+F/10 DAYS		1
+F/10 DAYS OLD		1
+F/13 DAYS		1
+F/14 DAYS OLD		1
+F/17 MONTHS		1
+F/19 MONTHS		1
+F/2 DAYS		1
+F/2 YEARS		1
+F/20 DAYS		1
+F/21 DAYS		1
+F/25 DAYS		1
+F/3 DAYS OLD		1
+F/30 DAYS		1
+F/4 YRS.GON=3.5X1.8		1
+F/40 DAYS		1
+F/41 DAYS		1
+F/42 DAYS OLD		1
+F/6 DAYS		1
+F/6 YEARS		1
+F/8 DAYS OLD		1
+F/8 YEARS		1
+F/86 DAYS		1
+F/9 DAYS OLD		1
+F/AD	adult	1
+F/ADULT	adult	1
+F/CLASS IA		1
+F/FIRST YEAR		1
+F/FLEDGLING	fledgling	1
+F/HY		1
+F/IMM	immature	1
+F/IMM.	immature	1
+F/IMM.GON=16.1X5.2	immature	1
+F/IMMATURE	immature	1
+F/J	juvenile	1
+F/JUV	juvenile	1
+F/JUV.	juvenile	1
+F/JUVENILE	juvenile	1
+F/NA	unknown	1
+F/NESTLING	nestling	1
+F/YEARLING	yearling	1
+F/YLG.	yearling	1
+F/YRLG.	yearling	1
+F?	unknown	1
+F?, JUV	juvenile	1
+F?/AD	adult	1
+F?/FLEDGLING	fledling	1
+F?/IMM	immature	1
+F~	unknown	1
+F~ JUV	juvenile	1
+F+	unknown	1
+FEMALE		1
+FEMALE - ?		1
+FEMALE - ADULT	adult	1
+FEMALE - HY		1
+FEMALE - S.AD.	subadult	1
+FEMALE (?)		1
+FEMALE (1 DAY OLD)		1
+FEMALE (2YRS)		1
+FEMALE (3 DAYS OLD)		1
+FEMALE (A.R. PHILLIPS)		1
+FEMALE (HY)		1
+FEMALE (IMM.)	immature	1
+FEMALE (IMMATURE)	immature	1
+FEMALE (IMP.)	immature	1
+FEMALE (JUV.)	juvenile	1
+FEMALE (JUV?)	juvenile	1
+FEMALE (JUVENILE)	juvenile	1
+FEMALE (LAC.)	adult	1
+FEMALE (LF=1.8)		1
+FEMALE (LF=3.9)		1
+FEMALE (PREG.)	adult	1
+FEMALE (RC2785) COLLECTED		1
+FEMALE (SA)	subadult	1
+FEMALE (SUB-ADULT)	subadult	1
+FEMALE ?		1
+FEMALE [= MALE ?]		1
+FEMALE [ADULT]	adult	1
+FEMALE [IMMATURE]	immature	1
+FEMALE [MALE ?]		1
+FEMALE + MALE + NEST		1
+FEMALE ADULT	adult	1
+FEMALE BREAKING ONE EVERY DAY OR		1
+FEMALE BREAKING ONE EVERY DAY OR SO; 98-SF04-ES-1,		1
+FEMALE BY PLUMAGE		1
+FEMALE FLEDGLING	fledgling	1
+FEMALE NO EMB-VASCULAR		1
+FEMALE PLUMAGE. SEX ?		1
+FEMALE SEEN INCUBATING AT TIME O		1
+FEMALE SEEN INCUBATING AT TIME OF COLLECTION.		1
+FEMALE TAKEN		1
+FEMALE(IMM)	immature	1
+FEMALE, ADULT	adult	1
+FEMALE, FLACCID		1
+FEMALE, GRANULAR		1
+FEMALE, IMM	immature	1
+FEMALE, IMMATURE	immature	1
+FEMALE, IMMATURE?	immature	1
+FEMALE, POST-LACTATING	adult	1
+FEMALE-ADULT	adult	1
+FEMALE-GRANULAR		1
+FEMALE-HY		1
+FEMALE-IMM.	immature	1
+FEMALE-JUV	juvenile	1
+FESH	fresh	1
+FETHERED EMBRYOS	feathered embryos	1
+FETUS	fetus	1
+FIRST YEAR	juvenile	1
+FIRST YEAR MALE	first year	1
+FL	larva	1
+'FL'	larva	1
+FLEDGELING	fledgling	1
+FLEDGLING	fledgling	1
+FLEDGLING [FEMALE ?]	fledgling	1
+FLEDGLING [SEX ?]	fledgling	1
+FLEDGLING FEMALE	fledgling	1
+FLEDGLING MALE	fledgling	1
+FLEDGLING/UNKNOWN	fledgling	1
+F-NOT STATED ON TAG		1
+FOURTH YEAR	fourth year	1
+FR	larva	1
+G	adult	1
+G. ADVANCED	adult	1
+GF	adult	1
+GF(3)	adult	1
+GF(4)	adult	1
+GF(5)	adult	1
+GF(6)	adult	1
+GF(7)	adult	1
+GF(8)	adult	1
+GF(9)	adult	1
+H	unknown	1
+HATCH YEAR	juvenile	1
+HATCHING EGG	hatching egg	1
+HEMBRA	unknown	1
+HEMBRA 2 PARES MA	adult	1
+HEMBRA A	adult	1
+HEMBRA AD	adult	1
+HEMBRA AD IN	adult	1
+HEMBRA AD MA	adult	1
+HEMBRA AD NI	adult	1
+HEMBRA AI	adult	1
+HEMBRA AM	adult	1
+HEMBRA GESTAL	adult	1
+HEMBRA INM	adult	1
+HEMBRA J	juvenile	1
+HEMBRA JUV	juvenile	1
+HEMBRA LAC	adult	1
+HEMBRA LACTANDO	adult	1
+HEMBRA MA	adult	1
+HEMBRA MAMAS	adult	1
+HEMBRA NO LAC	adult	1
+HEMBRA PREG 2-2 EMB 15MM	adult	1
+HEMBRA SA	subadult	1
+HERMAPHRODIDIC		1
+HY	hatch-year	1
+HY (P10 EXTENDS BEYOND P COVERTS)	hatch-year	1
+HY BIRD	hatch-year	1
+HYBRID		1
+HYF	hatch-year	1
+ILLEGIBLE		1
+ILLEGIBLE (SEE CARD)		1
+IM	immature	1
+IMM	immature	1
+IMM MALE	immature	1
+IMM.	immature	1
+IMM. M	immature	1
+IMMATURE	immature	1
+IMMATURE (?)	immature	1
+IMMATURE (1ST YR)	immature	1
+IMMATURE (FALL)	immature	1
+IMMATURE (HY)	hatch-year	1
+IMMATURE (HY) FEMALE	immature	1
+IMMATURE (HY) MALE	immature	1
+IMMATURE (NESTLING)	immature	1
+IMMATURE (SECOND YEAR)	second-year	1
+IMMATURE ?	immature	1
+IMMATURE [= FLEDGLING] MALE	fledgling	1
+IMMATURE [FEMALE ?]	immature	1
+IMMATURE [MALE ?]	immature	1
+IMMATURE [SEX ?]	immature	1
+IMMATURE BY PLUMAGE	immature	1
+IMMATURE FEMALE	immature	1
+IMMATURE FEMALE ?	immature	1
+IMMATURE M	immature	1
+IMMATURE MALE	immature	1
+IMMATURE SKULL 40% OSSIFIED	immature	1
+IMMATURE SKULL AOUT 30% OSSIFIED	immature	1
+IMMATURE SKULL NOT OSS. LARGE 18	immature	1
+IMMATURE SKULL NOT OSS. LARGE 189 MM	immature	1
+IMMATURE SKULL UNOSSIFIED	immature	1
+IMMATURE SNO	immature	1
+IMMATURE TO SUB ADULT		1
+IMMATURE(?); SKULL 50% OSS.	immature	1
+IMMATURE(?); SKULL ALMOST COMPLE	immature	1
+IMMATURE(?); SKULL ALMOST COMPLETELY OSS.	immature	1
+IMMATURE, SKULL 10% OSSIFIED	immature	1
+IMMATURE, SKULL 20% OSS.	immature	1
+IMMATURE, SKULL NOT OSSIFIED	immature	1
+IMMATURE, SKULL OSSIFIED 50%	immature	1
+IMMATURE, SKULL WINDOWS	immature	1
+IMMATURE.	immature	1
+IMMATURE. SKULL 50% OSS.	immature	1
+IMMATURE/FEMALE	immature	1
+IMMATURE/SKULL OSS.	immature	1
+IMMATURE/SKULL UNOSSIFIED	immature	1
+IMMATURE; LARGE SKULL WINDOWS	immature	1
+IMMATURE; OSS. INCOMPLETE	immature	1
+IMMATURE; SKULL <50% OSS.	immature	1
+IMMATURE; SKULL 10% OSS.	immature	1
+IMMATURE; SKULL 20% OSS.	immature	1
+IMMATURE; SKULL 25% OSS.	immature	1
+IMMATURE; SKULL 30% OSS.	immature	1
+IMMATURE; SKULL 5% OSS.	immature	1
+IMMATURE; SKULL 50% OSS.	immature	1
+IMMATURE; SKULL 50% OSSIFIED	immature	1
+IMMATURE; SKULL 75% OSS.	immature	1
+IMMATURE; SKULL 80% OSS.	immature	1
+IMMATURE; SKULL 90% OSS.	immature	1
+IMMATURE; SKULL 95% OSS.	immature	1
+IMMATURE; SKULL 95%OSS.	immature	1
+IMMATURE; SKULL CA. 1/3 OSS.	immature	1
+IMMATURE; SKULL LESS THAN 50% OS	immature	1
+IMMATURE; SKULL LESS THAN 50% OSS.	immature	1
+IMMATURE; SKULL NOT OSS.	immature	1
+IMMATURE; SKULL OSS.	immature	1
+IMMATURE; SKULL OSS. INCOMPLETE	immature	1
+IMMATURE; SKULL OSS.?	immature	1
+IMMATURE; SKULL PARTIALLY OSS.	immature	1
+IMMATURE; SKULL PARTLY OSS	immature	1
+IMMATURE; SKULL PARTLY OSS.	immature	1
+IMMATURE; SKULL UNOSSIFIED	immature	1
+IMMATURE?	immature	1
+IMMATURE? SKULL SINGLE	immature	1
+J	juvenile	1
+J/A	juvenile, adult	1
+J?	juvenile	1
+J-467, J-468		1
+JU	juvenile	1
+JUNENILE	juvenile	1
+JUNVENILE	juvenile	1
+JUNVILE	juvenile	1
+JUV	juvenile	1
+JUV ?	juvenile	1
+JUV NOT OSSIFIED	juvenile	1
+JUV SFO	juvenile	1
+JUV SNO	juvenile	1
+JUV.	juvenile	1
+JUV. MALE	juvenile	1
+JUV. SNO	juvenile	1
+JUV. TO SMALL AD.	juvenile, young adult	1
+JUVENIL	juvenile	1
+JUVENIL, EN MUDA	juvenile, in molt	1
+JUVENIL;E	juvenile	1
+JUVENILE	juvenile	1
+JUVENILE  (?)	juvenile	1
+JUVENILE - BASIC 2	juvenile	1
+JUVENILE (?)	juvenile	1
+JUVENILE (BY PLUMAGE)	juvenile	1
+JUVENILE (FLEDGLING)	juvenile	1
+JUVENILE (PLUMAGE)?	juvenile	1
+JUVENILE ?	juvenile	1
+JUVENILE [FEMALE ?]	juvenile	1
+JUVENILE [FEMALE?]	juvenile	1
+JUVENILE [MALE ?]	juvenile	1
+JUVENILE [SEX ?]	juvenile	1
+JUVENILE 2ND WINTER	juvenile	1
+JUVENILE FEMALE	juvenile	1
+JUVENILE MALE	juvenile	1
+JUVENILE MALE (?)	juvenile	1
+JUVENILE, 1/3 OSSIFICATION	juvenile	1
+JUVENILE, 60% OSS.	juvenile	1
+JUVENILE, ABOUT 1/4 FULL SIZE	juvenile	1
+JUVENILE, SKULL ~1/2 OSSIFIED	juvenile	1
+JUVENILE, SKULL 5% OSSIFIED	juvenile	1
+JUVENILE, SKULL NOT FULLY OSSIFI	juvenile	1
+JUVENILE, SKULL NOT FULLY OSSIFIED	juvenile	1
+JUVENILE, SKULL NOT OSSIFIED	juvenile	1
+JUVENILE/!ST WINTER	juvenile	1
+JUVENILE/IMMATURE	juvenile	1
+JUVENILE; SKULL NOT FULLY OSS.	juvenile	1
+JUVENILE; SKULL NOT OSS.	juvenile	1
+JUVENILE?	juvenile	1
+JUVENILE? SKULL 80% OSS.	juvenile	1
+JUVENILES	juvenile	1
+JUVENILLE	juvenile	1
+JUVENILOE	juvenile	1
+JUVENLE	juvenile	1
+JUVINILE	juvenile	1
+JUVNILE	juvenile	1
+JV	juvenile	1
+L	larva	1
+LAR.SER.(JUVENILES)	larva, juvenile	1
+LARVA	larva	1
+LARVAE	larva	1
+LARVAE CELL	larva cell	1
+LARVAE REF.	larva	1
+LARVAE, JUVENILES	larva, juvenile	1
+LARVAL	larva	1
+LARVAL COLLECTION	larva	1
+LARVAL FISH	larva	1
+LARVAL TRAY	larva	1
+LARVE	larva	1
+LEPTO.	larva	1
+LV	larva	1
+M	unknown	1
+M (10X5)		1
+M (10X6.78)		1
+M (12X4)		1
+M (18X9.6)		1
+M (2X1)		1
+M (3X5)		1
+M (4.3X3.5)		1
+M (5*2)		1
+M (5*3 LING)		1
+M (6X2)		1
+M (8*3)		1
+M (9*5)		1
+M (9X7)		1
+M (BASED ON PLUMAGE)	unknown	1
+M (GRAN)		1
+M (HY)		1
+M (IMM 3.9X1.2)		1
+M (LAP)		1
+M (LT:1X1)		1
+M (TSE)		1
+M 1971 HY		1
+M 1977 HY		1
+M 1978 HY		1
+M 1978HY		1
+M 1979 HY		1
+M 1979HY		1
+M 1980HY		1
+M 1981 HY		1
+M 1981HY		1
+M 1984HY		1
+M 1ST SPRING		1
+M 1ST WINTER		1
+M 1ST YEAR		1
+M 1ST YR.		1
+M 2-3 DAYS OLD		1
+M 3.5 YRS.		1
+M 3RD WINTER		1
+M 3X1		1
+M 4YRS.		1
+M ABDOMINAL		1
+M AD	adult	1
+M AD.	adult	1
+M ADULT.	adult	1
+M AGE 10 YRS.		1
+M AGE 12 YRS.		1
+M AGE 18 DAYS		1
+M AGE 3 DAYS		1
+M AGE 4 YRS		1
+M AGE 4 YRS.		1
+M AGE 7 YRS		1
+M ASULT	adult	1
+M BASED ON BILL LENGTH		1
+M CHICK	chick	1
+M FLEDGLING	fledgling	1
+M HY		1
+M HY'76		1
+M JUV	juvenile	1
+M L.T (8.3*5.6)		1
+M LT (2X1.5)		1
+M M	adult	1
+M NESTLING	nestling	1
+M S.ADULT?	subadult	1
+M SA	subadult	1
+M SCROTAL		1
+M SUBAD.	subadult	1
+M SUBADULT	subadult	1
+M YY		1
+M(3X2)		1
+M(HY)		1
+M(LAP)		1
+M, JUV	juvenile	1
+M/08 DAYS OLD		1
+M/1 DAY		1
+M/1 DAY OLD		1
+M/10 DAYS		1
+M/15 DAYS OLD		1
+M/17 DAYS OLD		1
+M/19 DAYS OLD		1
+M/1ST YEAR		1
+M/2 DAYS		1
+M/2 DAYS OLD		1
+M/2 YEARS		1
+M/24 DAYS OLD		1
+M/3 DAYS OLD		1
+M/30 DAYS		1
+M/31 DAYS OLD		1
+M/4 DAYS		1
+M/41 DAYS		1
+M/42 DAYS OLD		1
+M/6 DAYS OLD		1
+M/66 DAYS		1
+M/AD	adult	1
+M/ADULT	adult	1
+M/ADULT (?)	adult	1
+M/F	unknown	1
+M/FIRST YEAR		1
+M/FLEDGLING	fledgling	1
+M/HY		1
+M/IMM	immature	1
+M/IMM.	immature	1
+M/IMMATURE	immature	1
+M/JUV	juvenile	1
+M/JUV.	juvenile	1
+M/JUVENILE	juvenile	1
+M/NA	unknown	1
+M/NESTLING	nestling	1
+M/SECOND YEAR		1
+M/SUB-AD.	subadult	1
+M/SUB-ADULT	subadult	1
+M/THIRD YEAR		1
+M/YEARLING	yearling	1
+M/YRLG.	yearling	1
+M?	unknown	1
+M?, JUV	juvenile	1
+M~	unknown	1
+MACHO	unknown	1
+MACHO A	adult	1
+MACHO AD	adult	1
+MACHO AD TA	adult	1
+MACHO AD TES	adult	1
+MACHO AD TES 3X4	adult	1
+MACHO AD TES 6X4	adult	1
+MACHO AD TES 7X4	adult	1
+MACHO AD TEST 9X5	adult	1
+MACHO INM	immature	1
+MACHO J	juvenile	1
+MACHO JUV	juvenile	1
+MACHO JUV TEST 5X3	juvenile	1
+MACHO SA TES 5X3	subadult	1
+MACHO SUBAD	subadult	1
+MACHO TES 10X6	adult	1
+MACHO TEST	unknown	1
+MACHO TEST 15X9	unknown	1
+MACHO TEST 16X9	unknown	1
+MACHO TEST 18X13	unknown	1
+MACHO TEST 20X13	unknown	1
+MACHO TEST 20X14	unknown	1
+MACHO TEST 5X3	unknown	1
+MACHO TEST 5X4	unknown	1
+MACHO TEST 8X4	unknown	1
+MACHO TEST ESC	adult	1
+MAKE		1
+MALE		1
+MALE - 6 MONTHS	6 months	1
+MALE (1ST YEAR)		1
+MALE (3.7X2.4)		1
+MALE (6.0X4.4)		1
+MALE (HY)		1
+MALE (IMM.)	immature	1
+MALE (IMMATURE)	immature	1
+MALE (JUV.)	juvenile	1
+MALE (JUVENILE)	juvenile	1
+MALE (LAP)		1
+MALE (SUB-ADULT)	subadult	1
+MALE (T=10MM)		1
+MALE (T=4MM)		1
+MALE (YOUNG)	young	1
+MALE ?		1
+MALE [ADULT]	adult	1
+MALE [FEMALE ?]		1
+MALE ADULT	adult	1
+MALE BY PLUMAGE		1
+MALE DOWNY YOUNG	chick	1
+MALE INCUBATING ABOUT 10 AM		1
+MALE INCUBATING. EGGS MISSING.		1
+MALE JUVENILE	juvenile	1
+MALE(IMM.)	immature	1
+MALE, ?	unknown	1
+MALE, 2ND WINTER		1
+MALE, ADULT	adult	1
+MALE, HY		1
+MALE, HY?		1
+MALE, IMM.	immature	1
+MALE, IMMATURE	immature	1
+MALE, TESTES 2 X 3 MM		1
+MALE, YY		1
+MALE/ADULT	adult	1
+MALE?		1
+MALE[		1
+MALE6		1
+MALES + FEMALES		1
+MIXED SEXES		1
+MLE		1
+MM	unknown	1
+N	unknown	1
+NA (HY)		1
+NA 3RD YEAR		1
+NA AD.	adult	1
+NA CHICK	chick	1
+NA IMM.	immature	1
+NA JUV.	juvenile	1
+NA/1 DAY		1
+NA/1 DAY OLD		1
+NA/1 MONTH		1
+NA/10 DAYS OLD		1
+NA/11 DAYS OLD		1
+NA/3 DAYS OLD		1
+NA/3 WEEKS		1
+NA/4 DAYS OLD		1
+NA/5 DAYS		1
+NA/5 DAYS OLD		1
+NA/5 MONTHS		1
+NA/6 DAYS		1
+NA/7 DAYS OLD		1
+NA/9 DAYS		1
+NA/IMM.	immature	1
+NA/JUV.	juvenile	1
+NA/NESTLING	nestling	1
+NA/SUB-ADULT	subadult	1
+NATAL	natal	1
+ND	unknown	1
+NEONATE	neonate	1
+NESTING COLONY	nesting colony	1
+NESTLING	nestling	1
+NESTLING [FEMALE ?]	nestling	1
+NESTLING [SEX ?]	nestling	1
+NESTLING FEMALE	nestling	1
+NESTLING MALE	nestling	1
+NESTLINGS	nestling	1
+NESTLINGS [SEX ?]	nestlings	1
+NEWLY HATCHED CHICK	chick	1
+NIL		1
+-NIL-		1
+NL	larva	1
+NO ADDITIONAL INFORMATION AVAILA	unknown	1
+NO BURSA	no bursa	1
+NONE		1
+NT	natal	1
+O~	unknown	1
+OLDER JUVENILE	juvenile	1
+OVARIAN EGGS	ovarian egg	1
+PIMA		1
+POSSIBLY ADULT	adult	1
+POSSIBLY IMMATURE	immature	1
+POSSIBLY JUVENILE	juvenile	1
+POST LARVAEJUVENILES	juvenile	1
+PROBABLY ADULT	adult	1
+PROBABLY FEMALE		1
+PROBABLY IMMATURE	immature	1
+PROBABLY JUVENILE	juvenile	1
+PROBABLY MALE		1
+PROBABLY SECOND YEAR	second year	1
+PUPS	juvenile	1
+S&S		1
+SECOND YEAR	Second year	1
+SEX	unknown	1
+SEX ?		1
+SEX ? - MALE PLUMAGE		1
+SKEL		1
+SKEL.		1
+SKELETAL ELEMENTS		1
+SL	juvenile	1
+SMALL AD.	young adult	1
+SS		1
+SUB ADULT?	subadult	1
+SUBADULT	subadult	1
+SUB-ADULT [MALE ?]	subadult	1
+SUB-ADULT [SEX ?]	subadult	1
+SUBADULT FEMALE	subadult	1
+SUB-ADULT FEMALE	subadult	1
+SUBADULT MALE	subadult	1
+SUB-ADULT MALE	subadult	1
+SUB-ADULTS	subadult	1
+SYM	SYM	1
+THIRD YEAR	third year	1
+TO	unknown	1
+TRANSITIONAL JUV-BASIC 2	transitional Juv-basic 2	1
+TY	third year	1
+U	unknown	1
+UKN	unknown	1
+UKNOWN	unknown	1
+UN	unknown	1
+UNK	unknown	1
+UNK  JUV.	juvenile	1
+UNK - JUV. OR NEONATAL		1
+UNK (IMM. ?)	immature	1
+UNK IMM.	immature	1
+UNK, ADULT	adult	1
+UNK, IMM	adult	1
+UNK, IMM.	adult	1
+UNK, MIXED SYMBOL	unknown	1
+UNK, PROBABLY M	unknown	1
+UNK.	unknown	1
+UNK. - IMM	immature	1
+UNK. (IMM.)	immature	1
+UNK. (JUVENILE)	juvenile	1
+UNK. JUVENILE	juvenile	1
+UNK., (HY)		1
+UNK., JUV.	juvenile	1
+UNKNOWN	unknown	1
+UNKNOWN (DOWNY YOUNG 1-3 DAYS OL	chick	1
+UNKNOWN (JUVENILE)	juvenile	1
+UNKNOWN ADULT	adult	1
+UNKNOWN AGE	unknown	1
+UNKNOWN DOWNY YOUNG	chick	1
+UNKNOWN FLEDGLING	fledgling	1
+UNKNOWN JUVENILE	juvenile	1
+UNKNOWN(IMM.)	immature	1
+UNKNOWN/ADULT	adult	1
+UNKOWN	unknown	1
+UR	unknown	1
+XXX	unknown	1
+Y.O.Y. FEMALE	young	1
+YEARLING	yearling	1
+YEARLING TO AD.	yearling, adult	1
+YES		1
+YES (CHECKMARK)		1
+YES, ADVANCED		1
+YOLK SAC	yolk sac	1
+YOLK-SAC	yolk sac	1
+YOUNG	juvenile	1
+YOUNG [FEMALE ?]	young	1
+YOUNG [SEX ?]	young	1
+YOUNG ADULT MALE	young adult	1
+YOUNG ADULTS	young adult	1
+YOUNG FEMALE	young	1
+YOUNG MALE	young	1
+YS	yolk sac	1
+YY MALE		1

@@ -1,0 +1,1838 @@
+sex	standard	vetted
+ 		1
+-		1
+--		1
+---		1
+----		1
+—		1
+ ?	in question	1
+-- [APPARANTLY F]	female	1
+-- [APPARANTLY M]	male	1
+ F	female	1
+ M	male	1
+"		1
+"?"	in question	1
+"?"[=M]	in question	1
+"[ILLEG]"	unknown	1
+"[ILLEG]" [APP M]	male	1
+"[ILLEG]" [PRESUMABLY =F]	female	1
+"F ? *	in question	1
+"F ? M"	in question	1
+"F [M]	unknown	1
+"F I THINK"	in question	1
+"F M"	unknown	1
+"F"	female	1
+"F" & "M" [APP.=F]	unknown	1
+"F" ?	in question	1
+"F" ? [=M]	in question	1
+"F" ?[=M]	in question	1
+"F" [=APP.M]	unknown	1
+"F" [=M ?]	in question	1
+"F" [=M PROB.]	unknown	1
+"F" [=M?]	in question	1
+"F" [=M]	unknown	1
+"F" [=M]*	unknown	1
+"F" [=M]?	in question	1
+"F" [APP. M]	unknown	1
+"F" [M]	unknown	1
+"F" M	unknown	1
+"F"(M)	unknown	1
+"F"[=APP. M]	unknown	1
+"F"[=M?[IM]]	in question	1
+"F"[=M?]	in question	1
+"F"[=M]	unknown	1
+"F"[BILL SCRATCH INDICATES M]	unknown	1
+"F"[FROM SIZE IS A M]	unknown	1
+"F"[IS SIZE OF M]	unknown	1
+"F"[M*]	unknown	1
+"F"[M]	unknown	1
+"F(?)"	in question	1
+"F?"	in question	1
+"F?"[=F]	in question	1
+"F?"[=M]	in question	1
+"HOR, F'	female	1
+"IM. F"; SEX AMBIGUOUS	in question	1
+"M (?) [=M]	in question	1
+"M [F]	unknown	1
+"M OR F ?"	in question	1
+"M"	male	1
+"M" ?	in question	1
+"M" [=F ?]	in question	1
+"M" [=F APP.]	unknown	1
+"M" [=F SURELY]	female	1
+"M" [=F?]	in question	1
+"M" [=F]	unknown	1
+"M" [APP. F]	unknown	1
+"M" [APP. M]	unknown	1
+"M" [LITTLE DOUBT =F]	female	1
+"M" APP.[=F]	unknown	1
+"M"[=F?]	in question	1
+"M"[=F]	unknown	1
+"M"[F?]	in question	1
+"M"=F ?	in question	1
+"M"F	unknown	1
+"M: [APPARENTLY =F]	unknown	1
+"M?"	in question	1
+"M?"[=M]	in question	1
+"M?"[=UNDERLINED M]	in question	1
+"MALE"	male	1
+"O"	unknown	1
+"O"[=F]	female	1
+"T		1
+"UPSIDE DOWN F SYMBOL"	female	1
+("M AD")NO! IS JUV	male	1
+(?)	in question	1
+(?) SIX	in question	1
+(F ?)	in question	1
+(F)	female	1
+(F) ?	in question	1
+(F)=[M]	unknown	1
+(F?)	in question	1
+(FEMALE)	female	1
+(FEMALE?)	in question	1
+(M ?)	in question	1
+(M ?) [F]	in question	1
+(M =)[F]	unknown	1
+(M APPARANTLY)	male	1
+(M IM ?)	in question	1
+(M)	male	1
+(M) ?	in question	1
+(M) ?)	in question	1
+(M) SEE NOTE	male	1
+(M)=(F)	unknown	1
+(M)=F	unknown	1
+(M/F?)	in question	1
+(M?)	in question	1
+(M?)=[F]	in question	1
+(MALE OR FEMALE ?)	in question	1
+(MALE)	male	1
+(MALE)?	in question	1
+(N)	unknown	1
+(NOT DETERMINED)	unknown	1
+(NOT DETERMINED), JUVENILE	unknown	1
+(SEX UNKNOWN)	unknown	1
+(SEX?)	in question	1
+(UNDETERMINED)	unknown	1
+(UNDETERMINED), JUVENILE	unknown	1
+(UNSEXED)	unknown	1
+*	unknown	1
+--*	unknown	1
+,		1
+.		1
+/	unknown	1
+?	in question	1
+--?	in question	1
+-?-	in question	1
+? - HY		1
+? (F)	in question	1
+? (M)	in question	1
+? (SIGN BLURRED)	in question	1
+? *	in question	1
+? [=F]	in question	1
+? [=M?]	in question	1
+? [=M]	in question	1
+? [M]	in question	1
+? [MALE]	in question	1
+? [SURELY F]	in question	1
+? = F	in question	1
+? = M	in question	1
+? 1971HY		1
+? 2ND YR.		1
+? AD.	in question	1
+? AGE 2 DAYS		1
+? AGE 6 DAYS		1
+? BR.	in question	1
+? CHICK		1
+? CHICK 3 DAYS OLD		1
+? CHICK, 3 DAYS OLD		1
+? CHICK, ALMOST FLEDGED		1
+? F	in question	1
+? IMM	unknown	1
+? IMM.		1
+? JUV	in question	1
+? JUV.	unknown	1
+? M	in question	1
+? M.	in question	1
+? YOUNG		1
+?*	in question	1
+?, ADULT	in question	1
+?, IMMATURE	in question	1
+?, JUVENILE	in question	1
+?. ADULT	in question	1
+?/5 DAYS OLD		1
+?/IMM.		1
+?/JUV.		1
+??	in question	1
+--?[=F]	in question	1
+?[=FEMALE]	in question	1
+--?[=M]	in question	1
+?[F]	in question	1
+?[FEMALE]	in question	1
+?[ILLEG] [M]	in question	1
+?[M]	in question	1
+?=F	in question	1
+?=M	in question	1
+?F	in question	1
+?FEMALE	in question	1
+?M	in question	1
+?M*	in question	1
+?MALE	in question	1
+["M" OR F ?]	in question	1
+[?]	in question	1
+[?F]	in question	1
+[?FEMALE]	in question	1
+[[ILLEG]]	unknown	1
+[=F?]M	in question	1
+--[=F]	female	1
+[=M ?]	in question	1
+[=M]	male	1
+--[=M]	male	1
+[=M] F	unknown	1
+[=M]F	unknown	1
+[1ST SPRING MALE]	male	1
+[AD.]	unknown	1
+[ADM]	unknown	1
+[ADULT ?] [FEMALE ?]	in question	1
+[ADULT ?] FEMALE	female	1
+[ADULT ?] MALE	male	1
+[ADULT FEMALE ?]	in question	1
+[ADULT] FEMALE	female	1
+[AGE ?] [SEX ?]	in question	1
+[AGE ?] MALE	male	1
+[ALMOST SURELY A F]	female	1
+[APP F]	female	1
+--[APP. F]	female	1
+[F ?]	in question	1
+[F ?] M	in question	1
+[F ]	female	1
+[F M]	unknown	1
+[F OR M]	unknown	1
+--[F OR M]	unknown	1
+[F PRACT. CERTAINLY]	female	1
+[F?]	in question	1
+--[F?]	in question	1
+[F]	female	1
+--[F]	female	1
+[F]-	female	1
+[F] "M"	unknown	1
+[F] ?	in question	1
+[F] ? M	in question	1
+[F] [M]	unknown	1
+[F] F	female	1
+[F] M	unknown	1
+[F] SEE COLLECTOR'S NOTES	female	1
+[F], ADULT	female	1
+[F], IMMATURE	female	1
+[F]?	in question	1
+[F]=(M)	unknown	1
+[F]M	unknown	1
+[F]SIC	female	1
+[F}	female	1
+[FEMALE ?]	in question	1
+[FEMALE?]	in question	1
+[FEMALE?] BY PLUMAGE	in question	1
+[FEMALE]	female	1
+[FEMALE]?	in question	1
+[ILLEG.]	unknown	1
+[ILLEG]	unknown	1
+[ILLEG] F	female	1
+[ILLEG] LIGHT PENCIL MARKINGS	unknown	1
+[ILLEG].	unknown	1
+[ILLEG]?	in question	1
+[ILLEG]F	female	1
+--[ILLEG]F	female	1
+[ILLEG]M	male	1
+[IM.]	unknown	1
+[IMMATURE ?] [SEX ?]	unknown	1
+[IMMATURE ?] FEMALE	female	1
+[IMMATURE ?] MALE	male	1
+[IMMATURE MALE ?]	in question	1
+[JUV. CHICK]	unknown	1
+[JUV. MALE]	male	1
+[JUV.]	unknown	1
+[JUVENILE ?] FEMALE	female	1
+[JUVENILE ?] MALE	male	1
+[M	male	1
+[M ?]	in question	1
+[M ?] (ILLEG.)	in question	1
+[M IMM.]F	unknown	1
+[M IMM]	male	1
+[M PRACT. CERTAINLY]	male	1
+[M?]	in question	1
+[M]	male	1
+--[M]	male	1
+[M] ?	in question	1
+[M] F	unknown	1
+[M] SEE COLLECTOR'S NOTES	male	1
+[M]"F"	unknown	1
+[M], ADULT	male	1
+[M]?	in question	1
+[M]F	unknown	1
+[M]NS	male	1
+[M=] F	unknown	1
+[MALE ?]	in question	1
+[MALE?]	in question	1
+[MALE]	male	1
+[MALE] BY PLUMAGE	male	1
+[SEX ?]	in question	1
+[SIZE FEMALE]	female	1
+[SUBADULT ?] MALE	male	1
+[SUB-ADULT FEMALE ?]	in question	1
+[SURELY F]	female	1
+[U]	unknown	1
+]	unknown	1
+_	unknown	1
+`	unknown	1
+{F}	female	1
+{FEMALE}	female	1
+{M]	male	1
+{M}	male	1
+{MALE}	male	1
+~	unknown	1
+<	unknown	1
+<NO DATA>		1
+=[F]M	unknown	1
+>		1
+♀	female	1
+♀ IMM.	female	1
+♀ IMMATURE	female	1
+♀ YOUNG	female	1
+♀&♂	female | male	1
+♀?	in question	1
+♂	male	1
+♂ IMMATURE	male	1
+♂ YOUNG	male	1
+♂?	in question	1
+♂? ADULT	in question	1
+0		1
+0?	unknown	1
+06-MAR-21	unknown	1
+07-OCT-26	unknown	1
+09-MAR-32	unknown	1
+1	unknown	1
+1 F, 1 M	female | male	1
+1 F, 2 M	female | male	1
+1 F, 3 M	female | male	1
+1 F, 4 M	female | male	1
+1 FEMALE	female	1
+1 FEMALE,	female	1
+1 HEMIPENE, THROAT WHITE, SCALES		1
+1 M,1 F SUBAD, 21 U	female | male	1
+1 MALE	male	1
+1 MALE, 1 FEMALE	female | male	1
+10 FEMALES, 64 MALES	female | male	1
+11	unknown	1
+11 F, 1 M	female | male	1
+13	unknown	1
+1360		1
+152	unknown	1
+154	unknown	1
+157	unknown	1
+16 F, 10 M	female | male	1
+16 YEAR OLD FEMALE	female	1
+162	unknown	1
+166	unknown	1
+17.5	unknown	1
+170	unknown	1
+171	unknown	1
+173	unknown	1
+174	unknown	1
+175	unknown	1
+176	unknown	1
+177	unknown	1
+180	unknown	1
+184	unknown	1
+186	unknown	1
+19-MAR-21	unknown	1
+1ST YEAR FEMALE	female	1
+1ST YEAR MALE	male	1
+2	unknown	1
+2 F, 1 JUV	female | unknown	1
+2 F, 1 M	female | male	1
+2 F, 2 M	female | male	1
+2 F, 2 U	female | unknown	1
+2 FEMALE	female	1
+2 FEMALE, 1 MALE	female | male	1
+2 M, 1 F	female | male	1
+2 MALE	male	1
+2 MALES	male	1
+2 MALES, 2 FEMALES	female | male	1
+2 NESTLINGS		1
+2 NESTLINGS [SEX ?]	in question	1
+223	unknown	1
+227	unknown	1
+239	unknown	1
+249	unknown	1
+263.5	unknown	1
+274	unknown	1
+298	unknown	1
+2F	female	1
+2ND YEAR MALE	male	1
+3	unknown	1
+3 EXX.		1
+3 F, 1 M	female | male	1
+3 F, 3 M	female | male	1
+3 MALES, FEMALE	female | male	1
+3207 111/95/IV	unknown	1
+335	unknown	1
+340	unknown	1
+348	unknown	1
+36010	unknown	1
+361	unknown	1
+4		1
+4 F, 1 M	female | male	1
+4 F, 2 M	female | male	1
+4 FEMALE,	female	1
+4 MACHOS;  4 HEMBRAS; 1 INDETERM	4 males | 4 females | 1 unknown	1
+46		1
+47		1
+48		1
+5		1
+5 F, 1 M	female | male	1
+58	unknown	1
+5M,2F	female | male	1
+6	unknown	1
+6F	female	1
+7		1
+7 FEMALE,	female	1
+7M,6F	female | male	1
+9+ YEARS OLD		1
+A	unknown	1
+A M	male	1
+A: FEMALE	female	1
+AD	unknown	1
+AD SEX ?	in question	1
+AD. ?	in question	1
+AD. ? FEMALE	in question	1
+AD. ? MALE	in question	1
+AD. FEMALE (LIKELY)	female	1
+AD. MALE?	in question	1
+AD.?	in question	1
+AD.? FEMALE	in question	1
+AD.? MALE	in question	1
+AD?	in question	1
+ADM	unknown	1
+ADULT		1
+ADULT (DRY SHELL)		1
+ADULT [FEMALE ?]	in question	1
+ADULT [FEMALE?]	in question	1
+ADULT [FEMALE]	female	1
+ADULT [MALE ?]	in question	1
+ADULT [MALE?]	in question	1
+ADULT [SEX ?]	in question	1
+ADULT + [JUVENILE]	unknown	1
+ADULT F	female	1
+ADULT FEMALE	female	1
+ADULT FEMALE (BY SIZE)	female	1
+ADULT FEMALE (GRAVID)	female	1
+ADULT FEMALE [= A MALE]	female	1
+ADULT FEMALE W/ 12 EGGS (EEGS LO	female	1
+ADULT FEMALE, 240-208-80-17	female	1
+ADULT FEMALE, 29.9 G, SKIN CLIP 	female	1
+ADULT FEMALE, 521G, SVL 1120 MM,	female	1
+ADULT FEMALE, GRAVID	female	1
+ADULT FEMALE, LAID 4 EGGS 25-26 	female	1
+ADULT FEMALE, LIVER TISSUE TAKEN	female	1
+ADULT FEMALE, SVL 179 MM, TAIL 2	female	1
+ADULT FEMALE, SVL 182 MM, TAIL 3	female	1
+ADULT FEMALE, SVL 600 MM, TAIL 1	female	1
+ADULT FEMALE, SVL 673MM, TAIL 18	female	1
+ADULT FEMALE, TISSUE-LIVER SAMPL	female	1
+ADULT MALE	male	1
+ADULT MALE [= A FEMALE]	in question	1
+ADULT MALE [FEMALE ?]	in question	1
+ADULT MALE BY PLUMAGE	male	1
+ADULT MALE(?), GONAD SHOT	male	1
+ADULT MALE,  SVL 1020 MM, TAIL 9	male	1
+ADULT MALE, LIVER TISSUE TAKEN	male	1
+ADULT MALE, LVER TISSUE TAKEN	male	1
+ADULT MALE, SVL 1453 MM, TAIL 51	male	1
+ADULT MALE, SVL 163 MM, TAIL 32.	male	1
+ADULT MALE, SVL 210 MM, TAIL 259	male	1
+ADULT MALE, SVL 560 MM, TAIL 290	male	1
+ADULT MALE, SVL 71 MM	male	1
+ADULT MALE, TISSUE AT LSU	male	1
+ADULT MALE, TISSUE-LIVER SAMPLE 	male	1
+ADULT MALE, TISSUE-SCALE CLIPS	male	1
+ADULT MALE, TOTAL LENGTH (VISUAL	male	1
+ADULT SVL 312MM,TAIL 144MM		1
+ADULT TAIL CLIP TISSUE		1
+ADULT TAIL TISSUE CLIP		1
+ADULT WITH TAIL CLIP TISSUE		1
+ADULT WITH TISSUE		1
+ADULT,  SVL 216 MM, TAIL 20 MM, 		1
+ADULT,  SVL 235 MM, TAIL 30 MM, 		1
+ADULT, 361 MM SVL, TAIL 67 MM, 1		1
+ADULT, 43 CM TL		1
+ADULT, 64 CM TOTAL LENGTH		1
+ADULT, BLACK PHASE		1
+ADULT, CA 65 CM TOTAL LENGTH		1
+ADULT, CEREBERUS		1
+ADULT, FEMALE?	female	1
+ADULT, FEMALE? (SHORT TAIL; DID 	female	1
+ADULT, LIVER TISSUE		1
+ADULT, LIVER TISSUE TAKEN		1
+ADULT, SKIN CLIP TISSUE TAKEN		1
+ADULT, SVL 235 MM		1
+ADULT, SVL 237MM, TAIL 41 MM		1
+ADULT, SVL 265 MM, TAIL 58 MM		1
+ADULT, SVL 63 MM, TAIL 58 MM		1
+ADULT, SVL 633 MM, TAIL 102.0 MM		1
+ADULT, TAIL TISSUE TAKEN		1
+ADULT, TISSUE (TAIL) TAKEN		1
+ADULT, TISSUE AT LSU		1
+ADULT, TISSUE LIVER SAMPLE		1
+ADULT, TISSUE- SCALE CLIP		1
+ADULT, TISSUE SCALE CLIPS		1
+ADULT, TISSUE TAKEN FROM LEFT LE		1
+ADULT, TISSUE TAKEN FROM RIGHT L		1
+ADULT, TISSUE-LIVER		1
+ADULT, TISSUE-LIVER SAMPLE		1
+ADULT, TISSUE-LIVER SAMPLE TAKEN		1
+ADULT, TISSUE-SCALE CLIPS		1
+ADULT,LIVER TISSUE TAKEN		1
+ADULT/FEMALE	female	1
+ADULTS + NESTLINGS		1
+AHY MALE	male	1
+AHY-M	male	1
+ALC.	unknown	1
+AMPLEXING WITH UAZ50272		1
+AMPLEXING WITH UAZ50273		1
+AOR AT 0933 HRS, ACCIDENTALLY HI		1
+AOR AT 1705 HRS, ACCIDENTALLY HI		1
+APR	unknown	1
+BANDED		1
+BELLY MOTTLED; THROAT DARK; NARR		1
+BELLY MOTTLED; THROAT SALT AND P		1
+BICOLORED DEWLAP DARK ORANGE BAS		1
+BICOLORED DEWLAP-DARK ORANGE BAS		1
+BLACK THROAT		1
+BLACK THROAT WITH WHITE SPOTS		1
+BLANK	unknown	1
+BLUE BELLY AND THROAT		1
+BODY WITH SLIGHTLY MORE GREEN TH		1
+BORN 7/18/1971 TO UAZ34319		1
+BORN 7/19/1971 FROM UAZ34328		1
+BOTH	hermaphrodite	1
+BREEDING ADULT FEMALE	female	1
+BROAD ORANGE LINE MID-DORSAL; TH		1
+BROWN IN LIFE		1
+BROWN NUPTIAL PADS, THROAT YELLO		1
+BROWN NUPTIAL PADS, YELLOW THROA		1
+CAPTIVE FOR CA 1 YEAR		1
+CAT. SAYS M, LABEL SAYS M; MOUNT	male	1
+CHICK		1
+CHICK 3-6 DAYS		1
+COCHISE		1
+COULD NOT DETERMINE	indeterminable	1
+D	unknown	1
+DARK PHASE		1
+DESCONEGUT	unknown	1
+DESCONOCIDO	unknown	1
+DETERMINE	unknown	1
+DEWLAP BICOLOR-DARL ORANGE BASAL		1
+DEWLAP TRICOLORED DARK ORANGE BA		1
+DIED IN CONTAINER		1
+DISCARDED		1
+DISSECT	unknown	1
+DORSUM OLIVE WITH SCATTERED BROW		1
+DOWNY	unknown	1
+DOWNY YOUNG [SEX ?]	in question	1
+EGG		1
+EGG MASSES		1
+EGGS		1
+EMB 1 EMB. 18MM	female	1
+EMBRYO		1
+ETOH TISSUE SAMPLE TAKEN		1
+F	female	1
+F-	female	1
+F  [=M]	unknown	1
+F  [F STRUCK THROUGH]	female	1
+F  ADULT	female	1
+F  AGE 5 YRS.	female	1
+F  JUVENILE	female	1
+F !	female	1
+F & 2 JUV.	female	1
+F (? M)	in question	1
+F (?)	in question	1
+F (=?)	in question	1
+F (=M)	unknown	1
+F (1ST YEAR)	female	1
+F (BY DISSECTION)	female	1
+F (BY PLUMAGE)	female	1
+F (CAT. LISTS AS F JUV.)	female	1
+F (CAT. SAYS NONE, LOOKS LIKE F)	female	1
+F (CATALOGED M)	female	1
+F (DARK)	female	1
+F (FLACID)	female	1
+F (FULL DEV. EGGS)	female	1
+F (GRAN)	female	1
+F (GRAN.)	female	1
+F (HY)	female	1
+F (LF 15X8)	female	1
+F (LF=0.7)	female	1
+F (LIGHT)	female	1
+F (M ?)	in question	1
+F (M JUV.)	unknown	1
+F (M)	unknown	1
+F (MP)	female	1
+F (NO EMB)	female	1
+F (ORIGINALLY CATALOGED AS F)	female	1
+F (OSE)	female	1
+F (PERF)	female	1
+F (PROBABLY)	female	1
+F (WITH CURVED LINE RESTING ON T	female	1
+F )?)	in question	1
+F *	female	1
+F ?	in question	1
+F ? (M ?)	in question	1
+F ? (M J)	in question	1
+F ? (M)	in question	1
+F ? [=F]	in question	1
+F ? [=M]	in question	1
+F ? [M]	in question	1
+F ? ARP	in question	1
+F ? IMM	in question	1
+F ? JUV	in question	1
+F ? M	in question	1
+F ? OR M?	in question	1
+F ??	in question	1
+F ?[=M]	in question	1
+F [!]	female	1
+F [?]	in question	1
+F [= M]	unknown	1
+F [=ALMOST SURE M]	male	1
+F [=M ?]	in question	1
+F [=M?]	in question	1
+F [=M]	unknown	1
+'F' [=M]	unknown	1
+F [01710 CATALOGED AS M, 35517 A	female	1
+F [F M]	unknown	1
+F [F]	female	1
+F [ILLEG.]	female	1
+F [ILLEG]	female	1
+F [JUVENILE]	female	1
+F [LIKELY A M]	male	1
+F [M ?]	in question	1
+F [M LISTED ON TAG]	female	1
+F [M!]	unknown	1
+F [M?]	in question	1
+F [M]	unknown	1
+'F' [M]	unknown	1
+F [M] ?	in question	1
+F [M] CHECK	female	1
+F [M]!	unknown	1
+F [M=]	unknown	1
+F [PERHAPS M ?]	in question	1
+F [SIGN NOT VERY LEGIBLE]	female	1
+F [SURE=M]	male	1
+F +	female	1
+F ++	female	1
+F =	female	1
+F = [M JUV.]?	in question	1
+F = [M]	unknown	1
+F = M	unknown	1
+F =[M]	unknown	1
+F =M ?	in question	1
+F 10 DAYS OLD	female	1
+F 1971HY	female	1
+F 1976 HY	female	1
+F 1977HY	female	1
+F 1979HY	female	1
+F 1980 HY	female	1
+F 1980HY	female	1
+F 1981 HY	female	1
+F 1981HY	female	1
+F 1ST YEAR	female	1
+F 1ST YR.	female	1
+F 1ST YR. HY	female	1
+F 3 YRS.	female	1
+F 5 YR.	female	1
+F 6 DAYS OLD	female	1
+F 6 YRS.	female	1
+F 74HY	female	1
+F AD	female	1
+F AD.	female	1
+F ADU.	female	1
+F ADULT	female	1
+F AGE 3 YRS.	female	1
+F AGE 31 DAYS	female	1
+F AGE 7 YRS.	female	1
+F AGE 8 YRS.	female	1
+F AGE 9 YRS.	female	1
+F AHY	female	1
+F BR	female	1
+F BR.	female	1
+F BY DISEECTION	female	1
+F BY DISSECTION	female	1
+F -CLASS IA-B	female	1
+F F	female	1
+F HATCHED ABOUT 1 JUNE, 1979	female	1
+F IMM	female	1
+F IMM.	female	1
+F IMM. YY	female	1
+F IMMATURE	female	1
+F JUV	female	1
+F JUV.	female	1
+F JUV. WINTER PHASE	female	1
+F JUV.NESTL	female	1
+F JUV?	in question	1
+F JUVENILE	female	1
+F M	female | male	1
+F M ?	in question	1
+F MATE OF #358	female	1
+F NESTLING	female	1
+F NO EMB	female	1
+F NO PL. SC.	female	1
+F O.N.E.	female	1
+F O.S.E.	female	1
+F OR (M JUV)	unknown	1
+F OR IMM	unknown	1
+F OR JUV	unknown	1
+F OR M	unknown	1
+F OR M JUV	unknown	1
+F PARTIAL IMM.	female	1
+F PREGNANT	female	1
+F PROB.	female	1
+F S.AD.	female	1
+F SUBAD.	female	1
+F SUBADULT	female	1
+F WITH EGGS	female	1
+F	female	1
+FFEMALE	female	1
+FMALEFEMALE	female | male	1
+F!	female	1
+F! [M]	unknown	1
+F(?)	in question	1
+F(?), ADULT	in question	1
+F(?)/SUB-ADULT	female	1
+F(?)M	in question	1
+F(?M JUV)	in question	1
+F(?M)	in question	1
+F(A M IM - L.F)	unknown	1
+F(BY PLUMAGE)	female	1
+F(HY)	female	1
+F(M JUV.)	unknown	1
+F(M)	unknown	1
+F(M?)	in question	1
+F*	female	1
+F, "JUV"	female	1
+F, 1ST YEAR	female	1
+F, ADULT	female	1
+F, ÄGG	female	1
+F, BY DISSECTION	female	1
+F, IMM.	female	1
+F, IMMATURE	female	1
+F, JUVENILE	female	1
+F, M, U	female | male | unknown	1
+F, NESTLING	female	1
+F, PROB.	female	1
+F, U	female | unknown	1
+F.	female	1
+F. ADULT	female	1
+F.FEMALE	female	1
+F/(YEARLING)	female	1
+F/08 DAYS OLD	female	1
+F/1 DAY OLD	female	1
+F/10 DAYS	female	1
+F/10 DAYS OLD	female	1
+F/13 DAYS	female	1
+F/14 DAYS OLD	female	1
+F/17 MONTHS	female	1
+F/19 MONTHS	female	1
+F/2 DAYS	female	1
+F/2 YEARS	female	1
+F/20 DAYS	female	1
+F/21 DAYS	female	1
+F/25 DAYS	female	1
+F/3 DAYS OLD	female	1
+F/30 DAYS	female	1
+F/4 YRS.GON=3.5X1.8	female	1
+F/40 DAYS	female	1
+F/41 DAYS	female	1
+F/42 DAYS OLD	female	1
+F/6 DAYS	female	1
+F/6 YEARS	female	1
+F/8 DAYS OLD	female	1
+F/8 YEARS	female	1
+F/86 DAYS	female	1
+F/9 DAYS OLD	female	1
+F/AD	female	1
+F/ADULT	female	1
+F/CLASS IA	female	1
+F/FIRST YEAR	female	1
+F/FLEDGLING	female	1
+F/HY	female	1
+F/IMM	female	1
+F/IMM.	female	1
+F/IMM.GON=16.1X5.2	female	1
+F/IMMATURE	female	1
+F/J	female	1
+F/JUV	female	1
+F/JUV.	female	1
+F/JUVENILE	female	1
+F/M	unknown	1
+F/NA	female	1
+F/NESTLING	female	1
+F/YEARLING	female	1
+F/YLG.	female	1
+F/YRLG.	female	1
+F; CONFIRMED BY DISSECTION	female	1
+F; IMM.	female	1
+F?	in question	1
+F-?	in question	1
+F? M JUV	in question	1
+F? M? [M]		1
+F?(M JUV)	in question	1
+F?(M)	in question	1
+F?)	in question	1
+F?*	in question	1
+F?, IMM.	female	1
+F?, JUV	in question	1
+F?/AD	in question	1
+F?/FLEDGLING	in question	1
+F?/IMM	in question	1
+F??	in question	1
+F?[=M]	in question	1
+F?[M]	in question	1
+F?ADULT-SHORT TUSKS	female	1
+F?M	in question	1
+F[* WITH ? BELOW *]	in question	1
+F[?]	in question	1
+F-[?](SEE REMARKS)	in question	1
+F[?]*	in question	1
+F[=M AD]	unknown	1
+F[=M?]	in question	1
+F[=M]	unknown	1
+'F'[=M]	unknown	1
+F[ALMOST SURELY A M FROM SIZE]	male	1
+F[ILLEG]	female	1
+F[M ?]	in question	1
+F[M JUV.]	unknown	1
+F[M JUV]	unknown	1
+F[M?]	in question	1
+F[M]	unknown	1
+F[M]?!	in question	1
+F]	female	1
+F`	female	1
+F~	female	1
+F~ JUV	female	1
+F+	female	1
+F4	female	1
+FALL MALE	male	1
+FBY DISSECTION	female	1
+F'CHICK'	female	1
+FD	female	1
+FELMALE	female	1
+FEMAL	female	1
+FEMALAE	female	1
+FEMALE	female	1
+FEMALE - ?	female	1
+FEMALE - ADULT	female	1
+FEMALE - HY	female	1
+FEMALE - S.AD.	female	1
+FEMALE (? - SEE NOTE)/MALE (? - 	in question	1
+FEMALE (?)	in question	1
+FEMALE (?, SEE NOTE)	female	1
+FEMALE (1 DAY OLD)	female	1
+FEMALE (2YRS)	female	1
+FEMALE (3 DAYS OLD)	female	1
+FEMALE (A.R. PHILLIPS)	female	1
+FEMALE (BELIEVED TO BE)	female	1
+FEMALE (BUT SEE NOTES)	female	1
+FEMALE (BY GONADS)	female	1
+FEMALE (BY GONADS))	female	1
+FEMALE (BY PLUMAGE)	female	1
+FEMALE (FIDE SCLATER 1888, CAT. 	female	1
+FEMALE (FIDE SCLATER, 1888, CAT.	female	1
+FEMALE (HY)	female	1
+FEMALE (IDENTIFIED LATER AS)	female	1
+FEMALE (IMM.)	female	1
+FEMALE (IMMATURE)	female	1
+FEMALE (IMP.)	female	1
+FEMALE (IN REGISTER)	female	1
+FEMALE (JUV.)	female	1
+FEMALE (JUV?)	female	1
+FEMALE (JUVENILE)	female	1
+FEMALE (LAC.)	female	1
+FEMALE (LACT)	female	1
+FEMALE (LATER IDENTIFIED AS)	female	1
+FEMALE (LF=1.8)	female	1
+FEMALE (LF=3.9)	female	1
+FEMALE (LIKELY)	female	1
+FEMALE (M)	unknown	1
+FEMALE (MALE, ON LABEL)	female	1
+FEMALE ('MAY BE')	female	1
+FEMALE ('NOT BREEDING' ON LABEL)	female	1
+FEMALE (ON LABEL)	female	1
+FEMALE (ON LABEL)/MALE (IN TEXT)	female	1
+FEMALE (ON PLUMAGE)	female	1
+FEMALE (OR IMMATURE)	female	1
+FEMALE (PREG.)	female	1
+FEMALE (PROBABLY)	female	1
+FEMALE ('PROBABLY')	female	1
+FEMALE (SA)	female	1
+FEMALE (SEE NOTE)	female	1
+FEMALE (SEE NOTES)	female	1
+FEMALE (SUB-ADULT)	female	1
+FEMALE (SUBSEQUENTLY CONSIDERED 	female	1
+FEMALE (SUBSEQUENTLY SEXED AS)	female	1
+FEMALE , FEMALE	female	1
+FEMALE ?	in question	1
+FEMALE [?]	in question	1
+FEMALE [= MALE ?]	in question	1
+FEMALE [ADULT]	female	1
+FEMALE [IMMATURE]	female	1
+FEMALE [MALE ?]	in question	1
+FEMALE [MALE?]	in question	1
+FEMALE [MALE]	female | male	1
+FEMALE + MALE + NEST	female | male	1
+FEMALE 23	female	1
+FEMALE 42 MM SVL	female	1
+FEMALE ADULT	female	1
+FEMALE AND 1 NEWBORN	female	1
+FEMALE AND MALE	female | male	1
+FEMALE BR.	female	1
+FEMALE BY PLUMAGE	female	1
+FEMALE EGGS N=11	female	1
+FEMALE EGGS N=15	female	1
+FEMALE FEMALE	female	1
+FEMALE FLEDGLING	female	1
+FEMALE FULL OD WELL DEVELOPED EG	female	1
+FEMALE GRAVID	female	1
+FEMALE NEONATE	female	1
+FEMALE NO EMB-VASCULAR	female	1
+FEMALE OF PAIR	female	1
+FEMALE OR MALE?	in question	1
+FEMALE PLUMAGE. SEX ?	in question	1
+FEMALE SUBADULT	female	1
+FEMALE W/	female	1
+FEMALE W/ 11 EMBRYOS	female	1
+FEMALE W/ 3 EGGS	female	1
+FEMALE W/ 4 EGGS 7X12MM	female	1
+FEMALE W/ 8 EGGS	female	1
+FEMALE WITH 3 EGGS	female	1
+FEMALE WITH 6 EGGS	female	1
+FEMALE WITH EGGS	female	1
+FEMALE WITH EMBRYOS	female	1
+FEMALE WITH FOUR EGGS, LIVER TIS	female	1
+FEMALE WITH SIX EGGS	female	1
+FEMALEMALE	female | male	1
+FEMALEUNDET.	female | unknown	1
+FEMALE(?)	in question	1
+FEMALE(IMM)	female	1
+FEMALE(S)-CERTAIN	in question	1
+FEMALE(S)-UNCERTAIN	in question	1
+FEMALE, 11 EGGS REMOVED	female	1
+FEMALE, 2 OVA 13MM	female	1
+FEMALE, 2 OVA 6MM NO SHELL	female	1
+FEMALE, 3 EGGS	female	1
+FEMALE, 4 EGGS	female	1
+FEMALE, 4 LARGE OVA 4X5 MM	female	1
+FEMALE, 51 MM SVL	female	1
+FEMALE, 6 EGGS	female	1
+FEMALE, ADULT	female	1
+FEMALE, BIRTH TO 12 8/14-18/1989	female	1
+FEMALE, BUT HAS MALE PLUMAGE	female	1
+FEMALE, CA 70 CM TOTAL LENGTH	female	1
+FEMALE, COLL GRAVID	female	1
+FEMALE, EGGS LAID 8-9 MAY 1979	female	1
+FEMALE, EGGS N=8	female	1
+FEMALE, FLACCID	female	1
+FEMALE, GAVE BIRTH 08/19-19/1989	female	1
+FEMALE, GAVE BIRTH 09/11-15/1989	female	1
+FEMALE, GRANULAR	female	1
+FEMALE, GRAVID	female	1
+FEMALE, GRAVID W/ 42 EGGS	female	1
+FEMALE, IMM	female	1
+FEMALE, IMMATURE	female	1
+FEMALE, IMMATURE?	female	1
+FEMALE, LAID 27 EGGS AUG 24, 198	female	1
+FEMALE, MALE	female | male	1
+FEMALE, NEST	female	1
+FEMALE, OVA 5MM	female	1
+FEMALE, OVA ENLARGED	female	1
+FEMALE, OVA SMALL	female	1
+FEMALE, POST-LACTATING	female	1
+FEMALE, SCALE TISSUE TAKEN	female	1
+FEMALE, SHED SKIN TAKEN AS TISSU	female	1
+FEMALE, SVL 198 MM, TAIL 24 MM	female	1
+FEMALE, SVL 33 MM, TAIL 31 MM	female	1
+FEMALE, WITH 10 LARGE EGGS	female	1
+FEMALE.MALE	female | male	1
+FEMALE.UNDET.	female | unknown	1
+FEMALE/MALE	female | male	1
+FEMALE/MALE (ON LABEL)	female | male	1
+FEMALE; BASED ON PLUMAGE	female	1
+FEMALE?	in question	1
+FEMALE[ILLEG]	female	1
+FEMALE-ADULT	female	1
+FEMALEGAVE BIRTH TO 5 LIVE, 2 ST	female	1
+FEMALE-GRANULAR	female	1
+FEMALE-GRAVID	female	1
+FEMALE-HY	female	1
+FEMALE-IMM.	female	1
+FEMALE-JUV	female	1
+FEMALES	female	1
+FEMAMLE	female	1
+FEMELLA	female	1
+FEMELLA | MASCLE	female | male	1
+FEMENINO	female	1
+FF	female	1
+FG	unknown	1
+FIRST YEAR MALE	male	1
+FIRST YEAR SUBADULT		1
+FLAT SKIN		1
+FLEDGLING [FEMALE ?]	in question	1
+FLEDGLING [SEX ?]	in question	1
+FLEDGLING FEMALE	female	1
+FLEDGLING MALE	male	1
+FLEDGLING/UNKNOWN	unknown	1
+FM		1
+FN.	female	1
+F-NOT STATED ON TAG	female	1
+FOUND DEAD AT CAMPSITE		1
+FOUND DOR		1
+FR	female	1
+FROGLET		1
+F'S	female	1
+G	unknown	1
+G ?	unknown	1
+GF	unknown	1
+GF(3)	female	1
+GF(4)	female	1
+GF(5)	female	1
+GF(6)	female	1
+GF(7)	female	1
+GF(8)	female	1
+GF(9)	female	1
+GONADS DESTROYED		1
+GONADS DESTROYED BY SHOT		1
+GONADS NOT DEVELOPED		1
+GONADS NOT FOUND	unknown	1
+GONADS NOT FOUND.		1
+GONADS ROTTED		1
+GRAVID		1
+GRAVID FEMALE	female	1
+GREEN		1
+GREEN BACKGROUND COLOR WITH TWO 		1
+GYNANDROMORPH	gynandromorph	1
+H	female	1
+H G	unknown	1
+H P	unknown	1
+H R	unknown	1
+HANE	female	1
+HANE?	female	1
+HATCHING		1
+HATCHLING		1
+HATCHLING, LIVER TISSUE TAKEN		1
+HEMBA	female	1
+HEMBRA	female	1
+HEMBRA 2 PARES MA	female	1
+HEMBRA A	female	1
+HEMBRA AD	female	1
+HEMBRA AD IN	female	1
+HEMBRA AD MA	female	1
+HEMBRA AD NI	female	1
+HEMBRA AI	female	1
+HEMBRA AM	female	1
+HEMBRA GESTAL	female	1
+HEMBRA INM	female	1
+HEMBRA J	female	1
+HEMBRA JUV	female	1
+HEMBRA LAC	female	1
+HEMBRA LACTANDO	female	1
+HEMBRA MA	female	1
+HEMBRA MAMAS	female	1
+HEMBRA NO LAC	female	1
+HEMBRA PREG 2-2 EMB 15MM	female	1
+HEMBRA SA	female	1
+HEMBRA?	female	1
+HERMAPHRODI	hermaphrodite	1
+HERMAPHRODIDIC	hermaphrodite	1
+HERMAPHRODITE	hermaphrodite	1
+HG	unknown	1
+HONA	female	1
+HY		1
+HY MALE	male	1
+HYBRID		1
+I		1
+IM	unknown	1
+IM.	unknown	1
+IMF	unknown	1
+IMM	unknown	1
+IMM ?	unknown	1
+IMM F	female	1
+IMM MALE	male	1
+IMM.		1
+IMM. (CAT. LISTS M ADULT)	male	1
+IMM. F	female	1
+IMM. FEMALE?	in question	1
+IMM. M	male	1
+IMM.?	unknown	1
+IMM?	unknown	1
+IMMATURE		1
+IMMATURE (HY) FEMALE	female	1
+IMMATURE (HY) MALE	male	1
+IMMATURE ?		1
+IMMATURE [= FLEDGLING] MALE	male	1
+IMMATURE [FEMALE ?]	in question	1
+IMMATURE [MALE ?]	in question	1
+IMMATURE [SEX ?]	in question	1
+IMMATURE FEMALE	female	1
+IMMATURE FEMALE ?	in question	1
+IMMATURE M	male	1
+IMMATURE MALE	male	1
+IMMATURE MALE, JUVENILE (CALF)	male	1
+IMMATURE, NESTLING		1
+IMMATURE/FEMALE	female	1
+IND	unknown	1
+INDET.	unknown	1
+INDETERMINABLE	indeterminable	1
+INDETERMINADO	unknown	1
+INDETERMINATE	unknown	1
+J	unknown	1
+J?	unknown	1
+JU?. MALE?	in question	1
+JUEVENILE		1
+JUL-76	unknown	1
+JUV	unknown	1
+JUV ?	unknown	1
+JUV.	unknown	1
+JUV. (CAT. LISTS AS F PUL)	female	1
+JUV. MALE	male	1
+JUV. NESTLING		1
+JUV.?	unknown	1
+JUV.NESTLN		1
+JUV?	unknown	1
+JUVENIL	unknown	1
+JUVENILE	unknown	1
+JUVENILE [FEMALE ?]	in question	1
+JUVENILE [FEMALE?]	in question	1
+JUVENILE [MALE ?]	in question	1
+JUVENILE [SEX ?]	in question	1
+JUVENILE 1 SEGMENT + BUTTON		1
+JUVENILE FEMALE	female	1
+JUVENILE MALE	male	1
+JUVENILE MALE (?)	in question	1
+JUVENILE MALE, LIVER TISSUE TAKE	male	1
+JUVENILE MALE, SVL 45 MM, TAIL 6	male	1
+JUVENILE WITH TAIL CLIP TISSUE		1
+JUVENILE WITH TISSUE		1
+JUVENILE, 66 CM SVL,  89G		1
+JUVENILE, LIVER TISSUE TAKEN		1
+JUVENILE, SVL 395 MM, TAIL 58 MM		1
+JUVENILE, SVL 415 MM		1
+JUVENILE, SVL 662 MM, TAIL 239 M		1
+JUVENILE, TISSUE- SCALE CLIP		1
+JUVENILE, TISSUE-LIVER SAMPLE		1
+JUVENILE, TISSUE-SCALE CLIP		1
+JUVENILE/NEONATE		1
+JUVENILES AND EGGS	unknown	1
+JV		1
+K?	in question	1
+KM		1
+L	unknown	1
+LARGE FEMALE W/ EGGS	female	1
+LARVA		1
+LARVA WHEN CAPTURED		1
+LARVA WHEN COLLECTED		1
+LARVA, LOT OF 1		1
+LARVA, LOT OF 7		1
+LARVA, LOT OF ONE		1
+LARVAE		1
+LARVAE LOT OF 1		1
+LARVAE LOT OF 2		1
+LARVAE, LOT OF 16		1
+LARVAE, LOT OF 2		1
+LARVAE, LOT OF 3		1
+LARVAE, LOT OF 5		1
+LARVAE, LOT OF 6		1
+LARVAE, LOT OF 7		1
+LARVAE. LOT OF 7		1
+LIGHT OLIVE-GRAY		1
+LIVER TISSUE		1
+LIVER TISSUE TAKEN		1
+LIVER TISSUE TAKEN, ADULT		1
+LONG TERM CAPTIVE		1
+LOST		1
+LOT OF 10 LARVAE		1
+LOT OF 11 LARVAE		1
+LOT OF 16 LARVAE		1
+LOT OF 21 LARVAE		1
+LOT OF 28 LARVAE		1
+LOT OF 3 LARVAE		1
+LOT OF 5 LARVAE		1
+LOT OF 6 LARVAE		1
+LOT OF 9 LARVAE		1
+LOT OF LARVAE AND HATCHLINGS		1
+LOT OF SIX LARVAE		1
+LOT OF THREE LARVAE		1
+M	male	1
+'M	male	1
+-M	male	1
+M'	male	1
+M-	male	1
+'M '	male	1
+M -	male	1
+M  JUVENILE	male	1
+M - THE SYMBOL IS UPSIDE DOWN	male	1
+M !	male	1
+M ! F	unknown	1
+M "HOR"	male	1
+M & F	female | male	1
+M (?)	in question	1
+M (?) (M)	in question	1
+M (=F ?)	in question	1
+M (=F)	unknown	1
+M (10X5)	male	1
+M (10X6.78)	male	1
+M (12X4)	male	1
+M (18X9.6)	male	1
+M (2X1)	male	1
+M (3X5)	male	1
+M (4.3X3.5)	male	1
+M (5*2)	male	1
+M (5*3 LING)	male	1
+M (6X2)	male	1
+M (8*3)	male	1
+M (9*5)	male	1
+M (9X7)	male	1
+M (BASED ON PLUMAGE)	male	1
+M (BY DISSECTION)	male	1
+M (BY PLUMAGE)	male	1
+M (CASTRATE)	male	1
+M (CAT LISTS AS F, LOOKS LIKE M 	male	1
+M (DARK)	male	1
+M (F ?)	in question	1
+M (F!)	unknown	1
+M (F(	unknown	1
+M (F)	unknown	1
+M (GRAN)	male	1
+M (HY)	male	1
+M (IMM 3.9X1.2)	male	1
+M (IMM.?)	male	1
+M (INFO FROM TISSUE TUBE)	male	1
+M (JUV.)	male	1
+M (LAP)	male	1
+M (LIGHT)	male	1
+M (LT:1X1)	male	1
+M (TSE)	male	1
+M ?	in question	1
+M ? (F)	in question	1
+M ? [=F]	in question	1
+M ? [=M]	in question	1
+'M' ? [=M]	in question	1
+M ? [=SURELY A F]	in question	1
+M ? [F]	in question	1
+M ? = [F]	in question	1
+M ? =[F]	in question	1
+M ? F	in question	1
+M ? F ?	in question	1
+M -? ORIG. SUI TAG BEARS DUAL MA	male	1
+M ??	in question	1
+M ?[=F]	in question	1
+M ?[F]	in question	1
+M [?]	in question	1
+M [?]*	in question	1
+M [= F]	unknown	1
+M [=F ?]	in question	1
+M [=F APPARENTLY]	unknown	1
+M [=F?]	in question	1
+M [=F]	unknown	1
+M [ALMOST SURELY F]	female	1
+M [APPARANTLY F]	unknown	1
+M [BY PLUMAGE	male	1
+M [BY PLUMAGE]	male	1
+M [CATALOGED AS F]	male	1
+M [F ?]	in question	1
+M [F!]	unknown	1
+M [F?]	in question	1
+'M' [F?]	in question	1
+M [F]	unknown	1
+M [F]!	unknown	1
+M [ILLEG. ?]	in question	1
+M [ILLEG]	male	1
+M [LISTED IN CATALOG AS F]	male	1
+M [M]	male	1
+M [ON COLL LABEL]	male	1
+M [OR F]	unknown	1
+M [ORIG. CATALOGED AS F]	male	1
+M [PERHAPS A F]	in question	1
+M [PERHAPS F?]	in question	1
+M [PROB. A F]	female	1
+M [PROB. F]	female	1
+M [TAG: "SED M"?]	male	1
+M +	male	1
+M + U	male | unknown	1
+M ++	male	1
+M = [F]	unknown	1
+M = F	unknown	1
+M 1971 HY	male	1
+M 1977 HY	male	1
+M 1978 HY	male	1
+M 1978HY	male	1
+M 1979 HY	male	1
+M 1979HY	male	1
+M 1980HY	male	1
+M 1981 HY	male	1
+M 1981HY	male	1
+M 1984HY	male	1
+M 1ST SPRING	male	1
+M 1ST WINTER	male	1
+M 1ST YEAR	male	1
+M 1ST YR.	male	1
+M 2-3 DAYS OLD	male	1
+M 3.5 YRS.	male	1
+M 3RD WINTER	male	1
+M 3X1	male	1
+M 4YRS.	male	1
+M ABDOMINAL	male	1
+M AD	male	1
+M AD.	male	1
+M ADOLESCENT	male	1
+M ADULT	male	1
+M ADULT.	male	1
+M AGE 10 YRS.	male	1
+M AGE 12 YRS.	male	1
+M AGE 18 DAYS	male	1
+M AGE 3 DAYS	male	1
+M AGE 4 YRS	male	1
+M AGE 4 YRS.	male	1
+M AGE 7 YRS	male	1
+M ASULT	male	1
+M BASED ON BILL LENGTH	male	1
+M BR	male	1
+M BR.	male	1
+M BY CALL [?]	male	1
+M BY DISSECTION	male	1
+M BY PLUMAGE *	male	1
+M BY PLUMMAGE	male	1
+M CHICK	male	1
+M 'CHICK'	male	1
+M EXT.	male	1
+M F	unknown	1
+M FLEDGLING	male	1
+M G	male	1
+M HY	male	1
+M HY'76	male	1
+M IM.	male	1
+M IMM	male	1
+M IMM.	male	1
+M IMM.?	male	1
+M IMMATURE	male	1
+M JUV	male	1
+M JUV.	male	1
+M JUV. (FLEDGLING)	male	1
+M JUV. [ADOLESCENT]	male	1
+M JUV.?	male	1
+M JUV.NESTL	male	1
+M JUVENILE	male	1
+M L.T (8.3*5.6)	male	1
+M LT (2X1.5)	male	1
+M M	male	1
+M MATE OF # 357	male	1
+M NESTLING	male	1
+M O.N.E.	male	1
+M OR F	unknown	1
+M OR F.	unknown	1
+M OWLET	male	1
+M P	male	1
+M PROB.	male	1
+M PROP.	male	1
+M R	male	1
+M S.ADULT?	male	1
+M SA	male	1
+M SCROTAL	male	1
+M SUBAD.	male	1
+M SUBADULT	male	1
+M TEST. REGR.	male	1
+M TEST. SCR.	male	1
+M TEST.SCR.	male	1
+M YG	male	1
+M YG,	male	1
+M YNG	male	1
+M YOUNG	male	1
+M YY	male	1
+MMALE	male	1
+M!	male	1
+M(?)	in question	1
+M(?), ADULT	in question	1
+M(?F)	in question	1
+M(3X2)	male	1
+M(CROSSED OUT)	unknown	1
+M(F)	unknown	1
+M(F?)	in question	1
+M(HY)	male	1
+M(I.E. UPSIDE DOWN "F")	unknown	1
+M(LAP)	male	1
+M*	male	1
+M* WITH [?] WRITTEN IN PENCIL AF	in question	1
+M, 1ST YEAR	male	1
+M, 2ND-YEAR	male	1
+M, ADULT	male	1
+M, BY DISSECTION	male	1
+M, IMM.	male	1
+M, IMMATURE	male	1
+M, JUV	male	1
+M, JUV.	male	1
+M, JUVENILE	male	1
+M, JUVENILE?	male	1
+M,F	unknown	1
+M.	male	1
+M. ADULT	male	1
+M/08 DAYS OLD	male	1
+M/1 DAY	male	1
+M/1 DAY OLD	male	1
+M/10 DAYS	male	1
+M/15 DAYS OLD	male	1
+M/17 DAYS OLD	male	1
+M/19 DAYS OLD	male	1
+M/1ST YEAR	male	1
+M/2 DAYS	male	1
+M/2 DAYS OLD	male	1
+M/2 YEARS	male	1
+M/24 DAYS OLD	male	1
+M/3 DAYS OLD	male	1
+M/30 DAYS	male	1
+M/31 DAYS OLD	male	1
+M/4 DAYS	male	1
+M/41 DAYS	male	1
+M/42 DAYS OLD	male	1
+M/6 DAYS OLD	male	1
+M/66 DAYS	male	1
+M/AD	male	1
+M/ADULT	male	1
+M/ADULT (?)	male	1
+M/F	female | male	1
+M/FIRST YEAR	male	1
+M/FLEDGLING	male	1
+M/HY	male	1
+M/IMM	male	1
+M/IMM.	male	1
+M/IMMATURE	male	1
+M/JUV	male	1
+M/JUV.	male	1
+M/JUVENILE	male	1
+M/NA	male	1
+M/NESTLING	male	1
+M/SECOND YEAR	male	1
+M/SUB-AD.	male	1
+M/SUB-ADULT	male	1
+M/THIRD YEAR	male	1
+M/YEARLING	male	1
+M/YRLG.	male	1
+M; CONFIRMED BY DISSECTION	male	1
+M; IMM.	male	1
+M?	in question	1
+M-?	in question	1
+M? (INDICATED ON MOUNT)	male	1
+M? *	in question	1
+M? ADULT-LONG TUSKS	male	1
+M? JUVENILE	male	1
+M? OR M	in question	1
+M?(F)	in question	1
+M?(FJUV.)	in question	1
+M?*	in question	1
+M?, ADULT	in question	1
+M?, JUV	in question	1
+M??	in question	1
+M?[=ILLEG]	in question	1
+M?F	in question	1
+M?F?	in question	1
+M[* WITH ? BELOW *]	in question	1
+M[?]	in question	1
+M[?]*	in question	1
+M[=F?]	in question	1
+M[=F]	unknown	1
+M[APP=F]	unknown	1
+M[APP'Y = F]WM.	unknown	1
+M[F?]	in question	1
+M[F]	unknown	1
+M[ILLEG]	male	1
+M[M]	male	1
+M]	male	1
+M`	male	1
+M~	male	1
+M=[F ?]	in question	1
+M=[F] C.H.R.	unknown	1
+M7	male	1
+MA	male	1
+MAÁE	male	1
+MACHO	male	1
+MACHO A	male	1
+MACHO AD	male	1
+MACHO AD TA	male	1
+MACHO AD TES	male	1
+MACHO AD TES 3X4	male	1
+MACHO AD TES 6X4	male	1
+MACHO AD TES 7X4	male	1
+MACHO AD TEST 9X5	male	1
+MACHO INM	male	1
+MACHO INMAD.	male	1
+MACHO INMADURO	male	1
+MACHO J	male	1
+MACHO JUV	male	1
+MACHO JUV TEST 5X3	male	1
+MACHO SA TES 5X3	male	1
+MACHO SUBAD	male	1
+MACHO TES 10X6	male	1
+MACHO TEST	male	1
+MACHO TEST 15X9	male	1
+MACHO TEST 16X9	male	1
+MACHO TEST 18X13	male	1
+MACHO TEST 20X13	male	1
+MACHO TEST 20X14	male	1
+MACHO TEST 5X3	male	1
+MACHO TEST 5X4	male	1
+MACHO TEST 8X4	male	1
+MACHO TEST ESC	male	1
+MACHO?	in question	1
+MAKE	male	1
+MALE	male	1
+MALE - 6 MONTHS	male	1
+MALE  M	male	1
+MALE & FEMALE	female | male	1
+MALE (? - SEE NOTE)	male	1
+MALE (? - SEE NOTE)/FEMALE (? - 	in question	1
+MALE (?)	in question	1
+MALE (?)/FEMALE	female | male	1
+MALE ('?MALE' ON LABEL)	male	1
+MALE (1ST YEAR)	male	1
+MALE (3.7X2.4)	male	1
+MALE (6.0X4.4)	male	1
+MALE (BY BLEEDING?)	in question	1
+MALE (BY GONADS)	male	1
+MALE (BY PLUMAGE)	male	1
+MALE (HY)	male	1
+MALE (IMM.)	male	1
+MALE (IMMATURE)	male	1
+MALE (IN TEXT)/FEMALE (ON LABEL)	in question	1
+MALE (IN TEXT; FEMALE ON LABEL)	in question	1
+MALE (JUV.)	male	1
+MALE (JUVENILE)	male	1
+MALE (LAP)	male	1
+MALE (LATER IDENTIFIED AS)	male	1
+MALE (LIKELY)	male	1
+MALE (NOT BREEDING)	male	1
+MALE (ON LABEL)	male	1
+MALE (ON PLUMAGE)	male	1
+MALE (PLUMAGE)	male	1
+MALE (PRINTED IN ERROR AS FEMALE	male	1
+MALE ('PROBABLY')	male	1
+MALE (SEE NOTE)	male	1
+MALE (SEE NOTES)	male	1
+MALE (SUB-ADULT)	male	1
+MALE (SUMMER)	male	1
+MALE (T=10MM)	male	1
+MALE (T=4MM)	male	1
+MALE (YOUNG)	male	1
+MALE , MALE	male	1
+MALE ?	in question	1
+MALE ?, TESTES 3MM???	male	1
+MALE [?]	in question	1
+MALE [ADULT]	male	1
+MALE [FEMALE ?]	in question	1
+MALE [FEMALE?]	in question	1
+MALE [FEMALE]	female | male	1
+MALE 51 MM SVL	male	1
+MALE ADULT	male	1
+MALE AND FEMALE	female | male	1
+MALE BR.	male	1
+MALE BY PLUMAGE	male	1
+MALE DOWNY YOUNG	male	1
+MALE FEMALE	female | male	1
+MALE JUVENILE	male	1
+MALE MALE	male	1
+MALE OF PAIR	male	1
+MALEFEMALE	female | male	1
+MALEUNDET.	male | unknown	1
+MALE(?)	in question	1
+MALE(IMM.)	male	1
+MALE(S) & FEMALE(S)-CERTAIN	female | male	1
+MALE(S) & FEMALE(S)-UNCERTAIN	in question	1
+MALE(S)-CERTAIN	male	1
+MALE(S)-UNCERTAIN	in question	1
+MALE, ?	male	1
+MALE, 2ND WINTER	male	1
+MALE, 31 MM SVL	male	1
+MALE, 52 MM SVL, 28 MM TAIL	male	1
+MALE, ADULT	male	1
+MALE, FEMALE	female | male	1
+MALE, HY	male	1
+MALE, HY?	male	1
+MALE, IMM.	male	1
+MALE, IMMATURE	male	1
+MALE, LIVER TISSUE COLLECTED	male	1
+MALE, LIVER TISSUE TAKEN	male	1
+MALE, NEST	male	1
+MALE, SVL 319MM, TAIL 64 MM	male	1
+MALE, SVL 436 MM, TAIL 157	male	1
+MALE, SVL 75 MM, TAIL 87 MM W/ 2	male	1
+MALE, SVL=365MM,TAIL=31MM	male	1
+MALE, TESTES 2 X 3 MM	male	1
+MALE, TISSUE-LIVER SAMPLE	male	1
+MALE, TISSUE-LIVER SAMPLE TAKEN	male	1
+MALE, TISSUE-SCALE CLIP	male	1
+MALE, TISSUE-SCALE CLIPS	male	1
+MALE, YY	male	1
+MALE.FEMALE	female | male	1
+MALE/ADULT	male	1
+MALE/FEMALE	female | male	1
+MALE/FEMALE (IN TEXT)	unknown	1
+MALE/FEMALE (LABELLED AS)	unknown	1
+MALE/FEMALE (ON LABEL)	unknown	1
+MALE?	in question	1
+MALE[	male	1
+MALE[?]	in question	1
+MALE+FEMALE	female | male	1
+MALE6	male	1
+MALES	male	1
+MALES + FEMALES	female | male	1
+MALES, FEMALES	female | male	1
+MANDIBLE ONLY, NO TEETH	unknown	1
+MARKED AS BOTH F AND M	unknown	1
+MASCLE	male	1
+MASCLE | INDETERMINABLE	male | indeterminable	1
+MASCLE FEMELLA	female | male	1
+METAMORPH		1
+MF	female | male	1
+M-F	unknown	1
+MID-VENTRAL WHITE LINE		1
+MID-VENTRAL WHITE LINE, BROWN VE		1
+MISSING		1
+MISSING TAIL AND LEGS		1
+MIXED SEXES	female | male	1
+M-JUV.	male	1
+MLE	male	1
+M--LOOKS F 4/2011CEO	male	1
+MM	male	1
+MM.	male	1
+MN	male	1
+MN.	male	1
+MO DATA	unknown	1
+MOTHER TO UAZ 35197-35208	female	1
+N	unknown	1
+N.S.	unknown	1
+N/	unknown	1
+N/A	unknown	1
+NA	unknown	1
+NA (HY)	unknown	1
+NA 3RD YEAR	unknown	1
+NA AD.	unknown	1
+NA CHICK	unknown	1
+NA IMM.	unknown	1
+NA JUV.	unknown	1
+NA/1 DAY	unknown	1
+NA/1 DAY OLD	unknown	1
+NA/1 MONTH	unknown	1
+NA/10 DAYS OLD	unknown	1
+NA/11 DAYS OLD	unknown	1
+NA/3 DAYS OLD	unknown	1
+NA/3 WEEKS	unknown	1
+NA/4 DAYS OLD	unknown	1
+NA/5 DAYS	unknown	1
+NA/5 DAYS OLD	unknown	1
+NA/5 MONTHS	unknown	1
+NA/6 DAYS	unknown	1
+NA/7 DAYS OLD	unknown	1
+NA/9 DAYS	unknown	1
+NA/IMM.	unknown	1
+NA/JUV.	unknown	1
+NA/NESTLING	unknown	1
+NA/SUB-ADULT	unknown	1
+NEONATE		1
+NEST. JUV.		1
+NESTING COLONY		1
+NESTLING [FEMALE ?]	in question	1
+NESTLING [SEX ?]	in question	1
+NESTLING FEMALE	female	1
+NESTLING MALE	male	1
+NESTLINGS [SEX ?]	in question	1
+NEWBORN		1
+NEWLY HATCHED CHICK		1
+NO	unknown	1
+NO APLICABLE		1
+NO DATA	unknown	1
+NO GONADS FOUND.		1
+NO NUPTIAL PADS, THROAT WHITE, N		1
+NO SEX	unknown	1
+NO SEX GIVEN	unknown	1
+NONE		1
+NOT DETERMINED	unknown	1
+NOT FOUND	unknown	1
+NOT LISTED	unknown	1
+NOT OBSERVED	unknown	1
+NOT RECORDED	unknown	1
+NOT SEXED	unknown	1
+NOT VISIBLE		1
+NOTES		1
+NR	unknown	1
+O	unknown	1
+O (CMJ CATALOG LISTS AS UNDETERM	unknown	1
+O ?	in question	1
+O.B	unknown	1
+O/P	unknown	1
+O?	unknown	1
+O~	unknown	1
+O'B	unknown	1
+ORANGE HEAD		1
+PIMA		1
+PINK TAIL		1
+POSSIBLY FEMALE	in question	1
+POSSIBLY MALE	male	1
+POST PARTUM FEMALE	female	1
+PREG?	female	1
+PROB. F	female	1
+PROB. FEMALE	female	1
+PROBABLE ADULT FEMALE	female	1
+PROBABLY [MALE]	male	1
+PROBABLY F	female	1
+PROBABLY FEMALE	female	1
+PROBABLY MALE	male	1
+PROP. F.	female	1
+Q		1
+S&S		1
+SEE NOTES		1
+SEE SPEC. LABEL!	unknown	1
+SEX	unknown	1
+SEX ?	in question	1
+SEX ? - MALE PLUMAGE	in question	1
+SEX UNKNOWN	unknown	1
+SEX?	in question	1
+SIN DATOS	unknown	1
+SKIN TISSUE SAMPLE TAKEN		1
+SS		1
+STOMACH CONTENTS: LEAF CUTTER AN		1
+STRIPED		1
+STRIPED PATTERN		1
+STRIPED; UNUSUAL BROAD DORSAL ST		1
+SUB ADULT		1
+SUBADULT		1
+SUB-ADULT [MALE ?]	in question	1
+SUB-ADULT [SEX ?]	in question	1
+SUBADULT FEMALE	female	1
+SUB-ADULT FEMALE	female	1
+SUBADULT FEMLE	female	1
+SUBADULT MALE	male	1
+SUB-ADULT MALE	male	1
+SUBADULT MALE, LIVER TISSUE TAKE	male	1
+SUBADULT, LIVER TISSUE TAKEN		1
+SVL 181 MM, TAIL 67 MM		1
+SVL 449 MM, TAIL 770 MM, 1979G		1
+TADPOLES	unknown	1
+TAGGED M, BAG NOTE AND ORIG. D/B	male	1
+TERM EMBRYOS		1
+TESTES	male	1
+THROAT BALCK, BELLY SALT AND PEP		1
+THROAT BLACK; WHITE LINE FROM TI		1
+THROAT WHITE		1
+THROAT WHITE; NARROW MID-DORSAL 		1
+TISSUE AT LSU		1
+TISSUE TAKEN (DGM)		1
+TISSUE- VENTROLATERAL SCALE CLIP		1
+TISSUE-LIVER SAMPLE		1
+TISSUE-LIVER SAMPLE TAKEN		1
+TISSUE-LIVER, BLOOD ASU & UTEP		1
+TISSUE-RETROLATERAL SCALECLIP TA		1
+TISSUES		1
+TISSUE-SCALE CLIP		1
+TISSUE-SCALE CLIP TAKEN		1
+TISSUE-SCALE CLIPS		1
+TISSUE-TAIL TIP		1
+TISSUE-TAIL TIP TAKEN		1
+TO	unknown	1
+TOADLET		1
+TRANSFORMED OR NEARLY SO		1
+TRANSFORMING LARVA		1
+U	unknown	1
+UFEMALE	female | unknown	1
+UMALE	male | unknown	1
+UUNDET.	unknown	1
+U, ADULT	unknown	1
+U, IMMATURE	unknown	1
+U, IMMAUTRE	unknown	1
+U, JUVENILE	unknown	1
+U, U	unknown	1
+U. ADULT	unknown	1
+U.FEMALE	female | unknown	1
+U.MALE	male | unknown	1
+U.S.	unknown	1
+U?	in question	1
+UAZ EGG CLUTCH 3, 1967		1
+UKNOWN	unknown	1
+UN	unknown	1
+UN.DET.	unknown	1
+UNCERTAIN	unknown	1
+UNDERLINED M	male	1
+UNDERSIDE OF TAIL RED, BELLY AND		1
+UNDET.	unknown	1
+UNDET.FEMALE	female | unknown	1
+UNDET.MALE	male | unknown	1
+UNDET..FEMALE	female | unknown	1
+UNDET..MALE	male | unknown	1
+UNDETERMINABLE	indeterminable	1
+UNDETERMINED	unknown	1
+UNDETERMINED (SHOT IN ABDOMEN)		1
+UNK	unknown	1
+UNK  JUV.	unknown	1
+UNK - JUV. OR NEONATAL	unknown	1
+UNK (IMM. ?)	unknown	1
+UNK IMM.	unknown	1
+UNK, ADULT	unknown	1
+UNK, IMM	unknown	1
+UNK, IMM.	unknown	1
+UNK, MIXED SYMBOL	unknown	1
+UNK, PROBABLY M	male	1
+UNK.	unknown	1
+UNK. - IMM	unknown	1
+UNK. (IMM.)	unknown	1
+UNK. (JUVENILE)	unknown	1
+UNK. JUVENILE	unknown	1
+UNK., (HY)	unknown	1
+UNK., JUV.	unknown	1
+UNKNOWABLE	indeterminable	1
+UNKNOWM	unknown	1
+UNKNOWN	unknown	1
+UNKNOWN (DOWNY YOUNG 1-3 DAYS OL	unknown	1
+UNKNOWN (JUVENILE)	unknown	1
+UNKNOWN (SHOT IN ABDOMEN)		1
+UNKNOWN , FEMALE ?	in question	1
+UNKNOWN , MALE	male	1
+UNKNOWN , UNKNOWN	unknown	1
+UNKNOWN ADULT	unknown	1
+UNKNOWN DOWNY YOUNG	unknown	1
+UNKNOWN FEMALE	female	1
+UNKNOWN FLEDGLING	unknown	1
+UNKNOWN JUVENILE	unknown	1
+UNKNOWN SEX	unknown	1
+UNKNOWN(IMM.)	unknown	1
+UNKNOWN/ADULT	unknown	1
+UNKNOWN; SEE ER	unknown	1
+UNKNWON	unknown	1
+UNKOWN	unknown	1
+UNSEXABLE	indeterminable	1
+UNSEXED	unknown	1
+VENTER IMMACULATE; THROAT INTERM		1
+VENTER IMMACULATE; THROAT WHITE 		1
+VENTRAL SCALES BLACK WITH POWDER		1
+VENTRAL SCALES POWDER BLUE; WHIT		1
+VENTRAL SCALES YELLOWISH-CREAM W		1
+VENTRALS WHITE & POWDER BLUE ON 		1
+WINTER PHASE		1
+WITH LIGHT TURQUOISE DORSAL SPEC		1
+X		1
+XXX	unknown	1
+Y.O.Y. FEMALE	female	1
+YANKEE POND	unknown	1
+YEARLING FEMALE	female	1
+YEARLING?		1
+YG	unknown	1
+YOUNG		1
+YOUNG [FEMALE ?]	in question	1
+YOUNG [SEX ?]	in question	1
+YOUNG ADULT		1
+YOUNG ADULT MALE	male	1
+YOUNG FEMALE	female	1
+YOUNG MALE	male	1
+YY MALE	male	1

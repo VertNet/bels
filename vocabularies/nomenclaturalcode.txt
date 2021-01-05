@@ -1,0 +1,9 @@
+nomenclaturalcode	standard	vetted
+BC	ICNB	1
+ICBN	ICBN	1
+ICNB	ICNB	1
+ICZN	ICZN	1
+NCODE		1
+NONCOMPLIANT		1
+UNDEFINABLE		1
+UNKNOWN		1

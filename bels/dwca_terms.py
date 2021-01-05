@@ -1,7 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-# Copyright 2015 President and Fellows of Harvard College
-#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -15,10 +14,9 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2017 President and Fellows of Harvard College"
-__version__ = "dwca_terms.py 2017-04-27T16:37-04:00"
-__kurator_content_type__ = "utility"
-__adapted_from__ = ""
+__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__version__ = "dwca_terms.py 2021-01-01T21:30-03:00"
+__adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_terms.py"
 
 # This file contains definitions of standard sets of Darwin Core terms.
 
@@ -30,11 +28,11 @@ simpledwctermlist = [
     'basisOfRecord','informationWithheld','dataGeneralizations','dynamicProperties',
     'occurrenceID','catalogNumber','recordNumber','recordedBy','individualCount',
     'organismQuantity','organismQuantityType','sex','lifeStage','reproductiveCondition',
-    'behavior','establishmentMeans','occurrenceStatus','preparations','disposition',
-    'associatedMedia','associatedReferences','associatedSequences','associatedTaxa',
-    'otherCatalogNumbers','occurrenceRemarks','organismID','organismName',
-    'organismScope','associatedOccurrences','associatedOrganisms',
-    'previousIdentifications','organismRemarks','materialSampleID',
+    'behavior','establishmentMeans','degreeOfEstablishment','pathway','occurrenceStatus',
+    'preparations','disposition','associatedMedia','associatedReferences',
+    'associatedSequences','associatedTaxa','otherCatalogNumbers','occurrenceRemarks',
+    'organismID','organismName','organismScope','associatedOccurrences',
+    'associatedOrganisms','previousIdentifications','organismRemarks','materialSampleID',
     'eventID','parentEventID','fieldNumber','eventDate','eventTime','startDayOfYear',
     'endDayOfYear','year','month','day','verbatimEventDate','habitat','samplingProtocol',
     'samplingEffort','sampleSizeValue','sampleSizeUnit','fieldNotes','eventRemarks',
@@ -73,6 +71,42 @@ geogkeytermlist = [
     'continent', 'country', 'countryCode', 'stateProvince', 'county', 'municipality', 
     'waterBody', 'islandGroup', 'island']
 
+# Terms that make up a distinct Location
+locationkeytermlist = [
+    'dwc:highergeographyid', 'dwc:highergeography', 'dwc:continent', 'dwc:waterbody', 
+    'dwc:islandgroup', 'dwc:island', 'dwc:country', 'dwc:countrycode', 
+    'dwc:stateprovince', 'dwc:county', 'dwc:municipality', 'dwc:locality', 
+    'dwc:verbatimlocality', 'dwc:minimumelevationinmeters','dwc:maximumelevationinmeters',
+    'dwc:verbatimelevation', 'dwc:minimumdepthinmeters', 'dwc:maximumdepthinmeters', 
+    'dwc:verbatimdepth', 'dwc:minimumdistanceabovesurfaceinmeters', 
+    'dwc:maximumdistanceabovesurfaceinmeters', 'dwc:locationaccordingto', 
+    'dwc:locationremarks', 'dwc:decimallatitude', 'dwc:decimallongitude', 
+    'dwc:geodeticdatum', 'dwc:coordinateuncertaintyinmeters', 'dwc:coordinateprecision',
+    'dwc:pointradiusspatialfit', 'dwc:verbatimcoordinates', 'dwc:verbatimlatitude', 
+    'dwc:verbatimlongitude', 'dwc:verbatimcoordinatesystem', 'dwc:verbatimsrs',
+    'dwc:footprintwkt', 'dwc:footprintsrs', 'dwc:footprintspatialfit', 
+    'dwc:georeferencedby', 'dwc:georeferenceddate', 'dwc:georeferenceprotocol',
+    'dwc:georeferencesources', 'dwc:georeferenceverificationstatus', 
+    'dwc:georeferenceremarks'
+    ]
+
+# Terms to use to match locations for a georeference search on table 
+# matchme_with_coords_best_georef
+locationmatchwithcoordstermlist = [
+    'continent', 'waterBody', 'islandGroup', 'island', 'countryCode', 'stateProvince', 
+    'county', 'municipality', 'locality', 'verbatimlocality', 'minimumelevationinmeters',
+    'maximumelevationinmeters', 'verbatimelevation', 'minimumdepthinmeters', 
+    'maximumdepthinmeters', 'verbatimdepth', 'verbatimcoordinates', 'verbatimlatitude', 
+    'verbatimlongitude'
+    ]
+
+locationmatchsanscoordstermlist = [
+    'continent', 'waterBody', 'islandGroup', 'island', 'countryCode', 'stateProvince', 
+    'county', 'municipality', 'locality', 'verbatimlocality', 'minimumelevationinmeters',
+    'maximumelevationinmeters', 'verbatimelevation', 'minimumdepthinmeters', 
+    'maximumdepthinmeters', 'verbatimdepth'
+    ]
+
 # The taxonkeytermlist contains the terms that make up a distinct taxon name combination
 taxonkeytermlist = [
     'kingdom', 'genus', 'subgenus', 'specificEpithet', 'infraspecificEpithet', 
@@ -90,9 +124,9 @@ coordinateskeytermlist = [
 # Terms that are recommended comply with a controlled vocabulary
 controlledtermlist = [
     'type', 'language', 'license', 'basisOfRecord', 'sex', 'lifeStage', 
-    'reproductiveCondition', 'establishmentMeans', 'occurrenceStatus', 'preparations', 
-    'disposition', 'organismScope', 'month', 'day', 'geodeticDatum', 
-    'georeferenceVerificationStatus', 'identificationQualifier', 
+    'reproductiveCondition', 'establishmentMeans', 'degreeOfEstablishment','pathway',
+    'occurrenceStatus', 'preparations', 'disposition', 'organismScope', 'month', 'day', 
+    'geodeticDatum', 'georeferenceVerificationStatus', 'identificationQualifier', 
     'identificationVerificationStatus', 'taxonRank', 'nomenclaturalCode', 
     'taxonomicStatus', 'nomenclaturalStatus']	
 

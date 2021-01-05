@@ -1,0 +1,19 @@
+geogkey	continent	country	countryCode	stateProvince	county	municipality	waterBody	islandGroup	island	standard	vetted	error	comment	misplaced	unresolved	source	comment
+||||||||											1				0		
+|United States||California|||||	North America	United States	US	California							1				0		
+|South Africa||Kwa-Zulu Natal|||||	Africa	South Africa	ZA	Kwa-Zulu Natal							1				0		
+|United States||Hawaii|Honolulu||||	North America	United States	US	Hawaii	Honolulu		North Pacific Ocean	Hawaiian Islands			1				0		
+|United States||Washington|Chelan||||	North America	United States	US	Washington	Chelan						1				0		
+|United States||California|San Bernardino||||	North America	United States	US	California	San Bernardino						1				0		
+|United States||Colorado|||||	North America	United States	US	Colorado							1				0		
+|United States||California|Kern||||	North America	United States	US	California	Kern						1				0		
+|Mozambique||Maputo|||||Inhaca	Africa	Mozambique		Maputo	Matutuíne		Indian Ocean		Inhaca		1				0		
+North America|United States||North Carolina|Wake County||||	North America	United States	US	North Carolina	Wake						1				0		
+North America|United States||Wyoming|Albany County||||	North America	United States	US	Wyoming	Albany						1				0		
+Europe|France|||||||	Europe	France	FR								1				0		
+North America|United States||New York|Tompkins County||||	North America	United States	US	New York	Tompkins						1				0		
+North America|United States||Florida|Pinellas County||||	North America	United States	US	Florida	Pinellas						1				0		
+North America||||||||	North America										1				0		
+North America|United States||Washington|Chelan||||	North America	United States	US	Washington	Chelan						1				0		
+|United States||Washington|Chelan Co.||||	North America	United States	US	Washington	Chelan						1				0		
+|United States||Washington|Chelan County||||	North America	United States	US	Washington	Chelan						1				0		

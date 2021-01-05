@@ -1,0 +1,29 @@
+basisofrecord	standard	vetted
+EJEMPLAR PRESERVADO	PreservedSpecimen	1
+ESPECIMEN PRESERVADO	PreservedSpecimen	1
+ESPÉCIMEN PRESERVADO	PreservedSpecimen	1
+FOSSIL	FossilSpecimen	1
+FOSSIL SPECIMEN	FossilSpecimen	1
+FOSSILSPECIMEN	FossilSpecimen	1
+HUMAN OBSERVATION	HumanObservation	1
+HUMANOBSERVATION	HumanObservation	1
+LITERATURE	HumanObservation	1
+LIVINGSPECIMEN	LivingSpecimen	1
+MACHINEOBSERVATION	MachineObservation	1
+MATERIAL SAMPLE	MaterialSample	1
+MATERIALSAMPLE	MaterialSample	1
+MOVINGIMAGE	MachineObservation	1
+O		1
+OBSERVACIÓN HUMANA	HumanObservation	1
+PRESERVED SPECIMEN	PreservedSpecimen	1
+PRESERVEDSPECIMEN	PreservedSpecimen	1
+PRESERVEDSPECIMENS	PreservedSpecimen	1
+S	PreservedSpecimen	1
+SAMPLE	MaterialSample	1
+SOUND	MachineObservation	1
+SPECIMEN	PreservedSpecimen	1
+STILLIMAGE	MachineObservation	1
+TEXT	HumanObservation	1
+VOUCHER	PreservedSpecimen	1
+W		1
+ZOOARCHAEOLOGICALSPECIMEN	ZooarchaeologicalSpecimen	1

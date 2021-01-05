@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2020 Rauthiflor LLC"
-__version__ = "darwinize_header.py 2020-12-18T22:44-03:00"
+__version__ = "darwinize_header.py 2020-12-22T08:41-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/darwinize_header.py"
 
 from dwca_vocab_utils import darwinize_list
@@ -31,17 +31,7 @@ from dwca_utils import setup_actor_logging
 import os
 import logging
 import argparse
-
-# Replace the system csv with unicodecsv. All invocations of csv will use unicodecsv,
-# which supports reading and writing unicode streams.
-try:
-    import unicodecsv as csv
-except ImportError:
-    import warnings
-    s = "The unicodecsv package is required.\n"
-    s += "pip install unicodecsv\n"
-    s += "$JYTHON_HOME/bin/pip install unicodecsv"
-    warnings.warn(s)
+import csv
 
 def darwinize_header(options):
     ''' Translate field names from input file to Darwin Core field names in outputfile
@@ -171,6 +161,9 @@ def darwinize_header(options):
     header = read_header(inputfile, dialect=inputdialect, encoding=encoding)
     dwcheader = darwinize_list(header, dwccloudfile, namespace)
 
+    print(header)
+    print(dwcheader)
+    
     if dwcheader is None:
         message = 'Unable to create darwinized header. %s' % __version__
         returnvals = [workspace, outputfile, success, message, artifacts]
@@ -186,9 +179,8 @@ def darwinize_header(options):
 
     # Read the rows of the input file, append them to the output file after the 
     # header with columns in the same order.
-    with open(outputfile, 'a') as outfile:
-        writer = csv.DictWriter(outfile, dialect=outputdialect, encoding='utf-8', 
-            fieldnames=header)
+    with open(outputfile, 'a', encoding=encoding) as outfile:
+        writer = csv.DictWriter(outfile, dialect=outputdialect, fieldnames=header)
         for row in read_csv_row(inputfile, inputdialect, encoding):
             writer.writerow(row)
             #print('row: %s' % row)

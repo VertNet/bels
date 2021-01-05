@@ -1,0 +1,2806 @@
+preparations	standard	vetted
+ 		1
+-		1
+--		1
+ | TISSUE	tissue	1
+-- | TISSUE	tissue	1
+ ~25 VERTEBRAE	vertebrae	1
+ 1 TOOTH	tooth	1
+ 4 VERTEBRAE	vertebrae	1
+ 6 BONE FRAGMENTS	bone fragments	1
+ 70% ETOH	70% alcohol	1
+ 70% ETOH + C&S	70% alcohol | cleared and stained	1
+ 8 TEETH	teeth	1
+ ANTLER FRAGMENT	antler fragment	1
+ BONE FRAGMENT 	bone fragment	1
+ BONE FRAGMENTS	bone fragments	1
+ CA. HALF TIBIOFIBULA.	tibiofibula	1
+ CERVICAL VERTEBRA	cervical vertebra	1
+ COMPLETE SKELETON, TISSUE	complete skeleton | tissue	1
+ FLIPPER ELEMENT	flipper	1
+ FLIPPER ELEMENT ?	flipper	1
+ FOOT (PLASTER)	foot	1
+ IVORY FRAGMENT	ivory fragment	1
+ JAW FRAGMENT	jaw fragment	1
+ JAW FRAGMENTS	jaw fragments	1
+ L	complete skeleton	1
+ L | TISSUE	complete skeleton | tissue	1
+ N	round skin	1
+ N | TISSUE	round skin | tissue	1
+ NEURAL SPINE	neural spine	1
+ ONE FRAGMENT
+		1
+ SKULL	skull	1
+ SKULL()	skull	1
+ TEETH (12)	teeth	1
+ TOOTH ()	tooth	1
+SKULL, FLUID	fluid | skull	1
+"MOUNT, BLOOD"	mount | blood	1
+"MOUNT, TISSUE"	mount | tissue	1
+"PAR SKELETON, WING, SKIN, DNA"	DNA | partial skeleton | skin | wing	1
+"PAR. SKELETON, WING, DNA"	DNA | partial skeleton | wing	1
+"PAR.SKEL, WING, DNA"	DNA | partial skeleton | wing	1
+"PAR.SKELETON, WING, DNA"	DNA | partial skeleton | wing	1
+"PARTIAL SKEL, WING, DNA"	DNA | partial skeleton | wing	1
+"PARTIAL SKELETON, WING, DNA"	DNA | partial skeleton | wing	1
+"PARTIAL SKELETON, WING, TISSUE"	partial skeleton | tissue | wing	1
+"SKELETON, WING (02), TISSUE"	skeleton | tissue | wing	1
+"SKELETON, WING (2), TISSUE"	skeleton | tissue | wing	1
+"SKIN & WING, DNA,  PARTIAL SKEL IN FREERER"	DNA | partial skeleton (frozen) | skin | wing	1
+"SKIN, PAR SKELETON, WING, DNA"	DNA | partial skeleton | skin | wing	1
+"SKIN, WING & DNA"	DNA | skin | wing	1
+"SKIN, WING"	skin | wing	1
+"SKIN, WING, DNA & PARTIAL SKELETON"	DNA | partial skeleton | skin | wing	1
+"WING, PAR SKELETON"	partial skeleton | wing	1
+, TISSUE	tissue	1
+/M2		1
+?	unknown	1
+? ILIUM.	ilium	1
+? PARASPHENOID.	parasphenoid	1
+? PROBABLY VERTEBRA.	vertebra	1
+??	unknown	1
+??, ??	unknown	1
+?????	unknown	1
+`EGGS	eggs	1
++SK	skeleton | skin	1
++SK + ECTO	ectoparasite | skeleton | skin	1
++SK +BAC	baculum | skeleton | skin	1
++SK +ECTO	ectoparasite | skeleton | skin	1
++SK +T +BAC	baculum | skeleton | skin | tissue	1
++SK +T +CH	chromosomes | skeleton | skin | tissue	1
++SK +T +ECTO	ectoparasite | skeleton | skin | tissue	1
++SK +T +ECTO +CH	chromosomes | ectoparasite | skeleton | skin | tissue	1
++SK +T +ECTO +ENDO	ectoparasite | endoparasite | skeleton | skin | tissue	1
++SK +T +VISCERA	skeleton | skin | tissue | viscera	1
++SK +T+ ECTO	ectoparasite | skeleton | skin | tissue	1
++SK +T+AL	alcoholic | skeleton | skin | tissue	1
++SK+T	skeleton | skin | tissue	1
++SK+T +CH	chromosomes | skeleton | skin | tissue	1
++SK+T +ECTO	ectoparasite | skeleton | skin | tissue	1
++SK+T+CH	chromosomes | skeleton | skin | tissue	1
++SK+T+ECTO	ectoparasite | skeleton | skin | tissue	1
++SK+T+ECTO +CH	chromosomes | ectoparasite | skeleton | skin | tissue	1
++SK+T+ECTO CH	chromosomes | ectoparasite | skeleton | skin | tissue	1
++SK+T+ECTO+CH	chromosomes | ectoparasite | skeleton | skin | tissue	1
++SK+T+ECTO+CH+BLOOD	blood | chromosomes | ectoparasite | skeleton | skin | tissue	1
++SK+T+ECTO+CH+EMB	embryo | chromosomes | ectoparasite | skeleton | skin | tissue	1
++SK0+T +ECTO +CH	chromosomes | ectoparasites | skull | tissue	1
++SKO	skull	1
++SKO +T	skull | tissue	1
++SKO+T	skull | tissue	1
+1 VERTEBRA (DRY)	1 vertebra	1
+10 FRAGMENTS OF SHELL.	shell fragments	1
+10 VERTEBRAE.	vertebrae	1
+10% FORMALIN	10% formalin	1
+11 VERTEBRAE (DRY)	11 vertebrae	1
+12 VERTEBRAE (DRY)	12 vertebrae	1
+13 MEDIUM-SIZED VERTEBRAE.	vertebrae	1
+14 VERTEBRAE (DRY)	14 vertebrae	1
+15 UNDET. AND MISCELLANEOUS.	undetermined	1
+15 VERTEBRAE (DRY)	15 vertebrae	1
+2 CASTS OF SKULLS O.	skull casts	1
+2 DENTARY; MAXILLA	dentaries | maxilla	1
+2 EGGS	eggs	1
+2 PHALANGES.	phalanges	1
+2 PLASTRON PLATES.	plastron plates	1
+2 SKULLS	2 skulls	1
+2 SKULLS, 2 DENTARIES, PARTIAL	partial skulls | 2 dentaries	1
+2 TAILS ONLY	2 tails	1
+2 VERTEBRAE (DRY)	2 vertebrae	1
+2 VERTEBRAE (FIRST?).	vertebrae	1
+2 VERTEBRAE, 2 FRAGMENTS PHARYNGEAL ARCHES.	vertebrae | pharyngeal arches	1
+2 WINGS/TAIL	2 wings | tail	1
+2/3 R CORACOID.	right coracoid	1
+3 LUMBAR VERTEBRAE.	lumbar vertebrae	1
+3 R DENTARY, 1 L DENTARY.	right dentaries | left dentary	1
+3 R PROXIMAL TARSOMETATARSUS.	right proximal tarsometatarsi	1
+3 UPPER L CHEEKTOOTH.	upper left cheekteeth	1
+3 VERTEBRAE (DRY)	3 vertebrae	1
+33		1
+3960		1
+4		1
+4 EGGS & NEST	eggs | nest	1
+4 FRAGMENTS ULNA.	ulna fragments	1
+4 VERTEBRA.	vertebrae	1
+4 VERTEBRAE (DRY)	4 vertebrae	1
+4 VERTEBRAE.  IMM.	vertebrae	1
+5		1
+5 FEMUR, 4 TIBIA, 2 HUMERI, 2 PART INNOM.	5 femurs | 4 tibia | 2 humeri | 2 partial innominata	1
+5 FRAGMENTS CHEEKTEETH.	cheekteeth fragments	1
+5 UNDET.	undetermined	1
+5 VERTEBRAE (DRY)	5 vertebrae	1
+5 VERTEBRAE.	vertebrae	1
+5% FORMALIN	5% formalin	1
+5EGGS	eggs	1
+6 VERTEBRAE (DRY)	6 vertebrae	1
+6699		1
+7 UNDET. AND MISCELLANEOUS.	undetermined	1
+70 % ETOH	70% alcohol	1
+70% ETOH	70% alcohol	1
+70%ETOH	70% alcohol	1
+70& ETOH	70% alcohol	1
+74 UNDET.	undetermined	1
+9 PIECES OF SHELL.	shell fragments	1
+95% ETOH	95% alcohol	1
+AC	alcoholic carcass (body carcass)	1
+AL	alcoholic	1
+AL'	alcoholic	1
+AL (1 ADUL	alcoholic	1
+AL + T +ECTO	alcoholic | ectoparasite | tissue	1
+AL +T	alcoholic | tissue	1
+AL +T +ECTO	alcoholic | ectoparasite | tissue	1
+AL +T +ECTO +CH	alcoholic | chromosomes | ectoparasite | tissue	1
+AL+T	alcoholic | tissue	1
+AL+T +ECTO	alcoholic | ectoparasite | tissue	1
+AL+T+ECTO	alcoholic | ectoparasite | tissue	1
+AL+T+ECTO +CH	alcoholic | chromosomes | ectoparasite | tissue	1
+AL+T+ECTO+CH	alcoholic | chromosomes | ectoparasite | tissue	1
+ALC	alcoholic	1
+ALC, TISSUE	alcoholic | tissue	1
+ALC/CARC	alcoholic | carcass	1
+ALC+SCHMOO	alcoholic | schmoo	1
+ALCH	alcoholic	1
+ALCOHOL	alcoholic	1
+ALCOHOL - HEAD ONLY	alcoholilc carcass	1
+ALCOHOL, TISSUE	alcoholic | tissue	1
+ALCOHOLIC	alcoholic	1
+ALCOHOLIC AND DRY INDIVIDUAL PRIMARIES AND SECONDARIES	alcoholic | dry primaries | dry secondaries	1
+ALCOHOLIC AND DRY INDIVIDUAL PRIMARIES AND SECONDARIES, TISSUE	alcoholic | dry primaries | dry secondaries | tissue	1
+ALCOHOLIC, EGGS	alcoholic | eggs	1
+ALCOHOLIC, FLAT SKIN	alcoholic | flat skin	1
+ALCOHOLIC, HYOID	alcoholic | hyoid	1
+ALCOHOLIC, OTHER	alcoholic | other preparation	1
+ALCOHOLIC, OTHER PREP	alcoholic | other preparation	1
+ALCOHOLIC, ROUND SKIN	alcoholic | round skin	1
+ALCOHOLIC, ROUND SKIN, PARTIAL SKELETON	alcoholic | partial skeleton | round skin	1
+ALCOHOLIC, SKIN	alcoholic | skin	1
+ALCOHOLIC, SKIN, TISSUE	alcoholic | skin | tissue	1
+ALCOHOLIC, SKULL	alcoholic | skull	1
+ALCOHOLIC, SKULL PREPARED, SKIN & BODY DRIED	alcoholic | skull prepared | skin & body dried	1
+ALCOHOLIC, SOUND RECORDING	alcoholic | sound recording	1
+ALCOHOLIC, TISSUE	alcoholic | tissue	1
+ALCOHOLIC, TISSUE, SKIN	alcoholic | skin | tissue	1
+ALCOHOLIC, TISSUE, TISSUE	alcoholic | tissue	1
+ALCOHOLIC, TISSUE, TISSUE, WING	alcoholic | tissue | wing	1
+ALCOHOLIC, TISSUE, WING	alcoholic | tissue | wing	1
+ALCOHOLIC, TISSUE, WING, TISSUE	alcoholic | tissue | wing	1
+ALCOHOLIC, WING	alcoholic | wing	1
+ALCOHOLIC, WING, TISSUE	alcoholic | tissue | wing	1
+ALCOHOLIC/SKULL	alcoholic | skull prepared | skin & body dried	1
+ALIZ SKEL+DRY SKULL	alizarin skeleton | dry skull	1
+ALIZ. SKEL	alizarin skeleton	1
+ALIZ. SKEL.	alizarin skeleton	1
+ALIZ. SKEL., HYOID	alizarin skeleton | hyoid	1
+ALIZ. SKEL., LARYNX	alizarin skeleton | larynx	1
+ALIZ. SKEL., SKIN	alizarin skeleton | skin	1
+ALIZ. SKELETON	alizarin skeleton	1
+AN	anatomical	1
+ANTERIOR PORT. OF SK	partial skull	1
+ANTERIOR POST-CRANIUM (DRY)	anterior post-cranium	1
+ANTLER	antler	1
+ANTLER (ABNORMAL).	antler (abnormal)	1
+ANTLER BASE	antler base	1
+ANTLER FRAG	antler fragment	1
+ANTLER HALF BASE	antler base	1
+ANTLER ONLY	antler	1
+ANTLER SEGMENT	antler segment	1
+ANTLER VELVET	antler velvet	1
+ANTLER, LEFT	left antler	1
+ANTLER, RIGHT	right antler	1
+ANTLER.	antler	1
+ANTLERS	antlers	1
+ANTLERS/MANDIBLE	antlers | mandible	1
+ANTLERS; SKULL CAP	antlers | skull cap	1
+AO	alcoholic other (partial specimen)	1
+ARMOR AND SKEL.	armor | skeleton	1
+ASST. BONES	bones	1
+ASST. LIMB ELEMENTS	limb elements	1
+ASST. SKEL. PARTS O.	sketetal parts	1
+ASTRAGALUS.	astragalus	1
+ATLAS.	atlas	1
+AXIAL SKELETON AND FLUID SKIN AND HEAD	axial skeleton | fluid skin | fluid head	1
+AXIS.	axis	1
+B	eggs | nest	1
+BACULUM	baculum	1
+BACULUM, COMPLETE SKELETON	baculum | complete skeleton	1
+BACULUM, FLUID	baculum | fluid	1
+BACULUM, OTHER	baculum | other preparation	1
+BACULUM, PART	baculum | partial skeleton	1
+BACULUM, PARTIAL SKELETON	baculum | partial skeleton	1
+BACULUM, PARTIAL SKELETON, SKULL	baculum | partial skeleton | skull	1
+BACULUM, SKIN	baculum | skin	1
+BACULUM, SKIN, SKULL	baculum | skin | skull	1
+BACULUM, SKULL	baculum | skull	1
+BACULUM, SKULL, COMPLETE SKELETON	baculum | skull | complete skeleton	1
+BACULUM, SKULL, PARTIAL SKELETON	baculum | skull | partial skeleton	1
+BACULUM, SKULL, SKIN, COMPLETE SKELETON	baculum | complete skeleton | skin | skull	1
+BACULUM.	baculum	1
+BALEEN	baleen	1
+BALEEN PLATE	baleen plate	1
+BASE OF ANTLER.	antler base	1
+BASIOCCIPITAL	basioccipital	1
+BASIOCCIPITAL.	basioccipital	1
+BEAK	beak	1
+BEAK  LEG AND FEATHERS (STOMACH CONTENTS OF AN OTUS KENNICOTTII)	beak | leg | feathers | stomach contents	1
+BEAK & STERNUM	beak | sternum	1
+BEAK.	beak	1
+BIRDPREP - 1	BirdPrep - 1	1
+BLOOD	blood	1
+BLOOD (MICROSLIDES)	blood (microslides)	1
+BLOOD FILM (MICROSLIDE)	blood film (microslide)	1
+BLOOD, TISSUE	blood | tissue	1
+BLOOD/FEATHER	blood | feather	1
+BLOOD/FEATHER, TISSUE	blood | feather | tissue	1
+BLOOD/FEATHERS	blood | feathers	1
+BLOOD/FEATHERS, TISSUE	blood | feathers | tissue	1
+BM	body mount (taxidermy mount)	1
+BODY GUT (GLYCERIN)	body gut (glycerin)	1
+BODY MOUNT	body mount	1
+BODY MOUNT OR CAST	body mount	1
+BODY MUMMY	body mummy	1
+BODY SKELETON ONLY	body skeleton	1
+BONE FRAGMENTS ONLY	bone fragments	1
+BONE FRAGS. O.	bone fragments	1
+BS	body skeleton	1
+BULLA	bulla	1
+BULLA, ROUND SKIN, PART SKEL, TISSUE - 1	bulla | partial skeleton | round skin | tissue - 1	1
+BULLA, ROUND SKIN, PART SKEL, TISSUE, WING - 1	bulla | partial skeleton | round skin | tissue | wing - 1	1
+BULLA, ROUND SKIN, PART SKEL, TISSUE, WING - 1; BIRDPREP - 1	BirdPrep - 1 | bulla | partial skeleton | round skin | tissue | wing - 1	1
+BULLA, ROUND SKIN, TISSUE - 1	bulla | round skin | tissue - 1	1
+C AND S - 1	cleared and stained	1
+C&S	cleared and stained	1
+C&S, DRY	cleared and stained | dry	1
+C&S, DRY SKULL	cleared and stain | dry skull	1
+C&S, DRY, FLUID	cleared and stained | dry | fluid	1
+C&S, FLUID	cleared and stained | fluid	1
+C&S, FLUID, DRY	cleared and stained | dry | fluid	1
+C&S, FLUID, DRY, HEMIPENIS	cleared and stained | dry | fluid | hemipenis	1
+C&S, FLUID, HEMIPENIS	cleared and stained | fluid | hemipenis	1
+C&S, HEMIPENIS, FLUID	cleared and stained | fluid | hemipenis	1
+C&S, HEMIPENIS, FLUID, DRY	cleared and stained | dry | fluid | hemipenis	1
+C&S, MICROTECHNIQUE	cleared and stained | microtechnique	1
+C&S, MICROTECHNIQUE, FLUID	cleared and stained | fluid | microtechnique	1
+C&S, RECORDING	cleared and stained | recording	1
+C&S, TISSUE	cleared and stained | tissue	1
+C&S, TISSUE, DRY, HEMIPENIS	cleared and stained | dry | hemipenis | tissue	1
+C&S, TISSUE, FLUID	cleared and stained | fluid | tissue	1
+CAPE/PAW/SKEL	cape | paw | skeleton	1
+CARAPACE (DRY)	carapace	1
+CAST	cast	1
+CAST OF UPPER AND LOWER TOOTHROWS	cast (upper and lower tooth rows)	1
+CAST SKIN	cast skin	1
+CAUDAL VERTEBRAE (DRY)	caudal vertebrae	1
+CELLULOID CAST	celluloid cast	1
+CENTRUM CERVICAL VERTEBRA.	centrum cervical vertebra	1
+CENTRUM EPIPHYSIS	centrum epiphysis	1
+CERVICAL VERTEBRA	cervical vertebra	1
+CERVICAL VERTEBRA.	cervical vertebra	1
+CERVICAL VERTEBRAE	cervical vertebrae	1
+CLEARED & STAINED	cleared and stained	1
+CLEARED & STAINED - 1	cleared and stained	1
+CLEARED AND STAINED	cleared and stained	1
+CLEARED AND STAINED SKULL	cleared and stained skull	1
+CLEARED AND STAINED SPECIMEN	cleared and stained	1
+CLEARED AND STAINED, SOFT PARTS IN ALCOHOL	cleared and stained | soft parts in alcohol	1
+CLEARED IN STAINED SPECIMEN, SOFT PARTS IN ALCOHOL	cleared and stained | soft parts in alcohol	1
+CLOACAL BONES (DRY)	cloacal bones	1
+CLUTCH - COMPLETE - 1	clutch (complete) - 1	1
+CLUTCH - PARTIAL - 1	clutch (partial) - 1	1
+CLUTCH (COMPLETE) WITH NEST (COMPLETE) - 1	clutch (complete) with nest (complete) - 1	1
+CLUTCH (PARTIAL) WITH NEST (COMPLETE) - 1	clutch (partial) with nest (complete) - 1	1
+CO	cranium	1
+COM (DRY)	whole animal	1
+COMPLETE (C&S)	whole animal (cleared and stained)	1
+COMPLETE (DRY + GLYCERIN)	whole animal (dry and glycerin)	1
+COMPLETE (DRY)	whole animal	1
+COMPLETE (DRY), TISSUE	whole animal | tissue	1
+COMPLETE (GLYCERIN)	whole animal (glycerin)	1
+COMPLETE (GLYCERIN), TISSUE	whole animal (glycerin) | tissue	1
+COMPLETE (WHOLE)	whole animal	1
+COMPLETE SKELETON - 1	complete skeleton - 1	1
+COMPLETE SKELETON ONLY	complete skeleton	1
+COMPLETE SKELETON, TISSUE - 1	complete skeleton | tissue - 1	1
+CRÁNEO	skull	1
+CRÀNEO	skull	1
+CRÁNEO Y ESQUELETO	skeleton | skull	1
+CRÁNEO Y ESQUELETO, ??	skeleton | skull	1
+CRÁNEO Y FRACCIÓN DE PIEL	partial skin | skull	1
+CRÁNEO Y FRACCIÓN DE PIEL, HÍGADO Y SANGRE	liver | blood | partial skin | skull	1
+CRÁNEO Y FRACCIÓN DE PIEL, SANGRE	blood | partial skin | skull	1
+CRÁNEO, FRACCIÓN	partial skull	1
+CRANIUM	skull	1
+CRANIUM AND L DENTARY	cranium | left dentary	1
+CRANIUM AND R DENTARY	cranium | right dentary	1
+CRANIUM FRAG	partial skull	1
+CRANIUM ONLY	cranium	1
+CRANIUM PORTION	partial skull	1
+CRANIUM.	skull	1
+DENTARIES	dentaries	1
+DENTARIES ONLY	dentaries	1
+DENTARY	dentary	1
+DENTARY O.	dentary	1
+DENTARY ONLY	dentary	1
+DIET ANALYSIS  (231 VIALS)	stomach contents (231 vials)	1
+DISARTICULATED	disarticulated	1
+DISMOUNTED SKULL	dismounted skull	1
+DISSECTED PICKLED SPECIMEN	dissected pickle	1
+DISSECTED PICKLED SPECIMEN, TISSUE	dissected pickle | tissue	1
+DRIED HEAD	dried head	1
+DRIED INFLATED LUNGS	dried inflated lungs	1
+DRIED PARTIAL SPECIMEN	dried partial skeleton	1
+DRIED PRESERVED FOOT, TISSUE	dried foot | tissue	1
+DRIED SHELL, SKULL AND SKIN	dried shell | skin | skull	1
+DRIED SKELETON	dried skeleton	1
+DRIED SKIN	dried skin	1
+DRIED SKIN AND SKULL	dried skin | dried skull	1
+DRIED SKIN WITH LEG BONES	dried skin with leg bones	1
+DRIED SKIN WITH SKULL	dried skin with skull	1
+DRIED SKINNED SPECIMEN	dried skinned specimen	1
+DRIED SPECIMEN	dried specimen	1
+DRIED SPECIMENS	dried specimens	1
+DRIED WITH SKELETON	dried with skeleton	1
+DRY	dry	1
+DRY EGGSHELLS	dry eggshells	1
+DRY SHELL	dry eggshell	1
+DRY SHELL, HEAD, TAIL AND LEG SKINS IN ALCOHOL, GONADS IN FORMALIN	dried shell | dried head | alcoholic tail and legs skins | gonads in formalin	1
+DRY SKEL.	dry skeleton	1
+DRY SKELETON	dry skeleton	1
+DRY SKELETON, SKIN	dry skeleton | skin	1
+DRY SKELETON; EMBRYO	dry skeleton | embryo	1
+DRY SKELETON; SKIN	dry skeleton | skin	1
+DRY SKULL	dry skull	1
+DRY SKULL AND CLEARED AND STAINED BODY	cleared and stained | dried skull	1
+DRY SKULL, C&S 	cleared and stained | dry skull	1
+DRY SPECIMEN	dry specimen	1
+DRY, C&S	cleared and stained | dry	1
+DRY, C&S, FLUID	cleared and stained | dry | fluid	1
+DRY, C&S, HEMIPENIS, FLUID	cleared and stained | dry | fluid | hemipenis	1
+DRY, DRY	dry	1
+DRY, FLUID	dry | fluid	1
+DRY, FLUID, C&S	cleared and stained | dry | fluid	1
+DRY, FLUID, C&S, HEMIPENIS	cleared and stained | dry | fluid | hemipenis	1
+DRY, FLUID, DRY	dry | fluid	1
+DRY, FLUID, FLUID	dry | fluid	1
+DRY, FLUID, HEMIPENIS	dry | fluid | hemipenis	1
+DRY, FLUID, HEMIPENIS, C&S	cleared and stained | dry | fluid | hemipenis	1
+DRY, FLUID, TISSUE	dry | fluid | tissue	1
+DRY, HEMIPENIS	dry | hemipenis	1
+DRY, HEMIPENIS, C&S, FLUID	cleared and stained | dry | fluid | hemipenis	1
+DRY, HEMIPENIS, DRY	dry | hemipenis	1
+DRY, HEMIPENIS, DRY, FLUID	dry | fluid | hemipenis	1
+DRY, HEMIPENIS, FLUID	dry | fluid | hemipenis	1
+DRY, HEMIPENIS, MICROTECHNIQUE	dry | hemipenis | microtechnique	1
+DRY, MICROTECHNIQUE	dry | microtechnique	1
+DRY, RECORDING	dry | recording	1
+DRY, TISSUE	dry | tissue	1
+DRY, TISSUE, FLUID	dry | fluid | tissue	1
+DUNG	dung	1
+E	eggs	1
+ECTOPARASITE:  ALC	ectoparasite (alcohol)	1
+EG	egg	1
+EGG	egg	1
+EGG (DRY)	egg	1
+EGG CAST - 1	egg cast - 1	1
+EGG SET	egg set	1
+EGG SET, MOUNT, NEST	egg set | mount | nest	1
+EGG SET, NEST	egg set | nest	1
+EGG SET, TISSUE	egg set | tissue	1
+EGG SET/01	eggs	1
+EGG SET/01+NEST	eggs | nest	1
+EGG SET/02	eggs	1
+EGG SET/02 + NEST	eggs | nest	1
+EGG SET/02+NEST	eggs | nest	1
+EGG SET/03	eggs	1
+EGG SET/03+NEST	eggs | nest	1
+EGG SET/04	eggs	1
+EGG SET/04+NEST	eggs | nest	1
+EGG SET/05	eggs	1
+EGG SET/05+NEST	eggs | nest	1
+EGG SET/06	eggs	1
+EGG SET/06+NEST	eggs | nest	1
+EGG SET/07	eggs	1
+EGG SET/07+NEST	eggs | nest	1
+EGG SET/08	eggs	1
+EGG SET/08+NEST	eggs | nest	1
+EGG SET/09	eggs	1
+EGG SET/09+NEST	eggs | nest	1
+EGG SET/10	eggs	1
+EGG SET/10+NEST	eggs | nest	1
+EGG SET/11	eggs	1
+EGG SET/11+NEST	eggs | nest	1
+EGG SET/12	eggs	1
+EGG SET/13	eggs	1
+EGG SET/14	eggs	1
+EGG SET/15	eggs	1
+EGG SET/16	eggs	1
+EGG SET/17	eggs	1
+EGG SET/18	eggs	1
+EGG SET/19	eggs	1
+EGG SET/20	eggs	1
+EGG SET/21	eggs	1
+EGG SET/22	eggs	1
+EGG SET/28	eggs	1
+EGG SET/NEST	egg set | nest	1
+EGG SET/NEST, TISSUE	egg set | nest | tissue	1
+EGG SHELL	egg shell	1
+EGG SHELL (DRY)	egg shell	1
+EGG SHELLS	egg shells	1
+EGG SHELLS (DRY)	egg shells	1
+EGG SHELLS EMBRYO (DRY)	embryo | egg shells	1
+EGG, COMPLETE CLUTCH, TISSUE	egg | complete clutch | tissue	1
+EGG, PARTIAL CLUTCH, TISSUE	egg | partial clutch | tissue	1
+EGG, TISSUE	egg | tissue	1
+EGG/NEST, SKIN	eggs | nest | skin	1
+EGGGS	eggs	1
+EGGS	eggs	1
+EGGS & NEST	eggs | nest	1
+EGGS (?)	eggs	1
+EGGS (DRY)	eggs	1
+EGGS EMBRYOS (DRY)	embryos | eggs	1
+EGGS IN ALCOHOL	eggs in alcohol	1
+EGGS OR NEST	eggs | nest	1
+EGGS&NEST	eggs | nest	1
+EGGS(?)	eggs	1
+EGGS, COMPLETE CLUTCH	eggs | complete clutch	1
+EGGS, COMPLETE CLUTCH, TISSUE	eggs | complete clutch | tissue	1
+EGGS, PARTIAL CLUTCH	eggs | partial clutch	1
+EGGS, PARTIAL CLUTCH, TISSUE	eggs | partial clutch | tissue	1
+EGGS, TISSUE	eggs | tissue	1
+EGGS?	eggs	1
+EGGSET	eggs	1
+EGGSET - 1	eggset - 1	1
+EGGSET - 1; FLAT_SKIN - 1; SKEL - 1	eggset - 1 | flat skin - 1 | skeleton - 1	1
+EGGSET - 1; FLAT_SKIN - 1; SKEL - 1; FLUID - 1	eggset - 1 | flat skin - 1 | skeleton - 1 | fluid - 1	1
+EGGSET - 1; FLUID - 1	eggset - 1 | fluid - 1	1
+EGGSET - 1; NEST - 1	eggset - 1 | nest - 1	1
+EGGSET - 1; SKEL - 1	eggset - 1 | skeleton - 1	1
+EGGSET - 1; SKIN - 1	eggset - 1 | skin - 1	1
+EGGSET - 1; TISSUE - 1	eggset - 1 | tissue - 1	1
+EGGSET - 1; TISSUE - 1; SKIN - 1	eggset - 1 | tissue - 1 | skin - 1	1
+EGGSET - 1; TISSUE - 50	eggset - 1 | tissue - 50	1
+EGGSET - 50	eggset - 50	1
+EGGSET - NULL	eggset - null	1
+EGGSET, ALCOHOLIC	alcoholic | eggs	1
+EGGSET, COMPLETE SKELETON	eggs | complete skeleton	1
+EGGSET, NEST	eggs | nest	1
+EGGSET, NEST, ALCOHOLIC	alcoholic | eggs | nest	1
+EGGSET, WING	eggs | wing	1
+EGGSET; FLAT_SKIN; SKEL	eggs | flat skin | skeleton	1
+EGGSET; FLAT_SKIN; SKEL; FLUID	eggs | flat skin | fluid | skeleton	1
+EGGSET; FLUID	eggs | fluid	1
+EGGSET; NEST	eggs | nest	1
+EGGSET; SKEL	eggs | skeleton	1
+EGGSET; SKIN	eggs | skin	1
+EGGSET; TISSUE	eggs | tissue	1
+EGGSET; TISSUE; SKIN	eggs | skin | tissue	1
+EGGSHELL	egg	1
+EGGSHELL FRAGMENTS	egg	1
+EM	egg mass	1
+EN LIQUIDO	fluid	1
+EN LÍQUIDO	fluid	1
+EN LÍQUIDO Y CRÁNEO	fluid | skull	1
+EN LÍQUIDO, ---	fluid	1
+EN LÍQUIDO, CRÁNEO	fluid | skull	1
+EN LÍQUIDO, CRÁNEO Y ESQUELETO	fluid | skeleton | skull	1
+EN LÍQUIDO, KLH LYSIS BUFFER	fluid | KLH Lysis buffer	1
+EN LÍQUIDO, QUIM 10	fluid | quim 10	1
+ENEST	nest	1
+ESQUELETO	skeleton	1
+ESQUELETO Y CRÁNEO	skeleton | skull	1
+ESQUELETO, PENDIENTE DE LIMPIAR	skeleton	1
+ET	alcoholic	1
+ETOH	alcoholic	1
+ETOH - 1	alcoholic	1
+ETOH - 1; ETOH - 1	alcoholic	1
+ETOH - 2	alcoholic	1
+ETOH + SHED SKIN	alcoholic | shed skin	1
+ETOH + SKELETON	alcoholic | skeleton	1
+ETOH/SKELETON - 1	skeleton in alcohol	1
+F	flat skin	1
+F | TISSUE	flat skin | tissue	1
+FA	flat skin with alcoholic carcass	1
+FANG	fang	1
+FANG AND JAW	fang | jaw	1
+FANGS	fangs	1
+FB	flat skin with complete skeleton	1
+FEATHER	feather	1
+FEATHER - 1	feather - 1	1
+FEATHER - 1; FEATHER - 1; FEATHER - 1; FEATHER - 1; SKIN - 1; FEATHER - 1	feather - 1 | feather - 1 | feather - 1 | feather - 1 | skin - 1 | feather - 1	1
+FEATHER - 1; FEATHER - 1; FEATHER - 1; SKIN - 1	feather - 1 | feather - 1 | feather - 1 | skin - 1	1
+FEATHER - 1; FEATHER - 1; FEATHER - 1; SKIN - 1; FEATHER - 1	feather - 1 | feather - 1 | feather - 1 | skin - 1 | feather - 1	1
+FEATHER - 1; FEATHER - 1; FEATHER - 1; SKIN - 1; FEATHER - 1; FEATHER - 1	feather - 1 | feather - 1 | feather - 1 | skin - 1 | feather - 1 | feather - 1	1
+FEATHER - 1; FEATHER - 1; FLAT_SKIN - 1; FLUID - 1	feather - 1 | feather - 1 | flat skin - 1 | fluid - 1	1
+FEATHER - 1; FEATHER - 1; SKIN - 1	feather - 1 | feather - 1 | skin - 1	1
+FEATHER - 1; FEATHER - 1; SKIN - 1; FEATHER - 1	feather - 1 | feather - 1 | skin - 1 | feather - 1	1
+FEATHER - 1; FEATHER - 1; SKIN - 1; FEATHER - 1; FEATHER - 1; FEATHER - 1	feather - 1 | feather - 1 | skin - 1 | feather - 1 | feather - 1 | feather - 1	1
+FEATHER - 1; FLAT_SKIN - 1; FLUID - 1	feather - 1 | flat skin - 1 | fluid - 1	1
+FEATHER - 1; FLAT_SKIN - 1; SKEL - 1	feather - 1 | flat skin - 1 | skeleton - 1	1
+FEATHER - 1; FLUID - 1	feather - 1 | fluid - 1	1
+FEATHER - 1; GENBANK - 1; SKIN - 1; GENBANK - 1	feather - 1 | Genbank - 1 | skin - 1 | Genbank - 1	1
+FEATHER - 1; SKEL - 1	feather - 1 | skeleton - 1	1
+FEATHER - 1; SKEL - 1; SKIN - 1; TISSUE - 1	feather - 1 | skeleton - 1 | skin - 1 | tissue - 1	1
+FEATHER - 1; SKEL - 1; TISSUE - 1	feather - 1 | skeleton - 1 | tissue - 1	1
+FEATHER - 1; SKIN - 1	feather - 1 | skin - 1	1
+FEATHER - 1; SKIN - 1; FEATHER - 1	feather - 1 | skin - 1 | feather - 1	1
+FEATHER - 1; SKIN - 1; FEATHER - 1; FEATHER - 1	feather - 1 | skin - 1 | feather - 1 | feather - 1	1
+FEATHER - 1; SKIN - 1; FEATHER - 1; FEATHER - 1; FEATHER - 1; FEATHER - 1	feather - 1 | skin - 1 | feather - 1 | feather - 1 | feather - 1 | feather - 1	1
+FEATHER - 1; SKIN - 1; GENBANK - 1; GENBANK - 1	feather - 1 | skin - 1 | Genbank - 1 | Genbank - 1	1
+FEATHER - 1; SKIN - 1; SKEL - 1	feather - 1 | skin - 1 | skeleton - 1	1
+FEATHER - 1; SKIN - 1; SKIN/TOE CLIP - 1	feather - 1 | skin - 1	1
+FEATHER - 1; SKIN - 1; TISSUE - 1	feather - 1 | skin - 1 | tissue - 1	1
+FEATHER - 1; SKIN - 1; TISSUE - 50	feather - 1 | skin - 1 | tissue - 50	1
+FEATHER - 1; SKIN/TOE CLIP - 1; SKEL - 1; SKIN - 1	feather - 1 | skeleton - 1 | skin - 1	1
+FEATHER - 1; SYRINX - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1	feather - 1 | syrinx - 1 | flat skin - 1 | tissue - 1 | skeleton - 1	1
+FEATHER - 1; SYRINX - 1; SKEL - 1	feather - 1 | syrinx - 1 | skeleton - 1	1
+FEATHER - 1; SYRINX - 1; SKIN - 1; SKEL - 1	feather - 1 | syrinx - 1 | skin - 1 | skeleton - 1	1
+FEATHER - 1; SYRINX - 1; TISSUE - 1; SKIN - 1; SKEL - 1	feather - 1 | syrinx - 1 | tissue - 1 | skin - 1 | skeleton - 1	1
+FEATHER - 1; SYRINX - 1; WINGS_TAIL - 1; TISSUE - 1; SKIN - 1	feather - 1 | syrinx - 1 | wings_tail - 1 | tissue - 1 | skin - 1	1
+FEATHER - 1; TISSUE - 1	feather - 1 | tissue - 1	1
+FEATHER - 1; TISSUE - 1; SKEL - 1	feather - 1 | tissue - 1 | skeleton - 1	1
+FEATHER - 1; TISSUE - 1; SKIN - 1	feather - 1 | tissue - 1 | skin - 1	1
+FEATHER - 1; WINGS_TAIL - 1; FLAT_SKIN - 1; SKEL - 1	feather - 1 | wings_tail - 1 | flat skin - 1 | skeleton - 1	1
+FEATHER - 1; WINGS_TAIL - 1; SKEL - 1	feather - 1 | wings_tail - 1 | skeleton - 1	1
+FEATHER - 1; WINGS_TAIL - 1; TISSUE - 1	feather - 1 | wings_tail - 1 | tissue - 1	1
+FEATHER - 1; WINGS_TAIL - 1; TISSUE - 1; SKEL - 1	feather - 1 | wings_tail - 1 | tissue - 1 | skeleton - 1	1
+FEATHER - 1; WINGS_TAIL - 1; TISSUE - 1; SKIN - 1	feather - 1 | wings_tail - 1 | tissue - 1 | skin - 1	1
+FEATHER - 10; EGGSET - 1; FLAT_SKIN - 1; SKEL - 1	feather - 10 | eggset - 1 | flat skin - 1 | skeleton - 1	1
+FEATHER - 10; FLAT_SKIN - 1; SKEL - 1	feather - 10 | flat skin - 1 | skeleton - 1	1
+FEATHER - 100; SKEL - 1	feather - 100 | skeleton - 1	1
+FEATHER - 2	feather - 2	1
+FEATHER - 2; FEATHER - 5; SKIN - 1; FEATHER - 1	feather - 2 | feather - 5 | skin - 1 | feather - 1	1
+FEATHER - 2; SKIN - 1	feather - 2 | skin - 1	1
+FEATHER - 2; SKIN - 1; FEATHER - 2	feather - 2 | skin - 1 | feather - 2	1
+FEATHER - 3; SKIN - 1	feather - 3 | skin - 1	1
+FEATHER, TISSUE	feather | tissue	1
+FEATHER; SKIN/TOE CLIP; SKEL; SKIN	feather | skeleton | skin	1
+FEATHER; SKIN; SKIN/TOE CLIP	feather | skin	1
+FEATHER; TISSUE	feather | tissue	1
+FEATHERS	feathers	1
+FEATHERS - 1	feathers - 1	1
+FEATHERS ,FEATHERS	feathers	1
+FEATHERS ,SKEL	feathers | skeleton	1
+FEATHERS ,SKEL ,WING	feathers | skeleton | wing	1
+FEATHERS ,SKIN	feathers | skin	1
+FEATHERS ,SKIN ,SKEL ,SKEL	feathers | skin | skeleton	1
+FEATHERS ,TISSUE ,SKEL ,WING	feathers | skeleton | tissue | wing	1
+FEATHERS ,TISSUE ,WING ,SKEL	feathers | skeleton | tissue | wing	1
+FEATHERS ,WING	feathers | wing	1
+FEATHERS ,WING ,SKEL	feathers | skeleton | wing	1
+FEATHERS ,WING ,SKEL ,TISSUE	feathers | skeleton | tissue | wing	1
+FEATHERS ,WING ,TISSUE ,SKEL	feathers | skeleton | tissue | wing	1
+FEATHERS, SKELETON	feathers | skeleton	1
+FEATHERS, TAIL, WING	feathers | tail | wing	1
+FEATHERS, TISSUE	feathers | tissue	1
+FEATHERS, WING	feathers | wing	1
+FEATHERS/SKELETON	feathers | skin	1
+FEATHERS; ROUND SKIN	feathers | round skin	1
+FECAL PELLETS	fecal pellets	1
+FL	complete skeleton | flat skin	1
+FL | TISSUE	complete skeleton | flat skin | tissue	1
+FLAT	flat skin	1
+FLAT SKIN	flat skin	1
+FLAT SKIN, SKELETON, SYRINX - 1	skeleton | flat skin | syrinx - 1	1
+FLAT SKIN, SKELETON, TISSUE - 1	skeleton | flat skin | tissue - 1	1
+FLAT SKIN, SKELETON, WING - 1	skeleton | flat skin | wing - 1	1
+FLAT SKIN, TISSUE - 1	flat skin | tissue - 1	1
+FLAT SKIN, TISSUE, BULLA - 1	bulla - 1 | flat skin | tissue	1
+FLAT SKIN, TISSUE, WING - 1	flat skin | tissue | wing - 1	1
+FLAT SKIN, TISSUE, WING, SKELETON - 1	skeleton - 1 | flat skin | tissue | wing	1
+FLAT SKIN, WING - 1	flat skin | wing - 1	1
+FLAT, TISSUE	flat skin | tissue	1
+FLAT/PART SKEL	partial skeleton | flat skin	1
+FLAT/PART SKEL, TISSUE	partial skeleton | flat skin | tissue	1
+FLAT/SKEL	skeleton | flat skin	1
+FLAT/SKEL, TISSUE	skeleton | flat skin | tissue	1
+FLAT/SKEL/EGG SET	egg set | skeleton | flat skin	1
+FLAT/SKEL/WNG	skeleton | flat skin | wing	1
+FLAT/WING	flat skin | wing	1
+FLAT/WING, TISSUE	flat skin | tissue | wing	1
+FLAT/WING/PART SKEL	partial skeleton | flat skin | wing	1
+FLAT/WING/PART SKEL, TISSUE	partial skeleton | flat skin | tissue | wing	1
+FLAT/WING/SKEL	skeleton | flat skin | wing	1
+FLAT/WING/SKEL, TISSUE	skeleton | flat skin | tissue | wing	1
+FLAT/WING? SKEL	skeleton | flat skin | wing	1
+FLAT/WINGS/SKEL	skeleton | flat skin | wings	1
+FLAT_SKIN - 1	flat skin - 1	1
+FLAT_SKIN - 1; FLUID - 1	flat skin - 1 | fluid - 1	1
+FLAT_SKIN - 1; FLUID - 1; FEATHER - 1	flat skin - 1 | fluid - 1 | feather - 1	1
+FLAT_SKIN - 1; FLUID - 1; FEATHER - 2	flat skin - 1 | fluid - 1 | feather - 2	1
+FLAT_SKIN - 1; FLUID - 1; SKEL - 1	flat skin - 1 | fluid - 1 | skeleton - 1	1
+FLAT_SKIN - 1; IMAGE - 1; SKEL - 1	flat skin - 1 | image - 1 | skeleton - 1	1
+FLAT_SKIN - 1; SKEL - 1	flat skin - 1 | skeleton - 1	1
+FLAT_SKIN - 1; SKEL - 1; FEATHER - 10	flat skin - 1 | skeleton - 1 | feather - 10	1
+FLAT_SKIN - 1; SKEL - 1; FLUID - 1	flat skin - 1 | skeleton - 1 | fluid - 1	1
+FLAT_SKIN - 1; SKEL - 1; FLUID - NULL	flat skin - 1 | skeleton - 1 | fluid - null	1
+FLAT_SKIN - 1; SKEL - 1; SKIN/TOE CLIP - 1	flat skin - 1 | skeleton - 1	1
+FLAT_SKIN - 1; SKEL - 1; SYRINX - 1	flat skin - 1 | skeleton - 1 | syrinx - 1	1
+FLAT_SKIN - 1; SKEL - 1; TISSUE - 1	flat skin - 1 | skeleton - 1 | tissue - 1	1
+FLAT_SKIN - 1; SKEL - 1; TISSUE - 10	flat skin - 1 | skeleton - 1 | tissue - 10	1
+FLAT_SKIN - 1; SKEL - 1; TISSUE - 10; SYRINX - 1	flat skin - 1 | skeleton - 1 | tissue - 10 | syrinx - 1	1
+FLAT_SKIN - 1; SKEL - 1; WHOLE - 1	flat skin - 1 | skeleton - 1 | whole - 1	1
+FLAT_SKIN - 1; SKEL - 1; WINGS_TAIL - 1	flat skin - 1 | skeleton - 1 | wings_tail - 1	1
+FLAT_SKIN - 1; SKEL - NULL	flat skin - 1 | skeleton - null	1
+FLAT_SKIN - 1; SKEL - NULL; FLUID - 1	flat skin - 1 | skeleton - null | fluid - 1	1
+FLAT_SKIN - 1; SKEL - NULL; SKIN/TOE CLIP - 1	flat skin - 1 | skeleton - null	1
+FLAT_SKIN - 1; SKIN - 1	flat skin - 1 | skin - 1	1
+FLAT_SKIN - 1; SKIN - 1; SKEL - 1	flat skin - 1 | skin - 1 | skeleton - 1	1
+FLAT_SKIN - 1; SKIN/TOE CLIP - 1	flat skin - 1	1
+FLAT_SKIN - 1; SKIN/TOE CLIP - NULL	flat skin - 1	1
+FLAT_SKIN - 1; SYRINX - 1; SKEL - 1; TISSUE - 1; WINGS_TAIL - 1	flat skin - 1 | syrinx - 1 | skeleton - 1 | tissue - 1 | wings_tail - 1	1
+FLAT_SKIN - 1; TISSUE - 1	flat skin - 1 | tissue - 1	1
+FLAT_SKIN - 1; TISSUE - 1; SKEL - 1	flat skin - 1 | tissue - 1 | skeleton - 1	1
+FLAT_SKIN - 1; TISSUE - 1; SKEL - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	flat skin - 1 | tissue - 1 | skeleton - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+FLAT_SKIN - 1; TISSUE - 1; SKEL - 1; SYRINX - 1	flat skin - 1 | tissue - 1 | skeleton - 1 | syrinx - 1	1
+FLAT_SKIN - 1; TISSUE - 1; SKEL - 1; WINGS_TAIL - 1	flat skin - 1 | tissue - 1 | skeleton - 1 | wings_tail - 1	1
+FLAT_SKIN - 1; TISSUE - 1; SKIN - 1; SYRINX - 1	flat skin - 1 | tissue - 1 | skin - 1 | syrinx - 1	1
+FLAT_SKIN - 1; TISSUE - 10; SKEL - 1	flat skin - 1 | tissue - 10 | skeleton - 1	1
+FLAT_SKIN - 1; TISSUE - 30; SKEL - 1	flat skin - 1 | tissue - 30 | skeleton - 1	1
+FLAT_SKIN - 1; TISSUE - 5; SKEL - 1	flat skin - 1 | tissue - 5 | skeleton - 1	1
+FLAT_SKIN - 1; TISSUE - 50; SKEL - NULL	flat skin - 1 | tissue - 50 | skeleton - null	1
+FLAT_SKIN - NULL; SKEL - 1	flat skin - null | skeleton - 1	1
+FLAT_SKIN - NULL; SKEL - NULL	flat skin - null | skeleton - null	1
+FLAT_SKIN - NULL; TISSUE - 1; SKEL - 1; SYRINX - 1	flat skin - null | tissue - 1 | skeleton - 1 | syrinx - 1	1
+FLAT_SKIN; SKEL; SKIN/TOE CLIP	flat skin | skel	1
+FLAT_SKIN; SKIN/TOE CLIP	flat skin	1
+FLAT+WINGS	flat skin | wings	1
+FLATSKIN AND ALCOHOLIC	alcoholic | flat skin	1
+FLATSKIN AND ALCOHOLIC, TISSUE	alcoholic | flat skin | tissue	1
+FLATSKIN AND DISSECTED CARCASS	flat skin | dissected carcass	1
+FLATSKIN AND SKELETON	flat skin | skeleton	1
+FLATSKIN AND SKELETON, TISSUE	flat skin | skeleton | tissue	1
+FLATSKIN AND SKULL, TISSUE	flat skin | skull | tissue	1
+FLATSKIN ONLY	flat skin	1
+FLATSKIN ONLY, TISSUE	flat skin | tissue	1
+FLATSKIN, SKELETON, AND WING, TISSUE	flat skin | skeleton | wing | tissue	1
+FLUID	fluid	1
+FLUID - 1	fluid - 1	1
+FLUID - 1; FEATHER - 1; FLAT_SKIN - 1; FLUID - 1	fluid - 1 | feather - 1 | flat skin - 1 | fluid - 1	1
+FLUID - 1; FLAT_SKIN - 1; SKEL - 1	fluid - 1 | flat skin - 1 | skeleton - 1	1
+FLUID - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1; FLUID - 1	fluid - 1 | flat skin - 1 | tissue - 1 | skeleton - 1 | fluid - 1	1
+FLUID - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1; SYRINX - 1	fluid - 1 | flat skin - 1 | tissue - 1 | skeleton - 1 | syrinx - 1	1
+FLUID - 1; FLUID - 1	fluid - 1 | fluid - 1	1
+FLUID - 1; FLUID - 1; SKIN - 1	fluid - 1 | fluid - 1 | skin - 1	1
+FLUID - 1; IMAGE - 1	fluid - 1 | image - 1	1
+FLUID - 1; SKEL - 1	fluid - 1 | skeleton - 1	1
+FLUID - 1; SKEL - 1; SKIN - 1	fluid - 1 | skeleton - 1 | skin - 1	1
+FLUID - 1; SKIN - 1	fluid - 1 | skin - 1	1
+FLUID - 1; SKIN - 1; FLUID - 1	fluid - 1 | skin - 1 | fluid - 1	1
+FLUID - 1; SKIN - 1; SKEL - 1; SKIN/TOE CLIP - 1	fluid - 1 | skin - 1 | skeleton - 1	1
+FLUID - 1; SKIN - 1; SKIN/TOE CLIP - 1	fluid - 1 | skin - 1	1
+FLUID - 1; SKIN - 1; TISSUE - 50	fluid - 1 | skin - 1 | tissue - 50	1
+FLUID - 1; SYRINX - 1	fluid - 1 | syrinx - 1	1
+FLUID - 1; SYRINX - 1; SKEL - 1	fluid - 1 | syrinx - 1 | skeleton - 1	1
+FLUID - 1; SYRINX - 1; TISSUE - 1; SKEL - 1	fluid - 1 | syrinx - 1 | tissue - 1 | skeleton - 1	1
+FLUID - 1; SYRINX - 1; TISSUE - 1; SKIN - 1	fluid - 1 | syrinx - 1 | tissue - 1 | skin - 1	1
+FLUID - 1; TISSUE - 1	fluid - 1 | tissue - 1	1
+FLUID - 1; TISSUE - 1; SKEL - 1	fluid - 1 | tissue - 1 | skeleton - 1	1
+FLUID - 1; TISSUE - 1; SKIN - 1	fluid - 1 | tissue - 1 | skin - 1	1
+FLUID - 1; TISSUE - 10	fluid - 1 | tissue - 10	1
+FLUID - 1; TISSUE - 30	fluid - 1 | tissue - 30	1
+FLUID - 1; TISSUE - 50; SKIN - 1	fluid - 1 | tissue - 50 | skin - 1	1
+FLUID - 1; TISSUE - NULL; SKIN - 1	fluid - 1 | tissue - null | skin - 1	1
+FLUID - NULL	fluid - null	1
+FLUID HEAD AND PARTIAL SKELETON	fluid head | partial skeleton	1
+FLUID HEAD FEET IN SKIN	fluid head and feet in skin	1
+FLUID SKIN	fluid skin	1
+FLUID SKIN AND EMBRYOS	fluid skin | embryos	1
+FLUID, C&S	cleared and stained | fluid	1
+FLUID, C&S, DRY	dry | cleared and stained | fluid	1
+FLUID, C&S, DRY, FLUID	dry | cleared and stained | fluid	1
+FLUID, C&S, DRY, HEMIPENIS	cleared and stained | dry | fluid | hemipenis	1
+FLUID, C&S, HEMIPENIS	cleared and stained | fluid | hemipenis	1
+FLUID, DRY	dry | fluid	1
+FLUID, DRY, C&S	dry | cleared and stained | fluid	1
+FLUID, DRY, C&S, HEMIPENIS	cleared and stained | dry | fluid | hemipenis	1
+FLUID, DRY, FLUID	dry | fluid	1
+FLUID, DRY, HEMIPENIS	dry. fluid | hemipenis	1
+FLUID, DRY, HEMIPENIS, DRY	dry. fluid | hemipenis	1
+FLUID, DRY, TISSUE	dry | fluid | tissue	1
+FLUID, FLUID	fluid	1
+FLUID, FLUID, DRY	dry | fluid	1
+FLUID, FLUID, DRY, TISSUE	dry | fluid | tissue	1
+FLUID, FLUID, HEMIPENIS	fluid | hemipenis	1
+FLUID, FLUID, TISSUE	fluid | tissue	1
+FLUID, GLANS	fluid | glans	1
+FLUID, GLANS, KARYOTYPE	fluid | glans | karyotype	1
+FLUID, GLANS, KARYOTYPE, SKIN	fluid | glans | karyotype | skin	1
+FLUID, GLANS, SKIN, SKULL	fluid | glans | skin | skull	1
+FLUID, GLANS, SKULL	fluid | glans | skull	1
+FLUID, HEMIPENIS	fluid | hemipenis	1
+FLUID, HEMIPENIS, C&S	cleared and stained | fluid | hemipenis	1
+FLUID, HEMIPENIS, C&S, DRY	cleared and stained | dry | fluid | hemipenis	1
+FLUID, HEMIPENIS, DRY	dry | fluid | hemipenis	1
+FLUID, HEMIPENIS, DRY, C&S	cleared and stained | dry | fluid | hemipenis	1
+FLUID, HEMIPENIS, HEMIPENIS	fluid | hemipenis	1
+FLUID, HEMIPENIS, MICROTECHNIQUE	fluid | hemipenis | microtechnique	1
+FLUID, KARYO/COL, SKULL	fluid | karyotype | skull	1
+FLUID, KARYO/NC	fluid | karyotype	1
+FLUID, KARYO/NC, SKULL	fluid | karyotype | skull	1
+FLUID, KARYOTYPE	fluid | karyotype	1
+FLUID, KARYOTYPE, SKELETON, SKIN, SKULL	fluid | karyotype | skeleton | skin | skull	1
+FLUID, KARYOTYPE, SKELETON, SKULL	fluid | karyotype | skeleton | skull	1
+FLUID, KARYOTYPE, SKIN	fluid | karyotype | skin	1
+FLUID, KARYOTYPE, SKIN, SKULL	fluid | karyotype | skin | skull	1
+FLUID, KARYOTYPE, SKIN, SKULL, TISSUE	fluid | karyotype | skin | skull | tissue	1
+FLUID, KARYOTYPE, SKULL	fluid | karyotype | skull	1
+FLUID, KARYOTYPE, SKULL, TISSUE	fluid | karyotype | skull | tissue	1
+FLUID, KARYOTYPE, TISSUE	fluid | karyotype | tissue	1
+FLUID, KARYTYPE, SKIN, SKULL	fluid | karytype | skin | skull	1
+FLUID, KARYTYPE, SKULL	fluid | karytype | skull	1
+FLUID, LESUEURII	fluid	1
+FLUID, MICROTECHNIQUE	fluid | microtechnique	1
+FLUID, MICROTECHNIQUE, HEMIPENIS, TISSUE	fluid | hemipenis | microtechnique | tissue	1
+FLUID, MICROTECHNIQUE, MICROTECHNIQUE	fluid | microtechnique	1
+FLUID, MICROTECHNIQUE, MICROTECHNIQUE, MICROTECHNIQUE, TISSUE	fluid | microtechnique | tissue	1
+FLUID, MICROTECHNIQUE, MICROTECHNIQUE, TISSUE	fluid | microtechnique | tissue	1
+FLUID, MICROTECHNIQUE, MICROTECHNIQUE, TISSUE, MICROTECHNIQUE	fluid | microtechnique | tissue	1
+FLUID, MICROTECHNIQUE, RECORDING	fluid | microtechnique | recording	1
+FLUID, MICROTECHNIQUE, TISSUE	fluid | microtechnique | tissue	1
+FLUID, MISC	fluid | miscellaneous	1
+FLUID, PART, SKIN	fluid | partial skeleton | skin	1
+FLUID, PART, SKIN, TISSUE	fluid | partial skeleton | skin | tissue	1
+FLUID, PART, SKULL	fluid | partial skeleton | skull	1
+FLUID, RECORDING	fluid | recording	1
+FLUID, RECORDING, MICROTECHNIQUE	fluid | microtechnique | recording	1
+FLUID, RECORDING, TISSUE	fluid | recording | tissue	1
+FLUID, SKELETON	fluid | skeleton	1
+FLUID, SKELETON, SKIN	fluid | skeleton | skin	1
+FLUID, SKELETON, SKIN, SKULL	fluid | skeleton | skin | skull	1
+FLUID, SKELETON, SKULL	fluid | skeleton | skull	1
+FLUID, SKIN	fluid | skin	1
+FLUID, SKIN, SKULL	fluid | skin | skull	1
+FLUID, SKIN, SKULL, TISSUE	fluid | skin | skull | tissue	1
+FLUID, SKULL	fluid | skull	1
+FLUID, SKULL, TISSUE	fluid | skull | tissue	1
+FLUID, TISSUE	fluid | tissue	1
+FLUID, TISSUE, DRY	dry | fluid | tissue	1
+FLUID, TISSUE, FLUID	fluid | tissue	1
+FLUID, TISSUE, MICROTECHNIQUE	fluid | microtechnique | tissue	1
+FLUID, TISSUE, MICROTECHNIQUE, HEMIPENIS	fluid | hemipenis | microtechnique | tissue	1
+FLUID, TISSUE, RECORDING	fluid | recording | tissue	1
+FLUID; SKIN; SKEL; SKIN/TOE CLIP	fluid | skin | skel	1
+FLUID; SKIN; SKIN/TOE CLIP	fluid | skin	1
+FO	skin in alcohol	1
+FORMALIN	formalin	1
+FORMALIN - 1	formalin	1
+FOUR VERTEBRAE.	vertebrae - 4	1
+FP	partial skeleton | flat skin	1
+FP | TISSUE	partial skeleton | flat skin | tissue	1
+FRACCIÓN DE PIEL	partial skin	1
+FRACCIÓN DE PIEL, PIEL, SANGRE Y MUESTRA DE RIÑÓN	blood | kidney sample | partial skin	1
+FREEZE DRIED	freeze-dried	1
+FREEZE DRIED MOUNT	freeze-dried mount	1
+FREEZE DRIED SKIN	freeze-dried skin	1
+FREEZE-DRIED	freeze-dried	1
+FREEZER	frozen	1
+FRONTAL SECTION (MICROSLIDE)	frontal section (microslide)	1
+FROZEN	frozen	1
+FROZEN CARCASS	frozen carcass	1
+FROZEN CARCASS, TISSUE	frozen carcass | tissue	1
+FROZEN SPECIMEN	frozen specimens	1
+FROZEN TADPOLES	frozen tadpoles	1
+FS	flat skin (only)	1
+FULL SKELETON	full skeleton	1
+FULL SKELETON AND TAIL	full skeleton | tail	1
+FULL SKELETON, TISSUE	full skeleton | tissue	1
+GENBANK - 1; FEATHER - 1; SKIN - 1; GENBANK - 1	Genbank - 1 | feather - 1 | skin - 1 | Genbank - 1	1
+GENBANK - 1; FEATHER - 1; TISSUE - 1; SKEL - 1; GENBANK - 1	Genbank - 1 | feather - 1 | tissue - 1 | skeleton - 1 | Genbank - 1	1
+GENBANK - 1; FEATHER - 2; GENBANK - 2	Genbank - 1 | feather - 2 | Genbank - 2	1
+GENBANK - 1; GENBANK - 1; FLAT_SKIN - 1; SKEL - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | flat skin - 1 | skeleton - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; FEATHER - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | feather - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1; GENBANK - 1; FEATHER - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | flat skin - 1 | tissue - 1 | skeleton - 1 | Genbank - 1 | feather - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; FLUID - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | fluid - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; SKIN - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | skin - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; SKIN - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | skin - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; FLUID - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | fluid - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; SKIN - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | skin - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; SKIN - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | skin - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; SYRINX - 1; TISSUE - 1; SKIN - 1; SKEL - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | syrinx - 1 | tissue - 1 | skin - 1 | skeleton - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; FLUID - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | fluid - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; SKIN - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | skin - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; SKIN - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | skin - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; SKIN - 1; SKEL - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | skin - 1 | skeleton - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; FLUID - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | fluid - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; SKEL - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | skeleton - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; TISSUE - 1; SKIN - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | tissue - 1 | skin - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; GENBANK - 1; WINGS_TAIL - 1; SKEL - 1	Genbank - 1 | Genbank - 1 | Genbank - 1 | wings_tail - 1 | skeleton - 1	1
+GENBANK - 1; GENBANK - 1; SKEL - 1	Genbank - 1 | Genbank - 1 | skeleton - 1	1
+GENBANK - 1; GENBANK - 1; SKIN - 1	Genbank - 1 | Genbank - 1 | skin - 1	1
+GENBANK - 1; GENBANK - 1; SKIN - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | skin - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; SKIN - 1; TISSUE - 1	Genbank - 1 | Genbank - 1 | skin - 1 | tissue - 1	1
+GENBANK - 1; GENBANK - 1; SYRINX - 1; TISSUE - 1; SKEL - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | syrinx - 1 | tissue - 1 | skeleton - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; SYRINX - 1; TISSUE - 1; SKIN - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | syrinx - 1 | tissue - 1 | skin - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; SYRINX - 1; WINGS_TAIL - 1; TISSUE - 50; SKEL - 1	Genbank - 1 | Genbank - 1 | syrinx - 1 | wings_tail - 1 | tissue - 50 | skeleton - 1	1
+GENBANK - 1; GENBANK - 1; TISSUE - 1; GENBANK - 1; GENBANK - 1; SKIN - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | tissue - 1 | Genbank - 1 | Genbank - 1 | skin - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; TISSUE - 1; GENBANK - 1; SKEL - 1	Genbank - 1 | Genbank - 1 | tissue - 1 | Genbank - 1 | skeleton - 1	1
+GENBANK - 1; GENBANK - 1; TISSUE - 1; SKIN - 1	Genbank - 1 | Genbank - 1 | tissue - 1 | skin - 1	1
+GENBANK - 1; GENBANK - 1; TISSUE - 1; SKIN - 1; FEATHER - 1	Genbank - 1 | Genbank - 1 | tissue - 1 | skin - 1 | feather - 1	1
+GENBANK - 1; GENBANK - 1; TISSUE - 1; SKIN - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | tissue - 1 | skin - 1 | Genbank - 1	1
+GENBANK - 1; GENBANK - 1; TISSUE - 1; SKIN - 1; SKEL - 1	Genbank - 1 | Genbank - 1 | tissue - 1 | skin - 1 | skeleton - 1	1
+GENBANK - 1; GENBANK - 1; WINGS_TAIL - 1; TISSUE - 1; SKEL - 1; GENBANK - 1	Genbank - 1 | Genbank - 1 | wings_tail - 1 | tissue - 1 | skeleton - 1 | Genbank - 1	1
+GENBANK - 1; SKEL - 1	Genbank - 1 | skeleton - 1	1
+GENBANK - 1; SKEL - 1; TISSUE - 1	Genbank - 1 | skeleton - 1 | tissue - 1	1
+GENBANK - 1; SKIN - 1	Genbank - 1 | skin - 1	1
+GENBANK - 1; SKIN - 1; GENBANK - 1	Genbank - 1 | skin - 1 | Genbank - 1	1
+GENBANK - 1; SKIN - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | skin - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; SKIN - 1; IMAGE - 1	Genbank - 1 | skin - 1 | image - 1	1
+GENBANK - 1; SKIN - 1; SKIN/TOE CLIP - 1	Genbank - 1 | skin - 1	1
+GENBANK - 1; SYRINX - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1; GENBANK - 1	Genbank - 1 | syrinx - 1 | flat skin - 1 | tissue - 1 | skeleton - 1 | Genbank - 1	1
+GENBANK - 1; SYRINX - 1; TISSUE - 1; SKEL - 1	Genbank - 1 | syrinx - 1 | tissue - 1 | skeleton - 1	1
+GENBANK - 1; SYRINX - 1; TISSUE - 1; SKIN - 1; GENBANK - 1	Genbank - 1 | syrinx - 1 | tissue - 1 | skin - 1 | Genbank - 1	1
+GENBANK - 1; SYRINX - 1; TISSUE - 1; SKIN - 1; SKEL - 1; GENBANK - 1	Genbank - 1 | syrinx - 1 | tissue - 1 | skin - 1 | skeleton - 1 | Genbank - 1	1
+GENBANK - 1; SYRINX - 1; TISSUE - 1; SKIN - 1; SKEL - NULL; FEATHER - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | syrinx - 1 | tissue - 1 | skin - 1 | skeleton - null | feather - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 0; SKIN - 1; GENBANK - 1	Genbank - 1 | tissue - 0 | skin - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 1; FLUID - 1; GENBANK - 1	Genbank - 1 | tissue - 1 | fluid - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 1; FLUID - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | tissue - 1 | fluid - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | tissue - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 1; SKEL - 1	Genbank - 1 | tissue - 1 | skeleton - 1	1
+GENBANK - 1; TISSUE - 1; SKEL - 1; GENBANK - 1	Genbank - 1 | tissue - 1 | skeleton - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 1; SKEL - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | tissue - 1 | skeleton - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 1; SKIN - 1	Genbank - 1 | tissue - 1 | skin - 1	1
+GENBANK - 1; TISSUE - 1; SKIN - 1; GENBANK - 1	Genbank - 1 | tissue - 1 | skin - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 1; SKIN - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | tissue - 1 | skin - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 1; SKIN - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | tissue - 1 | skin - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 1; SKIN - 1; SKEL - 1	Genbank - 1 | tissue - 1 | skin - 1 | skeleton - 1	1
+GENBANK - 1; TISSUE - 1; SKIN - 1; SKEL - 1; GENBANK - 1	Genbank - 1 | tissue - 1 | skin - 1 | skeleton - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 1; SKIN - 1; SKEL - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | tissue - 1 | skin - 1 | skeleton - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 1; SKIN - 1; SKEL - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | tissue - 1 | skin - 1 | skeleton - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; TISSUE - 50; SKEL - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | tissue - 50 | skeleton - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK - 1; WINGS_TAIL - 1	Genbank - 1 | wings_tail - 1	1
+GENBANK - 1; WINGS_TAIL - 1; TISSUE - 1; GENBANK - 1	Genbank - 1 | wings_tail - 1 | tissue - 1 | Genbank - 1	1
+GENBANK - 1; WINGS_TAIL - 1; TISSUE - 24; SKEL - 1; GENBANK - 1; GENBANK - 1	Genbank - 1 | wings_tail - 1 | tissue - 24 | skeleton - 1 | Genbank - 1 | Genbank - 1	1
+GENBANK; SKIN; SKIN/TOE CLIP	Genbank | skin	1
+GLANS, SKELETON, SKIN, SKULL	glans | skeleton | skin | skull	1
+GLANS, SKIN, SKULL	glans | skin | skull	1
+GLY BODY AND DRY SKULL (GLY AND DRY)	body (glycerin) | skull	1
+H	schmoo	1
+H | TISSUE	shmoo | tissue	1
+HA	HA	1
+HALF OF PELVIC GIRDLE (GLYCERIN)	half of pelvic girdle (glycerin)	1
+HATCHLING SPECIMENS IN ALCOHOL AND EGG SHELLS	egg shells | hatchlings in alcohol	1
+HEAD	head	1
+HEAD  WING & FOOT	head | wing | foot	1
+HEAD & NECK (DRY)	head | neck	1
+HEAD & NECK (GLYCERIN)	head (glycerin) | neck (glycerin)	1
+HEAD (GLYCERIN)	head (glycerin)	1
+HEAD AND LEGS IN FLUID	fluid head | fluid legs	1
+HEAD AND N	head | neck	1
+HEAD AND NECK	head | neck	1
+HEAD AND OVARIES IN FLUID	fluid head | ovaries	1
+HEAD AND TAIL IN FLUID	fluid head | fluid tail	1
+HEAD IN ALCOHOL	head in alcohol	1
+HEAD NECK VERTEBRAE RIBS GIRDLES (DRY + GLYCERIN)	girdles | head | neck | ribs | vertebrae	1
+HEAD ONLY	head	1
+HEAD, LEGS, AND TAIL IN ALCOHOL	head | legs | and tail in alcohol	1
+HEAD/UPPER LIMBS/TRUNK (DRY)	head | trunk | upper limbs	1
+HEAD/WING/FOOT/SKELETON	head | wing | foot | skeleton	1
+HEAD+ANTERIOR BODY (GLYCERIN)	anterior body (glycerin) | head (glycerin)	1
+HEAD+FEATH.	head | feathers	1
+HEAD+NECK (GLYCERIN)	head (glycerin) | neck (glycerin)	1
+HEADLESS SKIN, SKELETON	headless skin | skeleton	1
+HEMIPENE (GLYCERIN)	hemipene (glycerin)	1
+HEMIPENES (GLYCERIN)	hemipenes (glycerin)	1
+HEMIPENIS	hemipenis	1
+HEMIPENIS (GLYCERIN)	hemipenes (glycerin)	1
+HEMIPENIS, C&S, DRY, FLUID	cleared and stained | dry | fluid | hemipenis	1
+HEMIPENIS, C&S, FLUID	cleared and stained | fluid | hemipenis	1
+HEMIPENIS, DRY	dry | hemipenis	1
+HEMIPENIS, DRY, C&S, FLUID	cleared and stained | dry | fluid | hemipenis	1
+HEMIPENIS, DRY, C&S, FLUID, FLUID	cleared and stained | dry | fluid | hemipenis	1
+HEMIPENIS, DRY, DRY	dry | hemipenis	1
+HEMIPENIS, DRY, FLUID	dry | fluid | hemipenis	1
+HEMIPENIS, FLUID	fluid | hemipenis	1
+HEMIPENIS, FLUID, C&S	cleared and stained | fluid | hemipenis	1
+HEMIPENIS, FLUID, DRY	dry | fluid | hemipenis	1
+HEMIPENIS, FLUID, DRY, C&S	cleared and stained | dry | fluid | hemipenis	1
+HEMIPENIS, FLUID, FLUID	fluid | hemipenis	1
+HEMIPENIS, FLUID, FLUID, DRY	dry | fluid | hemipenis	1
+HEMIPENIS, MICROTECHNIQUE, FLUID	fluid | hemipenis | microtechnique	1
+HEMIPENIS, TISSUE, DRY	dry | hemipenis | tissue	1
+HL	shmoo | complete skeleton	1
+HL | TISSUE	complete skeleton | shmoo | tissue	1
+HM	head mount	1
+HO	head	1
+HORN	horn	1
+HORN/SKULL BASE	horn | skull base	1
+HORNS & ADJACENT SKULL	horns and adjacent skull	1
+HORNS AND HORN CORES ONLY	horns | horn cores	1
+HORNS O.	horns	1
+HP	shmoo | partial skeleton	1
+HP | TISSUE	partial skeleton | shmoo | tissue	1
+HT	head | skin | tail	1
+HUMERUS O.	humeris	1
+HYOID (GLYCERIN)	hyoid (glycerin)	1
+HYOID ONLY	hyoid	1
+HYOID, DRY SKELETON	dry skeleton | hyoid	1
+HYOID/BACULA	baculum | hyoid	1
+IMAGE - 1; IMAGE - 1; SKIN - 1	image - 1 | image - 1 | skin - 1	1
+IMAGE - 1; SKIN - 1	image - 1 | skin - 1	1
+IMAGE - 1; TISSUE - 1; SKIN - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	image - 1 | tissue - 1 | skin - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+IMAGE - 2; NEST - 1	image - 2 | nest - 1	1
+IMAGE; IMAGE; SKIN	image | skin	1
+IMAGE; NEST	image | nest	1
+IMAGE; SKIN	image | skin	1
+INCISOR FRAG	incisor fragment	1
+INCISOR FRAG UPPER	upper incisor fragment	1
+INCISOR FRAG, CHEEKTOOTH FRAG	cheektooth fragment | incisor fragment	1
+INCISOR FRAGMENT.	incisor fragment	1
+INCISOR PORT	incisor port	1
+INCISOR UPPER	upper incisor	1
+INCISOR, MANY FRAGMENTED.	incisors | fragmented incisors	1
+INCISOR.	incisor	1
+INCOM (DRY)	partial animal	1
+INCOM SKULL MISSING (DRY)	post-cranial	1
+INCOMPLETE (DRY)	partial animal	1
+INCOMPLETE (DRY), TISSUE	partial animal | tissue	1
+INCOMPLETE TAIL (DRY)	partial tail	1
+INCOMPLETE/NO SKULL (DRY)	post-cranial	1
+INCOMPLETE/SKULL MISSING (DRY)	post-cranial	1
+INCOMPLETE: BODY ONLY	body	1
+INCOMPLETE: BODY ONLY, TISSUE	body | tissue	1
+INCOMPLETE: SKULL AND WING(S) ONLY	skull | wings	1
+INCOMPLETE: SKULL AND WING(S) ONLY, TISSUE	skull | wings | tissue	1
+INCOMPLETE: SKULL ONLY	skull	1
+INCOMPLETE: SKULL ONLY, TISSUE	skull | tissue	1
+INFILTRATED SPECIMEN	infiltrated specimen	1
+ISOLATED LIMB BONE	limb bone	1
+JAW	jaw	1
+JAW & FORELIMB O.	jaw | forelimb	1
+JAW BONES (DRY)	jaw bones	1
+JAWS ONLY	jaws	1
+KARYOTYPE, SKELETON, SKIN, SKULL	karyotype | skeleton | skin | skull	1
+KARYOTYPE, SKELETON, SKIN, SKULL, TISSUE	karyotype | skeleton | skin | skull | tissue	1
+KARYOTYPE, SKELETON, SKULL	karyotype | skeleton | skull	1
+KARYOTYPE, SKELETON, SKULL, TISSUE	karyotype | skeleton | skull | tissue	1
+KARYOTYPE, SKIN, SKULL	karyotype | skin | skull	1
+KARYOTYPE, SKIN, SKULL, TISSUE	karyotype | skin | skull | tissue	1
+KARYOTYPE, SKULL	karyotype | skull	1
+KB	study skin | body skeleton	1
+L	complete skeleton	1
+L | TISSUE	complete skeleton | tissue	1
+L WING	left wing	1
+L:	complete skeleton	1
+L: | TISSUE	complete skeleton | tissue	1
+LA (12)	adults	1
+LA (19)	adults	1
+LA (32)	adults	1
+LA(5)	adults	1
+LARVA	larva	1
+LARVAE	larvae	1
+LARVAE/FORM.	larvae in formalin	1
+LAST LUMBAR VERTEBRA.	last lumbar vertebra	1
+LE	larvae	1
+LE (>50)	larvae	1
+LE (1)	larva	1
+LE (12)	larva	1
+LE (13)	larva	1
+LE (14)	larva	1
+LE (15)	larva	1
+LE (18)	larva	1
+LE (19)	larva	1
+LE (2)	larva	1
+LE (20)	larva	1
+LE (21)	larva	1
+LE (22)	larva	1
+LE (23)	larva	1
+LE (26)	larva	1
+LE (27)	larva	1
+LE (3)	larva	1
+LE (36)	larva	1
+LE (4)	larva	1
+LE (5)	larva	1
+LE (6)	larva	1
+LE (68)	larva	1
+LE (8)	larva	1
+LE (80)	larva	1
+LE (83)	larva	1
+LE (97)	larva	1
+LEADING EDGE OF STERNUM.	leading edge of sternum	1
+LEFT ANTLER ONLY	left antler	1
+LEFT COSTAL #1 (DRY)	left costal #1	1
+LEFT DENTARY O.	left dentary	1
+LEFT FOOT BONES ONLY	left foot bones	1
+LEFT HORN O.	left horn	1
+LEFT LOWER JAW+QUADRATE+SQUAMOSAL (DRY)	left lower jaw | quadrate | squamosal	1
+LEFT MANDIBLE O.	left mandible	1
+LEFT UPPER C1, LEFT LOWER C1	left upper C1 | left lower C1	1
+LF	larvae in formalin	1
+LF (1)	larva in formalin	1
+LF (10)	larvae in formalin	1
+LF (107)	larvae in formalin	1
+LF (11)	larvae in formalin	1
+LF (12)	larvae in formalin	1
+LF (129)	larvae in formalin	1
+LF (13)	larvae in formalin	1
+LF (133)	larvae in formalin	1
+LF (14)	larvae in formalin	1
+LF (15)	larvae in formalin	1
+LF (16)	larvae in formalin	1
+LF (17)	larvae in formalin	1
+LF (18)	larvae in formalin	1
+LF (19)	larvae in formalin	1
+LF (196)	larvae in formalin	1
+LF (2)	larvae in formalin	1
+LF (20)	larvae in formalin	1
+LF (21)	larvae in formalin	1
+LF (22)	larvae in formalin	1
+LF (23)	larvae in formalin	1
+LF (231)	larvae in formalin	1
+LF (24)	larvae in formalin	1
+LF (25)	larvae in formalin	1
+LF (26)	larvae in formalin	1
+LF (29)	larvae in formalin	1
+LF (3)	larvae in formalin	1
+LF (30)	larvae in formalin	1
+LF (32)	larvae in formalin	1
+LF (33)	larvae in formalin	1
+LF (35)	larvae in formalin	1
+LF (36)	larvae in formalin	1
+LF (37)	larvae in formalin	1
+LF (38)	larvae in formalin	1
+LF (4)	larvae in formalin	1
+LF (41)	larvae in formalin	1
+LF (45)	larvae in formalin	1
+LF (46)	larvae in formalin	1
+LF (4766)	larvae in formalin	1
+LF (48)	larvae in formalin	1
+LF (49)	larvae in formalin	1
+LF (5)	larvae in formalin	1
+LF (53)	larvae in formalin	1
+LF (54)	larvae in formalin	1
+LF (55)	larvae in formalin	1
+LF (6)	larvae in formalin	1
+LF (61)	larvae in formalin	1
+LF (63)	larvae in formalin	1
+LF (64)	larvae in formalin	1
+LF (65)	larvae in formalin	1
+LF (67)	larvae in formalin	1
+LF (68)	larvae in formalin	1
+LF (69)	larvae in formalin	1
+LF (7)	larvae in formalin	1
+LF (72)	larvae in formalin	1
+LF (73)	larvae in formalin	1
+LF (75)	larvae in formalin	1
+LF (77)	larvae in formalin	1
+LF (78)	larvae in formalin	1
+LF (8)	larvae in formalin	1
+LF (81)	larvae in formalin	1
+LF (9)	larvae in formalin	1
+LF (93)	larvae in formalin	1
+LF(1)	larvae in formalin	1
+LF(143)	larvae in formalin	1
+LF(6)	larvae in formalin	1
+LF(9)	larvae in formalin	1
+LIMB BONE SHAFT	limb bone shaft	1
+LIMB ELEMENT.	limb element	1
+LIMB ELEMENTS	limb elements	1
+LIMBS VERTEBRAE (DRY)	limbs | vertebrae	1
+LÍQUIDO	fluid	1
+LÍQUIDO, CRÁNEO	fluid | skull	1
+LO	other prep | complete skeleton	1
+LO | TISSUE	other prep | complete skeleton | tissue	1
+LOWER JAW (DRY)	lower jaw	1
+LOWER JAW O.	lower jaw	1
+LOWER JAW ONLY	lower jaw	1
+LOWER JAW SHELL (DRY)	lower jaw | shell	1
+LOWER JAW+VERTEBRAE+RIBS (DRY)	lower jaw | ribs | vertebrae	1
+L-SEC (MICROSLIDE)	L-section (microslide)	1
+L-SEC MOUTH (MICROSLIDE)	L-section mouth (microslide)	1
+L-SEC SERIAL (MICROSLIDE)	L-section serial (microslide)	1
+LY (10)	young from egg clutch/litter	1
+LY (11)	young from egg clutch/litter	1
+LY (12)	young from egg clutch/litter	1
+LY (5)	young from egg clutch/litter	1
+LY (6)	young from egg clutch/litter	1
+LY (7)	young from egg clutch/litter	1
+LY (8)	young from egg clutch/litter	1
+MANDIBLE	mandible	1
+MANDIBLE (DRY)	mandible	1
+MANDIBLES O.	mandibles	1
+MAXILLA (DRY)	maxilla	1
+MAXILLA AND FANGS	fangs | maxilla	1
+MAXILLA/MANDIBLE (DRY)	mandible | maxilla	1
+ME	metamorphosed juveniles	1
+ME (10)	metamorphosed juveniles	1
+ME (11)	metamorphosed juveniles	1
+ME (12)	metamorphosed juveniles	1
+ME (14)	metamorphosed juveniles	1
+ME (2)	metamorphosed juveniles	1
+ME (26)	metamorphosed juveniles	1
+ME (28)	metamorphosed juveniles	1
+ME (4)	metamorphosed juveniles	1
+ME (5)	metamorphosed juveniles	1
+ME (6)	metamorphosed juveniles	1
+ME (9)	metamorphosed juveniles	1
+ME(1)	metamorphosed juveniles	1
+METACARPAL O.	metacarpal	1
+MICROTECHNIQUE, DRY	dry | microtechnique	1
+MICROTECHNIQUE, FLUID	fluid | microtechnique	1
+MICROTECHNIQUE, FLUID, HEMIPENIS	fluid | hemipenis | microtechnique	1
+MICROTECHNIQUE, FLUID, MICROTECHNIQUE	fluid | microtechnique	1
+MICROTECHNIQUE, FLUID, MICROTECHNIQUE, MICROTECHNIQUE	fluid | microtechnique	1
+MICROTECHNIQUE, FLUID, MICROTECHNIQUE, MICROTECHNIQUE, TISSUE	fluid | microtechnique | tissue	1
+MICROTECHNIQUE, FLUID, MICROTECHNIQUE, TISSUE, MICROTECHNIQUE	fluid | microtechnique | tissue	1
+MICROTECHNIQUE, FLUID, RECORDING	fluid | microtechnique | recording	1
+MICROTECHNIQUE, FLUID, TISSUE	fluid | microtechnique | tissue	1
+MICROTECHNIQUE, HEMIPENIS, FLUID	fluid | hemipenis | microtechnique	1
+MICROTECHNIQUE, MICROTECHNIQUE, FLUID	fluid | microtechnique	1
+MICROTECHNIQUE, MICROTECHNIQUE, FLUID, TISSUE	fluid | microtechnique | tissue	1
+MICROTECHNIQUE, MICROTECHNIQUE, MICROTECHNIQUE, FLUID	fluid | microtechnique	1
+MICROTECHNIQUE, MICROTECHNIQUE, MICROTECHNIQUE, MICROTECHNIQUE, FLUID	fluid | microtechnique	1
+MICROTECHNIQUE, MICROTECHNIQUE, MICROTECHNIQUE, TISSUE, FLUID	fluid | microtechnique | tissue	1
+MICROTECHNIQUE, MICROTECHNIQUE, TISSUE, FLUID	fluid | microtechnique | tissue	1
+MICROTECHNIQUE, MICROTECHNIQUE, TISSUE, FLUID, MICROTECHNIQUE	fluid | microtechnique | tissue	1
+MICROTECHNIQUE, MICROTECHNIQUE, TISSUE, MICROTECHNIQUE, FLUID	fluid | microtechnique | tissue	1
+MICROTECHNIQUE, RECORDING, FLUID	fluid | microtechnique | recording	1
+MICROTECHNIQUE, TISSUE, FLUID	fluid | microtechnique | tissue	1
+MICROTECHNIQUE, TISSUE, MICROTECHNIQUE, MICROTECHNIQUE, FLUID	fluid | microtechnique | tissue	1
+MISC	miscellaneous	1
+MISC - 1	miscellaneous	1
+MISC.	miscellaneous	1
+MISC.; MISC.	miscellaneous	1
+MISC.; NO DATA	miscellaneous	1
+MISC.; SKELETON	miscellaneous | skeleton	1
+MISC.; SKIN	miscellaneous | skin	1
+MISC.; STUDY SKIN	miscellaneous | study skin	1
+MISC.; WHOLE (ETOH)	miscellaneous | whole animal (ETOH)	1
+MISCELLANEOUS	miscellaneous	1
+MOUNT	mount	1
+MOUNT AS A DECOY	mount	1
+MOUNT, BLOOD	mount | blood	1
+MOUNT, SKELETON	mount | skeleton	1
+MOUNT, TISSUE	mount | tissue	1
+MOUNT/NEST	mount | nest	1
+MOUNT/PART SKEL	mount | partial skeleleton	1
+MOUNT/PART SKEL, TISSUE	mount | partial skeleton | tissue	1
+MOUNT/SKELETON	mount | skeleton	1
+MOUNT/SKULL	mount | skull	1
+MOUNT/SKULL/BACULUM/TISSUE	baculum | mount | skull | tissue	1
+MOUNT; BLOOD	blood | mount	1
+MOUNT?	mount	1
+MOUNTED	mount	1
+MOUNTED ANTLERS	mounted antlers	1
+MOUNTED ARTICULATED SKELETON	mounted articulated skeleton	1
+MOUNTED BEAUCHENE SKULL	mounted Beauchene skull	1
+MOUNTED HEAD	mounted head	1
+MOUNTED SKEL	mounted skeleton	1
+MOUNTED SKELETON	skeleton (mounted)	1
+MOUNTED SKULL; ANTLERS	antlers | mounted skull	1
+MOUNTED SPECIMEN	mount	1
+MS	mixed larvae and subadults	1
+MS (>100)	mixed larvae and subadults	1
+MS (>30)	mixed larvae and subadults	1
+MS (>40)	mixed larvae and subadults	1
+MS (>50)	mixed larvae and subadults	1
+MS (>60)	mixed larvae and subadults	1
+MS (>80)	mixed larvae and subadults	1
+MS (10)	mixed larvae and subadults	1
+MS (11)	mixed larvae and subadults	1
+MS (1-14)	mixed larvae and subadults	1
+MS (23)	mixed larvae and subadults	1
+MS (27)	mixed larvae and subadults	1
+MS (28)	mixed larvae and subadults	1
+MS (29)	mixed larvae and subadults	1
+MS (32)	mixed larvae and subadults	1
+MS (38)	mixed larvae and subadults	1
+MS (45)	mixed larvae and subadults	1
+MS (467)	mixed larvae and subadults	1
+MS (6)	mixed larvae and subadults	1
+MS (71)	mixed larvae and subadults	1
+MS (8)	mixed larvae and subadults	1
+MULTIPLE SKELETONS	skeletons (multiple)	1
+MUMIFIED TAIL	mummified tail	1
+MUMMIFIED	mummy	1
+MUMMIFIED SPECIMEN	mummy	1
+MUMMY	mummy	1
+MUMMY (SKIN, INCLUDED SKULL)	mummy	1
+MUMMY, TISSUE	mummy | tissue	1
+MUSEUM MOUNT	mount	1
+N	round skin	1
+N | TISSUE	round skin | tissue	1
+NEST	nest	1
+NEST - 1	nest - 1	1
+NEST - 1; EGGSET - 0	nest - 1 | eggset - 0	1
+NEST - 1; EGGSET - 1	nest - 1 | eggset - 1	1
+NEST - 1; EGGSET - 1; SKIN - 1	nest - 1 | eggset - 1 | skin - 1	1
+NEST - 1; EGGSET - 1; TISSUE - 1	nest - 1 | eggset - 1 | tissue - 1	1
+NEST - 1; EGGSET - 2	nest - 1 | eggset - 2	1
+NEST - 1; EGGSET - 4	nest - 1 | eggset - 4	1
+NEST - 1; EGGSET - 7	nest - 1 | eggset - 7	1
+NEST - 1; EGGSET - NULL	nest - 1 | eggset - null	1
+NEST - 1; SKIN - 1	nest - 1 | skin - 1	1
+NEST - 1; SKIN - 1; EGGSET - 1	nest - 1 | skin - 1 | eggset - 1	1
+NEST - 50	nest - 50	1
+NEST - NULL	nest - null	1
+NEST & EGGS	eggs | nest	1
+NEST GROUP	nests	1
+NEST WITH EGGS	eggs | nest	1
+NEST WITH EGGS, TISSUE	eggs | nest | tissue	1
+NEST, ALCOHOLIC	alcoholic | nest	1
+NEST, EGGSET	eggs | nest	1
+NEST, TISSUE	nest | tissue	1
+NEST; EGGSET	eggs | nest	1
+NEST; EGGSET; SKIN	eggs | nest | skin	1
+NEST; EGGSET; TISSUE	eggs | nest | tissue	1
+NEST; MISC.	miscellaneous | nest	1
+NEST; SKIN	nest | skin	1
+NEST; SKIN; EGGSET	eggs | nest | skin	1
+NEST``	nest	1
+NO DATA		1
+NO SKIN	none	1
+NO SPECIMEN		1
+NP	partial skeleton | round skin	1
+NP | TISSUE	partial skeleton | round skin | tissue	1
+O	other prep	1
+O | TISSUE	other prep | tissue	1
+OCCIPITALS ONLY (DRY)	occipitals	1
+ONE VERTEBRA	vertebra	1
+OS	os	1
+OT	other	1
+OT*	other	1
+OTHER	other	1
+OTHER PICKLED MATERIAL	pickled material	1
+OTHER PICKLED MATERIAL, TISSUE	pickled material | tissue	1
+OTHER PREP	other prep	1
+OVARIES	ovaries	1
+P	partial skeleton	1
+P | TISSUE	partial skeleton | tissue	1
+PAIR OF ANTLERS	antlers (pair)	1
+PAIR OF DENTARIES	dentaries (pair)	1
+PAR SKEL + DNA	DNA | partial skeleton	1
+PAR SKELETON, WING, SKIN, DNA	DNA | partial skeleton | skin | wing	1
+PAR. SKELETON	partial skeleton	1
+PAR. SKELETON, WING, DNA	DNA | partial skeleton | wing	1
+PAR.SKEL, WING, DNA	DNA | partial skeleton | wing	1
+PAR.SKELETON, WING, DNA	DNA | partial skeleton | wing	1
+PART	partial skeleton	1
+PART BODY SKELETON	partial body skeleton	1
+PART OF UPPER TOOTH ROW (MICROSLIDE)	partial upper tooth row (microslide)	1
+PART SKEL	partial skeleton	1
+PART SKEL, TISSUE	partial skeleton | tissue	1
+PART SKEL/WING	part skeleton | wing	1
+PART SKEL/WING, TISSUE	partial skeleton | tissue | wing	1
+PART SKEL; TISSUE; ROUND SKIN	partial skeleton | round skin | tissue	1
+PART SKIN	partial skin	1
+PART SKIN/PART SKEL	parital skeleton | partial skin	1
+PART SKIN/SKEL	skeleton | partial skin	1
+PART SKULL & SEVERAL CERV	partial body skeleton | cervicals	1
+PART WING/LEG SKEL	partial wing/leg | skeleton	1
+PART, SKIN	partial skeleton | skin	1
+PART, SKIN, SKULL	partial skeleton | skin | skull	1
+PART, SKIN, TISSUE	partial skeleton | skin | tissue	1
+PART, SKULL	partial skeleton | skull	1
+PART. MUMMY	partial mummy	1
+PART. SK	partial skeleton	1
+PARTIAL (DRY), TISSUE	partial animal | tissue	1
+PARTIAL (ETOH)	partial animal (ETOH)	1
+PARTIAL (FORMALIN)	partial animal (formalin)	1
+PARTIAL BODY SKELETON	partial body skeleton	1
+PARTIAL CARAPACE (DRY)	partial carapace	1
+PARTIAL FLAT SKIN	partial flat skin	1
+PARTIAL SHELL (DRY)	parital shell	1
+PARTIAL SHELL AND FLUID PARTS	partial shell | fluid parts	1
+PARTIAL SKEL	partial skeleton	1
+PARTIAL SKEL + OTHER (SURROGATE PUPPET) + DNA (MUSCLE)	DNA (muscle) | partial skeleton | surrogate puppet	1
+PARTIAL SKEL + WING + DNA (HEART+MUSCLE)	DNA (heart, muscle) | partial skeleton | wing	1
+PARTIAL SKEL, WING, DNA	DNA | partial skeleton | wing	1
+PARTIAL SKEL/BACULUM	baculum | partial skeleton	1
+PARTIAL SKEL/WING	partial skeleton | wing	1
+PARTIAL SKELETON	partial skeleton	1
+PARTIAL SKELETON - 1	partial skeleton - 1	1
+PARTIAL SKELETON (DRY)	partial skeleton	1
+PARTIAL SKELETON (LACKS ANT. F	partial skeleton	1
+PARTIAL SKELETON AND FLUID HEAD	partial skeleton | fluid head	1
+PARTIAL SKELETON AND FLUID HEAD AND TAIL	partial skeleton | fluid head | fluid tail	1
+PARTIAL SKELETON AND FLUID SKIN	partial skeleton | fluid skin	1
+PARTIAL SKELETON AND SHELL AND GONADS IN FLUID	partial skeleton | fluid shell | fluid gonads	1
+PARTIAL SKELETON AND SOFT PARTS IN FLUID	partial skeleton | fluid soft parts	1
+PARTIAL SKELETON CARAPACE (DRY)	carapace | partial skeleton	1
+PARTIAL SKELETON FOR DISPLAY	partial skeleton (display)	1
+PARTIAL SKELETON ONLY	partial skeleton	1
+PARTIAL SKELETON SHELL (DRY)	shell | partial skeleton	1
+PARTIAL SKELETON, FEATHERS	partial skeleton | feathers	1
+PARTIAL SKELETON, PORTIONS OF CARAPACE	partial skeleton | partial carapace	1
+PARTIAL SKELETON, SKIN	partial skeleton | skin	1
+PARTIAL SKELETON, SKIN, TISSUE	partial skeleton | skin | tissue	1
+PARTIAL SKELETON, SKIN, TISSUE, WING	partial skeleton | skin | tissue | wing	1
+PARTIAL SKELETON, TAIL, TISSUE, WING	partial skeleton | tail | tissue | wing	1
+PARTIAL SKELETON, TAIL, WING	partial skeleton | tail | wing	1
+PARTIAL SKELETON, TISSUE	partial skeleton | tissue	1
+PARTIAL SKELETON, TISSUE, WING	partial skeleton | tissue | wing	1
+PARTIAL SKELETON, WING	partial skeleton | wing	1
+PARTIAL SKELETON, WING, DNA	DNA | partial skeleton | wing	1
+PARTIAL SKELETON, WING, TISSUE	partial skeleton | wing | tissue	1
+PARTIAL SKELETON; FLAT SKIN	partial skeleton | flat skin	1
+PARTIAL SKELETON; TAIL	partial skeleton | tail	1
+PARTIAL SKELETON; TAIL; TISSUE; WING	partial skeleton | tail | tissue | wing	1
+PARTIAL SKELETON; TISSUE; FLAT SKIN	partial skeleton | flat skin | tissue	1
+PARTIAL SKELETON; WING	partial skeleton | wing	1
+PARTIAL SKIN	partial skin	1
+PARTIAL SKIN/SKEL	skeleton | partial skin	1
+PARTIAL SKULL	partial skull	1
+PARTIAL SKULL & MANDIBLE	partial skull | mandible	1
+PARTIAL SKULL (DRY)	partial skull	1
+PARTIAL SKULL ONLY	partial skull	1
+PARTIAL SKULL ONLY (DRY)	partial skull	1
+PARTIAL SKULL VERTEBRAE (DRY)	partial skull | vertebrae	1
+PARTIAL WING	partial wing	1
+PARTIAL: SKULL AND TAIL ONLY	skull | tail	1
+PARTIAL: SKULL AND TAIL ONLY, TISSUE	skull | tail | tissue	1
+PAW ONLY	paw	1
+PB	pb	1
+PECTORAL GIRDLE (DRY)	pectoral girdle	1
+PECTORAL GIRDLE (MICROSLIDE)	pectoral girdle (microslide)	1
+PECTORAL GIRDLE (MICROSLIDES)	pectoral girdle (microslides)	1
+PECTORAL REGION (MICROSLIDES)	pectoral region (microslides)	1
+PELT	pelt	1
+PELT/SKEL	pelt | skeleton	1
+PELT/SKELETON	pelt | skeleton	1
+PELT/SKULL	pelt | skull	1
+PELVIS & VERTEBRA ONLY	pelvis | vertebra	1
+PELVIS LEG (DRY)	leg | pelvis	1
+PERIOTIC BONE	periotic bone	1
+PHOTO VOUCHER	photo voucher	1
+PICK UP HORNS	horns	1
+PICKLED EMBRYO	pickled embryo	1
+PICKLED HEAD, LEG, AND WING, REMAINDER AS SKELETON. DRIED BONELESS WING., TISSUE	pickled head | leg | wing | skeleton | dried boneless wing | tissue	1
+PICKLED TRUNK ONLY	pickled trunk	1
+PICKLED TRUNK ONLY, TISSUE	pickled trunk | tissue	1
+PIEL CON CRÁNEO	skin | skull	1
+PIEL DE ESTUDIO	study skin	1
+PIEL DE ESTUDIO Y CRÁNEO	study skin | skull	1
+PIEL DE ESTUDIO Y CRÁNEO, RIÑON	kidney | study skin | skull	1
+PIEL DE ESTUDIO Y CRÁNEO, RIÑÓN Y ALA	kidney | study skin | skull | wing	1
+PIEL DE ESTUDIO Y ESQUELETO	skeleton | study skin	1
+PIEL DE ESTUDIO Y ESQUELETO, RIÑON	kidney | skeleton | study skin	1
+PIEL DE ESTUDIO, ??	study skin	1
+PIEL DE ESTUDIO, CRÁNEO	study skin | skull	1
+PIEL DE ESTUDIO, CRÁNEO  Y ESQUELETO	skeleton | study skin | skull	1
+PIEL DE ESTUDIO, CRÁNEO  Y ESQUELETO, RIÑON, ECTOPARASITO	ectoparasite | kidney | skeleton | study skin | skull	1
+PIEL DE ESTUDIO, CRÁNEO Y ESQUELETO	skeleton | study skin | skull	1
+PIEL DE ESTUDIO, CRÁNEO Y ESQUELETO, 	skeleton | study skin | skull	1
+PIEL DE ESTUDIO, CRÁNEO Y ESQUELETO, RIÑON	kidney | skeleton | study skin | skull	1
+PIEL DE ESTUDIO, CRÁNEO Y ESQUELETO, RIÑON Y ALA	kidney | skeleton | study skin | skull | wing	1
+PIEL DE ESTUDIO, CRÁNEO Y ESQUELETO, RIÑON, ECTOPARASITO	ectoparasite | kidney | skeleton | study skin | skull	1
+PIEL DE ESTUDIO, CRÁNEO Y ESQUELETO, SP 13456	skeleton | study skin | skull	1
+PIEL DE ESTUDIO, KLH LYSIS BUFFER	KLH Lysis buffer | study skin	1
+PIEL DE ESTUDIO, RIÑON	kidney | study skin	1
+PIEL DE ESTUDIO, RIÑÓN	kidney | study skin	1
+PIEL DE ESTUDIO, RIÑÓN E HÍGADO	kidney | liver | study skin	1
+PIEL DE ESTUDIO, RIÑÓN HIGADO	kidney | liver | study skin	1
+PIEL DE ESTUDIO, RIÑON Y ALA	kidney | study skin | wing	1
+PIEL DE ESTUDIO, RIÑÓN, ALA	kidney | study skin | wing	1
+PIEL DE ESTUDIO, RIÑON, HIGADO Y ESQUELETO	kidney | liver | skeleton | study skin	1
+PIEL DE ESTUDIO,AK398, CRÁNEO Y ESQUELETO	skeleton | study skin | skull	1
+PIEL Y CRÁNEO	skin | skull	1
+PIEL Y CRÁNEO, AK 25023	skin | skull	1
+PIEL Y CRÁNEO, AK 25024	skin | skull	1
+PIEL Y CRÁNEO, AK 25093	skin | skull	1
+PIEL Y CRÁNEO, AK25022	skin | skull	1
+PIEL, CRÁNEO Y ESQUELETO	skeleton | skin | skull	1
+PIEL, LÍQUIDO, CRÁNEO Y ESQUELETO	fluid | skeleton | skin | skull	1
+PLASTIC	plastic	1
+PLASTIC GI	plastic gastro-intestinal tract	1
+PLASTIC GI TRACT	plastic gastro-intestinal tract	1
+PLASTIC, SKEL FOR MOUNT	plastic | skeleton for mount	1
+PLASTRON (DRY)	plastron	1
+PN	partial skeleton | round skin	1
+PN | TISSUE	partial skeleton | round skin | tissue	1
+PORT. DENTARIES O.	partial dentaries	1
+PORT. DENTARY O.	partial dentary	1
+PORT. SKULL & SKIN	partial skull | skin	1
+PORTION 1 LEG ONLY	partial leg	1
+POST CRANIAL BODY (DRY)	post-cranial carcass	1
+POSTCRANIAL (DRY)	post-cranial	1
+POSTCRANIAL SKELETON (DRY)	post-cranial skeleton	1
+POSTERIOR HALF OF SHELL + (DRY)	posterior half of shell	1
+POSTERIOR SKULL WITH ANTLERS	posterior skull with antlers	1
+POSTERIOR SKULL, PORTION R MAXILLA, METATARSAL, METACARPAL, SCAPULA, PAIR INNOMINATA, ULNA, RADIUS, HUMERUS, FEMUR, TIBIA, CALCANEUM, SACRUM, CERVICAL VERTEBRA.	posterior skull | portion R maxilla | metatarsal | metacarpal | scapula | pair innominata | ulna | radius | humerus | femur | tibia | calcaneum | sacrum | cervical vertebra	1
+PREANAL VERTEBRAE (DRY)	preanal vertebrae	1
+PRESERVATION: 0STEO	osteo	1
+PRESERVATION: 1 C&S	cleared and stained	1
+PRESERVATION: 1 ETOH, 2 C&S	alcohol | cleared and stained	1
+PRESERVATION: 1 OF 2 C&S	cleared and stained	1
+PRESERVATION: 1 OF 4 C&S	cleared and stained	1
+PRESERVATION: 1 STAINED & DISSECT.	stained and dissected	1
+PRESERVATION: 1 TO BE C&S	cleared and stained	1
+PRESERVATION: 10 C&S	cleared and stained	1
+PRESERVATION: 16 ETOH, 1 C&S	alcohol | cleared and stained	1
+PRESERVATION: 19 ETOH + 1 C&S	alcohol | cleared and stained	1
+PRESERVATION: 2 C&S	cleared and stained	1
+PRESERVATION: 2 C&S + 1 ETOH	alcohol | cleared and stained	1
+PRESERVATION: 2 OF 4 C&S	cleared and stained	1
+PRESERVATION: 2 OF 8 C&S	cleared and stained	1
+PRESERVATION: 2 OSTEO. (SKULLS)	skulls	1
+PRESERVATION: 2 SPEC. ARE C&S	cleared and stained	1
+PRESERVATION: 3 C&S	cleared and stained	1
+PRESERVATION: 3 ETOH, 1 C&S	alcohol | cleared and stained	1
+PRESERVATION: 5 C&S	cleared and stained	1
+PRESERVATION: 7 C&S	cleared and stained	1
+PRESERVATION: 70% ETHANOL	alcohol	1
+PRESERVATION: 70% ETOH	alcohol	1
+PRESERVATION: 70%ETOH	alcohol	1
+PRESERVATION: C & S	cleared and stained	1
+PRESERVATION: C & S, OSTEO	cleared and stained | osteo	1
+PRESERVATION: C&S	cleared and stained	1
+PRESERVATION: C&S, OSTEO	cleared and stained | osteo	1
+PRESERVATION: DRIED	dried	1
+PRESERVATION: DRIED JAWS	dried jaws	1
+PRESERVATION: DRIED WHOLE SPECIMEN	dried whole specimen	1
+PRESERVATION: ETOH	alcohol	1
+PRESERVATION: ETOH + BOUIN'S SOL.	alcohol | Bouin's solution	1
+PRESERVATION: ETOH, C&S	alcohol | cleared and stained	1
+PRESERVATION: ETOH, OSTEO	alcohol | osteo	1
+PRESERVATION: ETOH, OTOLITHS	alcohol | otoliths	1
+PRESERVATION: FORMALIN	formalin	1
+PRESERVATION: FOSSIL OTOLITHS	fossil otoliths	1
+PRESERVATION: FROZEN	frozen	1
+PRESERVATION: ONE C&S	cleared and stained	1
+PRESERVATION: OSTEO	osteo	1
+PRESERVATION: OSTEO C & S	cleared and stained | osteo	1
+PRESERVATION: OSTEO, C & S	cleared and stained | osteo	1
+PRESERVATION: OSTEO, C&S	cleared and stained | osteo	1
+PRESERVATION: OSTEO, JAW	jaw | osteo	1
+PRESERVATION: OSTEO.	osteo	1
+PRESERVATION: OTOLITH	otolith	1
+PRESERVATION: OTOLITHS	otoliths	1
+PRESERVATION: PICRIC ACID	picric acid	1
+PRESERVATION: SKIN	skin	1
+PRESERVATION: STAINED	stained	1
+PRESERVATION: WHOLE  + OTOLITHS	otoliths | whole specimen	1
+PRESERVED	preserved	1
+PRIMARIES	primaries	1
+PROVENTRICULUS & STOMACH	proventriculus | stomach	1
+PROXIMAL END OF TIBIA	proximal end of tibia	1
+PS	partial skeleton	1
+R AND L DENTARIES.	right dentary | left dentary	1
+R WING	right wing	1
+R5	rectrix 5	1
+RATTLE	rattle	1
+RATTLE (DRY)	rattle	1
+RATTLES	rattles	1
+RECORDING, DRY	dry | recording	1
+RECORDING, FLUID	fluid | recording	1
+RECORDING, FLUID, MICROTECHNIQUE	fluid | microtechnique | recording	1
+RECORDING, MICROTECHNIQUE, FLUID	fluid | microtechnique | recording	1
+RECORDING, TISSUE, FLUID	fluid | recording | tissue	1
+RECTRICES	rectrices	1
+RECTRIX	rectrix	1
+RECTRIX 5 	rectrix 5	1
+RECTRIX 5 ONLY	rectrix 5	1
+REMARKS	see remarks	1
+REPRODUCTIVE SYSTEM IN FLUID	fluid reproductive system	1
+RIGHT ANTLER O.	right antler	1
+RIGHT ANTLER ONLY	right antler	1
+RIGHT DENTARY O.	right dentary	1
+RIGHT DENTARY ONLY	right dentary	1
+RIGHT MANDIBLE ONLY	right mandible	1
+RIGHT MAXILLARY O.	right maxillary	1
+ROUND	round skin	1
+ROUND SKIN	round skin	1
+ROUND SKIN - 1	round skin - 1	1
+ROUND SKIN, PART SKEL, TISS, STOM - 1	partial skeleton | round skin | stomach - 1 | tissue	1
+ROUND SKIN, PART SKEL, TISS, STOM, WING - 1	partial skeleton | round skin | stomach | tissue | wing - 1	1
+ROUND SKIN, PART SKEL, TISSUE, OVARY - 1	ovary - 1 | partial skeleton | round skin | tissue	1
+ROUND SKIN, PART, SKEL, WING - 1	partial skeleton | round skin | wing - 1	1
+ROUND SKIN, PARTIAL SKELETON - 1	partial skeleton - 1 | round skin	1
+ROUND SKIN, PARTIAL SKELETON, TISSUE - 1	partial skeleton | round skin | tissue - 1	1
+ROUND SKIN, PARTIAL SKELETON, TISSUE - 1; ROUND SKIN, PARTIAL SKELETON, TISSUE - 1; ROUND SKIN, PARTIAL SKELETON, TISSUE - 1	partial skeleton | round skin | tissue - 1	1
+ROUND SKIN, TISSUE - 1	round skin | tissue - 1	1
+ROUND SKIN, WING, PARTIAL SKELETON, TISSUE - 1	round skin | partial skeleton | tissue - 1 | wing	1
+ROUND SKIN, WING, TISSUE - 1	round skin | tissue - 1 | wing	1
+ROUND SKIN, WING, TISSUE - 1; ROUND SKIN, WING, TISSUE - 1	round skin | tissue - 1 | wing	1
+ROUND WING	round skin | wing	1
+ROUND WING, TISSUE	round wing | tissue	1
+ROUND, TISSUE	round skin | tissue	1
+ROUND/EGG SET	egg set | round skin	1
+ROUND/NEST	nest | round skin	1
+ROUND/PART SKEL	partial skeleton | round skin	1
+ROUND/PART SKEL, TISSUE	partial skeleton | round skin | tissue	1
+ROUND/SKEL	round skin | skeleton	1
+ROUND/SKEL, TISSUE	skeleton | round skin | tissue	1
+ROUND/SKEL/WING	round skin | skeleton | wing	1
+ROUND/TISSUE	round skin | tissue	1
+ROUND/WING	round skin | wing	1
+ROUND/WING (CHECK)	round skin | wing	1
+ROUND/WING (TEACHING)	round skin | wing	1
+ROUND/WING -CHECK	round skin | wing	1
+ROUND/WING, TISSUE	round skin | tissue | wing	1
+ROUND/WING/EGG	egg | round skin | wing	1
+ROUND/WING/EGG, TISSUE	egg | round skin | tissue | wing	1
+ROUND/WING/PART SKEL	partial skeleton | round skin | wing	1
+ROUND/WING/PART SKEL, TISSUE	partial skeleton | round skin | tissue | wing	1
+ROUND/WING/SKEL	skeleton | round skin | wing	1
+ROUND/WING/SKEL, TISSUE	skeleton | round skin | tissue | wing	1
+S0	skin in alcohol	1
+SA	alcoholic carcass	1
+SALTED SKIN	wing (salted)	1
+SB	body skeleton | skin | skull	1
+SCALES (DRY)	scales	1
+SCALP	scalp	1
+SCALP/SKEL	scalp | skeleton	1
+SCALP/SKULL	scalp | skull	1
+SCALP/SKULL/ANTLERS	antlers | scalp | skull	1
+SCALP/WING	scalp | wing	1
+SCALP/WING, TISSUE	scalp | tissue | wing	1
+SCAPULA	scapula	1
+SCAT		1
+SCHMOO	schmoo	1
+SCHMOO AND FULL SKELETON	schmoo | full skeleton	1
+SCHMOO AND FULL SKELETON, TISSUE	schmoo | full skeleton | tissue	1
+SCHMOO AND PARTIAL SKELETON	schmoo | partial skeleton	1
+SCHMOO AND SKELETON, TISSUE	schmoo | skeleton | tissue	1
+SCHMOO AND SKULL	schmoo | skull	1
+SCHMOO, COMPLETE SKELETON, WING, TISSUE - 1	schmoo | complete skeleton | tissue - 1 | wing	1
+SCHMOO, FULL SKELETON, AND SPREAD WING	schmoo | full skeleton | spread wing	1
+SCHMOO, FULL SKELETON, AND SPREAD WING, TISSUE	schmoo | full skeleton | spread wing | tissue	1
+SCHMOO, PARTIAL SKEL, WING - 1	schmoo | partial skeleton | wing - 1	1
+SCHMOO, SKEL, WING - 1	schmoo | skeleton | wing - 1	1
+SCHMOO, SKELETON, TISSUE - 1	schmoo | skeleton | tissue - 1	1
+SCHMOO, TISSUE - 1	schmoo | tissue - 1	1
+SELETON, WING, FEATHERS	skeleton | wing | feathers	1
+SEM	stub for scanning electron microscope	1
+SEVERAL CERVICAL VERTEBRA	cervical vertebrae	1
+SH	shell	1
+SHED SKIN (DRY)	shed skin	1
+SHELL (DRY)	shell	1
+SHELL (DRY), TISSUE	shell | tissue	1
+SHELL AND FLUID GONADS	shell | fluid gonads	1
+SHELL AND FLUID PARTS	shell | fluid parts	1
+SHELL AND TWO PRESERVED SKINS	shell | two preserved skins	1
+SHELL IN ALCOHOL	shell in alcohol	1
+SHELL IN ALCOHOL, OVARIES IN FORMALIN	shell in alcohol | ovaries in formalin	1
+SHELL INCOMPLETE PLASTRON (DRY)	shell | incomplete plastron	1
+SHELL PLATES (DRY)	shell plates	1
+SHELL, SKIN, GONAD	gonad | shell | skin	1
+SHELL, SKIN, GONADS	gonads | shell | skin	1
+SHELL+GIRDLES+LIMBS+TAIL (DRY)	girdles | limbs | shell | tail	1
+SHELL+PARTIAL SKELETON (DRY)	shell | partial skeleton	1
+SIGHTING		1
+SISL	sisl	1
+SK	skull	1
+SK +T	skeleton | skin | tissue	1
+SK, TISSUE	skull | tissue	1
+SKE/WING	skeleton | wing	1
+SKEL	skeleton	1
+SKEL - 1	skeleton - 1	1
+SKEL - 1; FEATHER - 1	skeleton - 1 | feather - 1	1
+SKEL - 1; FEATHER - 1; TISSUE - 10	skeleton - 1 | feather - 1 | tissue - 10	1
+SKEL - 1; FEATHER - 100	skeleton - 1 | feather - 100	1
+SKEL - 1; FEATHER - 6; WINGS_TAIL - 3	skeleton - 1 | feather - 6 | wings_tail - 3	1
+SKEL - 1; FLAT_SKIN - 1	skeleton - 1 | flat skin - 1	1
+SKEL - 1; FLAT_SKIN - 1; SYRINX - 1	skeleton - 1 | flat skin - 1 | syrinx - 1	1
+SKEL - 1; FLUID - 1	skeleton - 1 | fluid - 1	1
+SKEL - 1; GENBANK - 1	skeleton - 1 | Genbank - 1	1
+SKEL - 1; SKEL - 1; WINGS_TAIL - 1	skeleton - 1 | skeleton - 1 | wings_tail - 1	1
+SKEL - 1; SKIN - 1	skeleton - 1 | skin - 1	1
+SKEL - 1; SKIN - 1; SKIN/TOE CLIP - 1	skeleton - 1 | skin - 1	1
+SKEL - 1; SKIN - 1; SYRINX - 1	skeleton - 1 | skin - 1 | syrinx - 1	1
+SKEL - 1; SKIN - 1; SYRINX - 1; TISSUE - 1	skeleton - 1 | skin - 1 | syrinx - 1 | tissue - 1	1
+SKEL - 1; SKIN - 1; TISSUE - 1	skeleton - 1 | skin - 1 | tissue - 1	1
+SKEL - 1; SKIN - 1; TISSUE - 1; SYRINX - 1	skeleton - 1 | skin - 1 | tissue - 1 | syrinx - 1	1
+SKEL - 1; SKIN - 1; TISSUE - 50	skeleton - 1 | skin - 1 | tissue - 50	1
+SKEL - 1; SKIN/TOE CLIP - 1	skeleton - 1	1
+SKEL - 1; SYRINX - 1	skeleton - 1 | syrinx - 1	1
+SKEL - 1; SYRINX - 1; FLAT_SKIN - 1	skeleton - 1 | syrinx - 1 | flat skin - 1	1
+SKEL - 1; SYRINX - 1; SKIN - 1; TISSUE - 1	skeleton - 1 | syrinx - 1 | skin - 1 | tissue - 1	1
+SKEL - 1; SYRINX - 1; TISSUE - 1	skeleton - 1 | syrinx - 1 | tissue - 1	1
+SKEL - 1; SYRINX - 1; TISSUE - 10	skeleton - 1 | syrinx - 1 | tissue - 10	1
+SKEL - 1; SYRINX - 1; TISSUE - 30; SKIN - 1	skeleton - 1 | syrinx - 1 | tissue - 30 | skin - 1	1
+SKEL - 1; SYRINX - 1; WINGS_TAIL - 1; TISSUE - 1	skeleton - 1 | syrinx - 1 | wings_tail - 1 | tissue - 1	1
+SKEL - 1; SYRINX - NULL; TISSUE - 10; SKIN - 1	skeleton - 1 | syrinx - null | tissue - 10 | skin - 1	1
+SKEL - 1; THIN SECTION - 1	skeleton - 1 | thin section - 1	1
+SKEL - 1; TISSUE - 1	skeleton - 1 | tissue - 1	1
+SKEL - 1; TISSUE - 1; FLAT_SKIN - 1	skeleton - 1 | tissue - 1 | flat skin - 1	1
+SKEL - 1; TISSUE - 1; FLAT_SKIN - 1; SYRINX - 1	skeleton - 1 | tissue - 1 | flat skin - 1 | syrinx - 1	1
+SKEL - 1; TISSUE - 1; GENBANK - 1	skeleton - 1 | tissue - 1 | Genbank - 1	1
+SKEL - 1; TISSUE - 1; SKIN - 1	skeleton - 1 | tissue - 1 | skin - 1	1
+SKEL - 1; TISSUE - 1; SKIN - 1; FEATHER - 1	skeleton - 1 | tissue - 1 | skin - 1 | feather - 1	1
+SKEL - 1; TISSUE - 1; SKIN - 1; SYRINX - 1	skeleton - 1 | tissue - 1 | skin - 1 | syrinx - 1	1
+SKEL - 1; TISSUE - 1; SOUND - 1	skeleton - 1 | tissue - 1 | sound - 1	1
+SKEL - 1; TISSUE - 1; SYRINX - 1	skeleton - 1 | tissue - 1 | syrinx - 1	1
+SKEL - 1; TISSUE - 1; SYRINX - 1; SKIN - 1	skeleton - 1 | tissue - 1 | syrinx - 1 | skin - 1	1
+SKEL - 1; TISSUE - 1; SYRINX - 1; WINGS_TAIL - 1	skeleton - 1 | tissue - 1 | syrinx - 1 | wings_tail - 1	1
+SKEL - 1; TISSUE - 10	skeleton - 1 | tissue - 10	1
+SKEL - 1; TISSUE - 10; SKIN - 1	skeleton - 1 | tissue - 10 | skin - 1	1
+SKEL - 1; TISSUE - 25; SKIN - 1	skeleton - 1 | tissue - 25 | skin - 1	1
+SKEL - 1; TISSUE - 30	skeleton - 1 | tissue - 30	1
+SKEL - 1; TISSUE - 30; WINGS_TAIL - 1	skeleton - 1 | tissue - 30 | wings_tail - 1	1
+SKEL - 1; TISSUE - 50	skeleton - 1 | tissue - 50	1
+SKEL - 1; TISSUE - 50; FLUID - 1	skeleton - 1 | tissue - 50 | fluid - 1	1
+SKEL - 1; TISSUE - 50; SKEL - 1	skeleton - 1 | tissue - 50 | skeleton - 1	1
+SKEL - 1; TISSUE - 50; TISSUE - 1	skeleton - 1 | tissue - 50 | tissue - 1	1
+SKEL - 1; TISSUE - 50; WINGS_TAIL - 1	skeleton - 1 | tissue - 50 | wings_tail - 1	1
+SKEL - 1; TISSUE - NULL	skeleton - 1 | tissue - null	1
+SKEL - 1; WINGS_TAIL - 1	skeleton - 1 | wings_tail - 1	1
+SKEL - 1; WINGS_TAIL - 1; FLAT_SKIN - 1	skeleton - 1 | wings_tail - 1 | flat skin - 1	1
+SKEL - 1; WINGS_TAIL - 1; TISSUE - 1; WINGS_TAIL - 1	skeleton - 1 | wings_tail - 1 | tissue - 1 | wings_tail - 1	1
+SKEL - 1; WINGS_TAIL - 1; TISSUE - 50	skeleton - 1 | wings_tail - 1 | tissue - 50	1
+SKEL - 12; WINGS_TAIL - 12	skeleton - 12 | wings_tail - 12	1
+SKEL - 2	skeleton - 2	1
+SKEL - 42	skeleton - 42	1
+SKEL - 50	skeleton - 50	1
+SKEL - NULL	skeleton - null	1
+SKEL - NULL; FEATHER - 1	skeleton - null | feather - 1	1
+SKEL - NULL; FLAT_SKIN - 1	skeleton - null | flat skin - 1	1
+SKEL (PARTIAL)	partial skeleton	1
+SKEL ,FEATHERS	feathers | skeleton	1
+SKEL ,FEATHERS ,TISSUE	feathers | skeleton | tissue	1
+SKEL ,FEATHERS ,TISSUE ,WING	feathers | skeleton | tissue | wing	1
+SKEL ,FEATHERS ,WING	feathers | skeleton | wing	1
+SKEL ,FEATHERS ,WING ,TISSUE	feathers | skeleton | tissue | wing	1
+SKEL ,SKEL	skeleton	1
+SKEL ,SKIN	skeleton | skin	1
+SKEL ,SKIN ,SKEL	skeleton | skin	1
+SKEL ,SKIN ,TISSUE	skeleton | skin | tissue	1
+SKEL ,SKIN ,WING ,TISSUE	skeleton | skin | tissue | wing	1
+SKEL ,SLIDE	skeleton | slide	1
+SKEL ,TISSUE	skeleton | tissue	1
+SKEL ,TISSUE ,FEATHERS	feathers | skeleton | tissue	1
+SKEL ,TISSUE ,FEATHERS ,WING	feathers | skeleton | tissue | wing	1
+SKEL ,TISSUE ,WING	skeleton | tissue | wing	1
+SKEL ,WING	skeleton | wing	1
+SKEL ,WING ,FEATHERS	feathers | skeleton | wing	1
+SKEL ,WING ,FEATHERS ,TISSUE	feathers | skeleton | tissue | wing	1
+SKEL ,WING ,SKEL	skeleton | wing	1
+SKEL ,WING ,TISSUE	skeleton | tissue | wing	1
+SKEL ,WING ,TISSUE ,FEATHERS	feathers | skeleton | tissue | wing	1
+SKEL + TISSUE	skeleton | tissue	1
+SKEL CAST - 1	skeleton cast - 1	1
+SKEL PARTIAL - 1	skeleton partial - 1	1
+SKEL PARTIAL - 1; SKIN - 1	skeleton partial - 1 | skin - 1	1
+SKEL PARTIAL - 6	skeleton partial - 6	1
+SKEL, 	skeleton	1
+SKEL, NO SKULL	skeleton	1
+SKEL, PARTIAL	partial skeleton	1
+SKEL, TISSUE	skeleton | tissue	1
+SKEL, WING AND TAIL	skeleton | tail | wing	1
+SKEL/BACULUM	baculum | skeleton	1
+SKEL/FOOT	foot | skeleton	1
+SKEL/NO SKULL	skeleton	1
+SKEL/PART SKIN	partial skin | skeletong	1
+SKEL/PELT	pelt | skeleton	1
+SKEL/SCALP	scalp | skeleton	1
+SKEL/SKIN	skeleton | skin	1
+SKEL/TAIL	skeleton | tail	1
+SKEL/TWO WINGS	skeleton | wings	1
+SKEL/WING	skeleton | wing	1
+SKEL/WING, TISSUE	skeleton | tissue | wing	1
+SKEL/WING/EGG SET	egg set | skeleton | wing	1
+SKEL/WING/FOOT	foot | skeleton | wing	1
+SKEL/WING/SYRINX	skeleton | syrinx | wing	1
+SKEL/WING/SYRINX, TISSUE	skeleton | syrinx | tissue | wing	1
+SKEL/WING/TAIL	skeleton | tail | wing	1
+SKEL/WING/TAIL, TISSUE	skeleton | tail | tissue | wing	1
+SKEL/WING/TAIL/FOOT	foot | skeleton | tail | wing	1
+SKEL/WINGS	skeleton | wings	1
+SKEL/WINGS/TAIL	skeleton | tail | wings	1
+SKEL; SKIN/TOE CLIP	skel	1
+SKEL; SKIN; SKIN/TOE CLIP	skeleton | skin	1
+SKEL; TISSUE	skeleton | tissue	1
+SKEL; TISSUE; ROUND SKIN	skeleton | round skin | tissue	1
+SKEL; TISSUE; SCHMOO	schmoo | skeleton | tissue	1
+SKEL; TISSUE; WING	skeleton | tissue | wing	1
+SKEL; WING	skeleton | wing	1
+SKEL; WINGS_TAIL	skeleton | tail | wings	1
+SKEL+ STUDY+WING	skeleton | study skin | wing	1
+SKEL+FEATH	skeleton | feathers	1
+SKEL+FEATHERS+LEG	leg | skeleton | feathers	1
+SKEL+FLAT	flat skin | skeleton	1
+SKEL+FLAT+WING	flat skin | skeleton | wing	1
+SKEL+HEAD+WING	head | skeleton | wing	1
+SKEL+PELT	pelt | skeleton	1
+SKEL+RAMPH.	ramphotheca | skeleton	1
+SKEL+SCALP	scalp | skeleton	1
+SKEL+SCHMOO	schmoo | skeleton	1
+SKEL+SCHMOO+ WING	schmoo | skeleton | wing	1
+SKEL+SCHMOO+ WING+EGGS	eggs | schmoo | skeleton | wing	1
+SKEL+SCHMOO+SPREAD WING	schmoo | skeleton | spread wing	1
+SKEL+SCHMOO+WING	schmoo | skeleton | wing	1
+SKEL+SPREAD WING	skeleton | spread wing	1
+SKEL+STUDY	skeleton | study skin	1
+SKEL+STUDY +WING	skeleton | study skin | wing	1
+SKEL+STUDY+ WING	skeleton | study skin | wing	1
+SKEL+STUDY+SPREAD WING	skeleton | study skin | spread wing	1
+SKEL+STUDY+WING	skeleton | study skin | wing	1
+SKEL+STUDY+WING+TONGUE	skeleton | study skin | tongue | wing	1
+SKEL+TISSUE	skeleton | tissue	1
+SKEL+WING	skeleton | wing	1
+SKEL+WING+FEATHERS	feathers | skeleton | wing	1
+SKEL+WING+TAIL+TISS	skeleton | tail | tissue | wing	1
+SKEL+WING+TISSUE	skeleton | tissue | wing	1
+SKEL+WINGS	skeleton | wings	1
+SKELE, WING, TAIL, FEATHERS	skeleton | wing | tail | feathers	1
+SKELETAL	skeleton	1
+SKELETON	skeleton	1
+SKELETON - 1	skeleton	1
+SKELETON - 1; SKELETON - 1	skeleton	1
+SKELETON - 2	skeleton	1
+SKELETON  2 WINGS & FLATTENED SKIN	skeleton | wings | flat skin	1
+SKELETON - 564	skeleton	1
+SKELETON  WING & TAIL	skeleton | wing | tail	1
+SKELETON & FLIGHT FEATHERS	skeleton | flight feathers	1
+SKELETON & REMIGES	skeleton | remiges	1
+SKELETON & WING	skeleton | wing	1
+SKELETON + WING	skeleton | wing	1
+SKELETON AND DRIED SKIN	skeleton | dried skin	1
+SKELETON AND DRY SKIN	skeleton | dried skin	1
+SKELETON AND FLUID EGGS	skeleton | fluid eggs	1
+SKELETON AND FLUID EMBRYOS	skeleton | fluid embryos	1
+SKELETON AND FLUID HEAD	skeleton | fluid head	1
+SKELETON AND FLUID OVARIES	skeleton | fluid ovaries	1
+SKELETON AND FLUID PARTS	skeleton | fluid parts	1
+SKELETON AND FLUID SKIN	skeleton | fluid skin	1
+SKELETON AND FLUID SPECIMENS	skeleton | fluid specimens	1
+SKELETON AND OVARIES IN FORMALIN	skeleton and ovaries in formalin	1
+SKELETON AND SKIN	skeleton | skin	1
+SKELETON AND TANNED SKIN	skeleton | tanned skin	1
+SKELETON AND TESTES IN FORMALIN	skeleton and testes in formalin	1
+SKELETON AND WING	skeleton | wing	1
+SKELETON AND WING, TISSUE	skeleton | wing | tissue	1
+SKELETON ONLY	skeleton	1
+SKELETON ONLY, NO SKULL	skeleton	1
+SKELETON ONLY.	skeleton	1
+SKELETON ONLY?	skeleton	1
+SKELETON SPECIMEN	skeleton	1
+SKELETON SPECIMEN AND FLUID SKIN	skeleton | fluid skin	1
+SKELETON, ALCOHOLIC	alcoholic | skeleton	1
+SKELETON, BONELESS SKIN	skeleton | skin	1
+SKELETON, BONELESS SKIN, WING	skeleton | skin | wing	1
+SKELETON, BONELESS SKIN, WING, FEATHERS	skeleton | skin | wing | feathers	1
+SKELETON, ETOH	skeleton | alcoholic	1
+SKELETON, FEATHERS	skeleton | feathers	1
+SKELETON, FLAT SKIN	skeleton | flat skin	1
+SKELETON, HEAD SKIN	skeleton | head skin	1
+SKELETON, HEAD SKIN, FEATHERS	skeleton | head skin | feathers	1
+SKELETON, HEAD, WING, FOOT	skeleton | head | wing foot	1
+SKELETON, NO SKULL	skeleton	1
+SKELETON, OTHER PREP	other prep | skeleton	1
+SKELETON, PARASITES, TISSUE, WING	parasites | skeleton | tissue | wing	1
+SKELETON, PARTIAL	partial skeleton	1
+SKELETON, SKIN	skeleton | skin	1
+SKELETON, SKIN, SKULL	skeleton | skin | skull	1
+SKELETON, SKIN, SKULL, TISSUE	skeleton | skin | skull | tissue	1
+SKELETON, SKULL	skeleton | skull	1
+SKELETON, SKULL, TISSUE	skeleton | skull | tissue	1
+SKELETON, TAIL, WING	skeleton | tail | wing	1
+SKELETON, TAIL,FEATHERS	skeleton | tail | feathers	1
+SKELETON, TISSUE	skeleton | tissue	1
+SKELETON, TISSUE, WING	skeleton | tissue | wing	1
+SKELETON, WING	skeleton | wing	1
+SKELETON, WING (02), TISSUE	skeleton | wings | tissue	1
+SKELETON, WING (2), TISSUE	skeleton | wings | tissue	1
+SKELETON, WING FEATHERS	skeleton | wing feathers	1
+SKELETON, WING, AND TAIL	skeleton | wing | tail	1
+SKELETON, WING, AND TAIL, TISSUE	skeleton | wing | tail | tissue	1
+SKELETON, WING, BONELESS SKIN	skeleton | boneless skin | wing	1
+SKELETON, WING, FEATHERS	skeleton | wing | feathers	1
+SKELETON, WING, FOOT, FEATHERS	skeleton | wing | foot | feathers	1
+SKELETON, WING, HEAD FEATHERS	skeleton | wing | head feathers	1
+SKELETON, WING, HEAD SKIN	skeleton | wing | head skin	1
+SKELETON, WING, MISC. FEATHERS	skeleton | wing | feathers	1
+SKELETON, WING, PARTIAL SKIN	skeleton | wing | partial skin	1
+SKELETON, WING, TAIL	skeleton | wing | tail	1
+SKELETON, WING, TAIL FEATHERS	skeleton | wing | tail feathers	1
+SKELETON, WING, TAIL, FEATHERS	skeleton | wing | tail | feathers	1
+SKELETON, WING, TAIL, FEET, FEATHERS	skeleton | wing | tail | feet | feathers	1
+SKELETON, WING, TAIL, HEAD FEATHERS	skeleton | wing | tail | head feathers	1
+SKELETON, WING, TAIL,FEATHERS	skeleton | wing | tail | feathers	1
+SKELETON,BONELESS SKIN	skeleton | skin	1
+SKELETON/C&S	skeleton | cleared and stained	1
+SKELETON/FEATHERS	skeleton | feathers	1
+SKELETON/SKIN	skeleton | skin	1
+SKELETON/SKIN/WING	skeleton | skin | wing	1
+SKELETON/SKIN/WING/FEATHERS	skeleton | skin | wing | feathers	1
+SKELETON/WING	skeleton | wing	1
+SKELETON/WING/FEATHERS	skeleton | wing | feathers	1
+SKELETON/WING/FOOT/FEATHERS	skeleton | wing | foot | feathers	1
+SKELETON/WING/TAIL	skeleton | wing | tail	1
+SKELETON/WING/TAIL/FEATHERS	skeleton | wing | tail | feathers	1
+SKELETON; FLAT SKIN	skeleton | flat skin	1
+SKELETON; MISC.	miscellaneous | skeleton	1
+SKELETON; MOUNTED	mounted skeleton	1
+SKELETON; NO DATA	skeleton	1
+SKELETON; SKELETON	skeleton	1
+SKELETON; SKIN	skeleton | skin	1
+SKELETON; SKIN (ETOH)	skeleton | skin (ETOH)	1
+SKELETON; STUDY SKIN	skeleton | study skin	1
+SKELETON; TISSUE; SCHMOO	schmoo | skeleton | tissue	1
+SKELETON; TISSUE; WING	skeleton | tissue | wing	1
+SKELETON; WHOLE (ETOH)	skeleton | whole animal (ETOH)	1
+SKELETON; WING; TISSUE; SCHMOO	schmoo | skeleton | tissue | wing	1
+SKELETON+WING	skeleton | wing	1
+SKELL ONLY	shell	1
+SKEL-NO SKULL	skeleton	1
+SKELSTUDY+WING	skeleton | study skin | wing	1
+SKELTON, BONELESS SKIN	skeleton | skin	1
+SKELTON, HEAD SKIN	skeleton | head skin	1
+SKELTON, WING, FEATHERS	skeleton | wing | feathers	1
+SKELTON, WING, TAIL	skeleton | wing | tail	1
+SKELTON/WING	skeleton | wing	1
+SKIN	skin	1
+SKIN'	skin	1
+SKIN - 1	skin - 1	1
+SKIN - 1; EGGSET - 1	skin - 1 | eggset - 1	1
+SKIN - 1; FEATHER - 1	skin - 1 | feather - 1	1
+SKIN - 1; FEATHER - 1; FEATHER - 1	skin - 1 | feather - 1 | feather - 1	1
+SKIN - 1; FEATHER - 1; SKIN/TOE CLIP - 1	skin - 1 | feather - 1	1
+SKIN - 1; FEATHER - 2	skin - 1 | feather - 2	1
+SKIN - 1; FEATHER - 2; SKIN/TOE CLIP - 1	skin - 1 | feather - 2	1
+SKIN - 1; FEATHER - 8	skin - 1 | feather - 8	1
+SKIN - 1; FEATHER - NULL	skin - 1 | feather - null	1
+SKIN - 1; FLUID - 1	skin - 1 | fluid - 1	1
+SKIN - 1; FLUID - 1; SYRINX - 1	skin - 1 | fluid - 1 | syrinx - 1	1
+SKIN - 1; GENBANK - 1	skin - 1 | Genbank - 1	1
+SKIN - 1; GENBANK - 1; GENBANK - 1	skin - 1 | Genbank - 1 | Genbank - 1	1
+SKIN - 1; GENBANK - 1; SYRINX - 1; WINGS_TAIL - 1; TISSUE - 0; FLUID - 1; SKEL - 1	skin - 1 | Genbank - 1 | syrinx - 1 | wings_tail - 1 | tissue - 0 | fluid - 1 | skeleton - 1	1
+SKIN - 1; GENBANK - 1; TISSUE - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	skin - 1 | Genbank - 1 | tissue - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+SKIN - 1; GENBANK - 1; TISSUE - 1; SKEL - 1	skin - 1 | Genbank - 1 | tissue - 1 | skeleton - 1	1
+SKIN - 1; IMAGE - 1	skin - 1 | image - 1	1
+SKIN - 1; IMAGE - 1; SKEL - 1	skin - 1 | image - 1 | skeleton - 1	1
+SKIN - 1; NEST - 1	skin - 1 | nest - 1	1
+SKIN - 1; SKEL	skin - 1 | skel	1
+SKIN - 1; SKEL - 1	skin - 1 | skeleton - 1	1
+SKIN - 1; SKEL - 1; FEATHER - 1	skin - 1 | skeleton - 1 | feather - 1	1
+SKIN - 1; SKEL - 1; FLUID - 1	skin - 1 | skeleton - 1 | fluid - 1	1
+SKIN - 1; SKEL - 1; GENBANK - 1	skin - 1 | skeleton - 1 | Genbank - 1	1
+SKIN - 1; SKEL - 1; SKIN/TOE CLIP - 1	skin - 1 | skeleton - 1	1
+SKIN - 1; SKEL - 1; SYRINX - 1	skin - 1 | skeleton - 1 | syrinx - 1	1
+SKIN - 1; SKEL - 1; SYRINX - 1; TISSUE - 1	skin - 1 | skeleton - 1 | syrinx - 1 | tissue - 1	1
+SKIN - 1; SKEL - 1; TISSUE - 1	skin - 1 | skeleton - 1 | tissue - 1	1
+SKIN - 1; SKEL - 1; TISSUE - 1; SYRINX - 1	skin - 1 | skeleton - 1 | tissue - 1 | syrinx - 1	1
+SKIN - 1; SKEL - 1; TISSUE - 50	skin - 1 | skeleton - 1 | tissue - 50	1
+SKIN - 1; SKEL - 1; TISSUE - NULL	skin - 1 | skeleton - 1 | tissue - null	1
+SKIN - 1; SKEL - 10; FEATHER - 1; WINGS_TAIL - 1	skin - 1 | skeleton - 10 | feather - 1 | wings_tail - 1	1
+SKIN - 1; SKEL PARTIAL - 1	skin - 1 | skeleton partial - 1	1
+SKIN - 1; SKIN - 1	skin - 1 | skin - 1	1
+SKIN - 1; SKIN/TOE CLIP - 1	skin - 1	1
+SKIN - 1; SKIN/TOE CLIP - 1; SKEL - 1; FEATHER - 1	skin - 1 | skeleton - 1 | feather - 1	1
+SKIN - 1; SKIN/TOE CLIP - 1; TISSUE - 1; SKEL - 1	skin - 1 | tissue - 1 | skeleton - 1	1
+SKIN - 1; SKIN/TOE CLIP - 1; WINGS_TAIL - 1	skin - 1 | wings_tail - 1	1
+SKIN - 1; SOUND - 1	skin - 1 | sound - 1	1
+SKIN - 1; SYRINX - 1	skin - 1 | syrinx - 1	1
+SKIN - 1; SYRINX - 1; SKEL - 1; TISSUE - 10	skin - 1 | syrinx - 1 | skeleton - 1 | tissue - 10	1
+SKIN - 1; SYRINX - 1; TISSUE - 1	skin - 1 | syrinx - 1 | tissue - 1	1
+SKIN - 1; SYRINX - 1; TISSUE - 1; SKEL - 1	skin - 1 | syrinx - 1 | tissue - 1 | skeleton - 1	1
+SKIN - 1; SYRINX - 1; TISSUE - 1; SKEL - 1; FLUID - 1	skin - 1 | syrinx - 1 | tissue - 1 | skeleton - 1 | fluid - 1	1
+SKIN - 1; SYRINX - 1; TISSUE - 50	skin - 1 | syrinx - 1 | tissue - 50	1
+SKIN - 1; SYRINX - 1; WINGS_TAIL - 1; TISSUE - 1; SKEL - 1	skin - 1 | syrinx - 1 | wings_tail - 1 | tissue - 1 | skeleton - 1	1
+SKIN - 1; THIN SECTION - 1; TISSUE - 1	skin - 1 | thin section - 1 | tissue - 1	1
+SKIN - 1; THIN SECTION - 1; TISSUE - 30	skin - 1 | thin section - 1 | tissue - 30	1
+SKIN - 1; TISSUE - 1	skin - 1 | tissue - 1	1
+SKIN - 1; TISSUE - 1; FEATHER - 1	skin - 1 | tissue - 1 | feather - 1	1
+SKIN - 1; TISSUE - 1; FLUID - 1	skin - 1 | tissue - 1 | fluid - 1	1
+SKIN - 1; TISSUE - 1; IMAGE - 1	skin - 1 | tissue - 1 | image - 1	1
+SKIN - 1; TISSUE - 1; SKEL - 1	skin - 1 | tissue - 1 | skeleton - 1	1
+SKIN - 1; TISSUE - 1; SKEL - 1; SYRINX - 1	skin - 1 | tissue - 1 | skeleton - 1 | syrinx - 1	1
+SKIN - 1; TISSUE - 1; SKIN - 1; SKIN - 1	skin - 1 | tissue - 1 | skin - 1 | skin - 1	1
+SKIN - 1; TISSUE - 1; SYRINX - 1	skin - 1 | tissue - 1 | syrinx - 1	1
+SKIN - 1; TISSUE - 1; THIN SECTION - 1	skin - 1 | tissue - 1 | thin section - 1	1
+SKIN - 1; TISSUE - 10	skin - 1 | tissue - 10	1
+SKIN - 1; TISSUE - 2	skin - 1 | tissue - 2	1
+SKIN - 1; TISSUE - 30	skin - 1 | tissue - 30	1
+SKIN - 1; TISSUE - 30; THIN SECTION - 1	skin - 1 | tissue - 30 | thin section - 1	1
+SKIN - 1; TISSUE - 5	skin - 1 | tissue - 5	1
+SKIN - 1; TISSUE - 50	skin - 1 | tissue - 50	1
+SKIN - 1; TISSUE - 50; FEATHER - 1	skin - 1 | tissue - 50 | feather - 1	1
+SKIN - 1; TISSUE - 50; FEATHER - 5	skin - 1 | tissue - 50 | feather - 5	1
+SKIN - 1; TISSUE - 50; SYRINX - 1	skin - 1 | tissue - 50 | syrinx - 1	1
+SKIN - 1; TISSUE - 50; THIN SECTION - 1	skin - 1 | tissue - 50 | thin section - 1	1
+SKIN - 1; TISSUE - 50; TISSUE - 1	skin - 1 | tissue - 50 | tissue - 1	1
+SKIN - 1; TISSUE - 50; WINGS_TAIL - 50	skin - 1 | tissue - 50 | wings_tail - 50	1
+SKIN - 1; TISSUE - NULL	skin - 1 | tissue - null	1
+SKIN - 1; TISSUE - NULL; FLUID - 1	skin - 1 | tissue - null | fluid - 1	1
+SKIN - 1; WINGS_TAIL - 1; TISSUE - 10	skin - 1 | wings_tail - 1 | tissue - 10	1
+SKIN - 1; WINGS_TAIL - 1; TISSUE - 50	skin - 1 | wings_tail - 1 | tissue - 50	1
+SKIN - 50	skin - 50	1
+SKIN - 50; EGGSET - 1; TISSUE - NULL	skin - 50 | eggset - 1 | tissue - null	1
+SKIN - 50; TISSUE - 1	skin - 50 | tissue - 1	1
+SKIN - 50; TISSUE - 50	skin - 50 | tissue - 50	1
+SKIN - NULL	skin - null	1
+SKIN - NULL; TISSUE - 1	skin - null | tissue - 1	1
+SKIN - NULL; TISSUE - 50	skin - null | tissue - 50	1
+SKIN - NULL; TISSUE - NULL	skin - null | tissue - null	1
+SKIN  STERNUM  TRACHEA  FURCULA	skin | sternum | trachea | furcula	1
+SKIN  TISSUE SAMPLE	skin | tissue	1
+SKIN  WING  PARTIAL SKELETON	skin | wing | partial skeleton	1
+SKIN  WING & PARTIAL SKELETON	skin | wing | partial skeleton	1
+SKIN & BODY SKELETON	skin | body skeleton	1
+SKIN & PARTIAL SKEL.	skin | partial skeleton	1
+SKIN & PARTIAL SKELETON	skin | partial skeleton	1
+SKIN & PARTIAL SKULL	skin | partial skull	1
+SKIN & PORTION OF DENTARY	skin | partial dentary	1
+SKIN & SKELETON	skin | skeleton	1
+SKIN & SKELETON (SKEL.MISS)	skin	1
+SKIN & STERNUM	skin | sternum	1
+SKIN & WING	skin | wing	1
+SKIN & WING  PARTIAL SKELETON	skin | wing | partial skeleton	1
+SKIN & WING & FOOT	skin | wing | foot	1
+SKIN & WING & PARTIAL SKELETON	skin | wing | partial skeleton	1
+SKIN & WING, DNA,  PARTIAL SKEL IN FREERER	DNA | partial skeleton | skin | wing	1
+SKIN (DRY)	skin	1
+SKIN (ETOH)	skin (ETOH)	1
+SKIN (FREEZE DRIED)	skin (freeze fried)	1
+SKIN (MICROSLIDE)	skin (microslide)	1
+SKIN ,FEATHERS	feathers | skin	1
+SKIN ,SKEL	skeleton | skin	1
+SKIN ,TISSUE	skin | tissue	1
+SKIN ,WING ,SKEL	skeleton | skin | wing	1
+SKIN + DNA	DNA | skin	1
+SKIN + PARTIAL SKEL + DNA	DNA | partial skeleton | skin	1
+SKIN + WING + PARTIAL SKEL + DNA	DNA | partial skeleton | skin | wing	1
+SKIN AND BODY SKELETON	skin | body skeleton	1
+SKIN AND SKELETON	skin | skeleton	1
+SKIN AND SKULL	skin | skull	1
+SKIN ONLY	skin	1
+SKIN ONLY/MUMMIFIED	mummy (skin)	1
+SKIN ONLY/SKELETON	skin | skeleton	1
+SKIN ONLY: DESTROYED	skin (destroyed)	1
+SKIN TANNED/SKEL/SCALP	scalp | skeleton | tanned skin	1
+SKIN WITH LIMB BONES	skin with limb bones	1
+SKIN WITH SKULL AND FOOT BONES	skin with skull and foot bones	1
+SKIN WITH SKULL AND LIM BONES	skin with skull and limb bones	1
+SKIN WITH SKULL IN FLUID	fluid skin with skull	1
+SKIN, 	skin	1
+SKIN, ALCOHOLIC	alcoholic | skin	1
+SKIN, BODY SKELETON	skin | body skeleton	1
+SKIN, DRIED	dried skin	1
+SKIN, DRY SKELETON	dry skeleton | skin	1
+SKIN, EGG/NEST	eggs | nest | skin	1
+SKIN, FEATHERS, SKELETON	feathers | skeleton | skin	1
+SKIN, FLUID	fluid | skin	1
+SKIN, NO SKULL	skin	1
+SKIN, OTHER PREP	other prep | skin	1
+SKIN, PAR SKELETON, WING, DNA	DNA | partial skeleton | skin | wing	1
+SKIN, PART	skin | partial skeleton	1
+SKIN, PART SKELETON	skin | partial skeleton	1
+SKIN, PART SKELETON, FEATHERS	skin | partial skeleton | feathers	1
+SKIN, PART, FLUID	fluid | partial skeleton | skin	1
+SKIN, SELETON	skin | skeleton	1
+SKIN, SKEL, STOM, TISSUES - 1	skeleton | skin | stomach | tissues - 1	1
+SKIN, SKELEON	skin | skeleton	1
+SKIN, SKELETON	skeleton | skin	1
+SKIN, SKELETON (FEW WING BONES)	skin | skeleton | wing bones	1
+SKIN, SKELETON, FEATHERS	skin | skeleton | feathers	1
+SKIN, SKELETON, MISC. FEATHERS	skin | skeleton | feathers	1
+SKIN, SKELETON, SKELETON	skeleton | skin	1
+SKIN, SKELETON, STOMACH - 1	skeleton | skin | stomach - 1	1
+SKIN, SKELETON, TISSUE	skeleton | skin | tissue	1
+SKIN, SKELETON,FEATHERS	skin | skeleton | feathers	1
+SKIN, SKIN	skin	1
+SKIN, SKIN SAMPLE, SKIN SAMPLE	skin | skin sample	1
+SKIN, SKULL	skin | skull	1
+SKIN, SKULL, ALC	alcoholic | skin | skull	1
+SKIN, SKULL, ALCOHOLIC	alcoholic | skin | skull	1
+SKIN, SKULL, BACULUM	baculum | skin | skull	1
+SKIN, SKULL, BODY SKELETON	skin | skull | body skeleton	1
+SKIN, SKULL, FLUID	fluid | skin | skull	1
+SKIN, SKULL, FLUID, GLANS	fluid | glans | skin | skull	1
+SKIN, SKULL, OTHER PREP	opther prep | skin | skull	1
+SKIN, SKULL, SKELETON	skeleton | skin | skull	1
+SKIN, SKULL, SKELETON, ALCOHOLIC	alcoholic | skeleton | skin | skull	1
+SKIN, SKULL, SKELETON, OTHER PREP	other prep | skeleton | skin | skull	1
+SKIN, SKULL, TISSUE	skin | skull | tissue	1
+SKIN, TISSUE	skin | tissue	1
+SKIN, TISSUE, WING	skin | tissue | wing	1
+SKIN, TRACHEA	skin | trachea	1
+SKIN, VISCERA	skin | viscera	1
+SKIN, WING	skin | wing	1
+SKIN, WING & DNA	DNA | skin | wing	1
+SKIN, WING, AND SKELETON	skin | wing | skeleton	1
+SKIN, WING, DNA & PARTIAL SKELETON	DNA | partial skeleton | skin | wing	1
+SKIN, WING, SKELETON	skin | wing | skeleton	1
+SKIN,SKELETON	skin | skeleton	1
+SKIN/ALCOHOLIC	alcoholic | skin	1
+SKIN/BACULUM	baculum | skin	1
+SKIN/BODY SKELETON	skin | body skeleton	1
+SKIN/BODY SKELETON/SK	skin | body skeleton | skull	1
+SKIN/CLAWS	claws | skin	1
+SKIN/LEG	leg | skin	1
+SKIN/MANDIBLE	mandible | skin	1
+SKIN/MOUNT	skin | mount	1
+SKIN/PARTIAL SKEL	partial skeleton | skin	1
+SKIN/SKEL	skeleton | skin	1
+SKIN/SKEL FRAGMENTS	skeleton fragments | skin	1
+SKIN/SKEL//FORELIMB/SCALP/	forelimbs | scalp | skeleton | skin	1
+SKIN/SKELEOTN	skin | skeleton	1
+SKIN/SKELETON	skin | skeleton	1
+SKIN/SKELETON :PARTIAL	partial skeleton | skin	1
+SKIN/SKELETON/FEATHERS	skin | skeleton | feathers	1
+SKIN/SKELL	skeleton | skin	1
+SKIN/SKUL	skin | skull	1
+SKIN/SKULL	skin | skull	1
+SKIN/SKULL TEACHING	skin | skull	1
+SKIN/SKULL, TEACHING	skin | skull	1
+SKIN/SKULL/ANTLERS	antlers | skin | skull	1
+SKIN/SKULL/BACULUM	baculum | skin | skull	1
+SKIN/SKULL/SCALP/ANTLERS/JAW	antlers | jaw | scalp | skin | skull	1
+SKIN/SKULL/SKEL	skeleton | skin | skull	1
+SKIN/SKULL?	skin | skull	1
+SKIN/TOE CLIP - 1; FEATHER - 1	feather - 1	1
+SKIN/TOE CLIP - 1; FEATHER - 1; SKIN - 1	feather - 1 | skin - 1	1
+SKIN/TOE CLIP - 1; FLAT_SKIN - 1	flat skin - 1	1
+SKIN/TOE CLIP - 1; FLAT_SKIN - 1; FLUID - 1; FEATHER - 1	flat skin - 1 | fluid - 1 | feather - 1	1
+SKIN/TOE CLIP - 1; FLAT_SKIN - 1; SKEL - 1	flat skin - 1 | skeleton - 1	1
+SKIN/TOE CLIP - 1; FLUID - 1; FLAT_SKIN - 1; SKEL - 1	fluid - 1 | flat skin - 1 | skeleton - 1	1
+SKIN/TOE CLIP - 1; FLUID - 1; SKIN - 1	fluid - 1 | skin - 1	1
+SKIN/TOE CLIP - 1; SKEL - 1	skeleton - 1	1
+SKIN/TOE CLIP - 1; SKEL - 1; SKIN - 1	skeleton - 1 | skin - 1	1
+SKIN/TOE CLIP - 1; SKIN - 1	skin - 1	1
+SKIN/TOE CLIP - 1; SKIN - 1; FLUID - 1	skin - 1 | fluid - 1	1
+SKIN/TOE CLIP - 2; FEATHER - 2	feather - 2	1
+SKIN/TOE CLIP - NULL; SKIN - 1	skin - 1	1
+SKIN/TOE CLIP; FEATHER	feather	1
+SKIN/TOE CLIP; FEATHER; SKIN	feather | skin	1
+SKIN/TOE CLIP; FLAT_SKIN	flat skin	1
+SKIN/TOE CLIP; FLAT_SKIN; FLUID; FEATHER	flat skin | fluid | feather	1
+SKIN/TOE CLIP; FLAT_SKIN; SKEL	flat skin | skel	1
+SKIN/TOE CLIP; FLUID; FLAT_SKIN; SKEL	fluid | flat skin | skel	1
+SKIN/TOE CLIP; FLUID; SKIN	fluid | skin	1
+SKIN/TOE CLIP; SKEL	skel	1
+SKIN/TOE CLIP; SKEL; SKIN	skeleton | skin	1
+SKIN/TOE CLIP; SKIN	skin	1
+SKIN/TOE CLIP; SKIN; FLUID	skin | fluid	1
+SKIN/WING	skin | wing	1
+SKIN/WING, TISSUE	skin | tissue | wing	1
+SKIN/WING/SKELETON	skin | wing | skeleton	1
+SKIN; FEATHER; SKIN/TOE CLIP	skin | feather	1
+SKIN; SKEL; SKIN/TOE CLIP	skin | skel	1
+SKIN; SKIN/TOE CLIP	skin	1
+SKIN; SKIN/TOE CLIP; SKEL; FEATHER	skin | skeleton | feather	1
+SKIN; SKIN/TOE CLIP; TISSUE; SKEL	skin | tissue | skel	1
+SKIN; SKIN/TOE CLIP; WINGS_TAIL	skin | wings_tail	1
+SKIN; TISSUE	skin | tissue	1
+SKIN\BODY SKELETON	skin | body skeleton	1
+SKIN+WING	skin | wing	1
+SKIN+WING+PARTIAL SKEL.+DNA (MUSCLE ONLY)	DNA (muscle) | partial skeleton | skin | wing	1
+SKINK/SKELETON/FEATHERS	feathers | skeleton | skin	1
+SKINS AND RATTLES	skins | rattles	1
+SKO (PART)+T	partial skull | tissue	1
+SKO +T	skull | tissue	1
+SKO(PART)+T	partial skull | tissue	1
+SKO+T	skull | tissue	1
+SKULL	skull	1
+SKULL  AND MANDIBLES ONLY	skull | mandibles	1
+SKULL & ANT VERTEBRAE ONLY	skull | anterior vertebrae	1
+SKULL & ANT. VERTEBRAE ONLY	skull | anterior vertebrae	1
+SKULL & ANTERIOR CERVICAL VERTEBRAE (DRY)	skull | anterior cervical vertebrae	1
+SKULL & ANTERIOR VERTEBRAE (DRY)	skull | anterior vertebrae	1
+SKULL & ASST. SKEL. ELEMENTS	skull | skeletal elements	1
+SKULL & ATLAS ONLY	skull | atlas	1
+SKULL & AXIAL SKELETON (DRY)	axial skeleton | skull	1
+SKULL & MUCH OF SKELETON	skull | partial skeleton	1
+SKULL & NECK (DRY)	neck | skull	1
+SKULL & NECK VERTEBRAE (DRY)	skull | neck vertebrae	1
+SKULL & PART SN	partial skeleton | skull	1
+SKULL & PART. SK.	skull | partial skeleton	1
+SKULL & PARTIAL BODY SKEL	skull | partial body skeleton	1
+SKULL & PARTIAL SKELETON	skull | partial skeleton	1
+SKULL & PARTIAL SN	partial skeleton | skull	1
+SKULL & RADIUS ONLY	skull | radius	1
+SKULL & SKELETON MOUNT.	skull | skeleton mount	1
+SKULL & SKELETON SKIN TEMP.	skeleton, skin, skull	1
+SKULL & SKIN SAMPLE O.	skull | skin sample	1
+SKULL & SOME ELEMENTS	skull | skeletal elements	1
+SKULL & VERTEBRAE	skull | vertebrae	1
+SKULL & VERTEBRAE (DRY)	skull | vertebrae	1
+SKULL (DRY)	skull	1
+SKULL (DRY), TISSUE	skull | tissue	1
+SKULL (FRAGMENTED)	fragmented skull	1
+SKULL (GLYCERIN)	skull (glycerin)	1
+SKULL / VERTEBRAE / LEG (DRY), TISSUE	leg | skull | vertebrae | tissue	1
+SKULL + VERTEBRAE (DRY)	skull | vertebrae	1
+SKULL AND ANTLER ONLY	skull | antler	1
+SKULL AND AXIS, NO MANDIBLES	skull | atlas	1
+SKULL AND CERVICAL VERTEBRAE (DRY)	skull | cervical vertebrae	1
+SKULL AND DRIED POST CRANIAL DRIED SKIN	skull | dried post-cranial skin	1
+SKULL AND DRIED SKIN	skull | dried skin	1
+SKULL AND FLUID SKIN	skull | fluid skin	1
+SKULL AND FLUID SPECIMEN	skull | fluid specimen	1
+SKULL AND MANDIBLE ONLY	skull | mandible	1
+SKULL AND MANDIBLES	skull | mandibles	1
+SKULL AND NECK VERTEBRAE (DRY)	skull | neck vertebrae	1
+SKULL AND PARTIAL SKELETON	skull | partial skeleton	1
+SKULL AND SKELETON	skull | skeleton	1
+SKULL AND SKELETON ONLY	skull | skeleton	1
+SKULL AND SPECIMEN IN ALCOHOL	skull | specimen in alcohol	1
+SKULL CARAPACE GIRDLES (DRY)	carapace | girdles | skull	1
+SKULL CRANIUM ONLY	cranium	1
+SKULL FRAG, 1 HUM, 1 FEM, 2 TIB, PART INNOM	skull fragment | humerus | femur | tibia | partial innominata	1
+SKULL IN DRIED SKIN	dried skin with skull	1
+SKULL IN SKIN	skin with skull	1
+SKULL IN TANNED SKIN	tanned skin with skull	1
+SKULL LOWER JAW (DRY)	lower jaw | skull	1
+SKULL LOWER JAW (GLYCERIN)	lower jaw (glycerin) | skull	1
+SKULL LOWER JAW ANTERIOR VERTEBRAE (DRY)	anterior vertebrae | lower jaw | skull	1
+SKULL LOWER JAW CARAPACE (DRY)	carapace | lower jaw | skull	1
+SKULL LOWER JAW HYOID (DRY)	hyoid | lower jaw | skull	1
+SKULL LOWER JAW HYOID SHELL (DRY)	hyoid | lower jaw | shell | skull	1
+SKULL LOWER JAW HYOID VERTEBRAE (DRY)	lower jaw | skull | hyoid vertebrae	1
+SKULL LOWER JAW PARTIAL SKELETON (DRY)	lower jaw | partial skeleton | skull	1
+SKULL LOWER JAW PARTIAL SKELETON CARAPACE (DRY)	carapace | lower jaw | partial skeleton | skull	1
+SKULL LOWER JAW PARTIAL SKELETON SHELL (DRY)	lower jaw | shell | partial skeleton | skull	1
+SKULL LOWER JAW SHELL (DRY)	lower jaw | shell | skull	1
+SKULL LOWER JAW SKIN (DRY)	lower jaw | skin | skull	1
+SKULL LOWER JAW STUFFED BODY (DRY)	stuffed body | lower jaw | skull	1
+SKULL LOWER JAW VERTEBRAE (DRY)	lower jaw | skull | vertebrae	1
+SKULL LOWER JAW VERTEBRAE PELVIS (DRY)	lower jaw | pelvis | skull | vertebrae	1
+SKULL LOWER JAW VERTEBRAE SHELL (DRY)	lower jaw | shell | skull | vertebrae	1
+SKULL MANDIBLES	skull | mandibles	1
+SKULL O	skull	1
+SKULL ONLY	skull	1
+SKULL ONLY (POSTERIOR 2/3)	partial skull	1
+SKULL ONLY, MANDIBLES	skull | mandibles	1
+SKULL ONLY, NO MANDIBLES	skull	1
+SKULL ONLY.	skull	1
+SKULL ONLY?	skull	1
+SKULL PARTIAL SKELETON (DRY)	partial skeleton | skull	1
+SKULL PARTIAL SKELETON (GLYCERIN)	partial skeleton (glycerin) | skull	1
+SKULL PARTIAL SKELETON SCALES (DRY)	scales | partial skeleton | skull	1
+SKULL SHELL (DRY)	shell | skull	1
+SKULL SPECIMEN	skull	1
+SKULL VERTEBRAE (DRY)	skull | vertebrae	1
+SKULL WITHOUT NASALS AND PREMAXILLA, ATLAS, ANTERIOR AXIS.	partial skull	1
+SKULL, 2 R DENTARY	skull | 2 right dentaries	1
+SKULL, ALCOHOLIC	alcoholic | skull	1
+SKULL, ALCOHOLIC, OTHER PREP	alcoholic | other prep | skull	1
+SKULL, ANT. PORT. SKELETON	skull | partial skeleton	1
+SKULL, ATLAS	skull | atlas	1
+SKULL, AXIS, PART ATLAS ONLY	skull | axis | partial atlas	1
+SKULL, LOWER JAWS	skull | lower jaws	1
+SKULL, MANDIBLE, ATLAS, AXIS	skull | mandible | atlas | axis	1
+SKULL, MANDIBLES, ATLAS, AXIS	skull | mandibles | atlas | axis	1
+SKULL, MANDIBLES, PARTIAL SKELETON	skull | mandible | partial skeleton	1
+SKULL, MANDIBLES,ATLAS,AXIS	skull | mandibles | axis	1
+SKULL, OTHER PREP	other prep | skull	1
+SKULL, PARTIAL	skull	1
+SKULL, PARTIAL SKELETON	skull | partial skeleton	1
+SKULL, PARTIAL SKELETON, CA. 90% COMPLETE.	skull | partial skeleton	1
+SKULL, PARTIAL/ANLTERS	antlers | partial skull	1
+SKULL, R AND L DENTARIES. VERY YOUNG WITH DECIDUOUS DENTITION.	skull | left | dentary | right dentary	1
+SKULL, SHELL AND FLUID GONADS	skull | shell | fluid gonads	1
+SKULL, SKELETON	skeleton | skull	1
+SKULL, SKELETON, ALCOHOLIC	alcoholic | skeleton | skull	1
+SKULL, SKELETON, OTHER PREP	other prep | skeleton | skull	1
+SKULL, TISSUE	skull | tissue	1
+SKULL/ALCOHOLIC #20101	alcoholic | skull	1
+SKULL/ANTLER	antler | skull	1
+SKULL/ANTLERS	antlers | skull	1
+SKULL/BACULUM	baculum | skull	1
+SKULL/FORELIMB	forelimb | skull	1
+SKULL/FORELIMB/SCALP	forelimb | scalp | skull	1
+SKULL/HORNS	horns | skull	1
+SKULL/HYOID ONLY?	hyoid | skull	1
+SKULL/PARTIAL SKEL	partial skeleton | skull	1
+SKULL/SCALP	scalp | skull	1
+SKULL/SCALP/ANTLERS	antlers | scalp | skull	1
+SKULL/SCALP/SKIN/FORELIMB	forelimb | scalp | skin | skull	1
+SKULL/SHELL (DRY)	shell | skull	1
+SKULL/SKEL/PELT	pelt | skeleton | skull	1
+SKULL/SKEL/SCALP	scalp | skeleton | skull	1
+SKULL/SKIN ALC	alcoholic | skin | skull	1
+SKULL/TAIL	skull | tail	1
+SKULL/TAIL/FEMUR/TIBIA (DRY)	femur | skull | tail | tibia	1
+SKULL/TOOTH	skull | tooth	1
+SKULL/VERTEBRAE	skull | vertebrae	1
+SKULL/WINGS/TAIL	skull | tail | wings	1
+SKULL:  5 SKULLS, 4 PR LOWER J	5 skulls | 4 partial lower jaws	1
+SKULL:  R DENTARY ONLY	skull | right dentary	1
+SKULL; FLAT SKIN	flat skin | skull	1
+SKULL; MISC.	miscellaneous | skull	1
+SKULL; MOUNTED	mounted skull	1
+SKULL; SKIN	skin | skull	1
+SKULL; SKULL	skull	1
+SKULL; STUDY SKIN	study skin | skull	1
+SKULL+AXIAL SKELETON (GLYCERIN)	axial skeleton (glycerin) | skull (glycerin)	1
+SKULL+FEATHERS	feathers | skull	1
+SKULL+LOWER JAW (DRY)	lower jar | skull	1
+SKULL+LOWER JAW (GLYCERIN)	lower jar (glycerin) | skull (glycerin)	1
+SKULL+LOWER JAW+4 VERTEBRAE (DRY)	lower jaw | skull | 4 vertebrae	1
+SKULL+LOWER JAW+ANTERIOR VERTEBRAE (DRY)	lower jaw | skull | anterior vertebrae	1
+SKULL+LOWER JAW+ANTERIOR VERTEBRAE+RIBS (DRY)	lower jaw | ribs | skull | anterior vertebrae	1
+SKULL+LOWER JAW+NECK VERTEBRAE+RIBS (DRY)	lower jaw | ribs | skull | neck vertebrae	1
+SKULL+LOWER JAW+NECK VERTEBRAE+SHELL (DRY)	lower jaw | shell | skull | neck vertebrae	1
+SKULLS	skulls	1
+SKULLS AND SKELETONS OF 2 INDIVIDUALS	2 skulls | 2 skeletons	1
+SKULLS+BONES (DRY)	bones | skull	1
+SLIDE ,SKEL	skeleton | slide	1
+SLIDE ,WING ,SKEL	skeleton | slide | wing	1
+SM	skin | skull | baculum	1
+SN	skeleton	1
+SN (2)	skeletons	1
+SN (PART.)	partial skeleton	1
+SN +BAC	baculum | skeleton	1
+SN +T	skeleton | tissue	1
+SN +T+ECTO	ectoparasite | skeleton | tissue	1
+SN, TISSUE	skeleton | tissue	1
+SN+T	skeleton | tissue	1
+SN+T +ECTO	ectoparasite | skeleton | tissue	1
+SN+T+BAC	baculum | skeleton | tissue	1
+SN+T+ECTO	ectoparasite | skeleton | tissue	1
+SN+T+ECTO+CH	chromosomes | ectoparasite | skeleton | tissue	1
+SO	skin in alcohol	1
+SO    AD.	skin in alcohol	1
+SO   AD.	skin in alcohol	1
+SO   IM.	skin in alcohol	1
+SO   JUV.	skin in alcohol	1
+SO  AD	skin in alcohol	1
+SO  AD.	skin in alcohol	1
+SO  IM.	skin in alcohol	1
+SO  JUV.	skin in alcohol	1
+SO  YG.	skin in alcohol	1
+SO +T	skin in alcohol | tissue	1
+SO AD	skin in alcohol	1
+SO IM	skin in alcohol	1
+SO*	skin in alcohol	1
+SO, & PART	skin in alcohol | partial skeleton	1
+SO, & PART. SKELETON	skin in alcohol | partial skeleton	1
+SO, EG, OT	skin in alcohol | egg | other	1
+SO, TISSUE	skin in alcohol | tissue	1
+SO+T	skin in alcohol | tissue	1
+SOFT PARTS REMOVED DURING PREPARATION	soft parts	1
+SOME LIMB ELEMENTS O.	limb elements	1
+SOUND - 1; SKIN - 1	sound - 1 | skin - 1	1
+SPECIMEN	whole animal	1
+SPECIMEN IN ALCOHOL	whole animal in alcohol	1
+SPECIMEN IN ALCOHOL + DRY SKULL	dried skull | specimen in alcohol	1
+SPECIMEN IN ALCOHOL AND 2 EGGS IN FORMALIN	two eggs in formalin | specimen in alcohol	1
+SPECIMEN IN ALCOHOL AND CLEARED AND STAINED.	specimen in alcohol | cleared and stained specimen	1
+SPECIMEN IN ALCOHOL AND CLEARED IN STAINED SPECIMENS	specimen in alcohol | cleared and stained specimens	1
+SPECIMEN IN ALCOHOL AND FLUID EGGS	specimen in alcohol | fluid eggs	1
+SPECIMEN IN ALCOHOL, 2 CLEARED AND STAINED	specimen in alcohol | two cleared and stained specimens	1
+SPECIMEN IN ALCOHOL, 3 CLEARED AND STAINED	specimen in alcohol | three cleared and stained specimens	1
+SPECIMEN IN ALCOHOL, 8 CLEARED AND STAINED	specimen in alcohol | eight cleared and stained specimens	1
+SPECIMEN IN ALCOHOL, CLEARED AND STAINED SKULL	specimen in alcohol | cleared and stained skull	1
+SPECIMEN IN ALCOHOL, DRY SKULL	specimen in alcohol | dried skull	1
+SPECIMEN IN ALCOHOL, FANGS	specimen in alcohol | fangs	1
+SPECIMEN IN ALCOHOL, GONAD IN FORMALIN, SLIDES	specimen in alcohol | gonad in formalin | slides	1
+SPECIMEN IN ALCOHOL, GONADS IN FORMALIN	specimen in alcohol | gonads in formalin	1
+SPECIMEN IN ALCOHOL, OVARY IN FORMALIN	specimen in alcohol | ovary in formalin	1
+SPECIMEN IN FLUID	fluid specimen	1
+SPECIMEN IN FORMALIN	specimen in formalin	1
+SPECIMENS IN ALCOHOL	specimens in alcohol	1
+SPECIMENS IN ALCOHOL, 1 CLEARED AND STAINED	specimens in alcohol | one cleared and stained	1
+SPECIMENS IN ALCOHOL, 2 CLEARED AND STAINED	specimens in alcohol | two cleared and stained	1
+SPECIMENS IN ALCOHOL, 3 CLEARED AND STAINED	specimens in alcohol | three cleared and stained	1
+SPECIMENS IN ALCOHOL, 4 CLEARED AND STAINED	specimens in alcohol | four cleared and stained	1
+SPECIMENS IN ALCOHOL, 6 CLEARED AND STAINED	specimens in alcohol | six cleared and stained	1
+SPECIMENS IN ALCOHOL, ONE PARTIAL SKELETON	specimens in alcohol | one partial skeleton	1
+SPECIMENS IN ALCOHOL, ONE SKELETON	specimens in alcohol | one skeleton	1
+SPECIMENS IN ALCOHOL, ONE SKULL	specimens in alcohol | one skull	1
+SPECIMENS IN ALCOHOL, SIX SKELETONS	specimens in alcohol | six skeletons	1
+SPECIMENS IN FORMALIN, 1 CLEARED AND STAINED	specimens in formalin | one cleared and stained	1
+SPERMATOPHORES IN ALCOHOL	spermatophores in alcohol	1
+SPERMATOPHORES IN FORMALIN	spermatophores in formalin	1
+SPREAD WING	spread wing	1
+SPREAD WING - 1	spread wing - 1	1
+SPREAD WING AND TAIL, TISSUE	spread wing | tail | tissue	1
+SPREAD WING, TISSUE	spread wing | tissue	1
+SS	skin | skull	1
+SS, TISSUE	skin | skull | tissue	1
+ST	st	1
+STICK BIRD	stick bird	1
+STICK BIRD - NIC	stick bird	1
+STICK BIRD (NIC)	stick bird	1
+STICK BIRD/WING	stick bird | wing	1
+STICK BIRD/WING - NIC	stick bird | wing	1
+STICK WING	stick wing	1
+STOM; SKEL; TISSUE; ROUND SKIN	skeleton | round skin | stomach | tissue	1
+STOM; SKEL; TISSUE; SCHMOO	schmoo | skeleton | stomach | tissue	1
+STOMACH PLASTIC	plastic stomach	1
+STUDY	study skin	1
+STUDY SKIN	study skin	1
+STUDY SKIN AND ALCOHOLIC TRUNK	study skin | alcoholic trunk	1
+STUDY SKIN AND ALCOHOLIC TRUNK, TISSUE	study skin | alcoholic trunk | tissue	1
+STUDY SKIN AND BODY SKELETON	study skin | body skeleton	1
+STUDY SKIN AND BODY SKELETON, TISSUE	study skin | body skeleton | tissue	1
+STUDY SKIN AND SKELETON	study skin |  skeleton	1
+STUDY SKIN AND SPREAD WING, TISSUE	study skin | spread wing | tissue	1
+STUDY SKIN AND WING	study skin | wing	1
+STUDY SKIN, BODY SKELETON, AND SPREAD WING	study skeleton | body skeleton | spread wing	1
+STUDY SKIN, FLATTENED	flat study skin	1
+STUDY SKIN, TISSUE	study skin | tissue	1
+STUDY+ WING	study skin | wing	1
+STUDY+ALC	alcoholic | study skin	1
+STUDY+SKEL	skeleton | study skin	1
+STUDY+SKEL+W	skeleton | study skin | wing	1
+STUDY+WING	study skin | wing	1
+STUFFED (DRY)	stuffed	1
+STUFFED DRIED SKIN	stuffed dried skin	1
+SYRINX - 1; EGGSET - 1; TISSUE - 1; SKIN - 1; SKEL - 1	syrinx - 1 | eggset - 1 | tissue - 1 | skin - 1 | skeleton - 1	1
+SYRINX - 1; FLAT_SKIN - 1; SKEL - 1	syrinx - 1 | flat skin - 1 | skeleton - 1	1
+SYRINX - 1; FLAT_SKIN - 1; SKEL - 1; TISSUE - 1	syrinx - 1 | flat skin - 1 | skeleton - 1 | tissue - 1	1
+SYRINX - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1	syrinx - 1 | flat skin - 1 | tissue - 1 | skeleton - 1	1
+SYRINX - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1; FLUID - 1	syrinx - 1 | flat skin - 1 | tissue - 1 | skeleton - 1 | fluid - 1	1
+SYRINX - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1; GENBANK - 1	syrinx - 1 | flat skin - 1 | tissue - 1 | skeleton - 1 | Genbank - 1	1
+SYRINX - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1; GENBANK - 1; GENBANK - 1	syrinx - 1 | flat skin - 1 | tissue - 1 | skeleton - 1 | Genbank - 1 | Genbank - 1	1
+SYRINX - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1; WINGS_TAIL - 1	syrinx - 1 | flat skin - 1 | tissue - 1 | skeleton - 1 | wings_tail - 1	1
+SYRINX - 1; FLAT_SKIN - 1; TISSUE - 25; SKEL - 1	syrinx - 1 | flat skin - 1 | tissue - 25 | skeleton - 1	1
+SYRINX - 1; FLAT_SKIN - 1; TISSUE - 30; SKEL - 1	syrinx - 1 | flat skin - 1 | tissue - 30 | skeleton - 1	1
+SYRINX - 1; FLAT_SKIN - 1; TISSUE - 49; SKEL - 1	syrinx - 1 | flat skin - 1 | tissue - 49 | skeleton - 1	1
+SYRINX - 1; FLAT_SKIN - 1; TISSUE - 50; SKEL - 1	syrinx - 1 | flat skin - 1 | tissue - 50 | skeleton - 1	1
+SYRINX - 1; FLUID - 1	syrinx - 1 | fluid - 1	1
+SYRINX - 1; FLUID - 1; SKEL - 1	syrinx - 1 | fluid - 1 | skeleton - 1	1
+SYRINX - 1; SKEL - 1	syrinx - 1 | skeleton - 1	1
+SYRINX - 1; SKEL - 1; FEATHER - 1	syrinx - 1 | skeleton - 1 | feather - 1	1
+SYRINX - 1; SKEL - 1; TISSUE - 1; SKIN - 1	syrinx - 1 | skeleton - 1 | tissue - 1 | skin - 1	1
+SYRINX - 1; SKEL - 1; TISSUE - 30; FLUID - 1; SKIN - 1	syrinx - 1 | skeleton - 1 | tissue - 30 | fluid - 1 | skin - 1	1
+SYRINX - 1; SKEL - 1; WINGS_TAIL - 1	syrinx - 1 | skeleton - 1 | wings_tail - 1	1
+SYRINX - 1; SKIN - 1	syrinx - 1 | skin - 1	1
+SYRINX - 1; SKIN - 1; SKEL - 1	syrinx - 1 | skin - 1 | skeleton - 1	1
+SYRINX - 1; SKIN - 1; SKEL - 1; FEATHER - 1	syrinx - 1 | skin - 1 | skeleton - 1 | feather - 1	1
+SYRINX - 1; SKIN - 1; TISSUE - 1	syrinx - 1 | skin - 1 | tissue - 1	1
+SYRINX - 1; SKIN - 1; TISSUE - 1; SKEL - 1; WINGS_TAIL - 1	syrinx - 1 | skin - 1 | tissue - 1 | skeleton - 1 | wings_tail - 1	1
+SYRINX - 1; SKIN - 1; TISSUE - 10	syrinx - 1 | skin - 1 | tissue - 10	1
+SYRINX - 1; SKIN - 1; TISSUE - 30	syrinx - 1 | skin - 1 | tissue - 30	1
+SYRINX - 1; SKIN - 1; TISSUE - 50	syrinx - 1 | skin - 1 | tissue - 50	1
+SYRINX - 1; SKIN/TOE CLIP - 1; SKIN - 1; SKEL - 1; FLUID - 1; TISSUE - 1	syrinx - 1 | skin - 1 | skeleton - 1 | fluid - 1 | tissue - 1	1
+SYRINX - 1; TISSUE - 1; FLUID - 1	syrinx - 1 | tissue - 1 | fluid - 1	1
+SYRINX - 1; TISSUE - 1; SKEL - 1	syrinx - 1 | tissue - 1 | skeleton - 1	1
+SYRINX - 1; TISSUE - 1; SKEL - 1; FLUID - 1	syrinx - 1 | tissue - 1 | skeleton - 1 | fluid - 1	1
+SYRINX - 1; TISSUE - 1; SKEL - 1; SKIN - 1	syrinx - 1 | tissue - 1 | skeleton - 1 | skin - 1	1
+SYRINX - 1; TISSUE - 1; SKEL - NULL	syrinx - 1 | tissue - 1 | skeleton - null	1
+SYRINX - 1; TISSUE - 1; SKIN - 1	syrinx - 1 | tissue - 1 | skin - 1	1
+SYRINX - 1; TISSUE - 1; SKIN - 1; GENBANK - 1	syrinx - 1 | tissue - 1 | skin - 1 | Genbank - 1	1
+SYRINX - 1; TISSUE - 1; SKIN - 1; GENBANK - 1; GENBANK - 1	syrinx - 1 | tissue - 1 | skin - 1 | Genbank - 1 | Genbank - 1	1
+SYRINX - 1; TISSUE - 1; SKIN - 1; SKEL - 1	syrinx - 1 | tissue - 1 | skin - 1 | skeleton - 1	1
+SYRINX - 1; TISSUE - 1; SKIN - 1; SKEL - 1; FLUID - 1	syrinx - 1 | tissue - 1 | skin - 1 | skeleton - 1 | fluid - 1	1
+SYRINX - 1; TISSUE - 1; SKIN - 50	syrinx - 1 | tissue - 1 | skin - 50	1
+SYRINX - 1; TISSUE - 10; FLUID - 1	syrinx - 1 | tissue - 10 | fluid - 1	1
+SYRINX - 1; TISSUE - 10; SKEL - 1	syrinx - 1 | tissue - 10 | skeleton - 1	1
+SYRINX - 1; TISSUE - 10; SKIN - 1	syrinx - 1 | tissue - 10 | skin - 1	1
+SYRINX - 1; TISSUE - 25; SKEL - 1	syrinx - 1 | tissue - 25 | skeleton - 1	1
+SYRINX - 1; TISSUE - 30; FLUID - 1	syrinx - 1 | tissue - 30 | fluid - 1	1
+SYRINX - 1; TISSUE - 30; SKEL - 1	syrinx - 1 | tissue - 30 | skeleton - 1	1
+SYRINX - 1; TISSUE - 30; SKIN - 1	syrinx - 1 | tissue - 30 | skin - 1	1
+SYRINX - 1; TISSUE - 50; FLUID - 1; SKIN - 1	syrinx - 1 | tissue - 50 | fluid - 1 | skin - 1	1
+SYRINX - 1; TISSUE - 50; SKEL - 1	syrinx - 1 | tissue - 50 | skeleton - 1	1
+SYRINX - 1; TISSUE - 50; SKIN - 1	syrinx - 1 | tissue - 50 | skin - 1	1
+SYRINX - 1; TISSUE - NULL; SKIN - 1; WINGS_TAIL - 1	syrinx - 1 | tissue - null | skin - 1 | wings_tail - 1	1
+SYRINX - 1; WINGS_TAIL - 1; FLAT_SKIN - 1; SKEL - 1	syrinx - 1 | wings_tail - 1 | flat skin - 1 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1	syrinx - 1 | wings_tail - 1 | flat skin - 1 | tissue - 1 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; FLAT_SKIN - 1; TISSUE - 10; SKEL - 1	syrinx - 1 | wings_tail - 1 | flat skin - 1 | tissue - 10 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; FLAT_SKIN - 1; TISSUE - 25; SKEL - 1	syrinx - 1 | wings_tail - 1 | flat skin - 1 | tissue - 25 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; SKEL - 1	syrinx - 1 | wings_tail - 1 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; SKIN - 1	syrinx - 1 | wings_tail - 1 | skin - 1	1
+SYRINX - 1; WINGS_TAIL - 1; SKIN - 1; SKEL - 1	syrinx - 1 | wings_tail - 1 | skin - 1 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; SKIN - 1; TISSUE - 1; SKEL - 1	syrinx - 1 | wings_tail - 1 | skin - 1 | tissue - 1 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; SYRINX - 1; SKEL - 1; SKIN - 1	syrinx - 1 | wings_tail - 1 | syrinx - 1 | skeleton - 1 | skin - 1	1
+SYRINX - 1; WINGS_TAIL - 1; TISSUE - 1; FLUID - 1; SKEL - 1	syrinx - 1 | wings_tail - 1 | tissue - 1 | fluid - 1 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; TISSUE - 1; SKEL - 1	syrinx - 1 | wings_tail - 1 | tissue - 1 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; TISSUE - 1; SKIN - 1	syrinx - 1 | wings_tail - 1 | tissue - 1 | skin - 1	1
+SYRINX - 1; WINGS_TAIL - 1; TISSUE - 1; SKIN - 1; FEATHER - 1	syrinx - 1 | wings_tail - 1 | tissue - 1 | skin - 1 | feather - 1	1
+SYRINX - 1; WINGS_TAIL - 1; TISSUE - 1; SKIN - 1; SKEL - 1	syrinx - 1 | wings_tail - 1 | tissue - 1 | skin - 1 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; TISSUE - 10; SKEL - 1	syrinx - 1 | wings_tail - 1 | tissue - 10 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; TISSUE - 24; SKEL - 1	syrinx - 1 | wings_tail - 1 | tissue - 24 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; TISSUE - 25; SKEL - 1	syrinx - 1 | wings_tail - 1 | tissue - 25 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; TISSUE - 30; SKEL - 1	syrinx - 1 | wings_tail - 1 | tissue - 30 | skeleton - 1	1
+SYRINX - 1; WINGS_TAIL - 1; TISSUE - 50; SKEL - 1	syrinx - 1 | wings_tail - 1 | tissue - 50 | skeleton - 1	1
+SYRINX - NULL; TISSUE - 1; SKIN - 1	syrinx - null | tissue - 1 | skin - 1	1
+SYRINX; SKIN/TOE CLIP; SKIN; SKEL; FLUID; TISSUE	syrinx | skin | skeleton | fluid | tissue	1
+T +ECTO	ectoparasite | tissue	1
+TA	alcoholic | tissue	1
+TAIL	tail	1
+TAIL - 1	tail - 1	1
+TAIL & 2 WINGS	tail | wings	1
+TAIL, SKELETON, TISSUE - 1	skeleton | tail | tissue - 1	1
+TAIL, WING	tail | wing	1
+TAIL, WING, TISSUE - 1	tail | tissue - 1 | wing	1
+TAIL/SKULL/TAIL	skull | tail	1
+TAIL/WINGS	tail | wings	1
+TAIL; SKEL; TISSUE; WING	skeleton | tail | tissue | wing	1
+TAIL; TISSUE; WING	tail | tissue | wing	1
+TANNED HIDE	tanned skin	1
+TANNED SKIN	tanned skin	1
+TANNED SKIN WITH SKULL	tanned skin with skull	1
+TARSOMETATARSUS	tarsometatarsus	1
+TAXIDERMIED MOUNT, SKELETON	mount | skeleton	1
+TAXIDERMY MOUNT	taxidermy mount	1
+TAXIDERMY MOUNT, TISSUE	taxidermy mount | tissue	1
+TB	skin in alcohol | skeleton | tissue	1
+TE	alcoholic | tissue	1
+TEACHING		1
+TEACHING SKEL/WING/TAIL	skeleton | tail | wing	1
+TEETH	teeth	1
+TEETH (DRY)	teeth	1
+TERMINAL CAUDAL VERTEBRAE (DRY)	terminal caudal vertebrae	1
+TESTES AND KIDNEYS (MICROSLIDES/TISSUE BLOCKS), TISSUE	testes (microslides, tissue blocks) | kidneys (microslides, tissue blocks) | tissue	1
+TESTES IN ALCOHOL	testes in alcohol	1
+TH	head | tail | body skin in alcohol | tissue	1
+THIN SECTION - 1	thin section - 1	1
+THIN SECTION - 1; SKEL - 1	thin section - 1 | skeleton - 1	1
+THIN SECTION - 1; SKIN - 1; TISSUE - 1	thin section - 1 | skin - 1 | tissue - 1	1
+THIN SECTION - 1; TISSUE - 1; SKIN - 1	thin section - 1 | tissue - 1 | skin - 1	1
+THIN SECTION - 1; TISSUE - 1; SKIN - 1; SKEL - 1; WINGS_TAIL - 1	thin section - 1 | tissue - 1 | skin - 1 | skeleton - 1 | wings_tail - 1	1
+THIN SECTION - 1; TISSUE - 30; SKIN - 1	thin section - 1 | tissue - 30 | skin - 1	1
+THIN SECTION - 1; TISSUE - 50; SKIN - 1	thin section - 1 | tissue - 50 | skin - 1	1
+THIN SECTION - 1; WINGS_TAIL - 1	thin section - 1 | wings_tail - 1	1
+TISSUE	tissue	1
+TISSUE - 1	tissue - 1	1
+TISSUE - 1; EGGSET - 1	tissue - 1 | eggset - 1	1
+TISSUE - 1; EGGSET - 1; FLUID - 1	tissue - 1 | eggset - 1 | fluid - 1	1
+TISSUE - 1; EGGSET - 1; SKIN - 1	tissue - 1 | eggset - 1 | skin - 1	1
+TISSUE - 1; FEATHER - 1	tissue - 1 | feather - 1	1
+TISSUE - 1; FEATHER - 1; SKIN - 1	tissue - 1 | feather - 1 | skin - 1	1
+TISSUE - 1; FLAT_SKIN - 1; SKEL - 1	tissue - 1 | flat skin - 1 | skeleton - 1	1
+TISSUE - 1; FLUID - 1	tissue - 1 | fluid - 1	1
+TISSUE - 1; FLUID - 1; SKIN - 1	tissue - 1 | fluid - 1 | skin - 1	1
+TISSUE - 1; FLUID - 1; SKIN - 1; FEATHER - 1	tissue - 1 | fluid - 1 | skin - 1 | feather - 1	1
+TISSUE - 1; FLUID - 1; SKIN - 1; SKEL - 1	tissue - 1 | fluid - 1 | skin - 1 | skeleton - 1	1
+TISSUE - 1; FLUID - 1; SKIN - 1; WINGS_TAIL - 1	tissue - 1 | fluid - 1 | skin - 1 | wings_tail - 1	1
+TISSUE - 1; FLUID - 1; SYRINX - 1	tissue - 1 | fluid - 1 | syrinx - 1	1
+TISSUE - 1; FLUID - 1; WINGS_TAIL - 1; SKIN - 1; SKEL - 1	tissue - 1 | fluid - 1 | wings_tail - 1 | skin - 1 | skeleton - 1	1
+TISSUE - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	tissue - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+TISSUE - 1; GENBANK - 1; SKEL - 1	tissue - 1 | Genbank - 1 | skeleton - 1	1
+TISSUE - 1; SKEL - 1	tissue - 1 | skeleton - 1	1
+TISSUE - 1; SKEL - 1; FEATHER - 1	tissue - 1 | skeleton - 1 | feather - 1	1
+TISSUE - 1; SKEL - 1; FLAT_SKIN - 1	tissue - 1 | skeleton - 1 | flat skin - 1	1
+TISSUE - 1; SKEL - 1; FLAT_SKIN - 1; SYRINX - 1	tissue - 1 | skeleton - 1 | flat skin - 1 | syrinx - 1	1
+TISSUE - 1; SKEL - 1; FLAT_SKIN - NULL	tissue - 1 | skeleton - 1 | flat skin - null	1
+TISSUE - 1; SKEL - 1; SKIN - 1	tissue - 1 | skeleton - 1 | skin - 1	1
+TISSUE - 1; SKEL - 1; SYRINX - 1	tissue - 1 | skeleton - 1 | syrinx - 1	1
+TISSUE - 1; SKEL - 1; SYRINX - 1; FLUID - 1	tissue - 1 | skeleton - 1 | syrinx - 1 | fluid - 1	1
+TISSUE - 1; SKEL - 1; TISSUE - 1	tissue - 1 | skeleton - 1 | tissue - 1	1
+TISSUE - 1; SKEL - 1; TISSUE - 50	tissue - 1 | skeleton - 1 | tissue - 50	1
+TISSUE - 1; SKEL - 1; WINGS_TAIL - 1	tissue - 1 | skeleton - 1 | wings_tail - 1	1
+TISSUE - 1; SKEL - NULL	tissue - 1 | skeleton - null	1
+TISSUE - 1; SKIN - 1	tissue - 1 | skin - 1	1
+TISSUE - 1; SKIN - 1; FEATHER - 1	tissue - 1 | skin - 1 | feather - 1	1
+TISSUE - 1; SKIN - 1; FEATHER - 1; SKEL - 1	tissue - 1 | skin - 1 | feather - 1 | skeleton - 1	1
+TISSUE - 1; SKIN - 1; FLUID - 1	tissue - 1 | skin - 1 | fluid - 1	1
+TISSUE - 1; SKIN - 1; GENBANK - 1	tissue - 1 | skin - 1 | Genbank - 1	1
+TISSUE - 1; SKIN - 1; GENBANK - 1; FEATHER - 1	tissue - 1 | skin - 1 | Genbank - 1 | feather - 1	1
+TISSUE - 1; SKIN - 1; GENBANK - 1; GENBANK - 1	tissue - 1 | skin - 1 | Genbank - 1 | Genbank - 1	1
+TISSUE - 1; SKIN - 1; SKEL - 1	tissue - 1 | skin - 1 | skeleton - 1	1
+TISSUE - 1; SKIN - 1; SKEL - 1; GENBANK - 1	tissue - 1 | skin - 1 | skeleton - 1 | Genbank - 1	1
+TISSUE - 1; SKIN - 1; SKEL - 1; GENBANK - 1; GENBANK - 1	tissue - 1 | skin - 1 | skeleton - 1 | Genbank - 1 | Genbank - 1	1
+TISSUE - 1; SKIN - 1; SKEL - 1; SOUND - 1	tissue - 1 | skin - 1 | skeleton - 1 | sound - 1	1
+TISSUE - 1; SKIN - 1; SKEL - 1; SYRINX - 1	tissue - 1 | skin - 1 | skeleton - 1 | syrinx - 1	1
+TISSUE - 1; SKIN - 1; SKEL - 1; WINGS_TAIL - 1	tissue - 1 | skin - 1 | skeleton - 1 | wings_tail - 1	1
+TISSUE - 1; SKIN - 1; SOUND - 1; SKEL - 1	tissue - 1 | skin - 1 | sound - 1 | skeleton - 1	1
+TISSUE - 1; SKIN - 1; SYRINX - 1	tissue - 1 | skin - 1 | syrinx - 1	1
+TISSUE - 1; SKIN - 1; SYRINX - 1; SKEL - 1	tissue - 1 | skin - 1 | syrinx - 1 | skeleton - 1	1
+TISSUE - 1; SKIN - 1; SYRINX - 1; SKEL - 1; FEATHER - 1	tissue - 1 | skin - 1 | syrinx - 1 | skeleton - 1 | feather - 1	1
+TISSUE - 1; SKIN - 1; THIN SECTION - 1	tissue - 1 | skin - 1 | thin section - 1	1
+TISSUE - 1; SKIN - 1; TISSUE - 1	tissue - 1 | skin - 1 | tissue - 1	1
+TISSUE - 1; SKIN - 50	tissue - 1 | skin - 50	1
+TISSUE - 1; SKIN - NULL	tissue - 1 | skin - null	1
+TISSUE - 1; SKIN - NULL; SKEL - 1	tissue - 1 | skin - null | skeleton - 1	1
+TISSUE - 1; SYRINX - 1	tissue - 1 | syrinx - 1	1
+TISSUE - 1; SYRINX - 1; FLAT_SKIN - 1; SKEL - 1	tissue - 1 | syrinx - 1 | flat skin - 1 | skeleton - 1	1
+TISSUE - 1; SYRINX - 1; FLUID - 1	tissue - 1 | syrinx - 1 | fluid - 1	1
+TISSUE - 1; SYRINX - 1; FLUID - 1; SKIN - 1; SKEL - 1	tissue - 1 | syrinx - 1 | fluid - 1 | skin - 1 | skeleton - 1	1
+TISSUE - 1; SYRINX - 1; SKEL - 1	tissue - 1 | syrinx - 1 | skeleton - 1	1
+TISSUE - 1; SYRINX - 1; SKEL - 1; SKIN/TOE CLIP - 1	tissue - 1 | syrinx - 1 | skeleton - 1	1
+TISSUE - 1; THIN SECTION - 1; SKIN - 1	tissue - 1 | thin section - 1 | skin - 1	1
+TISSUE - 1; TISSUE - 1	tissue - 1 | tissue - 1	1
+TISSUE - 1; WING - 1	tissue - 1 | wing - 1	1
+TISSUE - 1; WINGS_TAIL - 1	tissue - 1 | wings_tail - 1	1
+TISSUE - 1; WINGS_TAIL - 1; SKEL - 1	tissue - 1 | wings_tail - 1 | skeleton - 1	1
+TISSUE - 10	tissue - 10	1
+TISSUE - 10; FLAT_SKIN - 1; SKEL - 1	tissue - 10 | flat skin - 1 | skeleton - 1	1
+TISSUE - 10; SKEL	tissue - 10 | skel	1
+TISSUE - 10; SKEL - 1	tissue - 10 | skeleton - 1	1
+TISSUE - 10; SKEL - 1; FLAT_SKIN - 1	tissue - 10 | skeleton - 1 | flat skin - 1	1
+TISSUE - 10; SKEL - 1; SKIN - 1	tissue - 10 | skeleton - 1 | skin - 1	1
+TISSUE - 10; SKEL - NULL	tissue - 10 | skeleton - null	1
+TISSUE - 10; SKIN - 1	tissue - 10 | skin - 1	1
+TISSUE - 10; SKIN - 1; SKEL - 1	tissue - 10 | skin - 1 | skeleton - 1	1
+TISSUE - 10; SKIN - 1; SKEL - 1; SYRINX - 1	tissue - 10 | skin - 1 | skeleton - 1 | syrinx - 1	1
+TISSUE - 10; SKIN - 1; SYRINX - 1	tissue - 10 | skin - 1 | syrinx - 1	1
+TISSUE - 10; SYRINX - 1; SKEL - 1	tissue - 10 | syrinx - 1 | skeleton - 1	1
+TISSUE - 10; WINGS_TAIL - 1; SKEL - 1	tissue - 10 | wings_tail - 1 | skeleton - 1	1
+TISSUE - 10; WINGS_TAIL - 2; SKEL - 1	tissue - 10 | wings_tail - 2 | skeleton - 1	1
+TISSUE - 25; SKEL - 1	tissue - 25 | skeleton - 1	1
+TISSUE - 25; SKIN - 1	tissue - 25 | skin - 1	1
+TISSUE - 30; FLUID - 1	tissue - 30 | fluid - 1	1
+TISSUE - 30; SKEL - 1	tissue - 30 | skeleton - 1	1
+TISSUE - 30; SKEL - 30; WINGS_TAIL - 1	tissue - 30 | skeleton - 30 | wings_tail - 1	1
+TISSUE - 30; SKIN - 1	tissue - 30 | skin - 1	1
+TISSUE - 30; SKIN - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	tissue - 30 | skin - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+TISSUE - 30; SKIN - 1; SKEL - 1	tissue - 30 | skin - 1 | skeleton - 1	1
+TISSUE - 30; SKIN - 1; SYRINX - 1	tissue - 30 | skin - 1 | syrinx - 1	1
+TISSUE - 30; SKIN - 1; THIN SECTION - 1	tissue - 30 | skin - 1 | thin section - 1	1
+TISSUE - 30; SYRINX - 1; SKIN - 1	tissue - 30 | syrinx - 1 | skin - 1	1
+TISSUE - 30; THIN SECTION - 1; SKIN - 1	tissue - 30 | thin section - 1 | skin - 1	1
+TISSUE - 30; WINGS_TAIL - 1	tissue - 30 | wings_tail - 1	1
+TISSUE - 49; SKEL - 1	tissue - 49 | skeleton - 1	1
+TISSUE - 49; SKEL - 1; TISSUE - 50	tissue - 49 | skeleton - 1 | tissue - 50	1
+TISSUE - 49; SKIN - 1	tissue - 49 | skin - 1	1
+TISSUE - 5; SKEL - 1	tissue - 5 | skeleton - 1	1
+TISSUE - 5; SKIN - 1; GENBANK - 1	tissue - 5 | skin - 1 | Genbank - 1	1
+TISSUE - 5; SKIN - 1; SKEL - 1	tissue - 5 | skin - 1 | skeleton - 1	1
+TISSUE - 50	tissue - 50	1
+TISSUE - 50; FEATHER - 1; SKEL - 1	tissue - 50 | feather - 1 | skeleton - 1	1
+TISSUE - 50; FLUID - 1	tissue - 50 | fluid - 1	1
+TISSUE - 50; SKEL - 1	tissue - 50 | skeleton - 1	1
+TISSUE - 50; SKEL - 1; SKIN - 1	tissue - 50 | skeleton - 1 | skin - 1	1
+TISSUE - 50; SKEL - 1; WINGS_TAIL - 1	tissue - 50 | skeleton - 1 | wings_tail - 1	1
+TISSUE - 50; SKEL - 50	tissue - 50 | skeleton - 50	1
+TISSUE - 50; SKEL - NULL	tissue - 50 | skeleton - null	1
+TISSUE - 50; SKIN - 1	tissue - 50 | skin - 1	1
+TISSUE - 50; SKIN - 1; FEATHER - 1	tissue - 50 | skin - 1 | feather - 1	1
+TISSUE - 50; SKIN - 1; GENBANK	tissue - 50 | skin - 1 | Genbank	1
+TISSUE - 50; SKIN - 1; SYRINX - 1	tissue - 50 | skin - 1 | syrinx - 1	1
+TISSUE - 50; SKIN - 1; THIN SECTION - 1	tissue - 50 | skin - 1 | thin section - 1	1
+TISSUE - 50; SKIN - 50	tissue - 50 | skin - 50	1
+TISSUE - 50; SYRINX - 1; SKIN - 1	tissue - 50 | syrinx - 1 | skin - 1	1
+TISSUE - 50; TISSUE - 1; SKEL - 1	tissue - 50 | tissue - 1 | skeleton - 1	1
+TISSUE - 50; WINGS_TAIL - 1	tissue - 50 | wings_tail - 1	1
+TISSUE - 50; WINGS_TAIL - 1; SKEL - 1	tissue - 50 | wings_tail - 1 | skeleton - 1	1
+TISSUE - 50; WINGS_TAIL - 1; SKIN - 1	tissue - 50 | wings_tail - 1 | skin - 1	1
+TISSUE - NULL; FLUID - 1	tissue - null | fluid - 1	1
+TISSUE - NULL; SKEL - 1	tissue - null | skeleton - 1	1
+TISSUE - NULL; SKIN - 1	tissue - null | skin - 1	1
+TISSUE ,FEATHERS	feathers | tissue	1
+TISSUE ,FEATHERS ,SKEL	feathers | skeleton | tissue	1
+TISSUE ,FEATHERS ,SKEL ,WING	feathers | skeleton | tissue | wing	1
+TISSUE ,SKEL	skeleton | tissue	1
+TISSUE ,SKEL ,FEATHERS ,WING	feathers | skeleton | tissue | wing	1
+TISSUE ,SKEL ,WING	skeleton | tissue | wing	1
+TISSUE ,SKEL ,WING ,FEATHERS	feathers | skeleton | tissue | wing	1
+TISSUE ,SKIN	skin | tissue	1
+TISSUE ,WING	tissue | wing	1
+TISSUE ,WING ,SKEL	skeleton | tissue | wing	1
+TISSUE ,WING ,SKEL ,FEATHERS	feathers | skeleton | tissue | wing	1
+TISSUE, C&S	cleared and stained | tissue	1
+TISSUE, C&S, FLUID	cleared and stained | fluid | tissue	1
+TISSUE, DRY	dry | tissue	1
+TISSUE, DRY, FLUID	dry | fluid | tissue	1
+TISSUE, FLUID	fluid | tissue	1
+TISSUE, FLUID, FLUID	fluid | tissue	1
+TISSUE, FLUID, MICROTECHNIQUE	fluid | microtechnique | tissue	1
+TISSUE, FLUID, MICROTECHNIQUE, MICROTECHNIQUE	fluid | microtechnique | tissue	1
+TISSUE, FLUID, MICROTECHNIQUE, MICROTECHNIQUE, MICROTECHNIQUE	fluid | microtechnique | tissue	1
+TISSUE, FLUID, RECORDING	fluid | recording | tissue	1
+TISSUE, MICROTECHNIQUE, FLUID	fluid | microtechnique | tissue	1
+TISSUE, MICROTECHNIQUE, FLUID, MICROTECHNIQUE, MICROTECHNIQUE	fluid | microtechnique | tissue	1
+TISSUE, MICROTECHNIQUE, MICROTECHNIQUE, FLUID, MICROTECHNIQUE	fluid | microtechnique | tissue	1
+TISSUE, RECORDING, FLUID	fluid | recording | tissue	1
+TISSUE, TISSUE	tissue	1
+TISSUE, WING	tissue | wing	1
+TISSUE, WINGS	tissue | wings	1
+TISSUE; ROUND SKIN	round skin | tissue	1
+TISSUE; SCHMOO	schmoo | tissue	1
+TISSUE; SKEL	skeleton | tissue	1
+TISSUE; SKIN	skin | tissue	1
+TISSUE; SYRINX; SKEL; SKIN/TOE CLIP	skeleton | syrinx | tissue	1
+TISSUE; TAIL	tail | tissue	1
+TISSUE; WING	tissue | wing	1
+TISSUE; WINGS_TAIL	tail | tissue | wings	1
+TISSUES	tissues	1
+TK	tusk	1
+TN	skin in alcohol | skeleton | tissue	1
+TO	skeleton | tissue	1
+TOOTH	tooth	1
+TOOTH (DRY)	tooth	1
+TOOTH/BACULUM	baculum | tooth	1
+TRACK		1
+TRAP		1
+TRUNK SKEL	trunk skeleton	1
+TRUNK SKELETON	trunk skeleton	1
+TRUNK SKELETON, ONE EYE RING	trunk skeleton | eye ring	1
+TRUNK SKELETON, ONE EYE RING AND HYOID APPARATUS	trunk skeleton | eye ring | hyoid apparatus	1
+TRUNK SKELETON, TWO EYE RINGS AND HYOID APPARATUS	trunk skeleton | eye rings | hyoid apparatus	1
+TS	alcoholic skin | tissue	1
+TS, 70% ETOH	tissue | 70% alcohol	1
+TUSKS	tusks	1
+TWO WINGS/TAIL	tail | wings	1
+U	unknown	1
+UPPER MANDIBLE	upper mandible	1
+UPPER/LOWER JAW	upper jaw | mandible	1
+VERTEBRA CENTRUM.	vertebra centrum	1
+VERTEBRA CERVICAL (CA C4)	cervical vertebra (CA C4)	1
+VERTEBRA CERVICAL FRAG	cervical vertebra fragment	1
+VERTEBRA EXCEPT MOST ANTERIOR END.	vertebra except anterior end	1
+VERTEBRA FRAG	vertebra fragment	1
+VERTEBRA FUSED	fused vertebra	1
+VERTEBRA LAST CERVICAL ?	last cervical vertebra	1
+VERTEBRA LAST LUMBAR	last lumbar vertebra	1
+VERTEBRA LUMBAR	lumbar vertebra	1
+VERTEBRA LUMBAR & THORACIC	lumbar vertebra | thoracic vertebra	1
+VERTEBRA LUMBAR ARTICULATED (4)	articulated lumbar vertebrae	1
+VERTEBRA LUMBAR EPIPHYSIS	vertebra lumbar epiphysis	1
+VERTEBRA PORT	port vertebra	1
+VERTEBRA PORT SACRAL	port sacral vertebra	1
+VERTEBRA PORT THORACIC	port thoracic vertebra	1
+VERTEBRA SACRAL	sacral vertebra	1
+VERTEBRA THORACIC	thoracic vertebra	1
+VERTEBRA TWO DORSAL	dorsal vertebrae	1
+VERTEBRA VENTRAL	ventral vertebra	1
+VERTEBRA, LIMB BONE	limb bone | vertebra	1
+VERTEBRA, LUMBAR	lumbar vertebra	1
+VERTEBRA, VERTEBRA FRAG	vertebra | vertebra fragments	1
+VERTEBRA.	vertebra	1
+VERTEBRAE	vertebrae	1
+VERTEBRAE & RIBS (DRY)	ribs | vertebrae	1
+VERTEBRAE (2)	vertebrae	1
+VERTEBRAE (DRY)	vertebrae	1
+VERTEBRAE AND RIBS (DRY)	ribs | vertebrae	1
+VERTEBRAE FRAGMENTS	vertebra fragments	1
+VERTEBRAE.	vertebrae	1
+VERTEBRAE+LIMB (DRY)	limb | vertebrae	1
+VERTEBRAE+RIBS (DRY)	ribs | vertebrae	1
+VERTEBRAL CENTRUM.	vertebral centrum	1
+VERTEBRAL COLUMN - PART	partial vertebral column	1
+VERTEBRAL EPIPHYSIS	vertebral epiphysis	1
+WAX CAST	wax cast	1
+WHOLE	whole animal	1
+WHOLE - 1	whole - 1	1
+WHOLE (DRY)	whole animal	1
+WHOLE (ETOH)	whole animal (ETOH)	1
+WHOLE (ETOH); SKELETON	skeleton | whole animal (ETOH)	1
+WHOLE (FORMALIN)	whole animal (formalin)	1
+WHOLE BIRD	whole animal	1
+WHOLE MOUNT LABIAL TEETH (MICROSLIDE)	mount | labial teeth (microslide)	1
+WIND & TAIL & SKELETON	skeleton | tail | wing	1
+WING	wing	1
+WING  PARTIAL SKELETON	partial skeleton | wing	1
+WING & PARTIAL SKELETON	partial skeleton | wing	1
+WING & SKELETON	skeleton | wing	1
+WING & TAIL	tail | wing	1
+WING & TAIL & PARTIAL SKELETON	partial skeleton | tail | wing	1
+WING ,FEATHERS	feathers | wing	1
+WING ,FEATHERS ,SKEL ,TISSUE	feathers | skeleton | tissue | wing	1
+WING ,FEATHERS ,TISSUE ,SKEL	feathers | skeleton | tissue | wing	1
+WING ,SKEL	skeleton | wing	1
+WING ,SKEL ,FEATHERS	feathers | skeleton | wing	1
+WING ,SKEL ,FEATHERS ,TISSUE	feathers | skeleton | tissue | wing	1
+WING ,SKEL ,SLIDE	skeleton | slide | wing	1
+WING ,SKEL ,TISSUE	skeleton | tissue | wing	1
+WING ,SKEL ,TISSUE ,FEATHERS	feathers | skeleton | tissue | wing	1
+WING ,SKIN	skin | wing	1
+WING ,TISSUE ,FEATHERS ,SKEL	feathers | skeleton | tissue | wing	1
+WING ,TISSUE ,SKEL	skeleton | tissue | wing	1
+WING ,TISSUE ,SKEL ,FEATHERS	feathers | skeleton | tissue | wing	1
+WING ,WING	wing	1
+WING + PAR SKELETON	partial skeleton | wing	1
+WING + PAR SKELETON + DNA	DNA | partial skeleton | wing	1
+WING + PARTIAL SKEL	partial skeleton | wing	1
+WING + PARTIAL SKEL + DNA	DNA | partial skeleton | wing	1
+WING + PARTIAL SKEL + DNA (HEART + MUSCLE)	DNA (heart, muscle) | partial skeleton | wing	1
+WING + PARTIAL SKEL + DNA (HLM)	DNA (heart, liver, muscle) | partial skeleton | wing	1
+WING + PARTIAL SKEL + DNA (HM)	DNA (heart, muscle) | partial skeleton | wing	1
+WING + PARTIAL SKEL + DNA (LM)	DNA (liver, muscle) | partial skeleton | wing	1
+WING + PARTILA SKEL + DNA (HM)	DNA (heart, muscle) | partial skeleton | wing	1
+WING + SKEL	skeleton | wing	1
+WING + SKEL + DNA (HLM)	DNA (heart, liver, muscle) | skeleton | wing	1
+WING + SKEL + DNA (M)	DNA (muscle) | skeleton | wing	1
+WING + SKELETON	skeleton | wing	1
+WING + TAIL	tail | wing	1
+WING FEATHERS	wing feathers	1
+WING, COMPLETE SKEL, TISSUE - 1	complete skeleton | tissue - 1 | wing	1
+WING, COMPLETE SKELETON - 1	complete skeleton - 1 | wing	1
+WING, FEATHERS, SKELETON	feathers | skeleton | wing	1
+WING, HEAD SKIN	head skin | wing	1
+WING, PAR SKELETON	partial skeleton | wing	1
+WING, PART SKELETON, FEATHERS	feathers | partial skeleton | wing	1
+WING, PARTIAL SKEL, TISSUE - 1	partial skeleton | tissue - 1 | wing	1
+WING, TAIL	tail | wing	1
+WING, TAIL FEATHERS	tail feathers | wing	1
+WING, TAIL, SKELETON - 1	skeleton - 1 | tail | wing	1
+WING, TAIL, SKELETON, TISSUE - 1	skeleton | tail | tissue - 1 | wing	1
+WING, TAIL, TISSUE	tail | tissue | wing	1
+WING, TISSUE	tissue | wing	1
+WING, TISSUE - 1	tissue - 1 | wing	1
+WING, TRACHEA, TISSUE, ROUND SKIN, SKELETON - 1	skeleton - 1 | round skin | tissue | trachea | wing	1
+WING/FEET	feet | wing	1
+WING/PRIMARIES SIA	wing	1
+WING/SKELETON	skeleton, wing	1
+WING/TAIL	tail | wing	1
+WING/TAIL, TISSUE	tail | tissue | wing	1
+WING/TAIL/FEET	feet | tail | wing	1
+WING/TAIL/FOOT	foot | tail | wing	1
+WING/TAIL/PART SKEL	partial skeleton | tail | wing	1
+WING/TAIL/SKEL	skeleton | tail | wing	1
+WING/TAIL/SKEL/FOOT	foot | skeleton | tail | wing	1
+WING; FLAT SKIN	flat skin | wing	1
+WING; NO DATA	wing	1
+WING; PICKLE	pickle | wing	1
+WING; ROUND SKIN	round skin | wing	1
+WING; SKEL; TISSUE; SCHMOO	schmoo | skeleton | tissue | wing	1
+WING; TISSUE	tissue | wing	1
+WING; TISSUE - 1	tissue - 1 | wing	1
+WING; TISSUE; ROUND SKIN	round skin | tissue | wing	1
+WING; TISSUE; WING	tissue | wing | wing	1
+WING; WING; TISSUE; SCHMOO	schmoo | tissue | wing | wing	1
+WING+FOOT	foot | wing	1
+WING+HEAD	head | wing	1
+WING+PARTIAL SKEL.+DNA	DNA | partial skeleton | wing	1
+WING+PARTIAL SKEL.+DNA (MUSCLE ONLY)	DNA (muscle) | partial skeleton | wing	1
+WING+PARTIAL SKEL+DNA	DNA | partial skeleton | wing	1
+WING+PARTIAL SKEL+DNA(HEART ONLY)	DNA (heart) | partial skeleton | wing	1
+WINGS	wings	1
+WINGS  TAIL  LEG	leg | tail | wing	1
+WINGS & TAIL	tail | wings	1
+WINGS -WING LAB	wings	1
+WINGS, 2 SPREAD	spread wings	1
+WINGS/PART SKEL	partial skeleton | wings	1
+WINGS/SKEL	skeleton | wings	1
+WINGS/TAIL	tail | wings	1
+WINGS/TAIL/FEET	feet | tail | wings	1
+WINGS/TAIL/FLAT	flat skin | tail | wings	1
+WINGS/TAIL/FOOT	foot | tail | wings	1
+WINGS/TAIL/PART SKEL	partial skeleton | tail | wings	1
+WINGS_TAIL	tail | wings	1
+WINGS_TAIL - 1	wings_tail - 1	1
+WINGS_TAIL - 1; FEATHER - 1; SKEL - 1	wings_tail - 1 | feather - 1 | skeleton - 1	1
+WINGS_TAIL - 1; FEATHER - 1; SKEL - 1; FLAT_SKIN - 1	wings_tail - 1 | feather - 1 | skeleton - 1 | flat skin - 1	1
+WINGS_TAIL - 1; FLAT_SKIN - 1	wings_tail - 1 | flat skin - 1	1
+WINGS_TAIL - 1; FLAT_SKIN - 1; SKEL - 1	wings_tail - 1 | flat skin - 1 | skeleton - 1	1
+WINGS_TAIL - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1	wings_tail - 1 | flat skin - 1 | tissue - 1 | skeleton - 1	1
+WINGS_TAIL - 1; FLAT_SKIN - 1; TISSUE - 1; SKEL - 1; SYRINX - 1	wings_tail - 1 | flat skin - 1 | tissue - 1 | skeleton - 1 | syrinx - 1	1
+WINGS_TAIL - 1; FLUID - 1	wings_tail - 1 | fluid - 1	1
+WINGS_TAIL - 1; GENBANK - 1	wings_tail - 1 | Genbank - 1	1
+WINGS_TAIL - 1; SKEL - 1	wings_tail - 1 | skeleton - 1	1
+WINGS_TAIL - 1; SKEL - 1; FEATHER - 1	wings_tail - 1 | skeleton - 1 | feather - 1	1
+WINGS_TAIL - 1; SKEL - 1; GENBANK - 1	wings_tail - 1 | skeleton - 1 | Genbank - 1	1
+WINGS_TAIL - 1; SKEL - 1; SYRINX - 1	wings_tail - 1 | skeleton - 1 | syrinx - 1	1
+WINGS_TAIL - 1; SKEL - 1; TISSUE - 50	wings_tail - 1 | skeleton - 1 | tissue - 50	1
+WINGS_TAIL - 1; SKEL - 1; WINGS_TAIL - 1	wings_tail - 1 | skeleton - 1 | wings_tail - 1	1
+WINGS_TAIL - 1; SKEL - NULL	wings_tail - 1 | skeleton - null	1
+WINGS_TAIL - 1; SKIN - 1	wings_tail - 1 | skin - 1	1
+WINGS_TAIL - 1; SKIN - 1; FEATHER - 1	wings_tail - 1 | skin - 1 | feather - 1	1
+WINGS_TAIL - 1; SKIN - 1; SKEL - 1	wings_tail - 1 | skin - 1 | skeleton - 1	1
+WINGS_TAIL - 1; SKIN - 1; SKEL - 1; FEATHER - 1	wings_tail - 1 | skin - 1 | skeleton - 1 | feather - 1	1
+WINGS_TAIL - 1; SKIN - 1; SKEL - 1; SYRINX - 1	wings_tail - 1 | skin - 1 | skeleton - 1 | syrinx - 1	1
+WINGS_TAIL - 1; SKIN - 1; SKEL PARTIAL - 1	wings_tail - 1 | skin - 1 | skeleton partial - 1	1
+WINGS_TAIL - 1; SKIN - 1; SYRINX - 1	wings_tail - 1 | skin - 1 | syrinx - 1	1
+WINGS_TAIL - 1; SKIN - NULL	wings_tail - 1 | skin - null	1
+WINGS_TAIL - 1; SKIN/TOE CLIP - 1	wings_tail - 1	1
+WINGS_TAIL - 1; SYRINX - 1; SKEL - 1; TISSUE - 1	wings_tail - 1 | syrinx - 1 | skeleton - 1 | tissue - 1	1
+WINGS_TAIL - 1; SYRINX - 1; SKIN - 1; SKEL - 1	wings_tail - 1 | syrinx - 1 | skin - 1 | skeleton - 1	1
+WINGS_TAIL - 1; SYRINX - 1; TISSUE - 1; SKEL - 1	wings_tail - 1 | syrinx - 1 | tissue - 1 | skeleton - 1	1
+WINGS_TAIL - 1; SYRINX - 1; TISSUE - 1; SKIN - 1	wings_tail - 1 | syrinx - 1 | tissue - 1 | skin - 1	1
+WINGS_TAIL - 1; TISSUE - 1	wings_tail - 1 | tissue - 1	1
+WINGS_TAIL - 1; TISSUE - 1; FLUID - 1	wings_tail - 1 | tissue - 1 | fluid - 1	1
+WINGS_TAIL - 1; TISSUE - 1; SKEL - 1	wings_tail - 1 | tissue - 1 | skeleton - 1	1
+WINGS_TAIL - 1; TISSUE - 1; SKEL - 1; FLUID - 1; FEATHER - 1	wings_tail - 1 | tissue - 1 | skeleton - 1 | fluid - 1 | feather - 1	1
+WINGS_TAIL - 1; TISSUE - 1; SKEL - 1; GENBANK - 1; GENBANK - 1; GENBANK - 1	wings_tail - 1 | tissue - 1 | skeleton - 1 | Genbank - 1 | Genbank - 1 | Genbank - 1	1
+WINGS_TAIL - 1; TISSUE - 1; SKEL - 1; SYRINX - 1	wings_tail - 1 | tissue - 1 | skeleton - 1 | syrinx - 1	1
+WINGS_TAIL - 1; TISSUE - 1; SKEL - 1; WINGS_TAIL - 1	wings_tail - 1 | tissue - 1 | skeleton - 1 | wings_tail - 1	1
+WINGS_TAIL - 1; TISSUE - 1; SKIN - 1	wings_tail - 1 | tissue - 1 | skin - 1	1
+WINGS_TAIL - 1; TISSUE - 1; SKIN - 1; FEATHER - 1	wings_tail - 1 | tissue - 1 | skin - 1 | feather - 1	1
+WINGS_TAIL - 1; TISSUE - 1; SKIN - 1; SKEL - 1	wings_tail - 1 | tissue - 1 | skin - 1 | skeleton - 1	1
+WINGS_TAIL - 1; TISSUE - 1; SKIN - 1; SKEL PARTIAL - 1	wings_tail - 1 | tissue - 1 | skin - 1 | skeleton partial - 1	1
+WINGS_TAIL - 1; TISSUE - 25; SKEL - 1	wings_tail - 1 | tissue - 25 | skeleton - 1	1
+WINGS_TAIL - 1; TISSUE - 30; SKEL - 30	wings_tail - 1 | tissue - 30 | skeleton - 30	1
+WINGS_TAIL - 1; TISSUE - 50	wings_tail - 1 | tissue - 50	1
+WINGS_TAIL - 1; TISSUE - 50; SKIN - 1	wings_tail - 1 | tissue - 50 | skin - 1	1
+WINGS_TAIL - 1; TISSUE - 50; SKIN - 1; SKEL - 1	wings_tail - 1 | tissue - 50 | skin - 1 | skeleton - 1	1
+WINGS_TAIL - 1; WINGS_TAIL - 1	wings_tail - 1 | wings_tail - 1	1
+WINGS_TAIL - 1; WINGS_TAIL - 1; SKEL - 1; TISSUE - 1	wings_tail - 1 | wings_tail - 1 | skeleton - 1 | tissue - 1	1
+WINGS_TAIL - 100; SKEL - 1	wings_tail - 100 | skeleton - 1	1
+WINGS_TAIL - 30; FLAT_SKIN - 1	wings_tail - 30 | flat skin - 1	1
+WINGS_TAIL - NULL; SKEL - 1; SYRINX - 1	wings_tail - null | skeleton - 1 | syrinx - 1	1
+WINGS_TAIL; SKIN/TOE CLIP	wings_tail	1
+WINGS+TAIL	tail | wings	1
+WO	wings	1
+X-SEC (MICROSLIDE)	cross-section (microslide)	1
+X-SEC (WAX MOUNT+MICROSLIDES)	cross-section (wax mount, microslides)	1
+X-SEC GILL (MICROSLIDE)	cross-section gill (microslide)	1
+X-SEC INTESTINE (MICROSLIDE)	cross-section intestine (microslide)	1
+X-SEC KIDNEY (MICROSLIDE)	cross-section kidney (microslide)	1
+X-SEC LIVER (MICROSLIDE)	cross-section liver (microslide)	1
+X-SEC SERIAL (MICROSLIDE)	cross-section serial (microslide)	1
+X-SEC TAIL (MICROSLIDE)	cross-section tail (microslide)	1

@@ -14,8 +14,8 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2020 Rauthiflor LLC"
-__version__ = "dwca_vocab_utils.py 2020-12-18T22:48-03:00"
+__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__version__ = "dwca_vocab_utils.py 2021-01-04T14:09-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_vocab_utils.py"
 
 # This file contains common utility functions for dealing with the vocabulary management
@@ -35,17 +35,7 @@ from dwca_utils import write_header
 import os.path
 import logging
 import copy
-
-# Replace the system csv with unicodecsv. All invocations of csv will use unicodecsv,
-# which supports reading and writing unicode streams.
-try:
-    import unicodecsv as csv
-except ImportError:
-    import warnings
-    s = "The unicodecsv package is required.\n"
-    s += "pip install unicodecsv\n"
-    s += "$JYTHON_HOME/bin/pip install unicodecsv"
-    warnings.warn(s)
+import csv
 
 def dwc_ordered_header(header):
     ''' Construct a header with terms ordered in the Darwin Core term order.
@@ -456,7 +446,7 @@ def term_values_recommended(lookupdict):
 
     recommended = {}
 
-    for key, value in lookupdict.iteritems():
+    for key, value in lookupdict.items():
         if value['vetted']=='1':
             if value['standard'] != key:
                 recommended[key] = value
@@ -591,7 +581,7 @@ def terms_not_in_darwin_cloud(checklist, dwccloudfile, encoding=None, vetted=Tru
             dialect=dialect, encoding=encoding)
 
     dwcloudlist = []
-    for key, value in darwinclouddict.iteritems():
+    for key, value in darwinclouddict.items():
         dwcloudlist.append(key)
 
     if casesensitive==True:
@@ -768,9 +758,8 @@ def distinct_vocabs_to_file(vocabfile, valuelist, key, separator=None, dialect=N
         logging.debug(s)
         return None
 
-    with open(vocabfile, 'a') as csvfile:
-        writer = csv.DictWriter(csvfile, dialect=dialect, encoding='utf-8', 
-            fieldnames=fieldnames)
+    with open(vocabfile, 'a', encoding='utf-8') as csvfile:
+        writer = csv.DictWriter(csvfile, dialect=dialect, fieldnames=fieldnames)
         for term in newvaluelist:
             row = copy.deepcopy(vocabrowdict)
             row[key] = term

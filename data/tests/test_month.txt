@@ -1,0 +1,6 @@
+month	standard	vetted
+V	6	1
+vi	6	1
+VII	7	1
+viii	8	1
+8	8	0
