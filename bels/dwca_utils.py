@@ -14,8 +14,8 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2020 Rauthiflor LLC"
-__version__ = "dwca_utils.py 2020-12-24T23:51-03:00"
+__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__version__ = "dwca_utils.py 2021-01-06T15:36-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_utils.py"
 
 # This file contains common utility functions for dealing with the content of CSV and
@@ -1363,6 +1363,55 @@ def read_csv_row(inputfile, dialect, encoding, header=True, fieldnames=None):
     returns:
         row - the row as a dictionary
     '''
+    functionname = 'read_csv_row()'
+    with open(inputfile, 'r', newline='', encoding=encoding) as data:
+        if fieldnames is None or len(fieldnames)==0:
+            reader = csv.DictReader(data, dialect=dialect)
+        else:
+            reader = csv.DictReader(data, dialect=dialect, fieldnames=fieldnames)
+            if header==True:
+                next(reader)
+        for row in reader:
+            yield row
+
+def safe_read_csv_row(inputfile, dialect=None, encoding=None, header=True, fieldnames=None):
+    ''' Yield a row from a csv file. This function tries to determine the existence of 
+        the file, its dialect, and its encoding before opening and reading. These 
+        parameters can be provided explicitly to speed up reading.
+    parameters:
+        inputfile - full path to the input file (required)
+        dialect - csv.dialect object with the attributes of the input file (required)
+        encoding - a string designating the input file encoding (required) 
+            (e.g., 'utf-8', 'mac_roman', 'latin_1', 'cp1252')
+        fieldnames -  list containing the fields in the header (optional)
+        header - True if the file has a header row (optional; default True)
+    returns:
+        row - the row as a dictionary
+    '''
+    functionname = 'safe_read_csv_row()'
+
+    if inputfile is None or len(inputfile) == 0:
+        s = 'No input file given in %s.' % functionname
+        logging.debug(s)
+        return None
+
+    if os.path.isfile(inputfile) == False:
+        s = 'File %s not found in %s.' % (inputfile, functionname)
+        logging.debug(s)
+        return None
+
+    # Determine the dialect of the input file
+    if dialect is None:
+        dialect = csv_file_dialect(inputfile)
+        # csv_file_dialect() always returns a dialect if there is an input file.
+        # No need to check.
+
+    # Try to determine the encoding of the inputfile.
+    if encoding is None or len(encoding.strip()) == 0:
+        encoding = csv_file_encoding(inputfile)
+        # csv_file_encoding() always returns an encoding if there is an input file.    
+        # No need to check.
+    
     with open(inputfile, 'r', newline='', encoding=encoding) as data:
         if fieldnames is None or len(fieldnames)==0:
             reader = csv.DictReader(data, dialect=dialect)

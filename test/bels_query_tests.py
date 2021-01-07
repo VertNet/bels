@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query_tests.py 2021-01-05T01:04-03:00"
+__version__ = "bels_query_tests.py 2021-01-07T01:41-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -27,6 +27,8 @@ __version__ = "bels_query_tests.py 2021-01-05T01:04-03:00"
 from google.cloud import bigquery
 from dwca_terms import locationmatchwithcoordstermlist
 from dwca_terms import locationmatchsanscoordstermlist
+from dwca_utils import safe_read_csv_row
+from id_utils import dwc_location_hash
 from bels_query import get_best_sans_coords_georef
 from bels_query import get_best_with_coords_georef
 from bels_query import get_best_with_verbatim_coords_georef
@@ -148,7 +150,98 @@ class BELSQueryTestCase(unittest.TestCase):
         }
         self.assertEqual(result, target)
 
+    def test_dwc_location_hash_from_safe_read_csv_row(self):
+        inputfile = '../data/tests/test_locations_with_hash.csv'
+        for row in safe_read_csv_row(inputfile):
+            target = row['dwc_location_hash']
+            result = dwc_location_hash(row)
+            self.assertEqual(result, target)
+
+    def test_matchme_sans_coords_best_georef_from_file(self):
+        inputfile = '../data/tests/test_matchme_sans_coords_best_georef.csv'
+        for row in safe_read_csv_row(inputfile):
+            matchstr = row['matchme_sans_coords']
+            result = get_best_sans_coords_georef(self.BQ, matchstr)
+            target = {
+            'matchme_sans_coords': 'northamericauswisconsinrichlandco5milesseofrichlandcenter',
+            'unc_numeric': Decimal('969'),
+            'center': 'POINT(-90.320967 43.285569)',
+            'interpreted_decimallongitude': -90.320967,
+            'interpreted_decimallatitude': 43.285569,
+            'interpreted_countrycode': 'US',
+            'v_georeferencedby': None,
+            'v_georeferenceddate': '2020-03-20',
+            'v_georeferenceprotocol': 'GEOLocate Web Application',
+            'v_georeferencesources': 'GEOLocate Batch Processing Tool',
+            'v_georeferenceremarks': None,
+            'georef_score': 28,
+            'georef_count': 1,
+            'max_uncertainty': Decimal('969'),
+            'centroid_dist': 1.000322738884209e-09,
+            'min_centroid_dist': 1.000322738884209e-09,
+            'matchid': b'D\xb7_o\xb7|X\x05\x90\x89y\xc2\x8f\xc1AM%!\x90\xf1a\xdc\xd9\x1e\xa1t\xd1tm\xc8\x0f\xe9'
+            }
+            self.assertEqual(result, target)
+            # Only test the first row
+            return
+
+    def test_matchme_with_coords_best_georef_from_file(self):
+        inputfile = '../data/tests/test_matchme_with_coords_best_georef.csv'
+        for row in safe_read_csv_row(inputfile):
+            matchstr = row['matchme_with_coords']
+            result = get_best_with_coords_georef(self.BQ, matchstr)
+            target = {
+            'matchme_with_coords': 'fr050.36943711.5957684',
+            'unc_numeric': Decimal('24'),
+            'center': 'POINT(1.595768 50.369437)',
+            'interpreted_decimallongitude': 1.595768,
+            'interpreted_decimallatitude': 50.369437,
+            'interpreted_countrycode': 'FR',
+            'v_georeferencedby': None,
+            'v_georeferenceddate': None,
+            'v_georeferenceprotocol': None,
+            'v_georeferencesources': 'GPS',
+            'v_georeferenceremarks': None,
+            'georef_score': 8,
+            'georef_count': 1,
+            'max_uncertainty': Decimal('24'),
+            'centroid_dist': 0.0,
+            'min_centroid_dist': 0.0,
+            'matchid': b'f!\x82\x82[j\x99\xc2 \xab\x84\x0e.\xdf\xca\xc9p\x96\xb4\xfeI\x1a\xe9\xbb\xe8\x80\x82\x8c\xe9\x86\x17\xea'
+            }
+            self.assertEqual(result, target)
+            # Only test the first row
+            return
+
+    def test_matchme_verbatimcoords_best_georef_from_file(self):
+        inputfile = '../data/tests/test_matchme_verbatimcoords_best_georef.csv'
+        for row in safe_read_csv_row(inputfile):
+            matchstr = row['matchme']
+            result = get_best_verbatim_coords_georef(self.BQ, matchstr)
+            target = {
+            'matchme': 'usvirginianewkentcountywestpoint',
+            'unc_numeric': Decimal('5774'),
+            'center': 'POINT(-76.892162 37.476215)',
+            'interpreted_decimallongitude': -76.892162,
+            'interpreted_decimallatitude': 37.476215,
+            'interpreted_countrycode': 'US',
+            'v_georeferencedby': None,
+            'v_georeferenceddate': None,
+            'v_georeferenceprotocol': None,
+            'v_georeferencesources': 'GeoLocate',
+            'v_georeferenceremarks': None,
+            'georef_score': 8,
+            'georef_count': 1,
+            'max_uncertainty': Decimal('5774'),
+            'centroid_dist': 1.5914794482263517E-9,
+            'min_centroid_dist': 1.5914794482263517E-9,
+            'matchid': None
+            }
+            self.assertEqual(result, target)
+            # Only test the first row
+            return
+
 if __name__ == '__main__':
-    print('=== id_utils_test.py ===')
+    print('=== bels_query_tests.py ===')
     #setup_actor_logging({'loglevel':'DEBUG'})
     unittest.main()

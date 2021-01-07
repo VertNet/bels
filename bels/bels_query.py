@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query.py 2021-01-05T01:05-03:00"
+__version__ = "bels_query.py 2021-01-06T15:47-03:00"
 
 from google.cloud import bigquery
 from dwca_terms import locationkeytermlist
@@ -117,20 +117,19 @@ def row_as_json(row):
     row_json=json.dumps(row_as_dict(row), cls=CustomJsonEncoder)
     return row_json
     
-def main():
-    BQ = bigquery.Client()
-    matchstr = 'auwac73kmsofbillabongroadhouse'
-    result = get_best_sans_coords_georef(BQ, matchstr)
-    print(result)
-
-    matchstr = 'aqbechervaiseisland00-66.49559.49'
-    result = get_best_with_coords_georef(BQ, matchstr)
-    print(result)
-
-    matchstr = 'usminnesotawadenat136nr33ws.1012-jul-71,'
-    result = get_best_with_verbatim_coords_georef(BQ, matchstr)
-    print(result)
-
-
-if __name__ == '__main__':
-    main()
+#def main():
+#     BQ = bigquery.Client()
+#     matchstr = 'auwac73kmsofbillabongroadhouse'
+#     result = get_best_sans_coords_georef(BQ, matchstr)
+#     print(result)
+# 
+#     matchstr = 'aqbechervaiseisland00-66.49559.49'
+#     result = get_best_with_coords_georef(BQ, matchstr)
+#     print(result)
+# 
+#     matchstr = 'usminnesotawadenat136nr33ws.1012-jul-71,'
+#     result = get_best_with_verbatim_coords_georef(BQ, matchstr)
+#     print(result)
+# 
+# if __name__ == '__main__':
+#     main()

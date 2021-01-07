@@ -15,11 +15,12 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "id_utils.py 2021-01-04T14:09-03:00"
+__version__ = "id_utils.py 2021-01-07T01:41-03:00"
 
 from dwca_terms import locationmatchwithcoordstermlist
 from dwca_terms import locationkeytermlist
 import hashlib
+import base64
 import re
 import unicodedata
 
@@ -62,14 +63,16 @@ def location_str(inputdict):
     return idstr
 
 def dwc_location_hash(inputdict):
-    ''' Constructs a sha256 hash from Darwin Core Location dict.
+    ''' Constructs a base64 str representation of the sha256 hash from a Darwin Core
+        Location dict.
     parameters:
         inputdict - the dict of fields from which to construct a Location identifier.
     returns:
         locid - the Location hash
     '''
     locstr=location_str(inputdict)
-    return hashlib.sha256(locstr.encode('utf-8'))
+    hash = hashlib.sha256(locstr.encode('utf-8'))
+    return base64.b64encode(hash.digest()).decode('utf-8')
         
 def super_simple(idstr):
     ''' Prepares an input location string for matching

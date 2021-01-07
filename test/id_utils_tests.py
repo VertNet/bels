@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "id_utils_tests.py 2021-01-01T21:38-03:00"
+__version__ = "id_utils_tests.py 2021-01-07T01:39-03:00"
 
 # This file contains unit tests for the functions in id_utils.
 #
@@ -158,8 +158,11 @@ class IDUtilsTestCase(unittest.TestCase):
             'dwc:georeferenceverificationstatus':'', 
             'dwc:georeferenceremarks':''
         }
-        target='091e331428057bff5c6e44e9236a4288e84e989884ef866af1f9276e648848fc'
-        locid=dwc_location_hash(loc).hexdigest()
+        # TO_HEX(dwc_location_hash)
+        # target='091e331428057bff5c6e44e9236a4288e84e989884ef866af1f9276e648848fc'
+        # TO_BASE64(dwc_location_hash)
+        target='CR4zFCgFe/9cbkTpI2pCiOhOmJiE74Zq8fknbmSISPw='
+        locid=dwc_location_hash(loc)
         self.assertEqual(locid, target)
     
     def test_location_str(self):
