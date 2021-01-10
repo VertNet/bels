@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "dwca_utils_tests.py 2021-01-01T22:13-03:00"
+__version__ = "dwca_utils_tests.py 2021-01-08T17:05-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/test/dwca_utils_test.py"
 
 # This file contains unit tests for the functions in dwca_utils.
@@ -23,6 +23,7 @@ __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/maste
 # Example:
 #
 # python dwca_utils_test.py
+
 from dwca_utils import represents_int
 from dwca_utils import clean_header
 from dwca_utils import composite_header
@@ -34,6 +35,7 @@ from dwca_utils import csv_file_dialect
 from dwca_utils import csv_file_encoding
 from dwca_utils import csv_file_dialect
 from dwca_utils import dialects_equal
+from dwca_utils import dwc_ordered_header
 from dwca_utils import extract_fields_from_row
 from dwca_utils import extract_value_counts_from_file
 from dwca_utils import extract_values_from_row
@@ -133,7 +135,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.framework = None
 
     def test_source_files_exist(self):
-        print('testing source_files_exist')
+        print('Running test_source_files_exist')
         non_printing_file = self.framework.non_printing_file
         encodedfile_utf8 = self.framework.encodedfile_utf8
         encodedfile_latin_1 = self.framework.encodedfile_latin_1
@@ -241,8 +243,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertTrue(os.path.isfile(file), s)
 
     def test_count_rows(self):
-        print('testing count_rows')
-
+        print('Running test_count_rows')
         non_printing_file = self.framework.non_printing_file
         encodedfile_utf8 = self.framework.encodedfile_utf8
         geogvocabfile = self.framework.geogvocabfile
@@ -266,7 +267,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(count, expected, s)
 
     def test_tsv_dialect(self):
-        print('testing tsv_dialect')
+        print('Running test_tsv_dialect')
         dialect = tsv_dialect()
         self.assertEqual(dialect.delimiter, '\t',
             'incorrect delimiter for tsv')
@@ -286,7 +287,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
             'strict not set to False for tsv')
 
     def test_csv_file_dialect(self):
-        print('testing csv_file_dialect')
+        print('Running test_csv_file_dialect')
         csvreadheaderfile = self.framework.csvreadheaderfile
         dialect = csv_file_dialect(csvreadheaderfile)
         self.assertIsNotNone(dialect, 'unable to detect csv file dialect')
@@ -308,7 +309,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
             'strict not set to False for csv file')
 
     def test_tsv_file_dialect(self):
-        print('testing tsv_file_dialect')
+        print('Running test_tsv_file_dialect')
         tsvreadheaderfile = self.framework.tsvreadheaderfile
         dialect = csv_file_dialect(tsvreadheaderfile)
         self.assertIsNotNone(dialect, 'unable to detect tsv file dialect')
@@ -330,7 +331,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
             'strict not set to False for csv file')
 
     def test_read_header1(self):
-        print('testing read_header1')
+        print('Running test_read_header1')
         csvreadheaderfile = self.framework.csvreadheaderfile
         header = read_header(csvreadheaderfile)
         expected = ['catalogNumber ', 'recordedBy', 'fieldNumber ', 'year', 'month', 
@@ -343,7 +344,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, expected, s)
 
     def test_read_header2(self):
-        print('testing read_header2')
+        print('Running test_read_header2')
         tsvheaderfile = self.framework.tsvtest1
         header = read_header(tsvheaderfile)
         expected = ['materialSampleID', 'principalInvestigator', 'locality', 'phylum', '']
@@ -352,7 +353,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, expected, s)
 
     def test_read_header3(self):
-        print('testing read_header3')
+        print('Running test_read_header3')
         csvheaderfile = self.framework.csvtest1
         header = read_header(csvheaderfile)
         expected = ['materialSampleID', 'principalInvestigator', 'locality', 'phylum', '']
@@ -361,7 +362,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, expected, s)
 
     def test_read_header4(self):
-        print('testing read_header4')
+        print('Running test_read_header4')
         tsvheaderfile = self.framework.tsvtest2
         header = read_header(tsvheaderfile)
         expected = ['materialSampleID', 'principalInvestigator', 'locality', 'phylum', 
@@ -371,7 +372,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, expected, s)
 
     def test_read_header5(self):
-        print('testing read_header5')
+        print('Running test_read_header5')
         csvheaderfile = self.framework.csvtest2
         header = read_header(csvheaderfile)
         expected = ['materialSampleID', 'principalInvestigator', 'locality', 'phylum', 
@@ -381,7 +382,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, expected, s)
 
     def test_read_header6(self):
-        print('testing read_header6')
+        print('Running test_read_header6')
         encodedfile_latin_1 = self.framework.encodedfile_latin_1
         header = read_header(encodedfile_latin_1)
         expected = ['id', 'class', 'coordinateUncertaintyInMeters', 'country',
@@ -392,7 +393,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, expected, s)
 
     def test_read_header7(self):
-        print('testing read_header7')
+        print('Running test_read_header7')
         encodedfile_windows_1252 = self.framework.encodedfile_windows_1252
         header = read_header(encodedfile_windows_1252)
         expected = ['id','dwc:class','dwc:coordinateUncertaintyInMeters','dwc:country',
@@ -403,7 +404,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, expected, s)
 
     def test_composite_header(self):
-        print('testing composite_header')
+        print('Running test_composite_header')
         csvcompositepath = self.framework.csvcompositepath
         tsvcompositepath = self.framework.tsvcompositepath
         mixedcompositepath = self.framework.mixedcompositepath
@@ -438,7 +439,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, expected, s)
 
     def test_write_header(self):
-        print('testing write_header')
+        print('Running test_write_header')
         csvreadheaderfile = self.framework.csvreadheaderfile
         csvwriteheaderfile = self.framework.csvwriteheaderfile
         header = read_header(csvreadheaderfile)
@@ -456,7 +457,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, writtenheader, s)
 
     def test_dialect_preservation(self):
-        print('testing dialect preservation')
+        print('Running test_dialect_preservation')
         csvreadheaderfile = self.framework.csvreadheaderfile
         csvwriteheaderfile = self.framework.csvwriteheaderfile
         indialect = csv_file_dialect(csvreadheaderfile)
@@ -477,7 +478,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertTrue(equaldialects, 'input and output dialects not the same')
 
     def test_convert_csv1(self):
-        print('testing convert_csv1')
+        print('Running test_convert_csv1')
         csvfile = self.framework.csvtotsvfile1
         tsvfile = self.framework.tsvfromcsvfile1
 
@@ -492,7 +493,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, expected, s)
 
     def test_convert_csv2(self):
-        print('testing convert_csv2')
+        print('Running test_convert_csv2')
         csvfile = self.framework.csvtotsvfile2
         tsvfile = self.framework.tsvfromcsvfile2
 
@@ -508,7 +509,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, expected, s)
 
     def test_convert_csv3(self):
-        print('testing convert_csv3')
+        print('Running test_convert_csv3')
         csvfile = self.framework.encodedfile_latin_1
         tsvfile = self.framework.tsvfromcsvfile2
 
@@ -525,7 +526,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, expected, s)
 
     def test_convert_csv4(self):
-        print('testing convert_csv4')
+        print('Running test_convert_csv4')
         csvfile = self.framework.symbiotafile
         tsvfile = self.framework.tsvfromcsvfile2
 
@@ -562,7 +563,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(header, expected, s)
 
     def test_convert_csv5(self):
-        print('testing convert_csv4')
+        print('Running test_convert_csv5')
         csvfile = self.framework.encodedfile_windows_1252
         tsvfile = self.framework.tsvfromcsvfile2
 
@@ -576,7 +577,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
             self.assertTrue(True)
 
     def test_split_path(self):
-        print('testing split_path')
+        print('Running test_split_path')
         path, fileext, filepattern = \
             split_path('../../data/tests/test_eight_specimen_records.csv')
         self.assertEqual(path, '../../data/tests', 'incorrect path')
@@ -585,7 +586,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
             'incorrect file pattern')
 
     def test_header_map(self):
-        print('testing header_map')
+        print('Running test_header_map')
         header = ['b ', ' a', 'c	']
         result = header_map(header)
         expected = {'b':'b ', 'a':' a', 'c':'c	'}
@@ -599,7 +600,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(result, expected, s)
 
     def test_clean_header(self):
-        print('testing clean_header')
+        print('Running test_clean_header')
         header = ['b ', ' a', 'c	']
         result = clean_header(header)
         expected = ['b', 'a', 'c']
@@ -619,7 +620,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(result, expected, 'long header failed to be cleaned properly')
 
     def test_merge_headers(self):
-        print('testing merge_headers')
+        print('Running test_merge_headers')
         header1 = ['b', 'a', 'c']
         header2 = ['b', 'c ', 'd']
         header3 = ['e', 'd	', 'a']
@@ -673,7 +674,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
             'headers with whitespace merge failed')
 
     def test_csv_field_checker(self):
-        print('testing csv_field_checker')
+        print('Running test_csv_field_checker')
         csvfile = self.framework.fieldcountestfile2
         result = csv_field_checker(csvfile)
         s = 'field checker found mismatched fields in %s when it should not' % csvfile
@@ -701,7 +702,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(firstbadrow, 4, s)
 
     def test_term_rowcount_from_file(self):
-        print('testing term_rowcount_from_file')
+        print('Running test_term_rowcount_from_file')
         termrowcountfile = self.framework.termrowcountfile1
         rowcount = term_rowcount_from_file(termrowcountfile, 'country')
         expected = 8
@@ -725,8 +726,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(rowcount, expected, s)
 
     def test_represents_int(self):
-        print('testing represents_int')
-
+        print('Running test_represents_int')
         result = represents_int(None)
         expected = False
         s = 'represents_int None result (%s) does not match expectation (%s)' % (result, expected)
@@ -778,7 +778,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(result, expected, s)
     
     def test_csv_file_encoding(self):
-        print('testing csv_file_encoding')
+        print('Running test_csv_file_encoding')
         encodedfile_utf8 = self.framework.encodedfile_utf8
         encodedfile_latin_1 = self.framework.encodedfile_latin_1
         encodedfile_windows_1252 = self.framework.encodedfile_windows_1252
@@ -836,7 +836,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(encoding, expected, s)
 
     def test_purge_non_printing_from_file(self):
-        print('testing purge_non_printing_from_file')
+        print('Running test_purge_non_printing_from_file')
         testfile = self.framework.non_printing_file
         tempfile = self.framework.newlinecondenser
 
@@ -892,8 +892,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
             self.assertEqual(line, expected, s)
 
     def test_fields_from_row(self):
-        print('testing fields_from_row')
-        
+        print('Running test_fields_from_row')        
         row = {
             'institutionCode':'MVZ',
             'collectionCode':'Mammals',
@@ -916,8 +915,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(found, expected, s)
 
     def test_extract_values_from_row(self):
-        print('testing extract_values_from_row')
-        
+        print('Running test_extract_values_from_row')                
         row = {
             'country|stateProvince|county':'USA|Montana|Missoula Co',
             'country':'USA', 
@@ -975,8 +973,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertIsNone(found, s)
 
     def test_extract_values_from_file(self):
-        print('testing extract_values_from_file')
-
+        print('Running test_extract_values_from_file')                
         extractvaluesfile1 = self.framework.extractvaluesfile1
         inputencoding = csv_file_encoding(extractvaluesfile1)
         fields = ['country']
@@ -1113,7 +1110,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(found, expected, s)
 
     def test_extract_value_counts_from_file(self):
-        print('testing extract_value_counts_from_file')
+        print('Running test_extract_value_counts_from_file')                
         extractvaluesfile1 = self.framework.extractvaluesfile1
 
         fields = ['country']
@@ -1159,7 +1156,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(sortedlist, expected, s)
 
     def test_strip_list(self):
-        print('testing strip_list')
+        print('Running test_strip_list')                
         inputlist = [' a ', 'b', ' c', 'd ', None]
         outputlist = strip_list(inputlist)
         expected = ['a', 'b', 'c', 'd', 'field_5']
@@ -1168,13 +1165,23 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(outputlist, expected, s)
 
     def test_get_guid(self):
-        print('testing get_guid')
+        print('Running test_get_guid')                
         guid = get_guid('uuid')
         expected = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
         s = 'GUID:\n%s' % guid
         s += ' not in expected format:\n%s' % expected
         guidlength = len(guid)
         self.assertEqual(guidlength, 36, s)
+
+    def test_dwc_ordered_header(self):
+        print('Running test_dwc_ordered_header')                
+        header = ['genus', 'identifiedBy', 'recordedBy', 'country', 'occurrenceID', 
+            'Weight', 'catalogNumber', 'eventDate', 'basisOfRecord', 'type']
+        found = dwc_ordered_header(header)
+        expected = ['type', 'basisOfRecord', 'occurrenceID', 'catalogNumber', 
+            'recordedBy', 'eventDate', 'country', 'identifiedBy', 'genus', 'Weight']
+        s = 'DwC-ordered header (%s) does not match expected (%s) ' % (found, expected)
+        self.assertEqual(found, expected, s)
 
 if __name__ == '__main__':
     print('=== dwca_utils_test.py ===')

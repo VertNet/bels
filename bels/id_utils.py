@@ -15,10 +15,13 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "id_utils.py 2021-01-07T01:41-03:00"
+__version__ = "id_utils.py 2021-01-10T00:48-03:00"
 
 from dwca_terms import locationmatchwithcoordstermlist
 from dwca_terms import locationkeytermlist
+from dwca_vocab_utils import darwinize_dict
+from dwca_utils import lower_dict_keys
+from decimal import *
 import hashlib
 import base64
 import re
@@ -34,10 +37,26 @@ def location_match_str(termlist, inputdict):
     returns:
         str - the Location-matching string
     '''
+    functionname = 'location_match_str()'
+
     idstr = ''
+    # Make sure that the rounding strategy for Decimals rounds halves away from 0
+    # For example, 1.235 rounded to 2 places would be 1.24 and -1.235 rounded to 2 places
+    # would be -1.24. This matches the behavior of ROUND() in BigQuery.
+    getcontext().rounding = ROUND_HALF_UP
     for term in termlist:
+        # print('term: %s inputdict[%s]: %s' % (term, term, inputdict[term]))
         try:
-            idstr += inputdict[term]
+            if term=='decimallatitude' or term=='decimallongitude':
+                rawvalue = inputdict[term]
+                numericvalue = Decimal(rawvalue)
+                valuestr = str(numericvalue.quantize(Decimal('1.0000000'))).strip('0').strip('.')
+                # print('term: %s numericvalue: %s valuestr: %s' % (term, numericvalue, valuestr))
+                # In BigQuery the coordinates for matching are truncated versions using:
+                # SAFE_CAST(round(10000000*safe_cast(v_decimallatitude as NUMERIC))/10000000 AS STRING)
+                idstr += valuestr
+            else:
+                idstr += inputdict[term]
         except:
             pass
         idstr += ' '
@@ -52,6 +71,8 @@ def location_str(inputdict):
     returns:
         str - the Location identifier string
     '''
+    functionname = 'location_str()'
+
     idstr = ''
     for term in locationkeytermlist:
         try:
@@ -62,25 +83,31 @@ def location_str(inputdict):
             pass
     return idstr
 
-def dwc_location_hash(inputdict):
+def dwc_location_hash(inputdict, darwincloudfile):
     ''' Constructs a base64 str representation of the sha256 hash from a Darwin Core
         Location dict.
     parameters:
         inputdict - the dict of fields from which to construct a Location identifier.
+        darwincloudfile - the vocabulary file for the Darwin Cloud (required)
     returns:
         locid - the Location hash
     '''
-    locstr=location_str(inputdict)
+    functionname = 'dwc_location_hash()'
+
+    darwindict = darwinize_dict(inputdict,darwincloudfile,namespace=True)
+    locstr=location_str(lower_dict_keys(darwindict))
     hash = hashlib.sha256(locstr.encode('utf-8'))
     return base64.b64encode(hash.digest()).decode('utf-8')
         
-def super_simple(idstr):
+def super_simplify(idstr):
     ''' Prepares an input location string for matching
     parameters:
         inputstr - the location string to create a match string for
     returns:
         id - the location match id
     '''
+    functionname = 'super_simplify()'
+
     # In BigQuery, this is achieved with
     # REGEXP_REPLACE(saveNumbers(NORMALIZE_AND_CASEFOLD(removeSymbols(simplifyDiacritics(for_match)),NFKC)),r"[\s]+",'')
     sd = simplify_diacritics(idstr)
@@ -89,16 +116,6 @@ def super_simple(idstr):
     sn = save_numbers(ncsd)
     simplified = remove_whitespace(sn)
     return simplified
-
-def location_match_id_hex(inputstr):
-    ''' Prepares an input location string for matching
-    parameters:
-        inputstr - the location string to create a match string for
-    returns:
-        id - the location match id
-    '''
-    id = hashlib.sha256(inputstr.encode('utf-8')).hexdigest()
-    return id
 
 def remove_symbols(inputstr):
     ''' Removes most punctuation and symbols. Does not remove . , / - or +, which can 
@@ -132,12 +149,15 @@ def save_numbers(inputstr):
     return cleaned
 
 def simplify_diacritics(inputstr):
+    # TODO - amend interpretations of ß (see https://github.com/VertNet/bels/issues/2)
     ''' Changes unicode diacritics to ASCII "equivalents"
     parameters:
         inputstr - the string to simplify
     returns:
         str - a simplified string
     '''
+    functionname = 'simplify_diacritics()'
+
     str=inputstr
     defaultDiacriticsRemovalMap = [ 
       {'base':'A', 'letters':r'[\u0041\u24B6\uFF21\u00C0\u00C1\u00C2\u1EA6\u1EA4\u1EAA\u1EA8\u00C3\u0100\u0102\u1EB0\u1EAE\u1EB4\u1EB2\u0226\u01E0\u00C4\u01DE\u1EA2\u00C5\u01FA\u01CD\u0200\u0202\u1EA0\u1EAC\u1EB6\u1E00\u0104\u023A\u2C6F]'}, 
@@ -231,18 +251,6 @@ def simplify_diacritics(inputstr):
         i += 1
     return str
 
-def normalize_and_casefold(inputstr):
-    ''' Normalizes unicode, then casefolds inputstr"
-    parameters:
-        inputstr - the string to casefold and normalize
-    returns:
-        str - a casefolded and normalized string
-    '''
-    str=inputstr
-    ns = unicodedata.normalize('NFKC',str)
-    cf = str.casefold()
-    return cf
-
 def casefold_and_normalize(inputstr):
     ''' casefolds, then unicode normalizes inputstr"
     parameters:
@@ -250,7 +258,36 @@ def casefold_and_normalize(inputstr):
     returns:
         str - a normalized and casefolded string
     '''
+    functionname = 'casefold_and_normalize()'
+
     str=inputstr
     cf = str.casefold()
     ns = unicodedata.normalize('NFKC',cf)
     return ns
+
+# def normalize_and_casefold(inputstr):
+#     ''' Normalizes unicode, then casefolds inputstr"
+#     parameters:
+#         inputstr - the string to casefold and normalize
+#     returns:
+#         str - a casefolded and normalized string
+#     '''
+#     functionname = 'normalize_and_casefold()'
+# 
+#     str=inputstr
+#     ns = unicodedata.normalize('NFKC',str)
+#     cf = str.casefold()
+#     return cf
+
+# def location_match_id_hex(inputstr):
+#     ''' Prepares an input location string for matching
+#     parameters:
+#         inputstr - the location string to create a match string for
+#     returns:
+#         id - the location match id
+#     '''
+#     functionname = 'location_match_id_hex()'
+# 
+#     id = hashlib.sha256(inputstr.encode('utf-8')).hexdigest()
+#     return id
+

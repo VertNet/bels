@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "dwca_vocab_utils.py 2021-01-04T14:09-03:00"
+__version__ = "dwca_vocab_utils.py 2021-01-09T00:59-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_vocab_utils.py"
 
 # This file contains common utility functions for dealing with the vocabulary management
@@ -37,35 +37,6 @@ import logging
 import copy
 import csv
 
-def dwc_ordered_header(header):
-    ''' Construct a header with terms ordered in the Darwin Core term order.
-    parameters:
-        None
-    returns:
-        orderedheader -  Darwin Core-ordered list of field names in the given header
-    '''
-    if header is None or len(header) == 0:
-        return None
-
-    # Make a lower case version of the header to compare against
-    compare = []
-    for term in header:
-        compare.append(term.lower())
-
-    # Search through the Simple Darwin terms in order and add any found in the input 
-    # to an ordered header
-    orderedheader = []
-    for term in simpledwctermlist:
-        if term.lower() in compare:
-            orderedheader.append(term)
-
-    # Add any remaining fields from the input header to the ordered header
-    for term in header:
-        if term not in orderedheader:
-            orderedheader.append(term)
-
-    return orderedheader
-
 def vocabheader(key, separator=None):
     ''' Construct the header row for a vocabulary file. Begin with a field name equal to 
     the key variable, then add fields for the components of the key if it is composite 
@@ -85,6 +56,8 @@ def vocabheader(key, separator=None):
       then the header will end up as 
       ['country|stateprovince','country','stateprovince','standard','vetted']
     '''
+    functionname = 'vocabheader()'
+
     if key is None:
         return None
     if separator is not None:
@@ -315,6 +288,8 @@ def vetted_vocab_dict_from_file(vocabfile, key, separator=None, dialect=None,
     returns:
         vocabdict - dictionary of complete vetted vocabulary records
     '''
+    functionname = 'vetted_vocab_dict_from_file()'
+
     # No need to check for vocabfile, vocab_dict_from_file does that.
     thedict = vocab_dict_from_file(vocabfile, key, separator, dialect, encoding)
     vetteddict = {}
@@ -532,6 +507,8 @@ def terms_not_in_dwc(checklist, casesensitive=False):
         a sorted list of non-Darwin Core terms from the checklist
     '''
     # No need to check if checklist is given, not_in_list() does that
+    functionname = 'terms_not_in_dwc()'
+
     if casesensitive==True:
         return not_in_list(simpledwctermlist, checklist)
 
@@ -600,8 +577,8 @@ def darwinize_list(termlist, dwccloudfile, namespace=None):
     parameters:
         termlist - list of values to translate (required)
         dwccloudfile - the vocabulary file for the Darwin Cloud (required)
-        encoding - a string designating the input file encoding (optional; default None) 
-            (e.g., 'utf-8', 'mac_roman', 'latin_1', 'cp1252')
+        namespace - a flag to determine if the dwc: namespace should be prepended to the
+            term name
     returns:
         a list with all translatable terms translated
     '''
@@ -654,6 +631,59 @@ def darwinize_list(termlist, dwccloudfile, namespace=None):
         i += 1
 
     return darwinizedlist
+
+def darwinize_dict(inputdict, dwccloudfile, namespace=False):
+    ''' Translate the keys in a dict to standard Darwin Core terms.
+    parameters:
+        inputdict - dict with keys to translate (required)
+        dwccloudfile - the vocabulary file for the Darwin Cloud (required)
+        namespace - a flag to determine if the dwc: namespace should be prepended to the
+            term name
+    returns:
+        a dict with all translatable keys translated
+    '''
+    functionname = 'darwinize_dict()'
+
+    if inputdict is None or len(inputdict)==0:
+        s = 'No input dict given in %s.' % functionname
+        logging.debug(s)
+        return None
+
+    dialect = csv_file_dialect(dwccloudfile)
+
+    # No need to check if dwccloudfile is given and exists, vetted_vocab_dict_from_file() 
+    # does that.
+    darwinclouddict = darwin_cloud_vocab_dict_from_file(dwccloudfile)
+
+    if darwinclouddict is None:
+        s = 'No Darwin Cloud terms in %s.' % functionname
+        logging.debug(s)
+        return None
+
+    darwinizeddict = {}
+    i = 0
+    j = 1
+    for term,value in inputdict.items():
+        searchterm = ustripstr(term)
+        if searchterm in darwinclouddict:
+            if darwinclouddict[searchterm]['standard'] is not None and \
+                len(darwinclouddict[searchterm]['standard'].strip()) > 0:
+                if namespace == True:
+                    ns = darwinclouddict[searchterm]['namespace']
+                    newterm = ns + ':' + darwinclouddict[searchterm]['standard']
+                else:
+                    newterm = darwinclouddict[searchterm]['standard']
+            else:
+                newterm = searchterm.strip()
+        else:
+            newterm = term.strip()
+            if len(newterm) == 0:
+                newterm = 'UNNAMED_COLUMN_%s' % j
+                j += 1
+        darwinizeddict[newterm]=value
+        i += 1
+
+    return darwinizeddict
 
 def not_in_list(targetlist, checklist, function=None, *args, **kwargs):
     ''' Get the list of distinct values in a checklist that are not in a target list.

@@ -14,8 +14,8 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2020 Rauthiflor LLC"
-__version__ = "darwinize_header.py 2020-12-22T08:41-03:00"
+__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__version__ = "darwinize_header.py 2021-01-07T12:58-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/darwinize_header.py"
 
 from dwca_vocab_utils import darwinize_list
@@ -53,7 +53,7 @@ def darwinize_header(options):
         success - True if process completed successfully, otherwise False
         message - an explanation of the reason if success=False
     '''
-    #print('%s options: %s' % (__version__, options))
+    functionname = 'darwinize_header()'
 
     setup_actor_logging(options)
 
@@ -161,8 +161,8 @@ def darwinize_header(options):
     header = read_header(inputfile, dialect=inputdialect, encoding=encoding)
     dwcheader = darwinize_list(header, dwccloudfile, namespace)
 
-    print(header)
-    print(dwcheader)
+#     print(header)
+#     print(dwcheader)
     
     if dwcheader is None:
         message = 'Unable to create darwinized header. %s' % __version__
@@ -190,7 +190,7 @@ def darwinize_header(options):
     returnvals = [workspace, outputfile, success, message, artifacts]
     logging.debug('Finishing %s' % __version__)
     return response(returnvars, returnvals)
-	
+
 def _getoptions():
     ''' Parse command line options and return them.'''
     parser = argparse.ArgumentParser()

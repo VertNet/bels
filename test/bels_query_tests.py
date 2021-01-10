@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query_tests.py 2021-01-07T01:41-03:00"
+__version__ = "bels_query_tests.py 2021-01-09T15:59-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -27,17 +27,41 @@ __version__ = "bels_query_tests.py 2021-01-07T01:41-03:00"
 from google.cloud import bigquery
 from dwca_terms import locationmatchwithcoordstermlist
 from dwca_terms import locationmatchsanscoordstermlist
+from dwca_terms import locationmatchverbatimcoordstermlist
+from dwca_terms import gbiflocationmatchwithcoordstermlist
+from dwca_terms import gbiflocationmatchsanscoordstermlist
+from dwca_terms import gbiflocationmatchverbatimcoordstermlist
 from dwca_utils import safe_read_csv_row
+from dwca_utils import lower_dict_keys
+from dwca_vocab_utils import darwinize_dict
 from id_utils import dwc_location_hash
+from id_utils import location_match_str
+from id_utils import super_simplify
 from bels_query import get_best_sans_coords_georef
 from bels_query import get_best_with_coords_georef
 from bels_query import get_best_with_verbatim_coords_georef
+from bels_query import row_as_dict
 from decimal import *
 import json
-import base64
+#import base64
 import unittest
 
 class BELSQueryTestFramework():
+    # testdatapath is the location of example files to test with
+    testdatapath = '../data/tests/'
+    # vocabpath is the location of vocabulary files to test with
+    vocabpath = '../vocabularies/'
+
+    # following are files used as input during the tests, don't remove these
+    darwincloudfile = vocabpath + 'darwin_cloud.txt'
+    locationswithhashfile = testdatapath + 'test_locations_with_hash.csv'
+    matchmesanscoordsbestgeoreffile = testdatapath + 'test_matchme_sans_coords_best_georef.csv'
+    matchmewithcoordsbestgeoreffile = testdatapath + 'test_matchme_with_coords_best_georef.csv'
+    matchmeverbatimcoordsbestgeoreffile = testdatapath + 'test_matchme_verbatimcoords_best_georef.csv'
+    locsanscoordsbestgeoreffile = testdatapath + 'test_loc_with_sans_coords_best_georef.csv'
+    locswithcoordsbestgeoreffile = testdatapath + 'test_loc_with_with_coords_best_georef.csv'
+    locswithverbatimcoordsbestgeoreffile = testdatapath + 'test_loc_with_verbatimcoords_best_georef.csv'
+
     def dispose(self):
         return True
 
@@ -50,8 +74,10 @@ class BELSQueryTestCase(unittest.TestCase):
     def tearDown(self):
         self.framework.dispose()
         self.framework = None
+        self.BQ.close()
 
     def test_get_best_sans_coords_georef(self):
+        print('Running test_get_best_sans_coords_georef')
         matchstr = 'auwac73kmsofbillabongroadhouse'
 #        matchid='3CKYu8SB2PDattd8KYrAn6w4b6rNmlJzCKB4PVxHJwY='
         result = get_best_sans_coords_georef(self.BQ, matchstr)
@@ -101,6 +127,7 @@ class BELSQueryTestCase(unittest.TestCase):
         self.assertEqual(result, target)
 
     def test_get_best_with_coords_georef(self):
+        print('Running test_get_best_with_coords_georef')
         matchstr = 'aqbechervaiseisland00-66.49559.49'
 #        matchid='WXAe63f0h1LKMujroFLYoRVY03vWmCdvQynV5Y/9wUg='
         result = get_best_with_coords_georef(self.BQ, matchstr)
@@ -126,6 +153,7 @@ class BELSQueryTestCase(unittest.TestCase):
         self.assertEqual(result, target)
 
     def test_get_best_with_verbatim_coords_georef(self):
+        print('Running test_get_best_with_verbatim_coords_georef')
         matchstr = 'usminnesotawadenat136nr33ws.1012-jul-71,'
 #        matchid='YcHC5X1M3bUVjMAav1D2XYKLTLihxhGh1JDGs/C+m00='
         result = get_best_with_verbatim_coords_georef(self.BQ, matchstr)
@@ -151,94 +179,116 @@ class BELSQueryTestCase(unittest.TestCase):
         self.assertEqual(result, target)
 
     def test_dwc_location_hash_from_safe_read_csv_row(self):
-        inputfile = '../data/tests/test_locations_with_hash.csv'
+        print('Running test_dwc_location_hash_from_safe_read_csv_row')
+        inputfile = self.framework.locationswithhashfile
+        darwincloudfile = self.framework.darwincloudfile
         for row in safe_read_csv_row(inputfile):
             target = row['dwc_location_hash']
-            result = dwc_location_hash(row)
+            result = dwc_location_hash(row, darwincloudfile)
             self.assertEqual(result, target)
 
     def test_matchme_sans_coords_best_georef_from_file(self):
-        inputfile = '../data/tests/test_matchme_sans_coords_best_georef.csv'
+        print('Running test_matchme_sans_coords_best_georef_from_file')
+        inputfile = self.framework.locsanscoordsbestgeoreffile
+        darwincloudfile = self.framework.darwincloudfile
         for row in safe_read_csv_row(inputfile):
-            matchstr = row['matchme_sans_coords']
-            result = get_best_sans_coords_georef(self.BQ, matchstr)
-            target = {
-            'matchme_sans_coords': 'northamericauswisconsinrichlandco5milesseofrichlandcenter',
-            'unc_numeric': Decimal('969'),
-            'center': 'POINT(-90.320967 43.285569)',
-            'interpreted_decimallongitude': -90.320967,
-            'interpreted_decimallatitude': 43.285569,
-            'interpreted_countrycode': 'US',
-            'v_georeferencedby': None,
-            'v_georeferenceddate': '2020-03-20',
-            'v_georeferenceprotocol': 'GEOLocate Web Application',
-            'v_georeferencesources': 'GEOLocate Batch Processing Tool',
-            'v_georeferenceremarks': None,
-            'georef_score': 28,
-            'georef_count': 1,
-            'max_uncertainty': Decimal('969'),
-            'centroid_dist': 1.000322738884209e-09,
-            'min_centroid_dist': 1.000322738884209e-09,
-            'matchid': b'D\xb7_o\xb7|X\x05\x90\x89y\xc2\x8f\xc1AM%!\x90\xf1a\xdc\xd9\x1e\xa1t\xd1tm\xc8\x0f\xe9'
-            }
-            self.assertEqual(result, target)
-            # Only test the first row
-            return
+            rowdict = row_as_dict(row)
+            # print('test rowdict: %s' % rowdict)
+            loc = darwinize_dict(row_as_dict(row), darwincloudfile)
+            lowerloc = lower_dict_keys(loc)
+            # print('lowerloc: %s' % lowerloc)
+            locmatchstr = location_match_str(locationmatchsanscoordstermlist, lowerloc)
+            # print('locmatchstr: %s' % locmatchstr)
+            matchstr=super_simplify(locmatchstr)
+            result = row['matchme_sans_coords']
+            self.assertEqual(result, matchstr)
+
+    def test_gbif_matchme_sans_coords_best_georef_from_file(self):
+        print('Running test_gbif_matchme_sans_coords_best_georef_from_file')
+        inputfile = self.framework.locsanscoordsbestgeoreffile
+        darwincloudfile = self.framework.darwincloudfile
+        for row in safe_read_csv_row(inputfile):
+            rowdict = row_as_dict(row)
+            # print('test rowdict: %s' % rowdict)
+            loc = darwinize_dict(row_as_dict(row), darwincloudfile)
+            lowerloc = lower_dict_keys(loc)
+            # print('lowerloc: %s' % lowerloc)
+            locmatchstr = location_match_str(gbiflocationmatchsanscoordstermlist, lowerloc)
+            # print('locmatchstr: %s' % locmatchstr)
+            matchstr=super_simplify(locmatchstr)
+            result = row['matchme_sans_coords']
+            self.assertEqual(result, matchstr)
 
     def test_matchme_with_coords_best_georef_from_file(self):
-        inputfile = '../data/tests/test_matchme_with_coords_best_georef.csv'
+        print('Running test_matchme_with_coords_best_georef_from_file')
+        inputfile = self.framework.locswithcoordsbestgeoreffile
+        darwincloudfile = self.framework.darwincloudfile
         for row in safe_read_csv_row(inputfile):
-            matchstr = row['matchme_with_coords']
-            result = get_best_with_coords_georef(self.BQ, matchstr)
-            target = {
-            'matchme_with_coords': 'fr050.36943711.5957684',
-            'unc_numeric': Decimal('24'),
-            'center': 'POINT(1.595768 50.369437)',
-            'interpreted_decimallongitude': 1.595768,
-            'interpreted_decimallatitude': 50.369437,
-            'interpreted_countrycode': 'FR',
-            'v_georeferencedby': None,
-            'v_georeferenceddate': None,
-            'v_georeferenceprotocol': None,
-            'v_georeferencesources': 'GPS',
-            'v_georeferenceremarks': None,
-            'georef_score': 8,
-            'georef_count': 1,
-            'max_uncertainty': Decimal('24'),
-            'centroid_dist': 0.0,
-            'min_centroid_dist': 0.0,
-            'matchid': b'f!\x82\x82[j\x99\xc2 \xab\x84\x0e.\xdf\xca\xc9p\x96\xb4\xfeI\x1a\xe9\xbb\xe8\x80\x82\x8c\xe9\x86\x17\xea'
-            }
-            self.assertEqual(result, target)
+            rowdict = row_as_dict(row)
+            # print('test rowdict: %s' % rowdict)
+            loc = darwinize_dict(row_as_dict(row), darwincloudfile)
+            lowerloc = lower_dict_keys(loc)
+            # print('lowerloc: %s' % lowerloc)
+            locmatchstr = location_match_str(locationmatchwithcoordstermlist, lowerloc)
+            # print('locmatchstr: %s' % locmatchstr)
+            matchstr=super_simplify(locmatchstr)
+            result = row['matchme_with_coords']
+            self.assertEqual(result, matchstr)
+#             # Only test the first row
+            return
+
+    def test_gbif_matchme_with_coords_best_georef_from_file(self):
+        print('Running test_gbif_matchme_with_coords_best_georef_from_file')
+        inputfile = self.framework.locswithcoordsbestgeoreffile
+        darwincloudfile = self.framework.darwincloudfile
+        for row in safe_read_csv_row(inputfile):
+            rowdict = row_as_dict(row)
+            # print('test rowdict: %s' % rowdict)
+            loc = darwinize_dict(row_as_dict(row), darwincloudfile)
+            lowerloc = lower_dict_keys(loc)
+            # print('lowerloc: %s' % lowerloc)
+            locmatchstr = location_match_str(gbiflocationmatchwithcoordstermlist, lowerloc)
+            # print('locmatchstr: %s' % locmatchstr)
+            matchstr=super_simplify(locmatchstr)
+            result = row['matchme_with_coords']
+            self.assertEqual(result, matchstr)
             # Only test the first row
             return
 
     def test_matchme_verbatimcoords_best_georef_from_file(self):
-        inputfile = '../data/tests/test_matchme_verbatimcoords_best_georef.csv'
+        print('Running test_matchme_verbatimcoords_best_georef_from_file')
+        inputfile = self.framework.locswithverbatimcoordsbestgeoreffile
+        darwincloudfile = self.framework.darwincloudfile
         for row in safe_read_csv_row(inputfile):
-            matchstr = row['matchme']
-            result = get_best_verbatim_coords_georef(self.BQ, matchstr)
-            target = {
-            'matchme': 'usvirginianewkentcountywestpoint',
-            'unc_numeric': Decimal('5774'),
-            'center': 'POINT(-76.892162 37.476215)',
-            'interpreted_decimallongitude': -76.892162,
-            'interpreted_decimallatitude': 37.476215,
-            'interpreted_countrycode': 'US',
-            'v_georeferencedby': None,
-            'v_georeferenceddate': None,
-            'v_georeferenceprotocol': None,
-            'v_georeferencesources': 'GeoLocate',
-            'v_georeferenceremarks': None,
-            'georef_score': 8,
-            'georef_count': 1,
-            'max_uncertainty': Decimal('5774'),
-            'centroid_dist': 1.5914794482263517E-9,
-            'min_centroid_dist': 1.5914794482263517E-9,
-            'matchid': None
-            }
-            self.assertEqual(result, target)
-            # Only test the first row
+            rowdict = row_as_dict(row)
+            # print('test rowdict: %s' % rowdict)
+            loc = darwinize_dict(row_as_dict(row), darwincloudfile)
+            lowerloc = lower_dict_keys(loc)
+            # print('lowerloc: %s' % lowerloc)
+            locmatchstr = location_match_str(locationmatchverbatimcoordstermlist, lowerloc)
+            # print('locmatchstr: %s' % locmatchstr)
+            matchstr=super_simplify(locmatchstr)
+            result = row['matchme']
+            self.assertEqual(result, matchstr)
+#             # Only test the first row
+            return
+
+    def test_gbif_matchme_verbatimcoords_best_georef_from_file(self):
+        print('Running test_gbif_matchme_verbatimcoords_best_georef_from_file')
+        inputfile = self.framework.locswithverbatimcoordsbestgeoreffile
+        darwincloudfile = self.framework.darwincloudfile
+        for row in safe_read_csv_row(inputfile):
+            rowdict = row_as_dict(row)
+            # print('test rowdict: %s' % rowdict)
+            loc = darwinize_dict(row_as_dict(row), darwincloudfile)
+            lowerloc = lower_dict_keys(loc)
+            # print('lowerloc: %s' % lowerloc)
+            locmatchstr = location_match_str(gbiflocationmatchverbatimcoordstermlist, lowerloc)
+            # print('locmatchstr: %s' % locmatchstr)
+            matchstr=super_simplify(locmatchstr)
+            result = row['matchme']
+            self.assertEqual(result, matchstr)
+#             # Only test the first row
             return
 
 if __name__ == '__main__':

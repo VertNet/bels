@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "darwinize_header_tests.py 2021-01-04T14:11-03:00"
+__version__ = "darwinize_header_tests.py 2021-01-08T16:56-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/test/darwinize_header_test.py"
 
 # This file contains unit tests for the darwinize_header function.
@@ -44,6 +44,8 @@ class DarwinizeHeaderTestFramework():
     testfile1 = testdatapath + 'test_eight_records_utf8_lf.csv'
     testfile2 = testdatapath + 'test_three_records_utf8_unix_lf.txt'
     testfile3 = testdatapath + 'test_simbiota_download.csv'
+    testfile4 = testdatapath + 'test_locations_with_hash.csv'
+    testfile5 = testdatapath + 'test_matchme_sans_coords_best_georef.csv'
     dwccloudfile = vocabpath + 'darwin_cloud.txt'
 
     # output data files from tests, remove these in dispose()
@@ -66,7 +68,7 @@ class DarwinizeHeaderTestCase(unittest.TestCase):
         self.framework = None
 
     def test_source_files_exist(self):
-        print('testing source_files_exist')
+        print('Running test_source_files_exist')
         testfile1 = self.framework.testfile1
         self.assertTrue(os.path.isfile(testfile1), testfile1 + ' does not exist')
         testfile2 = self.framework.testfile2
@@ -77,7 +79,7 @@ class DarwinizeHeaderTestCase(unittest.TestCase):
         self.assertTrue(os.path.isfile(dwccloudfile), dwccloudfile + ' does not exist')
 
     def test_missing_parameters(self):
-        print('testing missing_parameters')
+        print('Running test_missing_parameters')
         testfile1 = self.framework.testfile1
         outputfile = self.framework.outputfile
         dwccloudfile = self.framework.dwccloudfile
@@ -123,7 +125,7 @@ class DarwinizeHeaderTestCase(unittest.TestCase):
             os.remove(response['outputfile'])
 
     def test_headers(self):
-        print('testing headers')
+        print('Running test_headers')
         testfile = self.framework.testfile1
 
         header = read_header(testfile)
@@ -186,10 +188,12 @@ class DarwinizeHeaderTestCase(unittest.TestCase):
         self.assertEqual(header, expected)
 
     def test_darwinize_header(self):
-        print('testing darwinize_header')
+        print('Running test_darwinize_header')
         testfile1 = self.framework.testfile1
         testfile2 = self.framework.testfile2
         testfile3 = self.framework.testfile3
+        testfile4 = self.framework.testfile4
+        testfile5 = self.framework.testfile5
         testdatapath = self.framework.testdatapath
         dwccloudfile = self.framework.dwccloudfile
         outputfile = self.framework.outputfile
@@ -301,8 +305,78 @@ class DarwinizeHeaderTestCase(unittest.TestCase):
         s = 'From input: %s\nFound:\n%s\nExpected:\n%s' % (testfile1, notdwc, expected)
         self.assertEqual(notdwc, expected, s)
 
+        inputs['inputfile'] = testfile4
+
+        # Darwinize the header
+        response=darwinize_header(inputs)
+        header = read_header(outfilelocation)
+        #print('response2:\n%s' % response)
+        expected = ['dwc_location_hash','higherGeographyID','higherGeography','continent',
+        'waterBody','islandGroup','island','country','countryCode','stateProvince',
+        'county','municipality','locality','verbatimLocality','minimumElevationInMeters',
+        'maximumElevationInMeters','verbatimElevation','minimumDepthInMeters',
+        'maximumDepthInMeters','verbatimDepth','minimumDistanceAboveSurfaceInMeters',
+        'maximumDistanceAboveSurfaceInMeters','locationAccordingTo','locationRemarks',
+        'decimalLatitude','decimalLongitude','geodeticDatum',
+        'coordinateUncertaintyInMeters','coordinatePrecision','pointRadiusSpatialFit',
+        'verbatimCoordinates','verbatimLatitude','verbatimLongitude',
+        'verbatimCoordinateSystem','verbatimSRS','footprintWKT','footprintSRS',
+        'footprintSpatialFit','georeferencedBy','georeferencedDate',
+        'georeferenceProtocol','georeferenceSources','georeferenceVerificationStatus',
+        'georeferenceRemarks']
+        s = 'From input: %s\nFound:\n%s\nExpected:\n%s' % (testfile3, header, expected)
+        self.maxDiff = None
+        self.assertEqual(header, expected, s)
+
+        # What is not Darwin Core?
+        casesensitive = True
+        notdwc = terms_not_in_dwc(header, casesensitive)
+        expected = ['dwc_location_hash']
+        s = 'From input: %s\nFound:\n%s\nExpected:\n%s' % (testfile1, notdwc, expected)
+        self.assertEqual(notdwc, expected, s)
+
+        inputs['inputfile'] = testfile5
+
+        # Darwinize the header
+        response=darwinize_header(inputs)
+        header = read_header(outfilelocation)
+        #print('response2:\n%s' % response)
+        expected = ['dwc_location_hash','higherGeographyID','higherGeography','continent',
+        'waterBody','islandGroup','island','country','countryCode','stateProvince',
+        'county','municipality','locality','verbatimLocality','minimumElevationInMeters',
+        'maximumElevationInMeters','verbatimElevation','minimumDepthInMeters',
+        'maximumDepthInMeters','verbatimDepth','minimumDistanceAboveSurfaceInMeters',
+        'maximumDistanceAboveSurfaceInMeters','locationAccordingTo','locationRemarks',
+        'decimalLatitude','decimalLongitude','geodeticDatum',
+        'coordinateUncertaintyInMeters','coordinatePrecision','pointRadiusSpatialFit',
+        'verbatimCoordinates','verbatimLatitude','verbatimLongitude',
+        'verbatimCoordinateSystem','verbatimSRS','footprintWKT','footprintSRS',
+        'footprintSpatialFit','georeferencedBy','georeferencedDate',
+        'georeferenceProtocol','georeferenceSources','georeferenceVerificationStatus',
+        'georeferenceRemarks','matchme_sans_coords','unc_numeric','center',
+        'best_interpreted_decimallongitude','best_interpreted_decimallatitude',
+        'best_interpreted_countrycode','best_georeferencedby','best_georeferenceddate',
+        'best_georeferenceprotocol','best_georeferencesources','best_georeferenceremarks',
+        'georef_score','georef_count','max_uncertainty','centroid_dist',
+        'min_centroid_dist','matchid']
+        s = 'From input: %s\nFound:\n%s\nExpected:\n%s' % (testfile3, header, expected)
+        self.maxDiff = None
+        self.assertEqual(header, expected, s)
+
+        # What is not Darwin Core?
+        casesensitive = True
+        notdwc = terms_not_in_dwc(header, casesensitive)
+        expected = ['best_georeferencedby','best_georeferenceddate',
+        'best_georeferenceprotocol','best_georeferenceremarks','best_georeferencesources',
+        'best_interpreted_countrycode','best_interpreted_decimallatitude',
+        'best_interpreted_decimallongitude','center','centroid_dist','dwc_location_hash',
+        'georef_count','georef_score','matchid','matchme_sans_coords','max_uncertainty',
+        'min_centroid_dist','unc_numeric']
+        s = 'From input: %s\nFound:\n%s\nExpected:\n%s' % (testfile1, notdwc, expected)
+        self.assertEqual(notdwc, expected, s)
+
     def test_format(self):
-        print('testing darwinize_header')
+        print('Running test_format')
         testfile1 = self.framework.testfile1
         testdatapath = self.framework.testdatapath
         dwccloudfile = self.framework.dwccloudfile

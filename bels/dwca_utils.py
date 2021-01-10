@@ -15,15 +15,15 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "dwca_utils.py 2021-01-06T15:36-03:00"
+__version__ = "dwca_utils.py 2021-01-08T23:54-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_utils.py"
 
 # This file contains common utility functions for dealing with the content of CSV and
 # TXT files.
 
+from dwca_terms import simpledwctermlist
 from operator import itemgetter
 from uuid import uuid1
-#from ftfy import fix_text
 import os.path
 import re
 import glob
@@ -41,6 +41,12 @@ except ImportError as e:
     warnings.warn(s)
 
 def represents_int(s):
+    ''' Determine if an object represents an integer.
+    parameters:
+        s - the object to test
+    returns:
+        True if object represents an Integer, otherwise False.
+    '''
     try: 
         int(s)
         return True
@@ -48,14 +54,24 @@ def represents_int(s):
         return False
 
 def get_guid(guidtype):
-    ''' Create a global unique identifier of the requested type.'''
+    ''' Create a global unique identifier of the requested type.
+    parameters:
+        quidtype - the type of GUID to return.
+    returns:
+        a string representing the GUID
+    '''
     if guidtype == 'uuid':
         return str(uuid1())
     return str(uuid1())
 
 def collapse_whitespace(s):
     ''' Create a version of an input string with sequential whitespace changed to 
-        single space, then stripped of leading and trailing whitespace.'''
+        single space, then stripped of leading and trailing whitespace.
+    parameters:
+        s - the input string.
+    returns:
+        the string with whitespace collapsed.
+    '''
     if s is None:
         return ''
     # change whitespaces to one space and remove leading and trailing white space.
@@ -63,10 +79,27 @@ def collapse_whitespace(s):
 
 def ustripstr(s):
     ''' Create a stripped, uppercase version of an input string or empty string if input
-        is None.'''
+        is None.
+    parameters:
+        s - the input string.
+    returns:
+        the string after uppercasing and stripping leading and trailing whitespaces.
+    '''
     if s is None:
         return ''
     return s.strip().upper()
+
+def lstripstr(s):
+    ''' Create a stripped, lowercase version of an input string or empty string if input
+        is None.
+    parameters:
+        s - the input string.
+    returns:
+        the string after lowercasing and stripping leading and trailing whitespaces.
+    '''
+    if s is None:
+        return ''
+    return s.strip().lower()
 
 def setup_actor_logging(options):
     ''' Set up logging based on 'loglevel' in a dictionary.
@@ -94,6 +127,8 @@ def tsv_dialect():
     returns:
         dialect - a csv.dialect object with TSV attributes
     '''
+    functionname = 'tsv_dialect()'
+
     dialect = csv.excel_tab
     dialect.lineterminator='\r'
     dialect.delimiter='\t'
@@ -112,6 +147,8 @@ def csv_dialect():
     returns:
         dialect - a csv.dialect object with CSV attributes
     '''
+    functionname = 'csv_dialect()'
+
     dialect = csv.excel
     dialect.lineterminator='\n'
     dialect.delimiter=','
@@ -229,6 +266,8 @@ def dialects_equal(dialect1, dialect2):
     returns:
         True if the attributes are all the same, otherwise False
     '''
+    functionname = 'dialects_equal()'
+
     if dialect1 is None or dialect2 is None:
         return False
     if dialect1.lineterminator != dialect2.lineterminator:
@@ -254,6 +293,8 @@ def dialect_attributes(dialect):
     parameters:
         dialect - a csv.dialect object (required)
     '''
+    functionname = 'dialect_atributes()'
+
     if dialect is None:
         return 'No dialect given in dialect_attributes().'
 
@@ -377,6 +418,8 @@ def read_rows(inputfile, rowcount, dialect, encoding, header=True, fieldnames=No
     returns:
         rows - a list of row dictionaries
     '''
+    functionname = 'read_rows()'
+
     rows = []
     i = 0
     with open(inputfile, 'r', newline='', encoding=encoding) as data:
@@ -397,10 +440,11 @@ def read_rows(inputfile, rowcount, dialect, encoding, header=True, fieldnames=No
                 return rows
     return rows
 
-def UnicodeDictReader(utf8_data, **kwargs):
-    csv_reader = csv.DictReader(utf8_data, **kwargs)
-    for row in csv_reader:
-        yield {unicode(key, 'utf-8'):unicode(value, 'utf-8') for key, value in row.iteritems()}
+# Not needed in Python 3.x
+# def UnicodeDictReader(utf8_data, **kwargs):
+#     csv_reader = csv.DictReader(utf8_data, **kwargs)
+#     for row in csv_reader:
+#         yield {unicode(key, 'utf-8'):unicode(value, 'utf-8') for key, value in row.iteritems()}
 
 def count_rows(inputfile):
     ''' Counts rows in a file.
@@ -409,6 +453,8 @@ def count_rows(inputfile):
     returns:
         count - the number of rows in the file
     '''
+    functionname = 'count_rows()'
+
     with open(inputfile, "r") as f:
         count = sum(bl.count("\r") for bl in blocks(f))
 
@@ -534,6 +580,7 @@ def strip_list(inputlist):
         outputlist - a list of field names after stripping
     '''
     functionaname = 'strip_list()'
+
     # Cannot function without an inputlist
     if inputlist is None or len(inputlist)==0:
         s = 'No list given in %s.' % functionname
@@ -1093,6 +1140,8 @@ def filter_non_printable(str, sub = ''):
     returns:
         string with the non-printing characters removed
     '''
+    functionname = 'filter_non_printable()'
+
     newstr = ''
     for c in str:
         if ord(c) > 31 or ord(c) == 9 or ord(c) == 10 or ord(c) == 13:
@@ -1111,6 +1160,7 @@ def csv_file_encoding(inputfile, maxlines=None):
         the best guess at an encoding, defaulting to utf-8, or None on error
     '''
     functionname = 'csv_file_encoding()'
+
     line_count = 0
     limitlines = False
     
@@ -1297,6 +1347,8 @@ def extract_values_from_row(row, fields, separator=None):
         values - the extracted values of the fields in the list, concatenated with
             separator between values
     '''
+    functionname = 'extract_values_from_row()'
+
     if fields is None or len(fields)==0:
         return None
 
@@ -1332,6 +1384,8 @@ def extract_fields_from_row(row, fields, separator=None):
     returns:
         newrow - the row constructed from the input row and field list
     '''
+    functionname = 'extract_fields_from_row()'
+
     if fields is None or len(fields)==0:
         return None
 
@@ -1364,6 +1418,7 @@ def read_csv_row(inputfile, dialect, encoding, header=True, fieldnames=None):
         row - the row as a dictionary
     '''
     functionname = 'read_csv_row()'
+
     with open(inputfile, 'r', newline='', encoding=encoding) as data:
         if fieldnames is None or len(fieldnames)==0:
             reader = csv.DictReader(data, dialect=dialect)
@@ -1422,6 +1477,7 @@ def safe_read_csv_row(inputfile, dialect=None, encoding=None, header=True, field
         for row in reader:
             yield row
 
+# Not needed in Python 3.x
 # def utf8_file_encoder(inputfile, outputfile, encoding=None):
 #     ''' Translate input file to utf8.
 #     parameters:
@@ -1473,6 +1529,7 @@ def safe_read_csv_row(inputfile, dialect=None, encoding=None, header=True, field
 #             s += 'Exception: %s %s' % (e, functionname)
 #             logging.debug(s)
 # 
+# Not needed in Python 3.x
 # def utf8_line_encoder(line, encoding):
 #     ''' Get a row with a given encoding as utf8.
 #     parameters:
@@ -1496,6 +1553,8 @@ def split_path(fullpath):
             filext - the extension for the file name (e.g., 'thefile')
             filepattern - the file name without the path and extension (e.g., 'txt')
     '''
+    functionname = 'split_path()'
+
     if fullpath is None or len(fullpath)==0:
         logging.debug('No input file given in split_path().')
         return None, None, None
@@ -1515,6 +1574,8 @@ def response(returnvars, returnvals, version=None):
     returns:
         response - a dictionary of combined keys and values
     '''
+    functionname = 'response()'
+
     response = {}
     i=0
 
@@ -1533,6 +1594,8 @@ def dwc_ordered_header(header):
     returns:
         orderedheader -  Darwin Core-ordered list of field names in the given header
     '''
+    functionname = 'dwc_ordered_header()'
+
     if header is None or len(header) == 0:
         return None
 
@@ -1554,3 +1617,17 @@ def dwc_ordered_header(header):
             orderedheader.append(term)
 
     return orderedheader
+
+def lower_dict_keys(inputdict):
+    ''' Make the keys in a dict lowercase.
+    parameters:
+        inputdict - the dict for which to make the keys lowercase
+    returns:
+        lowereddict -  the dict with keys made lowercase
+    '''
+    functionname = 'lower_dict_keys()'
+
+    lowereddict = {}
+    for key,value in inputdict.items():
+        lowereddict[lstripstr(key)]=value
+    return lowereddict

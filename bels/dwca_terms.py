@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "dwca_terms.py 2021-01-01T21:30-03:00"
+__version__ = "dwca_terms.py 2021-01-09T15:28-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_terms.py"
 
 # This file contains definitions of standard sets of Darwin Core terms.
@@ -93,18 +93,60 @@ locationkeytermlist = [
 # Terms to use to match locations for a georeference search on table 
 # matchme_with_coords_best_georef
 locationmatchwithcoordstermlist = [
-    'continent', 'waterBody', 'islandGroup', 'island', 'countryCode', 'stateProvince', 
+    'continent', 'waterbody', 'islandgroup', 'island', 'countrycode', 'stateprovince', 
+    'county', 'municipality', 'locality', 'verbatimlocality', 'minimumelevationinmeters',
+    'maximumelevationinmeters', 'verbatimelevation', 'minimumdepthinmeters', 
+    'maximumdepthinmeters', 'verbatimdepth', 'verbatimcoordinates', 'verbatimlatitude', 
+    'verbatimlongitude', 'decimallatitude', 'decimallongitude'
+    ]
+
+# Terms to use to match locations for a georeference search on table 
+# matchme_with_coords_best_georef where the input has interpreted_countrycode
+gbiflocationmatchwithcoordstermlist = [
+    'continent', 'waterbody', 'islandgroup', 'island', 'interpreted_countrycode', 
+    'stateprovince', 'county', 'municipality', 'locality', 'verbatimlocality', 
+    'minimumelevationinmeters', 'maximumelevationinmeters', 'verbatimelevation', 
+    'minimumdepthinmeters', 'maximumdepthinmeters', 'verbatimdepth', 
+    'verbatimcoordinates', 'verbatimlatitude', 'verbatimlongitude', 'decimallatitude', 
+    'decimallongitude'
+    ]
+
+# Terms to use to match locations for a georeference search on table 
+# matchme_verbatimcoords_best_georef
+locationmatchverbatimcoordstermlist = [
+    'continent', 'waterbody', 'islandgroup', 'island', 'countrycode', 'stateprovince', 
     'county', 'municipality', 'locality', 'verbatimlocality', 'minimumelevationinmeters',
     'maximumelevationinmeters', 'verbatimelevation', 'minimumdepthinmeters', 
     'maximumdepthinmeters', 'verbatimdepth', 'verbatimcoordinates', 'verbatimlatitude', 
     'verbatimlongitude'
     ]
 
+# Terms to use to match locations for a georeference search on table 
+# matchme_verbatimcoords_best_georef where the input has interpreted_countrycode
+gbiflocationmatchverbatimcoordstermlist = [
+    'continent', 'waterbody', 'islandgroup', 'island', 'interpreted_countrycode', 
+    'stateprovince', 'county', 'municipality', 'locality', 'verbatimlocality', 
+    'minimumelevationinmeters', 'maximumelevationinmeters', 'verbatimelevation', 
+    'minimumdepthinmeters', 'maximumdepthinmeters', 'verbatimdepth', 
+    'verbatimcoordinates', 'verbatimlatitude', 'verbatimlongitude'
+    ]
+
+# Terms to use to match locations for a georeference search on table 
+# matchme_sans_coords_best_georef
 locationmatchsanscoordstermlist = [
-    'continent', 'waterBody', 'islandGroup', 'island', 'countryCode', 'stateProvince', 
+    'continent', 'waterbody', 'islandgroup', 'island', 'countrycode', 'stateprovince', 
     'county', 'municipality', 'locality', 'verbatimlocality', 'minimumelevationinmeters',
     'maximumelevationinmeters', 'verbatimelevation', 'minimumdepthinmeters', 
     'maximumdepthinmeters', 'verbatimdepth'
+    ]
+
+# Terms to use to match locations for a georeference search on table 
+# matchme_sans_coords_best_georef where the input has interpreted_countrycode
+gbiflocationmatchsanscoordstermlist = [
+    'continent', 'waterbody', 'islandgroup', 'island', 'interpreted_countrycode', 
+    'stateprovince', 'county', 'municipality', 'locality', 'verbatimlocality', 
+    'minimumelevationinmeters', 'maximumelevationinmeters', 'verbatimelevation', 
+    'minimumdepthinmeters', 'maximumdepthinmeters', 'verbatimdepth'
     ]
 
 # The taxonkeytermlist contains the terms that make up a distinct taxon name combination
