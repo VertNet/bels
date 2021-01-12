@@ -1,5 +1,12 @@
 import setuptools
 
+reqs = [
+    'clevercsv==0.6.6',
+    'regex==2020.11.13',
+    'chardet==4.0.0',
+    'google-cloud-bigquery==2.6.1',
+]
+
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
@@ -17,4 +24,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=reqs,
 )
