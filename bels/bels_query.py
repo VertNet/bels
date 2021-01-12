@@ -18,9 +18,9 @@ __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __version__ = "bels_query.py 2021-01-07T13:50-03:00"
 
 from google.cloud import bigquery
-from dwca_terms import locationkeytermlist
+from .dwca_terms import locationkeytermlist
 import json
-from json_utils import CustomJsonEncoder
+from .json_utils import CustomJsonEncoder
 
 def query_location_by_id(base64locationhash):
     ''' Create a query string to get a location record from the distinct Locations data

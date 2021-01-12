@@ -21,17 +21,17 @@ __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/maste
 # This file contains common utility functions for dealing with the vocabulary management
 # for Darwin Core-related terms
 
-from dwca_terms import simpledwctermlist
-from dwca_terms import vocabfieldlist
-from dwca_terms import vocabrowdict
-from dwca_utils import csv_file_dialect
-from dwca_utils import csv_file_encoding
-from dwca_utils import extract_values_from_file
-from dwca_utils import read_csv_row
-from dwca_utils import read_header
-from dwca_utils import tsv_dialect
-from dwca_utils import ustripstr
-from dwca_utils import write_header
+from .dwca_terms import simpledwctermlist
+from .dwca_terms import vocabfieldlist
+from .dwca_terms import vocabrowdict
+from .dwca_utils import csv_file_dialect
+from .dwca_utils import csv_file_encoding
+from .dwca_utils import extract_values_from_file
+from .dwca_utils import read_csv_row
+from .dwca_utils import read_header
+from .dwca_utils import tsv_dialect
+from .dwca_utils import ustripstr
+from .dwca_utils import write_header
 import os.path
 import logging
 import copy
