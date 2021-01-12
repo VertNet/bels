@@ -23,14 +23,14 @@ __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/maste
 # Example:
 #
 # python darwinize_header_test.py
-import dwca_utils
-from darwinize_header import darwinize_header
-from dwca_vocab_utils import terms_not_in_dwc
-from dwca_utils import read_header
-from dwca_utils import csv_file_dialect
-from dwca_utils import csv_dialect
-from dwca_utils import tsv_dialect
-from dwca_utils import dialects_equal
+from bels import dwca_utils
+from bels.darwinize_header import darwinize_header
+from bels.dwca_vocab_utils import terms_not_in_dwc
+from bels.dwca_utils import read_header
+from bels.dwca_utils import csv_file_dialect
+from bels.dwca_utils import csv_dialect
+from bels.dwca_utils import tsv_dialect
+from bels.dwca_utils import dialects_equal
 import os
 import unittest
 

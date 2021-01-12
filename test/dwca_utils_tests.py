@@ -24,33 +24,33 @@ __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/maste
 #
 # python dwca_utils_test.py
 
-from dwca_utils import represents_int
-from dwca_utils import clean_header
-from dwca_utils import composite_header
-from dwca_utils import convert_csv
-from dwca_utils import count_rows
-from dwca_utils import csv_dialect
-from dwca_utils import csv_field_checker
-from dwca_utils import csv_file_dialect
-from dwca_utils import csv_file_encoding
-from dwca_utils import csv_file_dialect
-from dwca_utils import dialects_equal
-from dwca_utils import dwc_ordered_header
-from dwca_utils import extract_fields_from_row
-from dwca_utils import extract_value_counts_from_file
-from dwca_utils import extract_values_from_row
-from dwca_utils import extract_values_from_file
-from dwca_utils import get_guid
-from dwca_utils import header_map
-from dwca_utils import merge_headers
-from dwca_utils import purge_non_printing_from_file
-from dwca_utils import read_header
-from dwca_utils import split_path
-from dwca_utils import strip_list
-from dwca_utils import term_rowcount_from_file
-from dwca_utils import tsv_dialect
-from dwca_utils import ustripstr
-from dwca_utils import write_header
+from bels.dwca_utils import represents_int
+from bels.dwca_utils import clean_header
+from bels.dwca_utils import composite_header
+from bels.dwca_utils import convert_csv
+from bels.dwca_utils import count_rows
+from bels.dwca_utils import csv_dialect
+from bels.dwca_utils import csv_field_checker
+from bels.dwca_utils import csv_file_dialect
+from bels.dwca_utils import csv_file_encoding
+from bels.dwca_utils import csv_file_dialect
+from bels.dwca_utils import dialects_equal
+from bels.dwca_utils import dwc_ordered_header
+from bels.dwca_utils import extract_fields_from_row
+from bels.dwca_utils import extract_value_counts_from_file
+from bels.dwca_utils import extract_values_from_row
+from bels.dwca_utils import extract_values_from_file
+from bels.dwca_utils import get_guid
+from bels.dwca_utils import header_map
+from bels.dwca_utils import merge_headers
+from bels.dwca_utils import purge_non_printing_from_file
+from bels.dwca_utils import read_header
+from bels.dwca_utils import split_path
+from bels.dwca_utils import strip_list
+from bels.dwca_utils import term_rowcount_from_file
+from bels.dwca_utils import tsv_dialect
+from bels.dwca_utils import ustripstr
+from bels.dwca_utils import write_header
 import os
 import unittest
 import csv
