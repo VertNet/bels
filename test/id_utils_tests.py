@@ -23,19 +23,19 @@ __version__ = "id_utils_tests.py 2021-01-08T17:15-03:00"
 #
 # python id_utils_tests.py
 
-from id_utils import simplify_diacritics
-from id_utils import casefold_and_normalize
-from id_utils import location_match_str
-from id_utils import location_str
-from id_utils import dwc_location_hash
-from id_utils import remove_symbols
-from id_utils import remove_whitespace
-from id_utils import save_numbers
-from id_utils import super_simplify
-from dwca_utils import lower_dict_keys
-from dwca_terms import locationmatchwithcoordstermlist
-from dwca_terms import locationmatchverbatimcoordstermlist
-from dwca_terms import locationmatchsanscoordstermlist
+from bels.id_utils import simplify_diacritics
+from bels.id_utils import casefold_and_normalize
+from bels.id_utils import location_match_str
+from bels.id_utils import location_str
+from bels.id_utils import dwc_location_hash
+from bels.id_utils import remove_symbols
+from bels.id_utils import remove_whitespace
+from bels.id_utils import save_numbers
+from bels.id_utils import super_simplify
+from bels.dwca_utils import lower_dict_keys
+from bels.dwca_terms import locationmatchwithcoordstermlist
+from bels.dwca_terms import locationmatchverbatimcoordstermlist
+from bels.dwca_terms import locationmatchsanscoordstermlist
 from decimal import *
 import base64
 import unittest

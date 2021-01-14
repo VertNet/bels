@@ -25,22 +25,22 @@ __version__ = "bels_query_tests.py 2021-01-09T15:59-03:00"
 # python bels_query_tests.py
 
 from google.cloud import bigquery
-from dwca_terms import locationmatchwithcoordstermlist
-from dwca_terms import locationmatchsanscoordstermlist
-from dwca_terms import locationmatchverbatimcoordstermlist
-from dwca_terms import gbiflocationmatchwithcoordstermlist
-from dwca_terms import gbiflocationmatchsanscoordstermlist
-from dwca_terms import gbiflocationmatchverbatimcoordstermlist
-from dwca_utils import safe_read_csv_row
-from dwca_utils import lower_dict_keys
-from dwca_vocab_utils import darwinize_dict
-from id_utils import dwc_location_hash
-from id_utils import location_match_str
-from id_utils import super_simplify
-from bels_query import get_best_sans_coords_georef
-from bels_query import get_best_with_coords_georef
-from bels_query import get_best_with_verbatim_coords_georef
-from bels_query import row_as_dict
+from bels.dwca_terms import locationmatchwithcoordstermlist
+from bels.dwca_terms import locationmatchsanscoordstermlist
+from bels.dwca_terms import locationmatchverbatimcoordstermlist
+from bels.dwca_terms import gbiflocationmatchwithcoordstermlist
+from bels.dwca_terms import gbiflocationmatchsanscoordstermlist
+from bels.dwca_terms import gbiflocationmatchverbatimcoordstermlist
+from bels.dwca_utils import safe_read_csv_row
+from bels.dwca_utils import lower_dict_keys
+from bels.dwca_vocab_utils import darwinize_dict
+from bels.id_utils import dwc_location_hash
+from bels.id_utils import location_match_str
+from bels.id_utils import super_simplify
+from bels.bels_query import get_best_sans_coords_georef
+from bels.bels_query import get_best_with_coords_georef
+from bels.bels_query import get_best_with_verbatim_coords_georef
+from bels.bels_query import row_as_dict
 from decimal import *
 import json
 #import base64

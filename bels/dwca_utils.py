@@ -21,7 +21,7 @@ __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/maste
 # This file contains common utility functions for dealing with the content of CSV and
 # TXT files.
 
-from dwca_terms import simpledwctermlist
+from .dwca_terms import simpledwctermlist
 from operator import itemgetter
 from uuid import uuid1
 import os.path
