@@ -117,7 +117,7 @@ class DarwinizeHeaderTestCase(unittest.TestCase):
         # Test with missing optional inputs
         inputs['outputfile'] = outputfile
         response=darwinize_header(inputs)
-       #print('response5:\n%s' % response)
+        #print('response5:\n%s' % response)
         s = 'no output file produced with required inputs'
         self.assertTrue(response['success'], s)
         # Remove the file created by this test, as the Framework does not know about it
