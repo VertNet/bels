@@ -4,6 +4,9 @@ reqs = [
     'regex==2020.11.13',
     'chardet==4.0.0',
     'google-cloud-bigquery==2.6.1',
+    'flask',
+    'google-cloud-pubsub==2.2.0',
+    'google-cloud-storage==1.35.0',
 ]
 
 with open("README.md", "r", encoding="utf-8") as fh:
