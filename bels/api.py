@@ -44,8 +44,7 @@ def csv():
     # TODO: make bucket name configurable?
     bucket = client.get_bucket('localityservice')
 
-
-    blob = bucket.get_blob('jobs/%s' % str(uuid.uuid4())
+    blob = bucket.get_blob('jobs/%s' % str(uuid.uuid4()))
     blob.upload_from_string(csv_content)
     url = blob.generate_signed_url(expiration=None, version='v4')
 
