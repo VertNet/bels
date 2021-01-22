@@ -95,6 +95,7 @@ def process_csv(event, context):
     blob = bucket.get_blob(file_url)
     with temp_file() as name:
         blob.download_to_filename(name)
+        blob.delete() # Do not leak documents in storage
         client = bigquery.Client()
 
         return_list = confirm_hash_big_query(client, name)
