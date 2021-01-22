@@ -20,7 +20,10 @@ __version__ = "api.py 2021-01-18"
 
 from flask import Flask, request
 import bels
+import os
 import uuid
+import datetime
+import json
 
 from google.cloud import pubsub_v1
 from google.cloud import storage
@@ -44,9 +47,9 @@ def csv():
     # TODO: make bucket name configurable?
     bucket = client.get_bucket('localityservice')
 
-    blob = bucket.get_blob('jobs/%s' % str(uuid.uuid4()))
+    url = 'jobs/%s' % str(uuid.uuid4())
+    blob = bucket.blob(url)
     blob.upload_from_string(csv_content)
-    url = blob.generate_signed_url(expiration=None, version='v4')
 
     # TODO: add PROJECT_ID
     topic_path = publisher.topic_path(PROJECT_ID, topic_name)
@@ -63,7 +66,7 @@ def csv():
     try:
         publish_future = publisher.publish(topic_path, data=message_bytes)
         publish_future.result()  # Verify the publish succeeded
-        return 'Message published.'
+        return 'We will send you an email with your content'
     except Exception as e:
         print(e)
         return (e, 500)

@@ -21,7 +21,6 @@ __version__ = "job.py 2021-01-18"
 
 import base64
 import json
-import requests
 import csv
 import io
 
@@ -82,8 +81,10 @@ def process_csv(event, context):
     file_url = json_config['file']
     email = json_config['email']
 
-    f = requests.get(file_url)
-    csv_content = f.content
+    client = storage.Client()
+    bucket = client.get_bucket('localityservice')
+    blob = bucket.get_blob(url)
+    csv_content = blob.download_as_bytes()
     client = bigquery.Client()
 
     return_list = confirm_hash_big_query(client, csv_content)

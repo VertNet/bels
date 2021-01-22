@@ -1,4 +1,5 @@
 import setuptools
+import sys
 
 reqs = [
     'regex==2020.11.13',
@@ -7,11 +8,13 @@ reqs = [
     'flask',
     'google-cloud-pubsub==2.2.0',
     'google-cloud-storage==1.35.0',
+    'requests',
 ]
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+sys.dont_write_bytecode = True
 setuptools.setup(
     name="bels", # Replace with your own username
     version="0.0.1",

@@ -4,3 +4,5 @@ google-cloud-bigquery==2.6.1
 flask
 google-cloud-pubsub==2.2.0
 google-cloud-storage==1.35.0
+requests
+gunicorn==20.0.4
