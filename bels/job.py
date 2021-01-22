@@ -23,6 +23,9 @@ import base64
 import json
 import csv
 import io
+import tempfile
+
+from contextlib import contextmanager
 
 from .id_utils import dwc_location_hash
 from .dwca_utils import safe_read_csv_row
@@ -87,13 +90,11 @@ def process_csv(event, context):
     client = storage.Client()
     bucket = client.get_bucket('localityservice')
     blob = bucket.get_blob(file_url)
-    csv_content = blob.download_as_bytes()
-    client = bigquery.Client()
-    print(('content', csv_content))
+    with temp_file() as name:
+        blob.download_to_filename(name)
+        client = bigquery.Client()
 
-    return_list = confirm_hash_big_query(client, csv_content)
-
-    print(('return', return_list))
+        return_list = confirm_hash_big_query(client, name)
 
     output = create_output(return_list)
     send_email(email, output)
@@ -120,6 +121,11 @@ def send_email(target, file_content):
     sg.send(message)
 
 
-
-
+@contextmanager
+def temp_file():
+    name = tempfile.mkstemp()
+    try:
+        yield name
+    finally:
+        os.remove(name)
     
