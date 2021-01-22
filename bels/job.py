@@ -28,6 +28,7 @@ from .id_utils import dwc_location_hash
 from .dwca_utils import safe_read_csv_row
 from .bels_query import get_location_by_id
 from google.cloud import bigquery
+from google.cloud import storage
 
 
 def confirm_hash_big_query(client, filename):
@@ -69,6 +70,7 @@ def process_csv(event, context):
          `timestamp` field contains the publish time.
     """
     import base64
+
 
     print("""This Function was triggered by messageId {} published at {}
     """.format(context.event_id, context.timestamp))
