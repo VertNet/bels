@@ -86,7 +86,7 @@ def process_csv(event, context):
 
     client = storage.Client()
     bucket = client.get_bucket('localityservice')
-    blob = bucket.get_blob(url)
+    blob = bucket.get_blob(file_url)
     csv_content = blob.download_as_bytes()
     client = bigquery.Client()
 
