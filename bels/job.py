@@ -78,6 +78,7 @@ def process_csv(event, context):
 
     config = base64.b64decode(event['data']).decode('utf-8')
     json_config = json.loads(config)
+    print(json_config)
     file_url = json_config['file_url']
     email = json_config['email']
 
