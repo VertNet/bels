@@ -89,6 +89,7 @@ def process_csv(event, context):
     blob = bucket.get_blob(file_url)
     csv_content = blob.download_as_bytes()
     client = bigquery.Client()
+    print(('content', csv_content))
 
     return_list = confirm_hash_big_query(client, csv_content)
 
