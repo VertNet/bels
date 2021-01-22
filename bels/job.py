@@ -123,7 +123,7 @@ def send_email(target, file_content):
 
 @contextmanager
 def temp_file():
-    name = tempfile.mkstemp()
+    _, name = tempfile.mkstemp()
     try:
         yield name
     finally:
