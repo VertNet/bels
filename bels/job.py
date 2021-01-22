@@ -92,6 +92,8 @@ def process_csv(event, context):
 
     return_list = confirm_hash_big_query(client, csv_content)
 
+    print(('return', return_list))
+
     output = create_output(return_list)
     send_email(email, output)
 
