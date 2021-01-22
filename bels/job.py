@@ -77,9 +77,8 @@ def process_csv(event, context):
         raise ValueError('no data provided')
 
     config = base64.b64decode(event['data']).decode('utf-8')
-    print(('event', event))
     json_config = json.loads(config)
-    print(('json', json_config))
+    json_config = json_config['data']
     file_url = json_config['file_url']
     email = json_config['email']
 
