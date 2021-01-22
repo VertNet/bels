@@ -23,6 +23,7 @@ import base64
 import json
 import csv
 import io
+import os
 import tempfile
 
 from contextlib import contextmanager
@@ -36,8 +37,10 @@ from google.cloud import storage
 
 def confirm_hash_big_query(client, filename):
     # vocabpath is the location of vocabulary files to test with
-    vocabpath = '../vocabularies/'
-    darwincloudfile = vocabpath + 'darwin_cloud.txt'
+    dirname = os.path.dirname(__file__)
+    vocabpath = os.path.join(dirname, '../vocabularies/')
+
+    darwincloudfile = os.path.join(vocabpath, 'darwin_cloud.txt')
     
     listToCsv = []
 
