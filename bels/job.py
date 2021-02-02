@@ -47,7 +47,7 @@ def confirm_hash_big_query(client, filename):
     for row in safe_read_csv_row(filename):
         location_hash_result = dwc_location_hash(row, darwincloudfile)
         print('location_hash_result', location_hash_result)
-        result = get_location_by_id(client, location_hash_result)
+        result = get_best_sans_coords_georef(client, location_hash_result)
         row.update(result)
         listToCsv.append(row)
 
