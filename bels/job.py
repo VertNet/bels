@@ -55,7 +55,7 @@ def confirm_hash_big_query(client, filename):
 
 
 def create_output(occurrences):
-    fieldsname = occurrences[0].key()
+    fieldsname = occurrences[0].keys()
     output_file = io.BytesIO()
 
     dict_writer = csv.DictWriter(output_file, fieldsname)
