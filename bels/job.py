@@ -30,7 +30,7 @@ from contextlib import contextmanager
 
 from .id_utils import dwc_location_hash
 from .dwca_utils import safe_read_csv_row
-from .bels_query import get_location_by_id
+from .bels_query import get_best_sans_coords_georef
 from google.cloud import bigquery
 from google.cloud import storage
 
