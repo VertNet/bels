@@ -57,11 +57,11 @@ def confirm_hash_big_query(client, filename):
 
 def create_output(occurrences):
     fieldsname = occurrences[0].keys()
-    output_file = io.BytesIO()
+    output_file = io.StringIO()
 
     dict_writer = csv.DictWriter(output_file, fieldsname)
     dict_writer.writeheader()
-    dict_writer.writerows(listToCsv)
+    dict_writer.writerows(occurences)
 
     return output_file.getvalue()
 
@@ -96,7 +96,7 @@ def process_csv(event, context):
     blob = bucket.get_blob(file_url)
     with temp_file() as name:
         blob.download_to_filename(name)
-        blob.delete() # Do not leak documents in storage
+        #blob.delete() # Do not leak documents in storage
         client = bigquery.Client()
 
         return_list = confirm_hash_big_query(client, name)
