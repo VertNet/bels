@@ -46,7 +46,7 @@ def confirm_hash_big_query(client, filename):
 
     for row in safe_read_csv_row(filename):
         location_hash_result = dwc_location_hash(row, darwincloudfile)
-        print('location_hash_result', location_hash_result)
+        row.update({'dwc_location_hash': None})  # Always add the dwc_location_field even if no match
         result = get_best_sans_coords_georef(client, location_hash_result)
         if result:
             row.update(result)
@@ -61,7 +61,7 @@ def create_output(occurrences):
 
     dict_writer = csv.DictWriter(output_file, fieldsname)
     dict_writer.writeheader()
-    dict_writer.writerows(occurences)
+    dict_writer.writerows(occurrences)
 
     return output_file.getvalue()
 
@@ -102,28 +102,29 @@ def process_csv(event, context):
         return_list = confirm_hash_big_query(client, name)
 
     output = create_output(return_list)
-    send_email(email, output)
+    blob = bucket.blob('output/' + file_url)
+    blob.delete()
+    blob.upload_from_string(output, content_type='application/csv')
+    blob.make_public()
+    output_url = blob.public_url
+    print(output_url)
 
-def send_email(target, file_content):
+    # Store that output
+    send_email(email, output_url)
+
+def send_email(target, output_url):
     import sendgrid
+    from sendgrid.helpers.mail import Email, To, Content, Mail
 
     # TODO: configure API Key
-    sg = sendgrid.SendGridClient("YOUR_SENDGRID_API_KEY")
-    message = sendgrid.Mail()
+    sg = sendgrid.SendGridAPIClient("YOUR_SENDGRID_API_KEY")
+    from_email = Email("test@example.com")
+    to_email = To(target)
+    subject = "Your location data"
+    content = Content("text/plain", "Find your csv with data processed here: " + output_url)
+    message = Mail(from_email, to_email, subject, content)
 
-    message.add_to(target)
-
-    # TODO: Configure Message Information
-    message.set_from("EMAIL")
-    message.set_subject("Your location data")
-    message.set_html("Find attached your csv with data processed")
-    attachment = Attachment()
-    attachment.content = file_content
-    attachment.type = "text/csv"
-    attachment.filename = "output.csv"
-    attachment.disposition = "attachment"
-    message.add_attachement(attachement)
-    sg.send(message)
+    sg.client.mail.send.post(request_body=message.get())
 
 
 @contextmanager

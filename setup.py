@@ -9,6 +9,7 @@ reqs = [
     'google-cloud-pubsub==2.2.0',
     'google-cloud-storage==1.35.0',
     'requests',
+    'sendgrid',
 ]
 
 with open("README.md", "r", encoding="utf-8") as fh:
