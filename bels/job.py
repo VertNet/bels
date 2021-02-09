@@ -112,12 +112,15 @@ def process_csv(event, context):
     # Store that output
     send_email(email, output_url)
 
+
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+
 def send_email(target, output_url):
     import sendgrid
     from sendgrid.helpers.mail import Email, To, Content, Mail
 
     # TODO: configure API Key
-    sg = sendgrid.SendGridAPIClient("YOUR_SENDGRID_API_KEY")
+    sg = sendgrid.SendGridAPIClient(SENDGRID_API_KEY)
     from_email = Email("test@example.com")
     to_email = To(target)
     subject = "Your location data"
