@@ -120,7 +120,7 @@ def send_email(target, output_url):
 
     # TODO: configure API Key
     sg = sendgrid.SendGridAPIClient(SENDGRID_API_KEY)
-    from_email = Email("test@example.com")
+    from_email = Email("vertnet@fieldmuseum.org")
     to_email = To(target)
     subject = "Your location data"
     content = Content("text/plain", "Find your csv with data processed here: " + output_url)
