@@ -118,7 +118,7 @@ def send_email(target, output_url):
     import sendgrid
     from sendgrid.helpers.mail import Email, To, Content, Mail
 
-    # TODO: configure API Key
+    print(('API_KEY', SENDGRID_API_KEY))
     sg = sendgrid.SendGridAPIClient(SENDGRID_API_KEY)
     from_email = Email("vertnet@fieldmuseum.org")
     to_email = To(target)
