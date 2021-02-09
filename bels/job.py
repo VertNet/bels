@@ -46,7 +46,10 @@ def confirm_hash_big_query(client, filename):
 
     for row in safe_read_csv_row(filename):
         location_hash_result = dwc_location_hash(row, darwincloudfile)
-        row.update({'dwc_location_hash': None})  # Always add the dwc_location_field even if no match
+        if 'dwc_location_hash' not in row:
+            # Always add the dwc_location_field even if no match
+            row.update({'dwc_location_hash': None})
+
         result = get_best_sans_coords_georef(client, location_hash_result)
         if result:
             row.update(result)
