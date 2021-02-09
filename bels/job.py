@@ -113,6 +113,7 @@ def process_csv(event, context):
 
 
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+print(('env', os.environ))
 
 def send_email(target, output_url):
     import sendgrid
