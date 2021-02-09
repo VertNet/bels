@@ -103,7 +103,6 @@ def process_csv(event, context):
 
     output = create_output(return_list)
     blob = bucket.blob('output/' + file_url)
-    blob.delete()
     blob.upload_from_string(output, content_type='application/csv')
     blob.make_public()
     output_url = blob.public_url
