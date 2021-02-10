@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query.py 2021-01-07T13:50-03:00"
+__version__ = "bels_query.py 2021-02-09T22:20-03:00"
 
 from google.cloud import bigquery
 from .dwca_terms import locationkeytermlist
@@ -24,7 +24,7 @@ from .json_utils import CustomJsonEncoder
 
 def query_location_by_id(base64locationhash):
     ''' Create a query string to get a location record from the distinct Locations data
-        store in BigQuery.
+        store in BigQuery using the BASE64 representation of the location identifier.
     parameters:
         base64locationhash - string representation of the base64 digest of the sha256
             location hash (what humans see in the BigQuery UI as dwc_location_hash).
@@ -34,13 +34,37 @@ def query_location_by_id(base64locationhash):
     functionname = 'query_location_by_id()'
 
     table_name = 'localityservice.gbif_20200409.locations_distinct_with_scores'
+#        SELECT TO_BASE64(dwc_location_hash) as locationid, * EXCEPT (dwc_location_hash)
     query ="""
-        SELECT TO_BASE64(dwc_location_hash) as locationid, * EXCEPT (dwc_location_hash)
+        SELECT TO_BASE64(dwc_location_hash) as locationid, *
         FROM 
         {0}
         WHERE 
         TO_BASE64(dwc_location_hash)='{1}'
         """.format(table_name,base64locationhash)
+    return query
+
+def query_location_by_hashid(locationhash):
+    ''' Create a query string to get a location record from the distinct Locations data
+        store in BigQuery using the binary hash representation of the identifier.
+    parameters:
+        locationhash - binary representation of the sha256
+            location hash (not what humans see in the BigQuery UI as dwc_location_hash).
+    returns:
+        query - the query string
+    '''
+    functionname = 'query_location_by_hashid()'
+
+    table_name = 'localityservice.gbif_20200409.locations_distinct_with_scores'
+#        SELECT dwc_location_hash as locationid, * EXCEPT (dwc_location_hash)
+    query ="""
+        SELECT dwc_location_hash as locationid, *
+        FROM
+        {0}
+        WHERE 
+        dwc_location_hash={1}
+        """.format(table_name,locationhash)
+    print('query = %s' % query)
     return query
 
 def get_location_by_id(bq_client, base64locationhash):
@@ -55,6 +79,21 @@ def get_location_by_id(bq_client, base64locationhash):
     functionname = 'get_location_by_id()'
 
     rows = run_bq_query(bq_client, query_location_by_id(base64locationhash), 1)
+    for row in rows:
+        return row_as_dict(row)
+
+def get_location_by_hashid(bq_client, locationhash):
+    ''' Get the first row from query_location_by_hashid().
+    parameters:
+        bq_client - an instance of a bigquery.Client().
+        locationhash - binary representation of the sha256 location hash (not what humans 
+            see in the BigQuery UI as dwc_location_hash).
+    returns:
+        row_as_dict(row) - the first row of the query result as a dict.
+    '''
+    functionname = 'get_location_by_hashid()'
+
+    rows = run_bq_query(bq_client, query_location_by_hashid(locationhash), 1)
     for row in rows:
         return row_as_dict(row)
 

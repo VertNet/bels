@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query_tests.py 2021-01-09T15:59-03:00"
+__version__ = "bels_query_tests.py 2021-02-09T22:20-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -40,6 +40,8 @@ from bels.id_utils import super_simplify
 from bels.bels_query import get_best_sans_coords_georef
 from bels.bels_query import get_best_with_coords_georef
 from bels.bels_query import get_best_with_verbatim_coords_georef
+from bels.bels_query import get_location_by_id
+from bels.bels_query import get_location_by_hashid
 from bels.bels_query import row_as_dict
 from decimal import *
 import json
@@ -75,6 +77,25 @@ class BELSQueryTestCase(unittest.TestCase):
         self.framework.dispose()
         self.framework = None
         self.BQ.close()
+
+    def test_get_location_by_id(self):
+        print('Running test_get_location_by_id')
+        base64id='CR4zFCgFe/9cbkTpI2pCiOhOmJiE74Zq8fknbmSISPw='
+        row = get_location_by_id(self.BQ,base64id)
+#        print('row = %s' % row)
+        target = b"\t\x1e3\x14(\x05{\xff\\nD\xe9#jB\x88\xe8N\x98\x98\x84\xef\x86j\xf1\xf9'nd\x88H\xfc"
+        result = row['dwc_location_hash']
+        self.assertEqual(result, target)
+
+    def test_get_location_by_hashid(self):
+        print('Running test_get_location_by_hashid')
+        hashid = b"\t\x1e3\x14(\x05{\xff\\nD\xe9#jB\x88\xe8N\x98\x98\x84\xef\x86j\xf1\xf9'nd\x88H\xfc"
+        row = get_location_by_hashid(self.BQ,hashid)
+#        print('row = %s' % row)
+#        target='CR4zFCgFe/9cbkTpI2pCiOhOmJiE74Zq8fknbmSISPw='
+        target=hashid
+        result = row['dwc_location_hash']
+        self.assertEqual(result, target)
 
     def test_get_best_sans_coords_georef(self):
         print('Running test_get_best_sans_coords_georef')
