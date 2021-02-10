@@ -30,7 +30,7 @@ from contextlib import contextmanager
 
 from .id_utils import dwc_location_hash
 from .dwca_utils import safe_read_csv_row
-from .bels_query import get_best_sans_coords_georef
+from .bels_query import get_location_by_hashid
 from google.cloud import bigquery
 from google.cloud import storage
 
@@ -46,11 +46,12 @@ def confirm_hash_big_query(client, filename):
 
     for row in safe_read_csv_row(filename):
         location_hash_result = dwc_location_hash(row, darwincloudfile)
+        location_hash_result = base64.b64decode(location_hash_result)
         if 'dwc_location_hash' not in row:
             # Always add the dwc_location_field even if no match
             row.update({'dwc_location_hash': None})
 
-        result = get_best_sans_coords_georef(client, location_hash_result)
+        result = get_location_by_hashid(client, location_hash_result)
         if result:
             row.update(result)
         listToCsv.append(row)
