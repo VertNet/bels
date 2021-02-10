@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query_tests.py 2021-02-09T22:20-03:00"
+__version__ = "bels_query_tests.py 2021-02-10T00:00-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -61,6 +61,7 @@ class BELSQueryTestFramework():
     matchmewithcoordsbestgeoreffile = testdatapath + 'test_matchme_with_coords_best_georef.csv'
     matchmeverbatimcoordsbestgeoreffile = testdatapath + 'test_matchme_verbatimcoords_best_georef.csv'
     locsanscoordsbestgeoreffile = testdatapath + 'test_loc_with_sans_coords_best_georef.csv'
+    locsanscoordsbestgeoreffilemulti = testdatapath + 'test_best_georefs_sans_coords_for_locations.csv'
     locswithcoordsbestgeoreffile = testdatapath + 'test_loc_with_with_coords_best_georef.csv'
     locswithverbatimcoordsbestgeoreffile = testdatapath + 'test_loc_with_verbatimcoords_best_georef.csv'
 
@@ -237,6 +238,33 @@ class BELSQueryTestCase(unittest.TestCase):
             locmatchstr = location_match_str(gbiflocationmatchsanscoordstermlist, lowerloc)
             # print('locmatchstr: %s' % locmatchstr)
             matchstr=super_simplify(locmatchstr)
+            result = row['matchme_sans_coords']
+            self.assertEqual(result, matchstr)
+
+    def test_gbif_matchme_sans_coords_best_georef_from_file2(self):
+# oJZtuoTYbMjQ1IrdBWgFroLdzCxhWP2ShR3gdNwE7ko=
+# bAcqFnoqie3GGRqoFvmKWXcuhKbnmOKrTq7W8XOzoRg=
+# b8AuI53mC0Ke9+oDwHwzFsBgHVghA9TaX1pEAg8mX6s=
+# FkKiS3RwTOLByklF2yq0dYpSvLqEZj+dU5HNJvSPL/8=
+# 
+# saconarinoricaurtereservanaturallaplanada
+# northamericaqueencharlotteislandcabritishcolumbianorthamericacanadabritishcolumbia
+# novestlandsunnfjordgrepstadvedbygdevegenhjajohangrepstad230
+# dkvalloslotspark
+        print('Running test_gbif_matchme_sans_coords_best_georef_from_file2')
+        inputfile = self.framework.locsanscoordsbestgeoreffilemulti
+        darwincloudfile = self.framework.darwincloudfile
+        for row in safe_read_csv_row(inputfile):
+            rowdict = row_as_dict(row)
+            # print('test rowdict: %s' % rowdict)
+            loc = darwinize_dict(row_as_dict(row), darwincloudfile)
+            lowerloc = lower_dict_keys(loc)
+            # print('lowerloc: %s' % lowerloc)
+            locmatchstr = location_match_str(gbiflocationmatchsanscoordstermlist, lowerloc)
+            # print('locmatchstr: %s' % locmatchstr)
+            matchstr=super_simplify(locmatchstr)
+            result = get_best_sans_coords_georef(self.BQ, matchstr)
+            print('matchstr: %s best_sans_coords_georef: %s' % (matchstr,result))
             result = row['matchme_sans_coords']
             self.assertEqual(result, matchstr)
 
