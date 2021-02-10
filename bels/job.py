@@ -56,7 +56,7 @@ def confirm_hash_big_query(client, filename):
         if result:
             for field in ['dwc_location_hash', 'locationid']:
                 if field in result:
-                    result[field] = base64.b64encode(result[field])
+                    result[field] = base64.b64encode(result[field]).decode('utf-8')
 
             row.update(result)
 
