@@ -52,8 +52,14 @@ def confirm_hash_big_query(client, filename):
             row.update({'dwc_location_hash': None})
 
         result = get_location_by_hashid(client, location_hash_result)
+
         if result:
+            for field in ['dwc_location_hash', 'locationid']:
+                if field in result:
+                    result[field] = base64.b64encode(result[field])
+
             row.update(result)
+
         listToCsv.append(row)
 
     return listToCsv
