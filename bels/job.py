@@ -43,22 +43,16 @@ def confirm_hash_big_query(client, filename):
     darwincloudfile = os.path.join(vocabpath, 'darwin_cloud.txt')
     
     listToCsv = []
+    for row in safe_read_csv_row(inputfile):
+        rowdict = row_as_dict(row)
 
-    for row in safe_read_csv_row(filename):
-        location_hash_result = dwc_location_hash(row, darwincloudfile)
-        location_hash_result = base64.b64decode(location_hash_result)
-        if 'dwc_location_hash' not in row:
-            # Always add the dwc_location_field even if no match
-            row.update({'dwc_location_hash': None})
+        loc = darwinize_dict(row_as_dict(row), darwincloudfile)
+        lowerloc = lower_dict_keys(loc)
 
-        result = get_location_by_hashid(client, location_hash_result)
+        locmatchstr = location_match_str(gbiflocationmatchsanscoordstermlist, lowerloc)
 
-        if result:
-            for field in ['dwc_location_hash', 'locationid']:
-                if field in result:
-                    result[field] = base64.b64encode(result[field]).decode('utf-8')
-
-            row.update(result)
+        matchstr = super_simplify(locmatchstr)
+        result = row['matchme_sans_coords']
 
         listToCsv.append(row)
 
