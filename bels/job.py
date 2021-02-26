@@ -133,7 +133,7 @@ def send_email(target, output_url):
     to_email = To(target)
     subject = "File ready for download from Biodiversity Enhanced Location Services (BELS)"
     content = Content("text/plain", "A request to process a file uploaded to BELS to find the best existing georeferences and send the results to this email address has been completed. The resulting file can be found at %s. This file will be retained at this location for a period of at least 30 days." % output_url)
-        message = Mail(from_email, to_email, subject, content)
+    message = Mail(from_email, to_email, subject, content)
 
     sg.client.mail.send.post(request_body=message.get())
 
