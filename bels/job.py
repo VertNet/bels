@@ -32,6 +32,7 @@ from .id_utils import dwc_location_hash, location_match_str, super_simplify
 from .dwca_utils import safe_read_csv_row, lower_dict_keys
 from .bels_query import get_location_by_hashid, row_as_dict
 from .dwca_vocab_utils import darwinize_dict
+from .dwca_terms import gbiflocationmatchsanscoordstermlist
 from google.cloud import bigquery
 from google.cloud import storage
 
