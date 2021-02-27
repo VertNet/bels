@@ -15,12 +15,12 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query.py 2021-02-09T22:20-03:00"
+__version__ = "bels_query.py 2021-02-27T18:04-03:00"
 
-from google.cloud import bigquery
-from .dwca_terms import locationkeytermlist
 import json
-from .json_utils import CustomJsonEncoder
+from google.cloud import bigquery
+from bels.dwca_terms import locationkeytermlist
+from bels.json_utils import CustomJsonEncoder
 
 def query_location_by_id(base64locationhash):
     ''' Create a query string to get a location record from the distinct Locations data
@@ -181,7 +181,20 @@ def query_best_with_coords_georef(matchstr):
 
     table_name = 'localityservice.gbif_20200409.matchme_with_coords_best_georef'
     query ="""
-        SELECT *
+        SELECT 
+        matchme_sans_coords as sans_coords_match_string,
+        interpreted_countrycode as sans_coords_countrycode,
+        interpreted_decimallatitude as sans_coords_decimallatitude,
+        interpreted_decimallongitude as sans_coords_decimallongitude,
+        unc_numeric as sans_coords_coordinateuncertaintyinmeters,
+        v_georeferencedby as sans_coords_georeferencedby,
+        v_georeferenceddate as sans_coords_georeferenceddate,
+        v_georeferenceprotocol as sans_coords_georeferenceprotocol,
+        v_georeferencesources as sans_coords_georeferencesources,
+        v_georeferenceremarks as sans_coords_georeferenceremarks,
+        georef_score as sans_coords_georef_score,
+        centroid_dist as sans_coords_centroid_distanceinmeters,
+        georef_count as sans_coords_georef_count
         FROM 
         {0}
         WHERE 
