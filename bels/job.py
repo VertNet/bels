@@ -43,7 +43,7 @@ def confirm_hash_big_query(client, filename):
     darwincloudfile = os.path.join(vocabpath, 'darwin_cloud.txt')
     
     listToCsv = []
-    for row in safe_read_csv_row(inputfile):
+    for row in safe_read_csv_row(filename):
         rowdict = row_as_dict(row)
 
         loc = darwinize_dict(row_as_dict(row), darwincloudfile)
