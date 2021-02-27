@@ -52,9 +52,13 @@ def confirm_hash_big_query(client, filename):
         lowerloc = lower_dict_keys(loc)
 
         locmatchstr = location_match_str(gbiflocationmatchsanscoordstermlist, lowerloc)
-
         matchstr = super_simplify(locmatchstr)
-        result = row['matchme_sans_coords']
+        result = get_best_sans_coords_georef(client, matchstr)
+        if result:
+            for field in ['dwc_location_hash', 'locationid']:
+                if field in result:
+                    result[field] = base64.b64encode(result[field]).decode('utf-8')
+            row.update(result)
 
         listToCsv.append(row)
 
