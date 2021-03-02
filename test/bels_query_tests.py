@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query_tests.py 2021-02-10T00:00-03:00"
+__version__ = "bels_query_tests.py 2021-02-27T19:37-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -40,6 +40,9 @@ from bels.id_utils import super_simplify
 from bels.bels_query import get_best_sans_coords_georef
 from bels.bels_query import get_best_with_coords_georef
 from bels.bels_query import get_best_with_verbatim_coords_georef
+from bels.bels_query import get_best_sans_coords_georef_reduced
+from bels.bels_query import get_best_with_coords_georef_reduced
+from bels.bels_query import get_best_with_verbatim_coords_georef_reduced
 from bels.bels_query import get_location_by_id
 from bels.bels_query import get_location_by_hashid
 from bels.bels_query import row_as_dict
@@ -148,6 +151,48 @@ class BELSQueryTestCase(unittest.TestCase):
         }
         self.assertEqual(result, target)
 
+    def test_get_best_sans_coords_georef_reduced(self):
+        print('Running test_get_best_sans_coords_georef_reduced')
+        matchstr = 'auwac73kmsofbillabongroadhouse'
+#        matchid='3CKYu8SB2PDattd8KYrAn6w4b6rNmlJzCKB4PVxHJwY='
+        result = get_best_sans_coords_georef_reduced(self.BQ, matchstr)
+        target = {
+            'sans_coords_match_string': 'auwac73kmsofbillabongroadhouse', 
+            'sans_coords_countrycode': 'AU', 
+            'sans_coords_decimallatitude': -27.48333333, 
+            'sans_coords_decimallongitude': 114.7, 
+            'sans_coords_coordinateuncertaintyinmeters': Decimal('10000'), 
+            'sans_coords_georeferencedby': None, 
+            'sans_coords_georeferenceddate': None, 
+            'sans_coords_georeferenceprotocol': None, 
+            'sans_coords_georeferencesources': None, 
+            'sans_coords_georeferenceremarks': None, 
+            'sans_coords_georef_score': 0, 
+            'sans_coords_centroid_distanceinmeters': 0.0, 
+            'sans_coords_georef_count': 1, 
+        }
+        self.assertEqual(result, target)
+        
+        matchstr = 'asiaidsulawesiutarapulaunainindonesiasulawesiutarapulaunain'
+#        matchid = 'stPXsf74ZDnGF6wBRiMoyq8ku5b0xmnzGP1IK/nK0wU=''
+        result = get_best_sans_coords_georef_reduced(self.BQ, matchstr)
+        target = {
+            'sans_coords_match_string': 'asiaidsulawesiutarapulaunainindonesiasulawesiutarapulaunain',
+            'sans_coords_countrycode': 'ID',
+            'sans_coords_decimallatitude': 1.78333,
+            'sans_coords_decimallongitude': 124.78333,
+            'sans_coords_coordinateuncertaintyinmeters': Decimal('3615'),
+            'sans_coords_georeferencedby': 'JBH (MCZ)',
+            'sans_coords_georeferenceddate': None,
+            'sans_coords_georeferenceprotocol': 'MaNIS/HerpNET/ORNIS Georeferencing Guidelines',
+            'sans_coords_georeferencesources': 'Gazetteer of Indonesia: US Defense Mapping Agency (1982)',
+            'sans_coords_georeferenceremarks': 'Used Nain, ISL  Also known as Naeng-besar, Pulau.',
+            'sans_coords_georef_score': 27,
+            'sans_coords_centroid_distanceinmeters': 0.0,
+            'sans_coords_georef_count': 1,
+        }
+        self.assertEqual(result, target)
+
     def test_get_best_with_coords_georef(self):
         print('Running test_get_best_with_coords_georef')
         matchstr = 'aqbechervaiseisland00-66.49559.49'
@@ -171,6 +216,28 @@ class BELSQueryTestCase(unittest.TestCase):
             'centroid_dist': 0.0, 
             'min_centroid_dist': 0.0, 
             'matchid': b'Yp\x1e\xebw\xf4\x87R\xca2\xe8\xeb\xa0R\xd8\xa1\x15X\xd3{\xd6\x98\'oC)\xd5\xe5\x8f\xfd\xc1H'
+        }
+        self.assertEqual(result, target)
+
+    def test_get_best_with_coords_georef_reduced(self):
+        print('Running test_get_best_with_coords_georef_reduced')
+        matchstr = 'aqbechervaiseisland00-66.49559.49'
+#        matchid='WXAe63f0h1LKMujroFLYoRVY03vWmCdvQynV5Y/9wUg='
+        result = get_best_with_coords_georef_reduced(self.BQ, matchstr)
+        target = {
+            'with_coords_match_string': 'aqbechervaiseisland00-66.49559.49', 
+            'with_coords_countrycode': 'AQ', 
+            'with_coords_decimallatitude': -66.495, 
+            'with_coords_decimallongitude': 59.49, 
+            'with_coords_coordinateuncertaintyinmeters': Decimal('5000'), 
+            'with_coords_georeferencedby': None, 
+            'with_coords_georeferenceddate': None, 
+            'with_coords_georeferenceprotocol': None, 
+            'with_coords_georeferencesources': None, 
+            'with_coords_georeferenceremarks': None, 
+            'with_coords_georef_score': 0, 
+            'with_coords_centroid_distanceinmeters': 0.0, 
+            'with_coords_georef_count': 1, 
         }
         self.assertEqual(result, target)
 
@@ -264,7 +331,7 @@ class BELSQueryTestCase(unittest.TestCase):
             # print('locmatchstr: %s' % locmatchstr)
             matchstr=super_simplify(locmatchstr)
             result = get_best_sans_coords_georef(self.BQ, matchstr)
-            print('matchstr: %s best_sans_coords_georef: %s' % (matchstr,result))
+#            print('matchstr: %s best_sans_coords_georef: %s' % (matchstr,result))
             result = row['matchme_sans_coords']
             self.assertEqual(result, matchstr)
 

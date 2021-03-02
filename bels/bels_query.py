@@ -15,12 +15,12 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query.py 2021-02-09T22:20-03:00"
+__version__ = "bels_query.py 2021-02-27T18:41-03:00"
 
-from google.cloud import bigquery
-from .dwca_terms import locationkeytermlist
 import json
-from .json_utils import CustomJsonEncoder
+from google.cloud import bigquery
+from bels.dwca_terms import locationkeytermlist
+from bels.json_utils import CustomJsonEncoder
 
 def query_location_by_id(base64locationhash):
     ''' Create a query string to get a location record from the distinct Locations data
@@ -64,7 +64,7 @@ def query_location_by_hashid(locationhash):
         WHERE 
         dwc_location_hash={1}
         """.format(table_name,locationhash)
-    print('query = %s' % query)
+#    print('query = %s' % query)
     return query
 
 def get_location_by_id(bq_client, base64locationhash):
@@ -118,6 +118,41 @@ def query_best_sans_coords_georef(matchstr):
         """.format(table_name,matchstr)
     return query
 
+def query_best_sans_coords_georef_reduced(matchstr):
+    ''' Create a query string to get the best georeference for the location matching 
+        string matchstr from among set of best georeferences using the part of the 
+        Location without coordinates from the Locations data store in BigQuery. Return 
+        only fields needed to append for a download.
+    parameters:
+        matchstr - the matchme_sans_coords string to match.
+    returns:
+        query - the query string
+    '''
+    functionname = 'query_best_sans_coords_georef_reduced()'
+
+    table_name = 'localityservice.gbif_20200409.matchme_sans_coords_best_georef'
+    query ="""
+        SELECT 
+        matchme_sans_coords as sans_coords_match_string,
+        interpreted_countrycode as sans_coords_countrycode,
+        interpreted_decimallatitude as sans_coords_decimallatitude,
+        interpreted_decimallongitude as sans_coords_decimallongitude,
+        unc_numeric as sans_coords_coordinateuncertaintyinmeters,
+        v_georeferencedby as sans_coords_georeferencedby,
+        v_georeferenceddate as sans_coords_georeferenceddate,
+        v_georeferenceprotocol as sans_coords_georeferenceprotocol,
+        v_georeferencesources as sans_coords_georeferencesources,
+        v_georeferenceremarks as sans_coords_georeferenceremarks,
+        georef_score as sans_coords_georef_score,
+        centroid_dist as sans_coords_centroid_distanceinmeters,
+        georef_count as sans_coords_georef_count
+        FROM 
+        {0}
+        WHERE 
+        matchme_sans_coords='{1}'
+        """.format(table_name,matchstr)
+    return query
+
 def get_best_sans_coords_georef(bq_client, matchstr):
     ''' Get the first row from query_best_sans_coords_georef().
     parameters:
@@ -129,6 +164,20 @@ def get_best_sans_coords_georef(bq_client, matchstr):
     functionname = 'get_best_sans_coords_georef()'
 
     rows = run_bq_query(bq_client, query_best_sans_coords_georef(matchstr), 1)
+    for row in rows:
+        return row_as_dict(row)
+
+def get_best_sans_coords_georef_reduced(bq_client, matchstr):
+    ''' Get the first row from query_best_sans_coords_georef_reduced().
+    parameters:
+        bq_client - an instance of a bigquery.Client().
+        matchstr - the matchme_sans_coords string to match.
+    returns:
+        row_as_dict(row) - the first row of the query result as a dict.
+    '''
+    functionname = 'get_best_sans_coords_georef_reduced()'
+
+    rows = run_bq_query(bq_client, query_best_sans_coords_georef_reduced(matchstr), 1)
     for row in rows:
         return row_as_dict(row)
 
@@ -154,6 +203,41 @@ def query_best_with_verbatim_coords_georef(matchstr):
         """.format(table_name,matchstr)
     return query
 
+def query_best_with_verbatim_coords_georef_reduced(matchstr):
+    ''' Create a query string to get the best georeference for the location matching 
+        string matchstr from among set of best georeferences using the part of the 
+        Location without coordinates, but with verbatim coordinates, from the Locations 
+        data store in BigQuery. Return only fields needed to append for a download.
+    parameters:
+        matchstr - the matchme string to match.
+    returns:
+        query - the query string
+    '''
+    functionname = 'query_best_with_verbatim_coords_georef_reduced()'
+
+    table_name = 'localityservice.gbif_20200409.matchme_verbatimcoords_best_georef'
+    query ="""
+        SELECT 
+        matchme as verbatim_coords_match_string,
+        interpreted_countrycode as verbatim_coords_countrycode,
+        interpreted_decimallatitude as verbatim_coords_decimallatitude,
+        interpreted_decimallongitude as verbatim_coords_decimallongitude,
+        unc_numeric as verbatim_coords_coordinateuncertaintyinmeters,
+        v_georeferencedby as verbatim_coords_georeferencedby,
+        v_georeferenceddate as verbatim_coords_georeferenceddate,
+        v_georeferenceprotocol as verbatim_coords_georeferenceprotocol,
+        v_georeferencesources as verbatim_coords_georeferencesources,
+        v_georeferenceremarks as verbatim_coords_georeferenceremarks,
+        georef_score as verbatim_coords_georef_score,
+        centroid_dist as verbatim_coords_centroid_distanceinmeters,
+        georef_count as verbatim_coords_georef_count
+        FROM 
+        {0}
+        WHERE 
+        matchme='{1}'
+        """.format(table_name,matchstr)
+    return query
+
 def get_best_with_verbatim_coords_georef(bq_client, matchstr):
     ''' Get the first row from query_best_with_verbatim_coords_georef().
     parameters:
@@ -165,6 +249,20 @@ def get_best_with_verbatim_coords_georef(bq_client, matchstr):
     functionname = 'get_best_sans_coords_georef()'
 
     rows = run_bq_query(bq_client, query_best_with_verbatim_coords_georef(matchstr), 1)
+    for row in rows:
+        return row_as_dict(row)
+
+def get_best_with_verbatim_coords_georef_reduced(bq_client, matchstr):
+    ''' Get the first row from query_best_with_verbatim_coords_georef_reduced().
+    parameters:
+        bq_client - an instance of a bigquery.Client().
+        matchstr - the matchme string to match.
+    returns:
+        row_as_dict(row) - the first row of the query result as a dict.
+    '''
+    functionname = 'get_best_sans_coords_georef_reduced()'
+
+    rows = run_bq_query(bq_client, query_best_with_verbatim_coords_georef_reduced(matchstr), 1)
     for row in rows:
         return row_as_dict(row)
 
@@ -189,6 +287,41 @@ def query_best_with_coords_georef(matchstr):
         """.format(table_name,matchstr)
     return query
 
+def query_best_with_coords_georef_reduced(matchstr):
+    ''' Create a query string to get the best georeference for the location matching 
+        string matchstr from among set of best georeferences using the whole 
+        Location, with coordinates, from the Locations data store in BigQuery. Return 
+        only fields needed to append for a download.
+    parameters:
+        matchstr - the matchme_with_coords string to match.
+    returns:
+        query - the query string
+    '''
+    functionname = 'query_best_with_coords_georef_reduced()'
+
+    table_name = 'localityservice.gbif_20200409.matchme_with_coords_best_georef'
+    query ="""
+        SELECT 
+        matchme_with_coords as with_coords_match_string,
+        interpreted_countrycode as with_coords_countrycode,
+        interpreted_decimallatitude as with_coords_decimallatitude,
+        interpreted_decimallongitude as with_coords_decimallongitude,
+        unc_numeric as with_coords_coordinateuncertaintyinmeters,
+        v_georeferencedby as with_coords_georeferencedby,
+        v_georeferenceddate as with_coords_georeferenceddate,
+        v_georeferenceprotocol as with_coords_georeferenceprotocol,
+        v_georeferencesources as with_coords_georeferencesources,
+        v_georeferenceremarks as with_coords_georeferenceremarks,
+        georef_score as with_coords_georef_score,
+        centroid_dist as with_coords_centroid_distanceinmeters,
+        georef_count as with_coords_georef_count
+        FROM 
+        {0}
+        WHERE 
+        matchme_with_coords='{1}'
+        """.format(table_name,matchstr)
+    return query
+
 def get_best_with_coords_georef(bq_client, matchstr):
     ''' Get the first row from query_best_with_coords_georef().
     parameters:
@@ -200,6 +333,20 @@ def get_best_with_coords_georef(bq_client, matchstr):
     functionname = 'get_best_with_coords_georef()'
 
     rows = run_bq_query(bq_client, query_best_with_coords_georef(matchstr), 1)
+    for row in rows:
+        return row_as_dict(row)
+
+def get_best_with_coords_georef_reduced(bq_client, matchstr):
+    ''' Get the first row from query_best_with_coords_georef_reduced().
+    parameters:
+        bq_client - an instance of a bigquery.Client().
+        matchstr - the matchme_with_coords string to match.
+    returns:
+        row_as_dict(row) - the first row of the query result as a dict.
+    '''
+    functionname = 'get_best_with_coords_georef_rediced()'
+
+    rows = run_bq_query(bq_client, query_best_with_coords_georef_reduced(matchstr), 1)
     for row in rows:
         return row_as_dict(row)
 

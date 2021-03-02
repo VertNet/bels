@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "id_utils.py 2021-01-10T00:48-03:00"
+__version__ = "id_utils.py 2021-02-10T10:01-03:00"
 
 from .dwca_terms import locationmatchwithcoordstermlist
 from .dwca_terms import locationkeytermlist
@@ -90,7 +90,7 @@ def dwc_location_hash(inputdict, darwincloudfile):
         inputdict - the dict of fields from which to construct a Location identifier.
         darwincloudfile - the vocabulary file for the Darwin Cloud (required)
     returns:
-        locid - the Location hash
+        locid - the base64 representation of the Location hash
     '''
     functionname = 'dwc_location_hash()'
 
