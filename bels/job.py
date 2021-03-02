@@ -30,7 +30,7 @@ from contextlib import contextmanager
 
 from .id_utils import dwc_location_hash, location_match_str, super_simplify
 from .dwca_utils import safe_read_csv_row, lower_dict_keys
-from .bels_query import get_location_by_hashid, row_as_dict, get_best_sans_coords_georef
+from .bels_query import get_location_by_hashid, row_as_dict, get_best_sans_coords_georef_reduced
 from .dwca_vocab_utils import darwinize_dict
 from .dwca_terms import gbiflocationmatchsanscoordstermlist
 from google.cloud import bigquery
@@ -53,7 +53,7 @@ def confirm_hash_big_query(client, filename):
 
         locmatchstr = location_match_str(gbiflocationmatchsanscoordstermlist, lowerloc)
         matchstr = super_simplify(locmatchstr)
-        result = get_best_sans_coords_georef(client, matchstr)
+        result = get_best_sans_coords_georef_reduced(client, matchstr)
         if result:
             for field in ['dwc_location_hash', 'locationid']:
                 if field in result:

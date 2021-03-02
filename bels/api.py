@@ -78,7 +78,7 @@ def index():
         <form method="post" action="/api/csv" enctype="multipart/form-data">
             <p><input type=file name=csv>
             <p><input type=email name=email>
-            <p><input type=submit value=Login>
+            <p><input type=submit value=Submit>
         </form>
     '''
 
