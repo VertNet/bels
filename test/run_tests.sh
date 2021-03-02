@@ -17,3 +17,8 @@ date
 python id_utils_tests.py
 date
 #python: 0s
+
+python job_tests.py
+date
+#python: 0s
+
