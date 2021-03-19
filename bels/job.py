@@ -99,6 +99,7 @@ def process_csv(event, context):
     json_config = json.loads(config)
     json_config = json_config['data']
     file_url = json_config['file_url']
+    filename = json_config['filename']
     email = json_config['email']
 
     client = storage.Client()
@@ -112,7 +113,7 @@ def process_csv(event, context):
         return_list = confirm_hash_big_query(client, name)
 
     output = create_output(return_list)
-    blob = bucket.blob('output/' + file_url)
+    blob = bucket.blob('output/' + file_url + '/' + filename)
     blob.upload_from_string(output, content_type='application/csv')
     blob.make_public()
     output_url = blob.public_url

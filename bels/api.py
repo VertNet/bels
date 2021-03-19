@@ -24,6 +24,7 @@ import os
 import uuid
 import datetime
 import json
+import re
 
 from google.cloud import pubsub_v1
 from google.cloud import storage
@@ -41,6 +42,10 @@ def csv():
 
     f = request.files['csv']
     email = request.form['email']
+    filename = request.form['filename']
+    filename_validation = re.compile('[a-zA-Z0-9_\.-]+')
+    if not filename_validation.match(filename):
+        return ('invalid filename', 400)
     csv_content = f.read()
 
     client = storage.Client()
@@ -57,7 +62,8 @@ def csv():
     message_json = json.dumps({
         'data': {
             'file_url': url,# google storage
-            'email': email
+            'email': email,
+            'filename': filename,
         }
     })
     message_bytes = message_json.encode('utf-8')
@@ -77,7 +83,8 @@ def index():
 	return '''
         <form method="post" action="/api/csv" enctype="multipart/form-data">
             <p><input type=file name=csv>
-            <p><input type=email name=email>
+            <p><input type=email name=email placeholder="email@example.com">
+            <p><input type=text name=filename placeholder="occurences.csv">
             <p><input type=submit value=Submit>
         </form>
     '''
