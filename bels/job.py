@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "job.py 2021-01-18T23:03-03:00"
+__version__ = "job.py 2021-01-18T23:42-03:00"
 
 import base64
 import json
@@ -93,7 +93,9 @@ def process_csv(event, context):
     json_config = json.loads(config)
     json_config = json_config['data']
     file_url = json_config['file_url'] # Google Cloud Storage location of input file
-    filename = json_config['filename'] # Altered output file name
+    filename = json_config['filename'] # User-provided Output file name
+    # Alter output file name to [filename]-[UUID of input file location].csv
+    filename = '%s-%s.csv' % (filename, file_url)
     email = json_config['email']
 
     client = storage.Client()
@@ -103,7 +105,6 @@ def process_csv(event, context):
         blob.download_to_filename(name)
         #blob.delete() # Do not leak documents in storage
         client = bigquery.Client()
-
         return_list = find_best_georef(client, name)
 
     output = create_output(return_list)

@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "api.py 2021-03-20T22:56-03:00"
+__version__ = "api.py 2021-03-20T23:37-03:00"
 
 from flask import Flask, request
 import bels
@@ -46,8 +46,6 @@ def csv():
     # Don't allow any of the following characters in output file names, substitute '_'
     filename = re.sub(r'[ ~`!@#$%^&*()_+={\[}\]|\\:;"<,>?\'/]', '_', filename)
 
-    # Alter output file name as [filename]-UUID.csv
-    filename = '%s-%s.csv' % (filename, uuid.uuid4().hex)
     csv_content = f.read()
 
     client = storage.Client()
