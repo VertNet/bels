@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "api.py 2021-03-21T10:10-03:00"
+__version__ = "api.py 2021-03-21T13:03-03:00"
 
 from flask import Flask, request
 import bels
@@ -74,8 +74,7 @@ def csv():
     try:
         publish_future = publisher.publish(topic_path, data=message_bytes)
         r = publish_future.result()  # Verify the publish succeeded
-        s = '%s' % __version__
-        s += '\npublish_result: %s' % r
+        s = '%s publishing gave results' % __version__
         logging.info(s)
 
         blacklist = ["email@example.com", "stuff@things.com"]
@@ -84,7 +83,7 @@ def csv():
            m = "Email is disallowed to destination %s. Please try another email address." % email
         return m
     except Exception as e:
-        print(e)
+        logging.error(e)
         return (e, 500)
 
 @app.route('/')
