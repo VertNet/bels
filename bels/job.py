@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "job.py 2021-03-21T14:37-03:00"
+__version__ = "job.py 2021-03-21T15:23-03:00"
 
 import base64
 import json
@@ -51,12 +51,24 @@ def find_best_georef(client, filename):
 
         locmatchstr = location_match_str(gbiflocationmatchsanscoordstermlist, lowerloc)
         matchstr = super_simplify(locmatchstr)
+
+        s = '%s' % __version__
+        s += ' getting best_georef for: %s' % matchstr
+        print(s)
+
         result = get_best_sans_coords_georef_reduced(client, matchstr)
         if result:
             for field in ['dwc_location_hash', 'locationid']:
                 if field in result:
                     result[field] = base64.b64encode(result[field]).decode('utf-8')
             row.update(result)
+            s = '%s' % __version__
+            s += ' best_georef: %s' % row
+            print(s)
+        else:
+            s = '%s' % __version__
+            s += ' no georef found for: %s' % matchstr
+            print(s)
 
         listToCsv.append(row)
 
@@ -107,10 +119,6 @@ def process_csv(event, context):
         blob.download_to_filename(name)
         #blob.delete() # Do not leak documents in storage
         return_list = find_best_georef(bq_client, name)
-        s = '%s' % __version__
-        s += '\nbest_georef: %s' % return_list
-        s += '\ntemp_file: %s' % name
-        print(s)
  
     output = create_output(return_list)
     blob = bucket.blob('output/' + filename)

@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "dwca_utils.py 2021-01-08T23:54-03:00"
+__version__ = "dwca_utils.py 2021-03-21T16:46-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_utils.py"
 
 # This file contains common utility functions for dealing with the content of CSV and
@@ -236,7 +236,7 @@ def csv_file_dialect(fullpath, encoding=None):
                 s += ' %s' % e
                 s += ' Re-sniffing %s to %s' % (fullpath, readto)
                 logging.debug(s)
-                sample_text = ''.join(file.readline() for x in xrange(2,4,1))
+                sample_text = ''.join(file.readline() for x in range(2,4,1))
                 # See if the buffer has any doubled double quotes in it. If so, infer that the 
                 # dialect doublequote value should be true.
                 if sample_text.find('""')>0:

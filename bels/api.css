@@ -1,0 +1,595 @@
+/*
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+__author__ = "Craig Wieczorek"
+__author__ = "John Wieczorek"
+__copyright__ = "Copyright 2019 Rauthiflor LLC"
+__version__ = "gci.css 2019-12-17T11:32-03:00"
+*/
+
+.main{
+	width: 660px;
+}
+
+DIV{
+	margin-top: 4px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+}
+
+.divStandard{
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.divButtons{
+	margin-top: 12px;
+	margin-bottom: 0px;
+}
+
+.divResult{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.divImage{
+	height: 426px;
+	background-image: url("mappemonde660.jpg");
+	background-repeat: no-repeat;
+	position: relative;	
+	min-height: 150px;
+}
+
+.divWorkspace{
+	padding-left: 11px;
+	padding-top: 3px;
+	padding-right: 8px;
+}
+
+.divFooter{
+	padding-left: 11px;
+	padding-right: 8px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.divInfo{
+	padding-left: 6px;
+	padding-right: 8px;
+}
+
+select:focus {
+	border: 2px solid blue;
+}
+
+input:focus {
+	border: 2px solid blue;
+}
+
+SELECT{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: black;
+	background-color: white;
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:1px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+	text-overflow: ellipsis;
+}
+
+.super{
+  vertical-align: super;
+}
+
+.SELECT95{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: black;
+	background-color: white;
+	width: 100%;
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:1px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+	text-overflow: ellipsis;
+}
+
+.selectDatum{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: black;
+	background-color: white;
+	width: 306px;
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:1px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+	text-overflow: ellipsis;
+}
+
+.selectProtocol{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: blue;
+	background-color: white;
+	width: 258px;
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:1px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+	text-overflow: ellipsis;
+}
+
+.selectDirection{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: black;
+	background-color: white;
+	width: 39px;
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:1px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+	text-overflow: ellipsis;
+}
+
+.selectUnits{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: black;
+	background-color: white;
+	wirdth: 54px;
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:1px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+	text-overflow: ellipsis;
+}
+
+.selectPrecision{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: black;
+	background-color: white;
+	width: 70px;
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:1px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+	text-overflow: ellipsis;
+}
+
+.selectOneDirection{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: black;
+	background-color: white;
+	width: 115px;
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:1px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+	text-overflow: ellipsis;
+}
+
+.selectScale{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: black;
+	background-color: white;
+	width: 83px;
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:1px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+	text-overflow: ellipsis;
+}
+
+.selectCoordPrecision{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: black;
+	background-color: white;
+	width: 150px;
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:1px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+	text-overflow: ellipsis;
+}
+
+.textOffset{
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	width: 39px;
+}
+
+.textOffsetNS{
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	width: 33px;
+}
+
+.textDecDeg{
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	width: 88px;
+}
+
+.textDegree{
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	width: 28px;
+}
+
+.textConvert{
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	width: 83px;
+}
+
+.textMinute{
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	width: 28px;
+}
+
+.textSecond{
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	width: 55px;
+}
+
+LABEL{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .74em;
+	font-weight: bold;
+	color: black;
+}
+
+.LABELSTEP{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-size: 1.4em;
+	font-weight: bold;
+	display: inline-block;
+	color: black;
+	width: 100%;
+	text-align: center;
+}
+
+.LABELINFO{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: 0.55em;
+	color: black;
+}
+}
+
+INPUT{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: black;
+	background-color: white;
+	border: 2px solid grey;
+	border-style: inset;
+}
+
+.readOnlyInput{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: blue;
+	display: inline-block;
+	background-color: #C0C0C0;
+	display:inline-block;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:2px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+}
+
+.readOnlyInput296{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: blue;
+	display: inline-block;
+	width: 290px;	
+	background-color: #C0C0C0;
+	display:inline-block;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:2px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+}
+.readOnlyInput110{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: blue;
+	display: inline-block;
+	width: 104px;	
+	background-color: #C0C0C0;
+	display:inline-block;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:2px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+}
+
+.textGeoreferencer{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: blue;
+	display: inline-block;
+	width: 134px;	
+	display:inline-block;
+	border: 1px solid grey;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:2px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+}
+
+.readOnlyInputSmall{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-size: .75em;
+	color: blue;
+	display: inline-block;
+	width: 133px;
+	background-color: #C0C0C0;
+	display:inline-block;
+	border-style: inset;
+	border-width: 2px;
+	ppadding-top:1px;
+	ppadding-bottom:1px;
+	ppadding-left:1px;
+	ppadding-right:1px;
+}
+
+BUTTON{
+	font-family: "Helvetica", Ariel, Sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: .75em;
+	width: 89px;
+	vertical-align: middle;
+	padding: 1px 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+button:focus {
+	border: 2px solid blue;
+}
+
+BUTTON:hover {
+  background-color: #C0C0C0;
+  color: white;
+}
+
+.button4 {
+	border-radius: 4px;
+	margin-bottom: 2px;
+	vertical-align: middle;
+}
+
+SPAN{
+	display: inline-block;
+	width: 19%;
+}
+
+.span640{
+	display: inline-block;
+	width: 638px;
+}
+
+.span525{
+	display: inline-block;
+	width: 525px;
+}
+
+.span515{
+	display: inline-block;
+	width: 513px;
+	padding-right: 2px;
+}
+
+.span475{
+	display: inline-block;
+	width: 475px;
+}
+
+.span362{
+	display: inline-block;
+	width: 360px;
+	padding-left: 2px;
+}
+
+.span358{
+	display: inline-block;
+	width: 354px;
+	padding-left: 2px;
+}
+
+.span315{
+	display: inline-block;
+	width: 315px;
+}
+
+.span296{
+	display: inline-block;
+	width: 296px;
+}
+
+.span275{
+	display: inline-block;
+	width: 275px;
+}
+
+.span266c{	
+	display: inline-block;	
+	width: 266px;	
+	text-align: center;	
+}
+
+.span266{
+	display: inline-block;
+	width: 266px;
+}
+
+.span200{
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+}
+
+.span180{
+	display: inline-block;
+	width: 180px;
+}
+
+.span175{
+	display: inline-block;
+	width: 175px;
+}
+
+.span155{
+	display: inline-block;
+	width: 155px;
+}
+
+.span155pr{
+	display: inline-block;
+	width: 153px;
+	padding-left: 2px;
+	text-align: right;
+}
+
+.span140{
+	display: inline-block;
+	width: 140px;
+}
+
+.span140c{
+	display: inline-block;
+	width: 138px;
+	padding-left: 2px;
+	text-align: center;
+}
+
+.span120{
+	display: inline-block;
+	width: 118px;
+	padding-left: 2px;
+}
+
+.span110{
+	display: inline-block;
+	width: 110px;
+}
+
+.span110c{
+	display: inline-block;
+	width: 108px;
+	padding-left: 2px;
+	text-align: center;
+}
+
+.span105{
+	display: inline-block;
+	width: 105px;
+}
+
+.span90{
+	display: inline-block;
+	width: 90px;
+}
+
+.span83{
+	display: inline-block;
+	width: 83px;
+}
+
+.span50{
+	display: inline-block;
+	min-width: 49%;
+	max-width: 49%;
+	width: 49%;
+}
+
+.span40{
+	display: inline-block;
+	width: 40px;
+}

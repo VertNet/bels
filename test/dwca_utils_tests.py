@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "dwca_utils_tests.py 2021-01-08T17:05-03:00"
+__version__ = "dwca_utils_tests.py 2021-03-21T16:02-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/test/dwca_utils_test.py"
 
 # This file contains unit tests for the functions in dwca_utils.
@@ -67,6 +67,7 @@ class DWCAUtilsTestFramework():
 
     symbiotafile = testdatapath + 'test_simbiota_download.csv'
     csvreadheaderfile = testdatapath + 'test_eight_specimen_records.csv'
+    csvreadheaderfile2 = testdatapath + 'test_countrycodes_with_georefs_short.csv'
     tsvreadheaderfile = testdatapath + 'test_three_specimen_records.txt'
     tsvtest1 = testdatapath + 'test_tsv_1.txt'
     tsvtest2 = testdatapath + 'test_tsv_2.txt'
@@ -141,6 +142,7 @@ class DWCAUtilsTestCase(unittest.TestCase):
         encodedfile_latin_1 = self.framework.encodedfile_latin_1
         encodedfile_windows_1252 = self.framework.encodedfile_windows_1252
         csvreadheaderfile = self.framework.csvreadheaderfile
+        csvreadheaderfile2 = self.framework.csvreadheaderfile2
         tsvreadheaderfile = self.framework.tsvreadheaderfile
         tsvtest1 = self.framework.tsvtest1
         tsvtest2 = self.framework.tsvtest2
@@ -175,6 +177,10 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertTrue(os.path.isfile(file), s)
 
         file = csvreadheaderfile
+        s = 'File %s does not exist' % file
+        self.assertTrue(os.path.isfile(file), s)
+
+        file = csvreadheaderfile2
         s = 'File %s does not exist' % file
         self.assertTrue(os.path.isfile(file), s)
 
@@ -289,6 +295,28 @@ class DWCAUtilsTestCase(unittest.TestCase):
     def test_csv_file_dialect(self):
         print('Running test_csv_file_dialect')
         csvreadheaderfile = self.framework.csvreadheaderfile
+        dialect = csv_file_dialect(csvreadheaderfile)
+        self.assertIsNotNone(dialect, 'unable to detect csv file dialect')
+        self.assertEqual(dialect.delimiter, ',',
+            'incorrect delimiter detected for csv file')
+        self.assertEqual(dialect.lineterminator, '\n',
+            'incorrect lineterminator for csv file')
+        self.assertEqual(dialect.escapechar, '\\',
+            'incorrect escapechar for csv file')
+        self.assertEqual(dialect.quotechar, '"',
+            'incorrect quotechar for csv file')
+        self.assertTrue(dialect.doublequote,
+            'doublequote not set to True for csv file')
+        self.assertEqual(dialect.quoting, csv.QUOTE_MINIMAL,
+            'quoting not set to csv.QUOTE_MINIMAL for csv file')
+        self.assertTrue(dialect.skipinitialspace,
+            'skipinitialspace not set to True for csv file')
+        self.assertFalse(dialect.strict,
+            'strict not set to False for csv file')
+
+    def test_csv_file_dialect_no_delimiter(self):
+        print('Running test_csv_file_dialect_no_delimiter')
+        csvreadheaderfile = self.framework.csvreadheaderfile2
         dialect = csv_file_dialect(csvreadheaderfile)
         self.assertIsNotNone(dialect, 'unable to detect csv file dialect')
         self.assertEqual(dialect.delimiter, ',',
