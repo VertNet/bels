@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "api.py 2021-03-21T14:35-03:00"
+__version__ = "api.py 2021-03-21T14:54-03:00"
 
 from flask import Flask, request
 import bels
@@ -84,7 +84,7 @@ def csv():
            m = "Email is disallowed to destination %s. Please try another email address." % email
         return m
     except Exception as e:
-        print('Exception print statement: %s' e)
+        print('Exception print statement: %s' % e)
         app.logger.error(e)
         return (e, 500)
 
