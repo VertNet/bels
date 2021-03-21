@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "job.py 2021-03-21T09:28-03:00"
+__version__ = "job.py 2021-03-21T10:10-03:00"
 
 import base64
 import json
@@ -24,6 +24,7 @@ import csv
 import io
 import os
 import tempfile
+import logging
 
 from contextlib import contextmanager
 from .id_utils import dwc_location_hash, location_match_str, super_simplify

@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "api.py 2021-03-21T09:47-03:00"
+__version__ = "api.py 2021-03-21T10:10-03:00"
 
 from flask import Flask, request
 import bels
@@ -25,6 +25,7 @@ import uuid
 import datetime
 import json
 import re
+import logging
 
 from google.cloud import pubsub_v1
 from google.cloud import storage
