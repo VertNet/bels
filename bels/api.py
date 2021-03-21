@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "api.py 2021-03-21T13:03-03:00"
+__version__ = "api.py 2021-03-21T13:47-03:00"
 
 from flask import Flask, request
 import bels
@@ -25,7 +25,7 @@ import uuid
 import datetime
 import json
 import re
-import logging
+#import logging
 
 from google.cloud import pubsub_v1
 from google.cloud import storage
@@ -75,7 +75,8 @@ def csv():
         publish_future = publisher.publish(topic_path, data=message_bytes)
         r = publish_future.result()  # Verify the publish succeeded
         s = '%s publishing gave results' % __version__
-        logging.info(s)
+        app.logger.info(s)
+        print(s)
 
         blacklist = ["email@example.com", "stuff@things.com"]
         m = "An email with a link to the results for this request will be sent to %s." % email
@@ -83,7 +84,8 @@ def csv():
            m = "Email is disallowed to destination %s. Please try another email address." % email
         return m
     except Exception as e:
-        logging.error(e)
+        app.logger.error(e)
+        print(s)
         return (e, 500)
 
 @app.route('/')
