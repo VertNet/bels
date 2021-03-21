@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "job.py 2021-01-18T23:42-03:00"
+__version__ = "job.py 2021-03-21T09:28-03:00"
 
 import base64
 import json
@@ -95,24 +95,28 @@ def process_csv(event, context):
     file_url = json_config['file_url'] # Google Cloud Storage location of input file
     filename = json_config['filename'] # User-provided Output file name
     # Alter output file name to [filename]-[UUID of input file location].csv
-    filename = '%s-%s.csv' % (filename, file_url)
+    filename = '%s-%s.csv' % (filename, file_url.split('/')[1])
     email = json_config['email']
 
-    client = storage.Client()
-    bucket = client.get_bucket('localityservice')
+    storage_client = storage.Client()
+    bucket = storage_client.get_bucket('localityservice')
     blob = bucket.get_blob(file_url)
+    bq_client = bigquery.Client()
     with temp_file() as name:
         blob.download_to_filename(name)
         #blob.delete() # Do not leak documents in storage
-        client = bigquery.Client()
-        return_list = find_best_georef(client, name)
-
+        return_list = find_best_georef(bq_client, name)
+        s = '%s' % __version__
+        s += '\nbest_georef: %s' % return_list
+        s += '\ntemp_file: %s' % name
+        logging.info(s)
+ 
     output = create_output(return_list)
     blob = bucket.blob('output/' + filename)
     blob.upload_from_string(output, content_type='application/csv')
     blob.make_public()
     output_url = blob.public_url
-    print(output_url)
+    #print(output_url)
 
     # Store that output
     send_email(email, output_url)

@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "api.py 2021-03-20T23:37-03:00"
+__version__ = "api.py 2021-03-21T09:47-03:00"
 
 from flask import Flask, request
 import bels
@@ -72,7 +72,11 @@ def csv():
     # Publishes a message
     try:
         publish_future = publisher.publish(topic_path, data=message_bytes)
-        publish_future.result()  # Verify the publish succeeded
+        r = publish_future.result()  # Verify the publish succeeded
+        s = '%s' % __version__
+        s += '\npublish_result: %s' % r
+        logging.info(s)
+
         blacklist = ["email@example.com", "stuff@things.com"]
         m = "An email with a link to the results for this request will be sent to %s." % email
         if email in blacklist:
