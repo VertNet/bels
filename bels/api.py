@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "api.py 2021-03-20T15:42-03:00"
+__version__ = "api.py 2021-03-20T21:29-03:00"
 
 from flask import Flask, request
 import bels
@@ -71,8 +71,10 @@ def csv():
     try:
         publish_future = publisher.publish(topic_path, data=message_bytes)
         publish_future.result()  # Verify the publish succeeded
-        blacklist 
+        blacklist = ["email@example.com", "stuff@things.com"]
         m = "An email with a link to the results for this request will be sent to %s." % email
+        if email in blacklist:
+           m = "Email is disallowed to destination %s. Please try another email address." % email
         return m
     except Exception as e:
         print(e)
@@ -123,7 +125,7 @@ def index():
 						<TD width="60%" valign="MIDDLE">
 							<FONT size="2">
 								<P align="LEFT">
-									%s
+									{0}
 							</FONT>
 						</TD>
 						<TD width="40%" valign="MIDDLE" align="RIGHT">
@@ -144,7 +146,7 @@ def index():
 							<P>VertNet 20 Mar 2021 </P>
 						</TD>
 						<TD width="50%" valign="MIDDLE" align="RIGHT">
-							<i>Version %s</i>
+							<i>Version {1}</i>
 						</TD>
 					</TR>
 				</TBODY>
@@ -153,7 +155,7 @@ def index():
 		</DIV>
 	</body>
 </html>        
-    ''' % (__copyright__, __version__)
+    '''.format(__copyright__, __version__)
 
 if __name__ == "__main__":
 	app.run(debug=True)
