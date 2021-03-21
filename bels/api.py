@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "api.py 2021-03-21T13:47-03:00"
+__version__ = "api.py 2021-03-21T14:35-03:00"
 
 from flask import Flask, request
 import bels
@@ -75,8 +75,8 @@ def csv():
         publish_future = publisher.publish(topic_path, data=message_bytes)
         r = publish_future.result()  # Verify the publish succeeded
         s = '%s publishing gave results' % __version__
+        print('Success print statement: %s' %s)
         app.logger.info(s)
-        print(s)
 
         blacklist = ["email@example.com", "stuff@things.com"]
         m = "An email with a link to the results for this request will be sent to %s." % email
@@ -84,8 +84,8 @@ def csv():
            m = "Email is disallowed to destination %s. Please try another email address." % email
         return m
     except Exception as e:
+        print('Exception print statement: %s' e)
         app.logger.error(e)
-        print(s)
         return (e, 500)
 
 @app.route('/')
@@ -107,15 +107,14 @@ def index():
 	limitations under the License.
 	
 	__author__ = "John Wieczorek"
-	__author__ = "Craig Wieczorek"
-	__copyright__ = "Copyright 2022 Rauthiflor LLC"
-	__version__ = "gc.html 2021-01-27T13:16-3:00"
+	__copyright__ = {0}
+	__version__ = {1}
 	*/
 	-->
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<LINK href="gci.css" rel="stylesheet" type="text/css">
+		<LINK href="api.css" rel="stylesheet" type="text/css">
 		<TITLE>BELS Georeference Matcher</TITLE>
 	</head>
 

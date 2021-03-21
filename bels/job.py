@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "job.py 2021-03-21T14:02-03:00"
+__version__ = "job.py 2021-03-21T14:37-03:00"
 
 import base64
 import json
@@ -110,7 +110,6 @@ def process_csv(event, context):
         s = '%s' % __version__
         s += '\nbest_georef: %s' % return_list
         s += '\ntemp_file: %s' % name
-        app.logger.info(s)
         print(s)
  
     output = create_output(return_list)
