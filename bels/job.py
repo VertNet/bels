@@ -14,10 +14,9 @@
 # limitations under the License.
 
 __author__ = "Marie-Elise Lecoq"
+__contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "job.py 2021-01-18"
-
-
+__version__ = "job.py 2021-01-18T23:03-03:00"
 
 import base64
 import json
@@ -27,7 +26,6 @@ import os
 import tempfile
 
 from contextlib import contextmanager
-
 from .id_utils import dwc_location_hash, location_match_str, super_simplify
 from .dwca_utils import safe_read_csv_row, lower_dict_keys
 from .bels_query import get_location_by_hashid, row_as_dict, get_best_sans_coords_georef_reduced
@@ -36,8 +34,7 @@ from .dwca_terms import gbiflocationmatchsanscoordstermlist
 from google.cloud import bigquery
 from google.cloud import storage
 
-
-def confirm_hash_big_query(client, filename):
+def find_best_georef(client, filename):
     # vocabpath is the location of vocabulary files to test with
     dirname = os.path.dirname(__file__)
     vocabpath = os.path.join(dirname, '../vocabularies/')
@@ -64,7 +61,6 @@ def confirm_hash_big_query(client, filename):
 
     return listToCsv
 
-
 def create_output(occurrences):
     fieldsname = occurrences[0].keys()
     output_file = io.StringIO()
@@ -74,7 +70,6 @@ def create_output(occurrences):
     dict_writer.writerows(occurrences)
 
     return output_file.getvalue()
-
 
 def process_csv(event, context):
     """Background Cloud Function to be triggered by Pub/Sub.
@@ -88,7 +83,6 @@ def process_csv(event, context):
     """
     import base64
 
-
     print("""This Function was triggered by messageId {} published at {}
     """.format(context.event_id, context.timestamp))
 
@@ -98,8 +92,8 @@ def process_csv(event, context):
     config = base64.b64decode(event['data']).decode('utf-8')
     json_config = json.loads(config)
     json_config = json_config['data']
-    file_url = json_config['file_url']
-    filename = json_config['filename']
+    file_url = json_config['file_url'] # Google Cloud Storage location of input file
+    filename = json_config['filename'] # Altered output file name
     email = json_config['email']
 
     client = storage.Client()
@@ -110,10 +104,10 @@ def process_csv(event, context):
         #blob.delete() # Do not leak documents in storage
         client = bigquery.Client()
 
-        return_list = confirm_hash_big_query(client, name)
+        return_list = find_best_georef(client, name)
 
     output = create_output(return_list)
-    blob = bucket.blob('output/' + file_url + '/' + filename)
+    blob = bucket.blob('output/' + filename)
     blob.upload_from_string(output, content_type='application/csv')
     blob.make_public()
     output_url = blob.public_url
@@ -121,7 +115,6 @@ def process_csv(event, context):
 
     # Store that output
     send_email(email, output_url)
-
 
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 
@@ -138,7 +131,6 @@ def send_email(target, output_url):
 
     sg.client.mail.send.post(request_body=message.get())
 
-
 @contextmanager
 def temp_file():
     _, name = tempfile.mkstemp()
@@ -146,4 +138,3 @@ def temp_file():
         yield name
     finally:
         os.remove(name)
-    

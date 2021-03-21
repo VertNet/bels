@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "api.py 2021-03-20T21:29-03:00"
+__version__ = "api.py 2021-03-20T22:56-03:00"
 
 from flask import Flask, request
 import bels
@@ -42,15 +42,19 @@ def csv():
     f = request.files['csv']
     email = request.form['email']
     filename = request.form['filename']
-    filename_validation = re.compile('[a-zA-Z0-9_\.-]+')
-    if not filename_validation.match(filename):
-        return ('invalid filename', 400)
+
+    # Don't allow any of the following characters in output file names, substitute '_'
+    filename = re.sub(r'[ ~`!@#$%^&*()_+={\[}\]|\\:;"<,>?\'/]', '_', filename)
+
+    # Alter output file name as [filename]-UUID.csv
+    filename = '%s-%s.csv' % (filename, uuid.uuid4().hex)
     csv_content = f.read()
 
     client = storage.Client()
     # TODO: make bucket name configurable?
     bucket = client.get_bucket('localityservice')
 
+    # Google Cloud Storage location for uploaded file
     url = 'jobs/%s' % str(uuid.uuid4())
     blob = bucket.blob(url)
     blob.upload_from_string(csv_content)
@@ -60,9 +64,9 @@ def csv():
 
     message_json = json.dumps({
         'data': {
-            'file_url': url,# google storage
+            'file_url': url, # Google Cloud Storage location of input file
             'email': email,
-            'filename': filename,
+            'filename': filename, # Altered output file name
         }
     })
     message_bytes = message_json.encode('utf-8')
