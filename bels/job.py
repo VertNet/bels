@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "job.py 2021-03-21T15:23-03:00"
+__version__ = "job.py 2021-03-21T22:21-03:00"
 
 import base64
 import json
@@ -31,7 +31,7 @@ from .id_utils import dwc_location_hash, location_match_str, super_simplify
 from .dwca_utils import safe_read_csv_row, lower_dict_keys
 from .bels_query import get_location_by_hashid, row_as_dict, get_best_sans_coords_georef_reduced
 from .dwca_vocab_utils import darwinize_dict
-from .dwca_terms import gbiflocationmatchsanscoordstermlist
+from .dwca_terms import locationmatchsanscoordstermlist
 from google.cloud import bigquery
 from google.cloud import storage
 
@@ -49,8 +49,8 @@ def find_best_georef(client, filename):
         loc = darwinize_dict(row_as_dict(row), darwincloudfile)
         lowerloc = lower_dict_keys(loc)
 
-        locmatchstr = location_match_str(gbiflocationmatchsanscoordstermlist, lowerloc)
-        matchstr = super_simplify(locmatchstr)
+        sanscoordslocmatchstr = location_match_str(locationmatchsanscoordstermlist, lowerloc)
+        matchstr = super_simplify(sanscoordslocmatchstr)
 
         s = '%s' % __version__
         s += ' getting best_georef for: %s' % matchstr

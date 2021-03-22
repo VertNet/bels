@@ -25,7 +25,7 @@ import json
 
 event = {
   'data': {
-    'file_url': 'jobs/04af615e-75e3-41ad-a337-c23df7f717a9',
+    'file_url': 'jobs/c16cf413-b8d5-4ac3-b200-f27a327bc51b',
     'email': 'gtuco.btuco@gmail.com',
     'filename': 'test_jrw_from_local'
   }
