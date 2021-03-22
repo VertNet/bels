@@ -16,16 +16,18 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "api_test.py 2021-03-21T16:51-03:00"
+__version__ = "api_test.py 2021-03-21T22:51-03:00"
 
 from bels.job import process_csv
 from collections import namedtuple
 import base64
 import json
 
+# Uploaded file in GCS where the input Location fields to be tested are located. 
+upload_file_to_test = 'jobs/c49371ee-059a-40c2-8c87-b781af1eb465'
 event = {
   'data': {
-    'file_url': 'jobs/c16cf413-b8d5-4ac3-b200-f27a327bc51b',
+    'file_url': upload_file_to_test,
     'email': 'gtuco.btuco@gmail.com',
     'filename': 'test_jrw_from_local'
   }

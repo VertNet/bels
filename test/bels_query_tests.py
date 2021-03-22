@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query_tests.py 2021-02-27T19:37-03:00"
+__version__ = "bels_query_tests.py 2021-03-22T18:51-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -48,8 +48,8 @@ from bels.bels_query import get_location_by_hashid
 from bels.bels_query import row_as_dict
 from decimal import *
 import json
-#import base64
 import unittest
+
 
 class BELSQueryTestFramework():
     # testdatapath is the location of example files to test with
@@ -193,6 +193,25 @@ class BELSQueryTestCase(unittest.TestCase):
         }
         self.assertEqual(result, target)
 
+        matchstr = 'nowatthisshouldreturnaresult'
+        result = get_best_sans_coords_georef_reduced(self.BQ, matchstr)
+        target = {
+            'sans_coords_match_string': None,
+            'sans_coords_countrycode': None,
+            'sans_coords_decimallatitude': None,
+            'sans_coords_decimallongitude': None,
+            'sans_coords_coordinateuncertaintyinmeters': None,
+            'sans_coords_georeferencedby': None,
+            'sans_coords_georeferenceddate': None,
+            'sans_coords_georeferenceprotocol': None,
+            'sans_coords_georeferencesources': None,
+            'sans_coords_georeferenceremarks': None,
+            'sans_coords_georef_score': None,
+            'sans_coords_centroid_distanceinmeters': None,
+            'sans_coords_georef_count': None,
+        }
+        self.assertEqual(result, target)
+
     def test_get_best_with_coords_georef(self):
         print('Running test_get_best_with_coords_georef')
         matchstr = 'aqbechervaiseisland00-66.49559.49'
@@ -238,6 +257,25 @@ class BELSQueryTestCase(unittest.TestCase):
             'with_coords_georef_score': 0, 
             'with_coords_centroid_distanceinmeters': 0.0, 
             'with_coords_georef_count': 1, 
+        }
+        self.assertEqual(result, target)
+
+        matchstr = 'nowatthisshouldreturnaresult'
+        result = get_best_with_coords_georef_reduced(self.BQ, matchstr)
+        target = {
+            'sans_coords_match_string': None,
+            'sans_coords_countrycode': None,
+            'sans_coords_decimallatitude': None,
+            'sans_coords_decimallongitude': None,
+            'sans_coords_coordinateuncertaintyinmeters': None,
+            'sans_coords_georeferencedby': None,
+            'sans_coords_georeferenceddate': None,
+            'sans_coords_georeferenceprotocol': None,
+            'sans_coords_georeferencesources': None,
+            'sans_coords_georeferenceremarks': None,
+            'sans_coords_georef_score': None,
+            'sans_coords_centroid_distanceinmeters': None,
+            'sans_coords_georef_count': None,
         }
         self.assertEqual(result, target)
 
