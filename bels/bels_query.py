@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query.py 2021-03-22T18:47-03:00"
+__version__ = "bels_query.py 2021-03-26T21:34-03:00"
 
 import json
 from google.cloud import bigquery
@@ -23,7 +23,7 @@ from bels.dwca_terms import locationkeytermlist
 from bels.json_utils import CustomJsonEncoder
 
 BQ_SERVICE='localityservice'
-BQ_DATASET='gbif_20200409'
+BQ_DATASET='gazetteer'
 
 def query_location_by_id(base64locationhash, table_name=None):
     ''' Create a query string to get a location record from the distinct Locations data

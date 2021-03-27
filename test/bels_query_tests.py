@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query_tests.py 2021-03-22T18:51-03:00"
+__version__ = "bels_query_tests.py 2021-03-26T22:15-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -106,6 +106,7 @@ class BELSQueryTestCase(unittest.TestCase):
         matchstr = 'auwac73kmsofbillabongroadhouse'
 #        matchid='3CKYu8SB2PDattd8KYrAn6w4b6rNmlJzCKB4PVxHJwY='
         result = get_best_sans_coords_georef(self.BQ, matchstr)
+        # print('AU: %s' % result)
         target = {
             'matchme_sans_coords': 'auwac73kmsofbillabongroadhouse', 
             'unc_numeric': Decimal('10000'), 
@@ -119,6 +120,7 @@ class BELSQueryTestCase(unittest.TestCase):
             'v_georeferencesources': None, 
             'v_georeferenceremarks': None, 
             'georef_score': 0, 
+            'source': 'iDigBio', 
             'georef_count': 1, 
             'max_uncertainty': Decimal('10000'), 
             'centroid_dist': 0.0, 
@@ -130,6 +132,7 @@ class BELSQueryTestCase(unittest.TestCase):
         matchstr = 'asiaidsulawesiutarapulaunainindonesiasulawesiutarapulaunain'
 #        matchid = 'stPXsf74ZDnGF6wBRiMoyq8ku5b0xmnzGP1IK/nK0wU=''
         result = get_best_sans_coords_georef(self.BQ, matchstr)
+        #print('ID: %s' % result)
         target = {
             'matchme_sans_coords': 'asiaidsulawesiutarapulaunainindonesiasulawesiutarapulaunain',
             'unc_numeric': Decimal('3615'),
@@ -143,6 +146,7 @@ class BELSQueryTestCase(unittest.TestCase):
             'v_georeferencesources': 'Gazetteer of Indonesia: US Defense Mapping Agency (1982)',
             'v_georeferenceremarks': 'Used Nain, ISL  Also known as Naeng-besar, Pulau.',
             'georef_score': 27,
+            'source': 'GBIF',
             'georef_count': 1,
             'max_uncertainty': Decimal('3615'),
             'centroid_dist': 0.0,
@@ -217,6 +221,7 @@ class BELSQueryTestCase(unittest.TestCase):
         matchstr = 'aqbechervaiseisland00-66.49559.49'
 #        matchid='WXAe63f0h1LKMujroFLYoRVY03vWmCdvQynV5Y/9wUg='
         result = get_best_with_coords_georef(self.BQ, matchstr)
+        #print('AQ: %s' % result)
         target = {
             'matchme_with_coords': 'aqbechervaiseisland00-66.49559.49', 
             'unc_numeric': Decimal('5000'), 
@@ -230,6 +235,7 @@ class BELSQueryTestCase(unittest.TestCase):
             'v_georeferencesources': None, 
             'v_georeferenceremarks': None, 
             'georef_score': 0, 
+            'source': 'GBIF',
             'georef_count': 1, 
             'max_uncertainty': Decimal('5000'), 
             'centroid_dist': 0.0, 
@@ -284,6 +290,7 @@ class BELSQueryTestCase(unittest.TestCase):
         matchstr = 'usminnesotawadenat136nr33ws.1012-jul-71,'
 #        matchid='YcHC5X1M3bUVjMAav1D2XYKLTLihxhGh1JDGs/C+m00='
         result = get_best_with_verbatim_coords_georef(self.BQ, matchstr)
+        #print('US: %s' % result)
         target = {
             'matchme': 'usminnesotawadenat136nr33ws.1012-jul-71,', 
             'unc_numeric': Decimal('1137'), 
@@ -297,6 +304,7 @@ class BELSQueryTestCase(unittest.TestCase):
             'v_georeferencesources': 'BioGeomancer', 
             'v_georeferenceremarks': None, 
             'georef_score': 26, 
+            'source': 'GBIF',
             'georef_count': 1, 
             'max_uncertainty': Decimal('1137'), 
             'centroid_dist': 1.0042073245224715e-09, 

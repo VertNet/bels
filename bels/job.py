@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "job.py 2021-03-21T22:21-03:00"
+__version__ = "job.py 2021-03-26T22:08-03:00"
 
 import base64
 import json
@@ -66,6 +66,8 @@ def find_best_georef(client, filename):
             s += ' best_georef: %s' % row
             print(s)
         else:
+            # Create a dict of empty results for all results fields anyway to make sure
+            # the header is correct even if the first result is empty.
             s = '%s' % __version__
             s += ' no georef found for: %s' % matchstr
             print(s)
