@@ -130,3 +130,5 @@ dmypy.json
 .pyre/
 
 auth.json
+default_env.txt
+bels_env.txt

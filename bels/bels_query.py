@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query.py 2021-03-26T21:34-03:00"
+__version__ = "bels_query.py 2021-06-28T21:40-03:00"
 
 import json
 from google.cloud import bigquery
@@ -23,7 +23,126 @@ from bels.dwca_terms import locationkeytermlist
 from bels.json_utils import CustomJsonEncoder
 
 BQ_SERVICE='localityservice'
-BQ_DATASET='gazetteer'
+BQ_GAZ_DATASET='gazetteer'
+BQ_PROJECT='localityservice'
+BQ_BELS_DATASET='belsapi'
+JOB_DATASET='jobs'
+
+def schema_from_header(header):
+    # Create a BigQuery schema from the fields in a header.
+    schema = []
+    for field in header:
+        schema.append(bigquery.SchemaField(field, "STRING"))
+    return schema
+
+def import_table(bq_client, gcs_uri, header, table_name=None):
+    # Create a table in BigQuery from a file in Google Cloud Storage with the given
+    # header.
+    # Code model from https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv
+#     gcs_uri = "gs://cloud-samples-data/bigquery/us-states/us-states.csv"
+#     job_config = bigquery.LoadJobConfig(
+#         schema=[
+#             bigquery.SchemaField("name", "STRING"),
+#             bigquery.SchemaField("post_abbr", "STRING"),
+#         ],
+#         skip_leading_rows=1,
+#         # The source format defaults to CSV, so the line below is optional.
+#         source_format=bigquery.SourceFormat.CSV,
+#     )
+
+    if gcs_uri is None:
+        print('No Google Cloud Storage location provided.')
+        return None
+    if header is None:
+        print('No file header provided.')
+        return None
+
+    # Construct a BigQuery client object.
+    client = bq_client
+
+    # Set table_id to the ID of the table to create.
+    if table_name is None:
+        uri_parts = gcs_uri.split('/')
+        file_name = uri_parts[len(uri_parts)-1]
+        file_parts = file_name.split('.')
+        table_name = file_parts[0]
+    table_id = BQ_PROJECT+'.'+BQ_BELS_DATASET+'.'+table_name
+
+    schema = schema_from_header(header)
+    job_config = bigquery.LoadJobConfig(
+        schema=schema,
+        skip_leading_rows=1,
+        # The source format defaults to CSV, so the line below is optional.
+        source_format=bigquery.SourceFormat.CSV,
+   )
+
+    load_job = client.load_table_from_uri( gcs_uri, table_id, job_config=job_config)  # Make an API request.
+
+    load_job.result()  # Waits for the job to complete.
+
+    destination_table = client.get_table(table_id)  # Make an API request.
+    print("Loaded {} rows.".format(destination_table.num_rows))
+
+def export_table(bq_client):
+    # TODO: Not implemented yet, just a model
+	# From https://cloud.google.com/bigquery/docs/exporting-data
+	# bucket_name = 'my-bucket'
+	project = "bigquery-public-data"
+	dataset_id = "samples"
+	table_id = "shakespeare"
+
+	destination_uri = "gs://{}/{}".format(bucket_name, "shakespeare.csv")
+	dataset_ref = bigquery.DatasetReference(project, dataset_id)
+	table_ref = dataset_ref.table(table_id)
+
+	extract_job = client.extract_table(
+		table_ref,
+		destination_uri,
+		# Location must match that of the source table.
+		location="US",
+	)  # API request
+	extract_job.result()  # Waits for job to complete.
+
+	print(
+		"Exported {}:{}.{} to {}".format(project, dataset_id, table_id, destination_uri)
+	)
+
+def script_bulk_georef():
+    # TODO: Not implemented fully yet
+    ''' Create an SQL script to get the best georeferences for the locations in an input 
+        file, get all possible georeferences and return the original records with appended
+        georefrence columns to a specified output file on Google Cloud Storage.
+    parameters:
+        matchstr - the matchme_sans_coords string to match.
+        table_name - full table name on which the query should be based.
+    returns:
+        query - the query string
+    '''
+    functionname = 'query_best_sans_coords_georef_reduced()'
+
+    if table_name is None:
+        table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_sans_coords_best_georef'
+    query ="""
+SELECT 
+    matchme_sans_coords as sans_coords_match_string,
+    interpreted_countrycode as sans_coords_countrycode,
+    interpreted_decimallatitude as sans_coords_decimallatitude,
+    interpreted_decimallongitude as sans_coords_decimallongitude,
+    unc_numeric as sans_coords_coordinateuncertaintyinmeters,
+    v_georeferencedby as sans_coords_georeferencedby,
+    v_georeferenceddate as sans_coords_georeferenceddate,
+    v_georeferenceprotocol as sans_coords_georeferenceprotocol,
+    v_georeferencesources as sans_coords_georeferencesources,
+    v_georeferenceremarks as sans_coords_georeferenceremarks,
+    georef_score as sans_coords_georef_score,
+    centroid_dist as sans_coords_centroid_distanceinmeters,
+    georef_count as sans_coords_georef_count
+FROM 
+    {0}
+WHERE 
+    matchme_sans_coords='{1}'
+""".format(table_name,matchstr)
+    return query
 
 def query_location_by_id(base64locationhash, table_name=None):
     ''' Create a query string to get a location record from the distinct Locations data
@@ -38,15 +157,16 @@ def query_location_by_id(base64locationhash, table_name=None):
     functionname = 'query_location_by_id()'
 
     if table_name is None:
-        table_name = BQ_SERVICE+'.'+BQ_DATASET+'.'+'locations_distinct_with_scores'
+        table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'locations_distinct_with_scores'
 #        SELECT TO_BASE64(dwc_location_hash) as locationid, * EXCEPT (dwc_location_hash)
     query ="""
-        SELECT TO_BASE64(dwc_location_hash) as locationid, *
-        FROM 
-        {0}
-        WHERE 
-        TO_BASE64(dwc_location_hash)='{1}'
-        """.format(table_name,base64locationhash)
+SELECT 
+    TO_BASE64(dwc_location_hash) as locationid, *
+FROM 
+    {0}
+WHERE 
+    TO_BASE64(dwc_location_hash)='{1}'
+""".format(table_name,base64locationhash)
     return query
 
 def query_location_by_hashid(locationhash, table_name=None):
@@ -62,14 +182,15 @@ def query_location_by_hashid(locationhash, table_name=None):
     functionname = 'query_location_by_hashid()'
 
     if table_name is None:
-        table_name = BQ_SERVICE+'.'+BQ_DATASET+'.'+'locations_distinct_with_scores'
+        table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'locations_distinct_with_scores'
     query ="""
-        SELECT dwc_location_hash as locationid, *
-        FROM
-        {0}
-        WHERE 
-        dwc_location_hash={1}
-        """.format(table_name,locationhash)
+SELECT 
+    dwc_location_hash as locationid, *
+FROM
+    {0}
+WHERE 
+    dwc_location_hash={1}
+""".format(table_name,locationhash)
 #    print('query = %s' % query)
     return query
 
@@ -116,14 +237,14 @@ def query_best_sans_coords_georef(matchstr, table_name=None):
     functionname = 'query_best_sans_coords_georef()'
 
     if table_name is None:
-        table_name = BQ_SERVICE+'.'+BQ_DATASET+'.'+'matchme_sans_coords_best_georef'
+        table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_sans_coords_best_georef'
     query ="""
-        SELECT *
-        FROM 
-        {0}
-        WHERE 
-        matchme_sans_coords='{1}'
-        """.format(table_name,matchstr)
+SELECT *
+FROM 
+    {0}
+WHERE 
+    matchme_sans_coords='{1}'
+""".format(table_name,matchstr)
     return query
 
 def query_best_sans_coords_georef_reduced(matchstr, table_name=None):
@@ -140,27 +261,27 @@ def query_best_sans_coords_georef_reduced(matchstr, table_name=None):
     functionname = 'query_best_sans_coords_georef_reduced()'
 
     if table_name is None:
-        table_name = BQ_SERVICE+'.'+BQ_DATASET+'.'+'matchme_sans_coords_best_georef'
+        table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_sans_coords_best_georef'
     query ="""
-        SELECT 
-        matchme_sans_coords as sans_coords_match_string,
-        interpreted_countrycode as sans_coords_countrycode,
-        interpreted_decimallatitude as sans_coords_decimallatitude,
-        interpreted_decimallongitude as sans_coords_decimallongitude,
-        unc_numeric as sans_coords_coordinateuncertaintyinmeters,
-        v_georeferencedby as sans_coords_georeferencedby,
-        v_georeferenceddate as sans_coords_georeferenceddate,
-        v_georeferenceprotocol as sans_coords_georeferenceprotocol,
-        v_georeferencesources as sans_coords_georeferencesources,
-        v_georeferenceremarks as sans_coords_georeferenceremarks,
-        georef_score as sans_coords_georef_score,
-        centroid_dist as sans_coords_centroid_distanceinmeters,
-        georef_count as sans_coords_georef_count
-        FROM 
-        {0}
-        WHERE 
-        matchme_sans_coords='{1}'
-        """.format(table_name,matchstr)
+SELECT 
+    matchme_sans_coords as sans_coords_match_string,
+    interpreted_countrycode as sans_coords_countrycode,
+    interpreted_decimallatitude as sans_coords_decimallatitude,
+    interpreted_decimallongitude as sans_coords_decimallongitude,
+    unc_numeric as sans_coords_coordinateuncertaintyinmeters,
+    v_georeferencedby as sans_coords_georeferencedby,
+    v_georeferenceddate as sans_coords_georeferenceddate,
+    v_georeferenceprotocol as sans_coords_georeferenceprotocol,
+    v_georeferencesources as sans_coords_georeferencesources,
+    v_georeferenceremarks as sans_coords_georeferenceremarks,
+    georef_score as sans_coords_georef_score,
+    centroid_dist as sans_coords_centroid_distanceinmeters,
+    georef_count as sans_coords_georef_count
+FROM 
+    {0}
+WHERE 
+    matchme_sans_coords='{1}'
+""".format(table_name,matchstr)
     return query
 
 def get_best_sans_coords_georef(bq_client, matchstr):
@@ -240,13 +361,13 @@ def query_best_with_verbatim_coords_georef(matchstr, table_name=None):
     functionname = 'query_best_with_verbatim_coords_georef()'
 
     if table_name is None:
-        table_name = BQ_SERVICE+'.'+BQ_DATASET+'.'+'matchme_verbatimcoords_best_georef'
+        table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_verbatimcoords_best_georef'
     query ="""
-        SELECT *
-        FROM 
-        {0}
-        WHERE 
-        matchme='{1}'
+SELECT *
+FROM 
+    {0}
+WHERE 
+    matchme='{1}'
         """.format(table_name,matchstr)
     return query
 
@@ -264,27 +385,27 @@ def query_best_with_verbatim_coords_georef_reduced(matchstr, table_name=None):
     functionname = 'query_best_with_verbatim_coords_georef_reduced()'
 
     if table_name is None:
-        table_name = BQ_SERVICE+'.'+BQ_DATASET+'.'+'matchme_verbatimcoords_best_georef'
+        table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_verbatimcoords_best_georef'
     query ="""
-        SELECT 
-        matchme as verbatim_coords_match_string,
-        interpreted_countrycode as verbatim_coords_countrycode,
-        interpreted_decimallatitude as verbatim_coords_decimallatitude,
-        interpreted_decimallongitude as verbatim_coords_decimallongitude,
-        unc_numeric as verbatim_coords_coordinateuncertaintyinmeters,
-        v_georeferencedby as verbatim_coords_georeferencedby,
-        v_georeferenceddate as verbatim_coords_georeferenceddate,
-        v_georeferenceprotocol as verbatim_coords_georeferenceprotocol,
-        v_georeferencesources as verbatim_coords_georeferencesources,
-        v_georeferenceremarks as verbatim_coords_georeferenceremarks,
-        georef_score as verbatim_coords_georef_score,
-        centroid_dist as verbatim_coords_centroid_distanceinmeters,
-        georef_count as verbatim_coords_georef_count
-        FROM 
-        {0}
-        WHERE 
-        matchme='{1}'
-        """.format(table_name,matchstr)
+SELECT 
+	matchme as verbatim_coords_match_string,
+	interpreted_countrycode as verbatim_coords_countrycode,
+	interpreted_decimallatitude as verbatim_coords_decimallatitude,
+	interpreted_decimallongitude as verbatim_coords_decimallongitude,
+	unc_numeric as verbatim_coords_coordinateuncertaintyinmeters,
+	v_georeferencedby as verbatim_coords_georeferencedby,
+	v_georeferenceddate as verbatim_coords_georeferenceddate,
+	v_georeferenceprotocol as verbatim_coords_georeferenceprotocol,
+	v_georeferencesources as verbatim_coords_georeferencesources,
+	v_georeferenceremarks as verbatim_coords_georeferenceremarks,
+	georef_score as verbatim_coords_georef_score,
+	centroid_dist as verbatim_coords_centroid_distanceinmeters,
+	georef_count as verbatim_coords_georef_count
+FROM 
+	{0}
+WHERE 
+	matchme='{1}'
+""".format(table_name,matchstr)
     return query
 
 def get_best_with_verbatim_coords_georef(bq_client, matchstr):
@@ -345,14 +466,14 @@ def query_best_with_coords_georef(matchstr, table_name=None):
     functionname = 'query_best_with_coords_georef()'
 
     if table_name is None:
-        table_name = BQ_SERVICE+'.'+BQ_DATASET+'.'+'matchme_with_coords_best_georef'
+        table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_with_coords_best_georef'
     query ="""
-        SELECT *
-        FROM 
-        {0}
-        WHERE 
-        matchme_with_coords='{1}'
-        """.format(table_name,matchstr)
+SELECT *
+FROM 
+    {0}
+WHERE 
+    matchme_with_coords='{1}'
+""".format(table_name,matchstr)
     return query
 
 def query_best_with_coords_georef_reduced(matchstr, table_name=None):
@@ -369,27 +490,27 @@ def query_best_with_coords_georef_reduced(matchstr, table_name=None):
     functionname = 'query_best_with_coords_georef_reduced()'
 
     if table_name is None:
-        table_name = BQ_SERVICE+'.'+BQ_DATASET+'.'+'matchme_with_coords_best_georef'
+        table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_with_coords_best_georef'
     query ="""
-        SELECT 
-        matchme_with_coords as with_coords_match_string,
-        interpreted_countrycode as with_coords_countrycode,
-        interpreted_decimallatitude as with_coords_decimallatitude,
-        interpreted_decimallongitude as with_coords_decimallongitude,
-        unc_numeric as with_coords_coordinateuncertaintyinmeters,
-        v_georeferencedby as with_coords_georeferencedby,
-        v_georeferenceddate as with_coords_georeferenceddate,
-        v_georeferenceprotocol as with_coords_georeferenceprotocol,
-        v_georeferencesources as with_coords_georeferencesources,
-        v_georeferenceremarks as with_coords_georeferenceremarks,
-        georef_score as with_coords_georef_score,
-        centroid_dist as with_coords_centroid_distanceinmeters,
-        georef_count as with_coords_georef_count
-        FROM 
-        {0}
-        WHERE 
-        matchme_with_coords='{1}'
-        """.format(table_name,matchstr)
+SELECT 
+	matchme_with_coords as with_coords_match_string,
+	interpreted_countrycode as with_coords_countrycode,
+	interpreted_decimallatitude as with_coords_decimallatitude,
+	interpreted_decimallongitude as with_coords_decimallongitude,
+	unc_numeric as with_coords_coordinateuncertaintyinmeters,
+	v_georeferencedby as with_coords_georeferencedby,
+	v_georeferenceddate as with_coords_georeferenceddate,
+	v_georeferenceprotocol as with_coords_georeferenceprotocol,
+	v_georeferencesources as with_coords_georeferencesources,
+	v_georeferenceremarks as with_coords_georeferenceremarks,
+	georef_score as with_coords_georef_score,
+	centroid_dist as with_coords_centroid_distanceinmeters,
+	georef_count as with_coords_georef_count
+FROM 
+	{0}
+WHERE 
+	matchme_with_coords='{1}'
+""".format(table_name,matchstr)
     return query
 
 def get_best_with_coords_georef(bq_client, matchstr):
