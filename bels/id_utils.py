@@ -15,12 +15,12 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "id_utils.py 2021-02-10T10:01-03:00"
+__version__ = "id_utils.py 2021-06-30T16:53-03:00"
 
-from .dwca_terms import locationmatchwithcoordstermlist
-from .dwca_terms import locationkeytermlist
-from .dwca_vocab_utils import darwinize_dict
-from .dwca_utils import lower_dict_keys
+from dwca_terms import locationmatchwithcoordstermlist
+from dwca_terms import locationkeytermlist
+from dwca_vocab_utils import darwinize_dict
+from dwca_utils import lower_dict_keys
 from decimal import *
 import hashlib
 import base64

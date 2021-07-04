@@ -252,7 +252,7 @@ FORMATION	formation	1	dwc
 FUNDINGSOURCE		1		FIMS	
 GENERO	genus	1	dwc		
 GÉNERO	genus	1	dwc		
-GENETICTISSUETYPE		1		FIMS	Contributes "tissue" to dwc:preparations if present
+GENETICTISSUETYPE		1		FIMS	"Contributes ""tissue"" to dwc:preparations if present"
 GENUS	genus	1	dwc		
 GEODETICDATUM	geodeticDatum	1	dwc		
 GEOLOGICALCONTEXTID	geologicalContextID	1	dwc		
@@ -293,7 +293,7 @@ LATESTERAORHIGHESTERATHEM	latestEraOrHighestErathem	1	dwc
 LATESTPERIODORHIGHESTSYSTEM	latestPeriodOrHighestSystem	1	dwc		
 LATITUD	verbatimLatitude	1	dwc		
 LATITUDE	verbatimLatitude	1	dwc		If dwc:verbatimLatitude not populated
-LENGTH	length	1	dwcloud		dynamicProperties as length, or MeasurementOrFact
+LENGTH	length	1	dwcloud		"dynamicProperties as length, or MeasurementOrFact"
 LICENSE	license	1	dcterms		
 LIFESTAGE	lifeStage	1	dwc		
 LITHOSTRATIGRAPHICTERMS	lithostratigraphicTerms	1	dwc		
@@ -366,7 +366,7 @@ PREPARATIONS	preparations	1	dwc
 PREPARATOR		1			This may be in addition to a collector.
 PRESERVATIVE		1		FIMS	Contributes to dwc:preparations
 PREVIOUSIDENTIFICATIONS	previousIdentifications	1	dwc		
-PREVIOUSTISSUEID	otherCatalogNumbers	1	dwc	FIMS	Contributes "tissue" to dwc:preparations if present
+PREVIOUSTISSUEID	otherCatalogNumbers	1	dwc	FIMS	"Contributes ""tissue"" to dwc:preparations if present"
 PRINCIPALINVESTIGATOR		1		FIMS	
 PROVINCE	stateProvince	1	dwc		
 PROVINCIA	stateProvince	1	dwc		
@@ -407,169 +407,169 @@ TAXONREMARKS	taxonRemarks	1	dwc
 TISSUESTORAGEID		1		FIMS	
 TYPE	type	1	dcterms		
 TYPESTATUS	typeStatus	1	dwc		
-V_ACCEPTEDNAMEUSAGE	acceptedNameUsage	1	dwc		
-V_ACCEPTEDNAMEUSAGEID	acceptedNameUsageID	1	dwc		
-V_ASSOCIATEDMEDIA	associatedMedia	1	dwc		
-V_ASSOCIATEDOCCURRENCES	associatedOccurrences	1	dwc		
-V_ASSOCIATEDORGANISMS	associatedOrganisms	1	dwc		
-V_ASSOCIATEDREFERENCES	associatedReferences	1	dwc		
-V_ASSOCIATEDSEQUENCES	associatedSequences	1	dwc		
-V_ASSOCIATEDTAXA	associatedTaxa	1	dwc		
-V_BASISOFRECORD	basisOfRecord	1	dwc		
-V_BED	bed	1	dwc		
-V_BEHAVIOR	behavior	1	dwc		
-V_CATALOGNUMBER	catalogNumber	1	dwc		
-V_CLASS	class	1	dwc		
-V_COLLECTIONCODE	collectionCode	1	dwc		
-V_COLLECTIONID	collectionID	1	dwc		
-V_CONTINENT	continent	1	dwc		
-V_COORDINATEPRECISION	coordinatePrecision	1	dwc		
-V_COORDINATEUNCERTAINTYINMETERS	coordinateUncertaintyInMeters	1	dwc		
-V_COUNTRY	country	1	dwc		
-V_COUNTRYCODE	countryCode	1	dwc		
-V_COUNTY	county	1	dwc		
-V_DATAGENERALIZATIONS	dataGeneralizations	1	dwc		
-V_DATASETID	datasetID	1	dwc		
-V_DATASETNAME	datasetName	1	dwc		
-V_DATEIDENTIFIED	dateIdentified	1	dwc		
-V_DAY	day	1	dwc		
-V_DECIMALLATITUDE	decimalLatitude	1	dwc		
-V_DECIMALLONGITUDE	decimalLongitude	1	dwc		
-V_DEGREEOFESTABLISHMENT	degreeOfEstablishment	1	dwc		
-V_DISPOSITION	disposition	1	dwc		
-V_DYNAMICPROPERTIES	dynamicProperties	1	dwc		
-V_EARLIESTAGEORLOWESTSTAGE	earliestAgeOrLowestStage	1	dwc		
-V_EARLIESTEONORLOWESTEONOTHEM	earliestEonOrLowestEonothem	1	dwc		
-V_EARLIESTEPOCHORLOWESTSERIES	earliestEpochOrLowestSeries	1	dwc		
-V_EARLIESTERAORLOWESTERATHEM	earliestEraOrLowestErathem	1	dwc		
-V_EARLIESTPERIODORLOWESTSYSTEM	earliestPeriodOrLowestSystem	1	dwc		
-V_ENDDAYOFYEAR	endDayOfYear	1	dwc		
-V_ESTABLISHMENTMEANS	establishmentMeans	1	dwc		
-V_EVENTDATE	eventDate	1	dwc		
-V_EVENTID	eventID	1	dwc		
-V_EVENTREMARKS	eventRemarks	1	dwc		
-V_EVENTTIME	eventTime	1	dwc		
-V_FAMILY	family	1	dwc		
-V_FIELDNOTES	fieldNotes	1	dwc		
-V_FIELDNUMBER	fieldNumber	1	dwc		
-V_FOOTPRINTSPATIALFIT	footprintSpatialFit	1	dwc		
-V_FOOTPRINTSRS	footprintSRS	1	dwc		
-V_FOOTPRINTWKT	footprintWKT	1	dwc		
-V_FORMATION	formation	1	dwc		
-V_GENUS	genus	1	dwc		
-V_GEODETICDATUM	geodeticDatum	1	dwc		
-V_GEOLOGICALCONTEXTID	geologicalContextID	1	dwc		
-V_GEOREFERENCEDBY	georeferencedBy	1	dwc		
-V_GEOREFERENCEDDATE	georeferencedDate	1	dwc		
-V_GEOREFERENCEPROTOCOL	georeferenceProtocol	1	dwc		
-V_GEOREFERENCEREMARKS	georeferenceRemarks	1	dwc		
-V_GEOREFERENCESOURCES	georeferenceSources	1	dwc		
-V_GEOREFERENCEVERIFICATIONSTATUS	georeferenceVerificationStatus	1	dwc		
-V_GROUP	group	1	dwc		
-V_HABITAT	habitat	1	dwc		
-V_HIGHERCLASSIFICATION	higherClassification	1	dwc		
-V_HIGHERGEOGRAPHY	higherGeography	1	dwc		
-V_HIGHERGEOGRAPHYID	higherGeographyID	1	dwc		
-V_HIGHESTBIOSTRATIGRAPHICZONE	highestBiostratigraphicZone	1	dwc		
-V_IDENTIFICATIONID	identificationID	1	dwc		
-V_IDENTIFICATIONQUALIFIER	identificationQualifier	1	dwc		
-V_IDENTIFICATIONREFERENCES	identificationReferences	1	dwc		
-V_IDENTIFICATIONREMARKS	identificationRemarks	1	dwc		
-V_IDENTIFICATIONVERIFICATIONSTATUS	identificationVerificationStatus	1	dwc		
-V_IDENTIFIEDBY	identifiedBy	1	dwc		
-V_INDIVIDUALCOUNT	individualCount	1	dwc		
-V_INFORMATIONWITHHELD	informationWithheld	1	dwc		
-V_INFRASPECIFICEPITHET	infraspecificEpithet	1	dwc		
-V_INSTITUTIONCODE	institutionCode	1	dwc		
-V_INSTITUTIONID	institutionID	1	dwc		
-V_ISLAND	island	1	dwc		
-V_ISLANDGROUP	islandGroup	1	dwc		
-V_KINGDOM	kingdom	1	dwc		
-V_LATESTAGEORHIGHESTSTAGE	latestAgeOrHighestStage	1	dwc		
-V_LATESTEONORHIGHESTEONOTHEM	latestEonOrHighestEonothem	1	dwc		
-V_LATESTEPOCHORHIGHESTSERIES	latestEpochOrHighestSeries	1	dwc		
-V_LATESTERAORHIGHESTERATHEM	latestEraOrHighestErathem	1	dwc		
-V_LATESTPERIODORHIGHESTSYSTEM	latestPeriodOrHighestSystem	1	dwc		
-V_LIFESTAGE	lifeStage	1	dwc		
-V_LITHOSTRATIGRAPHICTERMS	lithostratigraphicTerms	1	dwc		
-V_LOCALITY	locality	1	dwc		
-V_LOCATIONACCORDINGTO	locationAccordingTo	1	dwc		
-V_LOCATIONID	locationID	1	dwc		
-V_LOCATIONREMARKS	locationRemarks	1	dwc		
-V_LOWESTBIOSTRATIGRAPHICZONE	lowestBiostratigraphicZone	1	dwc		
-V_MATERIALSAMPLEID	materialSampleID	1	dwc		
-V_MAXIMUMDEPTHINMETERS	maximumDepthInMeters	1	dwc		
-V_MAXIMUMDISTANCEABOVESURFACEINMETERS	maximumDistanceAboveSurfaceInMeters	1	dwc		
-V_MAXIMUMELEVATIONINMETERS	maximumElevationInMeters	1	dwc		
-V_MEMBER	member	1	dwc		
-V_MINIMUMDEPTHINMETERS	minimumDepthInMeters	1	dwc		
-V_MINIMUMDISTANCEABOVESURFACEINMETERS	minimumDistanceAboveSurfaceInMeters	1	dwc		
-V_MINIMUMELEVATIONINMETERS	minimumElevationInMeters	1	dwc		
-V_MONTH	month	1	dwc		
-V_MUNICIPALITY	municipality	1	dwc		
-V_NAMEACCORDINGTO	nameAccordingTo	1	dwc		
-V_NAMEACCORDINGTOID	nameAccordingToID	1	dwc		
-V_NAMEPUBLISHEDIN	namePublishedIn	1	dwc		
-V_NAMEPUBLISHEDINID	namePublishedInID	1	dwc		
-V_NAMEPUBLISHEDINYEAR	namePublishedInYear	1	dwc		
-V_NOMENCLATURALCODE	nomenclaturalCode	1	dwc		
-V_NOMENCLATURALSTATUS	nomenclaturalStatus	1	dwc		
-V_OCCURRENCEID	occurrenceID	1	dwc		
-V_OCCURRENCEREMARKS	occurrenceRemarks	1	dwc		
-V_OCCURRENCESTATUS	occurrenceStatus	1	dwc		
-V_ORDER	order	1	dwc		
-V_ORGANISMID	organismID	1	dwc		
-V_ORGANISMNAME	organismName	1	dwc		
-V_ORGANISMQUANTITY	organismQuantity	1	dwc		
-V_ORGANISMQUANTITYTYPE	organismQuantityType	1	dwc		
-V_ORGANISMREMARKS	organismRemarks	1	dwc		
-V_ORGANISMSCOPE	organismScope	1	dwc		
-V_ORIGINALNAMEUSAGE	originalNameUsage	1	dwc		
-V_ORIGINALNAMEUSAGEID	originalNameUsageID	1	dwc		
-V_OTHERCATALOGNUMBERS	otherCatalogNumbers	1	dwc		
-V_OWNERINSTITUTIONCODE	ownerInstitutionCode	1	dwc		
-V_PARENTEVENTID	parentEventID	1	dwc		
-V_PARENTNAMEUSAGE	parentNameUsage	1	dwc		
-V_PARENTNAMEUSAGEID	parentNameUsageID	1	dwc		
-V_PATHWAY	pathway	1	dwc		
-V_PHYLUM	phylum	1	dwc		
-V_POINTRADIUSSPATIALFIT	pointRadiusSpatialFit	1	dwc		
-V_PREPARATIONS	preparations	1	dwc		
-V_PREVIOUSIDENTIFICATIONS	previousIdentifications	1	dwc		
-V_RECORDEDBY	recordedBy	1	dwc		
-V_RECORDNUMBER	recordNumber	1	dwc		
-V_REPRODUCTIVECONDITION	reproductiveCondition	1	dwc		
-V_SAMPLESIZEUNIT	sampleSizeUnit	1	dwc		
-V_SAMPLESIZEVALUE	sampleSizeValue	1	dwc		
-V_SAMPLINGEFFORT	samplingEffort	1	dwc		
-V_SAMPLINGPROTOCOL	samplingProtocol	1	dwc		
-V_SCIENTIFICNAME	scientificName	1	dwc		
-V_SCIENTIFICNAMEAUTHORSHIP	scientificNameAuthorship	1	dwc		
-V_SCIENTIFICNAMEID	scientificNameID	1	dwc		
-V_SEX	sex	1	dwc		
-V_SPECIFICEPITHET	specificEpithet	1	dwc		
-V_STARTDAYOFYEAR	startDayOfYear	1	dwc		
-V_STATEPROVINCE	stateProvince	1	dwc		
-V_SUBGENUS	subgenus	1	dwc		
-V_TAXONCONCEPTID	taxonConceptID	1	dwc		
-V_TAXONID	taxonID	1	dwc		
-V_TAXONOMICSTATUS	taxonomicStatus	1	dwc		
-V_TAXONRANK	taxonRank	1	dwc		
-V_TAXONREMARKS	taxonRemarks	1	dwc		
-V_TYPESTATUS	typeStatus	1	dwc		
-V_VERBATIMCOORDINATES	verbatimCoordinates	1	dwc		
-V_VERBATIMCOORDINATESYSTEM	verbatimCoordinateSystem	1	dwc		
-V_VERBATIMDEPTH	verbatimDepth	1	dwc		
-V_VERBATIMELEVATION	verbatimElevation	1	dwc		
-V_VERBATIMEVENTDATE	verbatimEventDate	1	dwc		
-V_VERBATIMLATITUDE	verbatimLatitude	1	dwc		
-V_VERBATIMLOCALITY	verbatimLocality	1	dwc		
-V_VERBATIMLONGITUDE	verbatimLongitude	1	dwc		
-V_VERBATIMSRS	verbatimSRS	1	dwc		
-V_VERBATIMTAXONRANK	verbatimTaxonRank	1	dwc		
-V_VERNACULARNAME	vernacularName	1	dwc		
-V_WATERBODY	waterBody	1	dwc		
-V_YEAR	year	1	dwc		
+V_ACCEPTEDNAMEUSAGE	acceptedNameUsage	1	dwc	GBIF	
+V_ACCEPTEDNAMEUSAGEID	acceptedNameUsageID	1	dwc	GBIF	
+V_ASSOCIATEDMEDIA	associatedMedia	1	dwc	GBIF	
+V_ASSOCIATEDOCCURRENCES	associatedOccurrences	1	dwc	GBIF	
+V_ASSOCIATEDORGANISMS	associatedOrganisms	1	dwc	GBIF	
+V_ASSOCIATEDREFERENCES	associatedReferences	1	dwc	GBIF	
+V_ASSOCIATEDSEQUENCES	associatedSequences	1	dwc	GBIF	
+V_ASSOCIATEDTAXA	associatedTaxa	1	dwc	GBIF	
+V_BASISOFRECORD	basisOfRecord	1	dwc	GBIF	
+V_BED	bed	1	dwc	GBIF	
+V_BEHAVIOR	behavior	1	dwc	GBIF	
+V_CATALOGNUMBER	catalogNumber	1	dwc	GBIF	
+V_CLASS	class	1	dwc	GBIF	
+V_COLLECTIONCODE	collectionCode	1	dwc	GBIF	
+V_COLLECTIONID	collectionID	1	dwc	GBIF	
+V_CONTINENT	continent	1	dwc	GBIF	
+V_COORDINATEPRECISION	coordinatePrecision	1	dwc	GBIF	
+V_COORDINATEUNCERTAINTYINMETERS	coordinateUncertaintyInMeters	1	dwc	GBIF	
+V_COUNTRY	country	1	dwc	GBIF	
+V_COUNTRYCODE	v_countryCode	1	dwc	GBIF	"GBIF snapshots have countrycode and v_countrycode, leave v_countrycode unmapped to avoid duplicate column name"
+V_COUNTY	county	1	dwc	GBIF	
+V_DATAGENERALIZATIONS	dataGeneralizations	1	dwc	GBIF	
+V_DATASETID	datasetID	1	dwc	GBIF	
+V_DATASETNAME	datasetName	1	dwc	GBIF	
+V_DATEIDENTIFIED	dateIdentified	1	dwc	GBIF	
+V_DAY	day	1	dwc	GBIF	
+V_DECIMALLATITUDE	decimalLatitude	1	dwc	GBIF	
+V_DECIMALLONGITUDE	decimalLongitude	1	dwc	GBIF	
+V_DEGREEOFESTABLISHMENT	degreeOfEstablishment	1	dwc	GBIF	
+V_DISPOSITION	disposition	1	dwc	GBIF	
+V_DYNAMICPROPERTIES	dynamicProperties	1	dwc	GBIF	
+V_EARLIESTAGEORLOWESTSTAGE	earliestAgeOrLowestStage	1	dwc	GBIF	
+V_EARLIESTEONORLOWESTEONOTHEM	earliestEonOrLowestEonothem	1	dwc	GBIF	
+V_EARLIESTEPOCHORLOWESTSERIES	earliestEpochOrLowestSeries	1	dwc	GBIF	
+V_EARLIESTERAORLOWESTERATHEM	earliestEraOrLowestErathem	1	dwc	GBIF	
+V_EARLIESTPERIODORLOWESTSYSTEM	earliestPeriodOrLowestSystem	1	dwc	GBIF	
+V_ENDDAYOFYEAR	endDayOfYear	1	dwc	GBIF	
+V_ESTABLISHMENTMEANS	establishmentMeans	1	dwc	GBIF	
+V_EVENTDATE	eventDate	1	dwc	GBIF	
+V_EVENTID	eventID	1	dwc	GBIF	
+V_EVENTREMARKS	eventRemarks	1	dwc	GBIF	
+V_EVENTTIME	eventTime	1	dwc	GBIF	
+V_FAMILY	family	1	dwc	GBIF	
+V_FIELDNOTES	fieldNotes	1	dwc	GBIF	
+V_FIELDNUMBER	fieldNumber	1	dwc	GBIF	
+V_FOOTPRINTSPATIALFIT	footprintSpatialFit	1	dwc	GBIF	
+V_FOOTPRINTSRS	footprintSRS	1	dwc	GBIF	
+V_FOOTPRINTWKT	footprintWKT	1	dwc	GBIF	
+V_FORMATION	formation	1	dwc	GBIF	
+V_GENUS	genus	1	dwc	GBIF	
+V_GEODETICDATUM	geodeticDatum	1	dwc	GBIF	
+V_GEOLOGICALCONTEXTID	geologicalContextID	1	dwc	GBIF	
+V_GEOREFERENCEDBY	georeferencedBy	1	dwc	GBIF	
+V_GEOREFERENCEDDATE	georeferencedDate	1	dwc	GBIF	
+V_GEOREFERENCEPROTOCOL	georeferenceProtocol	1	dwc	GBIF	
+V_GEOREFERENCEREMARKS	georeferenceRemarks	1	dwc	GBIF	
+V_GEOREFERENCESOURCES	georeferenceSources	1	dwc	GBIF	
+V_GEOREFERENCEVERIFICATIONSTATUS	georeferenceVerificationStatus	1	dwc	GBIF	
+V_GROUP	group	1	dwc	GBIF	
+V_HABITAT	habitat	1	dwc	GBIF	
+V_HIGHERCLASSIFICATION	higherClassification	1	dwc	GBIF	
+V_HIGHERGEOGRAPHY	higherGeography	1	dwc	GBIF	
+V_HIGHERGEOGRAPHYID	higherGeographyID	1	dwc	GBIF	
+V_HIGHESTBIOSTRATIGRAPHICZONE	highestBiostratigraphicZone	1	dwc	GBIF	
+V_IDENTIFICATIONID	identificationID	1	dwc	GBIF	
+V_IDENTIFICATIONQUALIFIER	identificationQualifier	1	dwc	GBIF	
+V_IDENTIFICATIONREFERENCES	identificationReferences	1	dwc	GBIF	
+V_IDENTIFICATIONREMARKS	identificationRemarks	1	dwc	GBIF	
+V_IDENTIFICATIONVERIFICATIONSTATUS	identificationVerificationStatus	1	dwc	GBIF	
+V_IDENTIFIEDBY	identifiedBy	1	dwc	GBIF	
+V_INDIVIDUALCOUNT	individualCount	1	dwc	GBIF	
+V_INFORMATIONWITHHELD	informationWithheld	1	dwc	GBIF	
+V_INFRASPECIFICEPITHET	infraspecificEpithet	1	dwc	GBIF	
+V_INSTITUTIONCODE	institutionCode	1	dwc	GBIF	
+V_INSTITUTIONID	institutionID	1	dwc	GBIF	
+V_ISLAND	island	1	dwc	GBIF	
+V_ISLANDGROUP	islandGroup	1	dwc	GBIF	
+V_KINGDOM	kingdom	1	dwc	GBIF	
+V_LATESTAGEORHIGHESTSTAGE	latestAgeOrHighestStage	1	dwc	GBIF	
+V_LATESTEONORHIGHESTEONOTHEM	latestEonOrHighestEonothem	1	dwc	GBIF	
+V_LATESTEPOCHORHIGHESTSERIES	latestEpochOrHighestSeries	1	dwc	GBIF	
+V_LATESTERAORHIGHESTERATHEM	latestEraOrHighestErathem	1	dwc	GBIF	
+V_LATESTPERIODORHIGHESTSYSTEM	latestPeriodOrHighestSystem	1	dwc	GBIF	
+V_LIFESTAGE	lifeStage	1	dwc	GBIF	
+V_LITHOSTRATIGRAPHICTERMS	lithostratigraphicTerms	1	dwc	GBIF	
+V_LOCALITY	locality	1	dwc	GBIF	
+V_LOCATIONACCORDINGTO	locationAccordingTo	1	dwc	GBIF	
+V_LOCATIONID	locationID	1	dwc	GBIF	
+V_LOCATIONREMARKS	locationRemarks	1	dwc	GBIF	
+V_LOWESTBIOSTRATIGRAPHICZONE	lowestBiostratigraphicZone	1	dwc	GBIF	
+V_MATERIALSAMPLEID	materialSampleID	1	dwc	GBIF	
+V_MAXIMUMDEPTHINMETERS	maximumDepthInMeters	1	dwc	GBIF	
+V_MAXIMUMDISTANCEABOVESURFACEINMETERS	maximumDistanceAboveSurfaceInMeters	1	dwc	GBIF	
+V_MAXIMUMELEVATIONINMETERS	maximumElevationInMeters	1	dwc	GBIF	
+V_MEMBER	member	1	dwc	GBIF	
+V_MINIMUMDEPTHINMETERS	minimumDepthInMeters	1	dwc	GBIF	
+V_MINIMUMDISTANCEABOVESURFACEINMETERS	minimumDistanceAboveSurfaceInMeters	1	dwc	GBIF	
+V_MINIMUMELEVATIONINMETERS	minimumElevationInMeters	1	dwc	GBIF	
+V_MONTH	month	1	dwc	GBIF	
+V_MUNICIPALITY	municipality	1	dwc	GBIF	
+V_NAMEACCORDINGTO	nameAccordingTo	1	dwc	GBIF	
+V_NAMEACCORDINGTOID	nameAccordingToID	1	dwc	GBIF	
+V_NAMEPUBLISHEDIN	namePublishedIn	1	dwc	GBIF	
+V_NAMEPUBLISHEDINID	namePublishedInID	1	dwc	GBIF	
+V_NAMEPUBLISHEDINYEAR	namePublishedInYear	1	dwc	GBIF	
+V_NOMENCLATURALCODE	nomenclaturalCode	1	dwc	GBIF	
+V_NOMENCLATURALSTATUS	nomenclaturalStatus	1	dwc	GBIF	
+V_OCCURRENCEID	occurrenceID	1	dwc	GBIF	
+V_OCCURRENCEREMARKS	occurrenceRemarks	1	dwc	GBIF	
+V_OCCURRENCESTATUS	occurrenceStatus	1	dwc	GBIF	
+V_ORDER	order	1	dwc	GBIF	
+V_ORGANISMID	organismID	1	dwc	GBIF	
+V_ORGANISMNAME	organismName	1	dwc	GBIF	
+V_ORGANISMQUANTITY	organismQuantity	1	dwc	GBIF	
+V_ORGANISMQUANTITYTYPE	organismQuantityType	1	dwc	GBIF	
+V_ORGANISMREMARKS	organismRemarks	1	dwc	GBIF	
+V_ORGANISMSCOPE	organismScope	1	dwc	GBIF	
+V_ORIGINALNAMEUSAGE	originalNameUsage	1	dwc	GBIF	
+V_ORIGINALNAMEUSAGEID	originalNameUsageID	1	dwc	GBIF	
+V_OTHERCATALOGNUMBERS	otherCatalogNumbers	1	dwc	GBIF	
+V_OWNERINSTITUTIONCODE	ownerInstitutionCode	1	dwc	GBIF	
+V_PARENTEVENTID	parentEventID	1	dwc	GBIF	
+V_PARENTNAMEUSAGE	parentNameUsage	1	dwc	GBIF	
+V_PARENTNAMEUSAGEID	parentNameUsageID	1	dwc	GBIF	
+V_PATHWAY	pathway	1	dwc	GBIF	
+V_PHYLUM	phylum	1	dwc	GBIF	
+V_POINTRADIUSSPATIALFIT	pointRadiusSpatialFit	1	dwc	GBIF	
+V_PREPARATIONS	preparations	1	dwc	GBIF	
+V_PREVIOUSIDENTIFICATIONS	previousIdentifications	1	dwc	GBIF	
+V_RECORDEDBY	recordedBy	1	dwc	GBIF	
+V_RECORDNUMBER	recordNumber	1	dwc	GBIF	
+V_REPRODUCTIVECONDITION	reproductiveCondition	1	dwc	GBIF	
+V_SAMPLESIZEUNIT	sampleSizeUnit	1	dwc	GBIF	
+V_SAMPLESIZEVALUE	sampleSizeValue	1	dwc	GBIF	
+V_SAMPLINGEFFORT	samplingEffort	1	dwc	GBIF	
+V_SAMPLINGPROTOCOL	samplingProtocol	1	dwc	GBIF	
+V_SCIENTIFICNAME	scientificName	1	dwc	GBIF	
+V_SCIENTIFICNAMEAUTHORSHIP	scientificNameAuthorship	1	dwc	GBIF	
+V_SCIENTIFICNAMEID	scientificNameID	1	dwc	GBIF	
+V_SEX	sex	1	dwc	GBIF	
+V_SPECIFICEPITHET	specificEpithet	1	dwc	GBIF	
+V_STARTDAYOFYEAR	startDayOfYear	1	dwc	GBIF	
+V_STATEPROVINCE	stateProvince	1	dwc	GBIF	
+V_SUBGENUS	subgenus	1	dwc	GBIF	
+V_TAXONCONCEPTID	taxonConceptID	1	dwc	GBIF	
+V_TAXONID	taxonID	1	dwc	GBIF	
+V_TAXONOMICSTATUS	taxonomicStatus	1	dwc	GBIF	
+V_TAXONRANK	taxonRank	1	dwc	GBIF	
+V_TAXONREMARKS	taxonRemarks	1	dwc	GBIF	
+V_TYPESTATUS	typeStatus	1	dwc	GBIF	
+V_VERBATIMCOORDINATES	verbatimCoordinates	1	dwc	GBIF	
+V_VERBATIMCOORDINATESYSTEM	verbatimCoordinateSystem	1	dwc	GBIF	
+V_VERBATIMDEPTH	verbatimDepth	1	dwc	GBIF	
+V_VERBATIMELEVATION	verbatimElevation	1	dwc	GBIF	
+V_VERBATIMEVENTDATE	verbatimEventDate	1	dwc	GBIF	
+V_VERBATIMLATITUDE	verbatimLatitude	1	dwc	GBIF	
+V_VERBATIMLOCALITY	verbatimLocality	1	dwc	GBIF	
+V_VERBATIMLONGITUDE	verbatimLongitude	1	dwc	GBIF	
+V_VERBATIMSRS	verbatimSRS	1	dwc	GBIF	
+V_VERBATIMTAXONRANK	verbatimTaxonRank	1	dwc	GBIF	
+V_VERNACULARNAME	vernacularName	1	dwc	GBIF	
+V_WATERBODY	waterBody	1	dwc	GBIF	
+V_YEAR	year	1	dwc	GBIF	
 VERBATIMCOORDINATES	verbatimCoordinates	1	dwc		
 VERBATIMCOORDINATESYSTEM	verbatimCoordinateSystem	1	dwc		
 VERBATIMDEPTH	verbatimDepth	1	dwc		
@@ -582,7 +582,7 @@ VERBATIMSRS	verbatimSRS	1	dwc
 VERBATIMTAXONRANK	verbatimTaxonRank	1	dwc		
 VERNACULARNAME	vernacularName	1	dwc		
 WATERBODY	waterBody	1	dwc		
-WEIGHT	weight	1	dwcloud		dynamicProperties as weight, or MeasurementOrFact
+WEIGHT	weight	1	dwcloud		"dynamicProperties as weight, or MeasurementOrFact"
 WELLID		1		FIMS	
 WORMSID	taxonID	1	dwc	FIMS	
 YEAR	year	1	dwc		

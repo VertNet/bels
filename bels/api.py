@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "api.py 2021-03-21T14:54-03:00"
+__version__ = "api.py 2021-07-01T18:54-03:00"
 
 from flask import Flask, request
 import bels
@@ -25,6 +25,8 @@ import uuid
 import datetime
 import json
 import re
+import csv
+import io
 #import logging
 
 from google.cloud import pubsub_v1
@@ -39,7 +41,6 @@ topic_name = 'csv_processing'
 
 @app.route('/api/csv', methods=['POST'])
 def csv():
-
     f = request.files['csv']
     email = request.form['email']
     filename = request.form['filename']
@@ -49,6 +50,27 @@ def csv():
 
     csv_content = f.read()
 
+    ###
+    # Try to get the header from uploaded file and figure out how to pass that to the 
+    # job that creates the tables to do bulk georeferencing.
+    # The following from 
+    # https://stackoverflow.com/questions/33070395/not-able-to-parse-a-csv-file-uploaded-using-flask/64280382#64280382
+    if not f:
+        return "File not uploaded."
+
+    stream = io.TextIOWrapper(f.stream._file, "UTF8", newline=None)
+    csv_input = csv.reader(stream)
+
+    fieldnames = None    
+    with open(stream, 'r') as infile:
+        reader = csv.DictReader(infile)
+        fieldnames = reader.fieldnames
+        if fieldnames is None:
+            return "File has no header."
+
+    stream.seek(0)
+    ###
+    
     client = storage.Client()
     # TODO: make bucket name configurable?
     bucket = client.get_bucket('localityservice')
@@ -66,6 +88,7 @@ def csv():
             'file_url': url, # Google Cloud Storage location of input file
             'email': email,
             'filename': filename, # Altered output file name
+            'header' : fieldnames, # Header read from uploaded file
         }
     })
     message_bytes = message_json.encode('utf-8')
@@ -167,7 +190,8 @@ def index():
 if __name__ == "__main__":
 	app.run(debug=True)
 
-# need an virtualenv to test
+# To test locally...
+# need a virtualenv to test
 # virtualenv --python=python3 env - only the 1st time
 # source env/bin/activate
 # pip install flask - only the 1st time

@@ -15,13 +15,13 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "dwca_utils.py 2021-03-21T16:46-03:00"
+__version__ = "dwca_utils.py 2021-06-30T16:52-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_utils.py"
 
 # This file contains common utility functions for dealing with the content of CSV and
 # TXT files.
 
-from .dwca_terms import simpledwctermlist
+from dwca_terms import simpledwctermlist
 from operator import itemgetter
 from uuid import uuid1
 import os.path
