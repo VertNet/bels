@@ -15,7 +15,7 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query.py 2021-07-04T01:19-03:00"
+__version__ = "bels_query.py 2021-07-13T17:59-03:00"
 
 import json
 import logging
@@ -29,6 +29,39 @@ BQ_PROJECT='localityservice'
 BQ_INPUT_DATASET='belsapi'
 BQ_OUTPUT_DATASET='results'
 
+def check_header_for_bels(header):
+    if header is None or len(header) == 0:
+        return None, 'No header to check'
+#    print(f'Check header:\n{header}')
+    lheader = []
+    for f in header:
+        lheader.append(f.lower())
+#    print(f'Lower-cased header:\n{lheader}')
+    if 'country' not in lheader and 'countrycode' not in lheader and \
+            'interpreted_countrycode' not in lheader:
+            return None, 'Header contains no recognizable country field.'
+    mapping = {}
+    # Make sure we have a country field that is the most derived version in the input
+    # file. The content of the field mapped to 'country' will be used to do an 
+    # interpretation to 'interpreted_countrycode' in the georeference matching service.
+    if 'interpreted_countrycode' in lheader:
+        mapping['country']='country_orig'
+        mapping['interpreted_countrycode']='country'
+    elif 'countrycode' in lheader:
+        mapping['country']='country_orig'
+        mapping['countrycode']='country'      
+    checked_header = []
+    for f in lheader:
+        try:
+            checked_header.append(mapping[f])
+#            print(f'Mapped {f} to {mapping[f]}')
+        except:
+            checked_header.append(f)
+#            print(f'Did not map {f}')
+#    print(f'Checked header\n{checked_header}')
+    msg = "Header checked"
+    return checked_header, msg
+ 
 def schema_from_header(header):
     # Create a BigQuery schema from the fields in a header.
     schema = []
@@ -44,15 +77,15 @@ def process_import_table(bq_client, input_table_id):
     output_table_id = BQ_PROJECT+'.'+BQ_OUTPUT_DATASET+'.'+table_name
 
     # Script georeference matching in BigQuery
-    query ="""
--- Interpret country to interprete_countryCode in case countryCode isn't populated
+    query =f"""
+-- Interpret country to interpreted_countrycode in case countryCode isn't populated
 CREATE TEMP TABLE interpreted AS (
 SELECT 
   a.*,
   b.countrycode AS interpreted_countryCode, 
   GENERATE_UUID() AS id
 FROM 
-  %s a 
+  `{input_table_id}` a 
 LEFT JOIN
   `localityservice.vocabs.countrycode_lookup` b 
 ON 
@@ -153,7 +186,7 @@ FROM georefs
 );
 
 -- Add georefs to original data as results
-CREATE OR REPLACE TABLE %s
+CREATE OR REPLACE TABLE `{output_table_id}`
 AS
 SELECT
   a.*,
@@ -166,11 +199,8 @@ FROM
 JOIN matcher b ON a.id=b.id
 LEFT JOIN georefs c ON b.id=c.id;
 """
-    # Fill out the query with the table ids
-    to_query = query % (input_table_id, output_table_id)
-    
     # Make a BigQuery API job request.
-    query_job = bq_client.query(to_query)
+    query_job = bq_client.query(query)
 
     # Wait for the job to complete. result is a RowIterator, which is actually not an
     # Iterator, but rather an Iterable. This, to iterate over it, use iter(result)
@@ -216,13 +246,15 @@ def import_table(bq_client, gcs_uri, header, table_name=None):
     table_id = BQ_PROJECT+'.'+BQ_INPUT_DATASET+'.'+table_name
 
     schema = schema_from_header(header)
-#    print('Header: %s\nSchema: %s' % (header, schema))
+    print(f'Header: {header}\nSchema: {schema}')
 
     job_config = bigquery.LoadJobConfig(
         schema=schema,
         skip_leading_rows=1,
+        write_disposition='WRITE_TRUNCATE',
+        allow_quoted_newlines=True,
         # The source format defaults to CSV, so the line below is optional.
-        source_format=bigquery.SourceFormat.CSV,
+        source_format=bigquery.SourceFormat.CSV
    )
 
     # First delete the table if it already exists
@@ -232,9 +264,9 @@ def import_table(bq_client, gcs_uri, header, table_name=None):
         try:
             bq_client.get_table(table_id)
         except Exception as e:
-            print('Table %s was deleted.' % (table_id))
+            print(f'Table {table_id} was deleted.')
     except Exception as e:
-        print('Table %s does not exist.' % (table_id))
+        print(f'Table {table_id} does not exist.')
 
     output_table_id = BQ_PROJECT+'.'+BQ_OUTPUT_DATASET+'.'+table_name
     try:
@@ -243,9 +275,9 @@ def import_table(bq_client, gcs_uri, header, table_name=None):
         try:
             bq_client.get_table(output_table_id)
         except Exception as e:
-            print('Table %s was deleted.' % (output_table_id))
+            print(f'Table {output_table_id} was deleted.')
     except Exception as e:
-        print('Table %s does not exist.' % (output_table_id))
+        print(f'Table {output_table_id} does not exist.')
 
     try:
         # Load the table from Google Cloud Storage to the identified table
@@ -253,15 +285,15 @@ def import_table(bq_client, gcs_uri, header, table_name=None):
         # Wait for the job to complete.
         load_job.result()
     except Exception as e:
-        logging.error("Unable to load %s to %s. %s" % (gcs_uri, table_id, e))
+        logging.error(f'Unable to load {gcs_uri} to {table_id}. {e}")
 
     destination_table = None
     try:
         destination_table = bq_client.get_table(table_id)
     except Exception as e:
-        print('Table %s was not created.' % (table_id))
+        print(f'Table {table_id} was not created.')
         return None
-    print("Loaded {} rows from {} into {}.".format(destination_table.num_rows, gcs_uri, table_id))
+    print(f'Loaded {destination_table.num_rows} rows from {gcs_uri} into {table_id}.')
     # Success. Return the full table identifier.
     return table_id
 
@@ -271,19 +303,20 @@ def delete_table(bq_client, table_id):
 
 def export_table(bq_client, table_id, destination_uri):
     # From https://cloud.google.com/bigquery/docs/exporting-data
-    # print('table_id: %s destination_uri: %s' % (table_id, destination_uri))
+    # print(f'table_id: {table_id} destination_uri: {destination_uri}')
+    job_config = bigquery.job.ExtractJobConfig()
+    job_config.compression = 'GZIP'
     extract_job = bq_client.extract_table(
         table_id,
 #        table_ref,
         destination_uri,
+        job_config = job_config
         # Location must match that of the source table.
 #        location="US",
     ) # API request
     # Wait for job to complete.
     result = extract_job.result()
-    print(
-        "Exported {} to {}".format(table_id, destination_uri)
-    )
+    print(f'Exported {table_id} to {destination_uri}')
     return result
 
 def query_location_by_id(base64locationhash, table_name=None):
@@ -300,15 +333,14 @@ def query_location_by_id(base64locationhash, table_name=None):
 
     if table_name is None:
         table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'locations_distinct_with_scores'
-#        SELECT TO_BASE64(dwc_location_hash) as locationid, * EXCEPT (dwc_location_hash)
-    query ="""
+    query =f"""
 SELECT 
     TO_BASE64(dwc_location_hash) as locationid, *
 FROM 
-    {0}
+    {table_name}
 WHERE 
-    TO_BASE64(dwc_location_hash)='{1}'
-""".format(table_name,base64locationhash)
+    TO_BASE64(dwc_location_hash)='{base64locationhash}'
+"""
     return query
 
 def query_location_by_hashid(locationhash, table_name=None):
@@ -325,15 +357,14 @@ def query_location_by_hashid(locationhash, table_name=None):
 
     if table_name is None:
         table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'locations_distinct_with_scores'
-    query ="""
+    query =f"""
 SELECT 
     dwc_location_hash as locationid, *
 FROM
-    {0}
+    {table_name}
 WHERE 
-    dwc_location_hash={1}
-""".format(table_name,locationhash)
-#    print('query = %s' % query)
+    dwc_location_hash={locationhash}
+"""
     return query
 
 def get_location_by_id(bq_client, base64locationhash):
@@ -380,13 +411,13 @@ def query_best_sans_coords_georef(matchstr, table_name=None):
 
     if table_name is None:
         table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_sans_coords_best_georef'
-    query ="""
+    query =f"""
 SELECT *
 FROM 
-    {0}
+    {table_name}
 WHERE 
-    matchme_sans_coords='{1}'
-""".format(table_name,matchstr)
+    matchme_sans_coords='{matchstr}'
+"""
     return query
 
 def query_best_sans_coords_georef_reduced(matchstr, table_name=None):
@@ -404,7 +435,7 @@ def query_best_sans_coords_georef_reduced(matchstr, table_name=None):
 
     if table_name is None:
         table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_sans_coords_best_georef'
-    query ="""
+    query =f"""
 SELECT 
     matchme_sans_coords as sans_coords_match_string,
     interpreted_countrycode as sans_coords_countrycode,
@@ -420,10 +451,10 @@ SELECT
     centroid_dist as sans_coords_centroid_distanceinmeters,
     georef_count as sans_coords_georef_count
 FROM 
-    {0}
+    {table_name}
 WHERE 
-    matchme_sans_coords='{1}'
-""".format(table_name,matchstr)
+    matchme_sans_coords='{matchstr}'
+"""
     return query
 
 def get_best_sans_coords_georef(bq_client, matchstr):
@@ -468,7 +499,7 @@ def get_best_sans_coords_georef_reduced(bq_client, matchstr):
     functionname = 'get_best_sans_coords_georef_reduced()'
     query = query_best_sans_coords_georef_reduced(matchstr)
     rows = run_bq_query(bq_client, query, 1)
-    #print('%s query: %s row count: %s' % (__version__, query, rows.total_rows) )
+    # print(f'{__version__} query: {query} row count: {rows.total_rows}')
     if rows.total_rows==0:
         # Create a dict of an empty row so that every record can have a result
         # This has to match the structure of the rows query result.
@@ -504,13 +535,13 @@ def query_best_with_verbatim_coords_georef(matchstr, table_name=None):
 
     if table_name is None:
         table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_verbatimcoords_best_georef'
-    query ="""
+    query =f"""
 SELECT *
 FROM 
-    {0}
+    {table_name}
 WHERE 
-    matchme='{1}'
-        """.format(table_name,matchstr)
+    matchme='{matchstr}'
+        """
     return query
 
 def query_best_with_verbatim_coords_georef_reduced(matchstr, table_name=None):
@@ -528,7 +559,7 @@ def query_best_with_verbatim_coords_georef_reduced(matchstr, table_name=None):
 
     if table_name is None:
         table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_verbatimcoords_best_georef'
-    query ="""
+    query =f"""
 SELECT 
   matchme as verbatim_coords_match_string,
   interpreted_countrycode as verbatim_coords_countrycode,
@@ -544,10 +575,10 @@ SELECT
   centroid_dist as verbatim_coords_centroid_distanceinmeters,
   georef_count as verbatim_coords_georef_count
 FROM 
-  {0}
+  {table_name}
 WHERE 
-  matchme='{1}'
-""".format(table_name,matchstr)
+  matchme='{matchstr}'
+"""
     return query
 
 def get_best_with_verbatim_coords_georef(bq_client, matchstr):
@@ -609,13 +640,13 @@ def query_best_with_coords_georef(matchstr, table_name=None):
 
     if table_name is None:
         table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_with_coords_best_georef'
-    query ="""
+    query =f"""
 SELECT *
 FROM 
-    {0}
+    {table_name}
 WHERE 
-    matchme_with_coords='{1}'
-""".format(table_name,matchstr)
+    matchme_with_coords='{matchstr}'
+"""
     return query
 
 def query_best_with_coords_georef_reduced(matchstr, table_name=None):
@@ -633,7 +664,7 @@ def query_best_with_coords_georef_reduced(matchstr, table_name=None):
 
     if table_name is None:
         table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_with_coords_best_georef'
-    query ="""
+    query =f"""
 SELECT 
   matchme_with_coords as with_coords_match_string,
   interpreted_countrycode as with_coords_countrycode,
@@ -649,10 +680,10 @@ SELECT
   centroid_dist as with_coords_centroid_distanceinmeters,
   georef_count as with_coords_georef_count
 FROM 
-  {0}
+  {table_name}
 WHERE 
-  matchme_with_coords='{1}'
-""".format(table_name,matchstr)
+  matchme_with_coords='{matchstr}'
+"""
     return query
 
 def get_best_with_coords_georef(bq_client, matchstr):

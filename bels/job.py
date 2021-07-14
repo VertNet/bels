@@ -16,7 +16,8 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "job.py 2021-07-04T01:35-3:00"
+__filename__ = 'job.py'
+__version__ = __filename__ + "2021-07-13T13:39-3:00"
 
 import base64
 import json
@@ -26,6 +27,7 @@ import os
 import tempfile
 import logging
 import re
+import time
 
 from contextlib import contextmanager
 from id_utils import dwc_location_hash, location_match_str, super_simplify
@@ -36,6 +38,7 @@ from bels_query import import_table
 from bels_query import export_table
 from bels_query import delete_table
 from bels_query import process_import_table
+from bels_query import check_header_for_bels
 from dwca_vocab_utils import darwinize_dict
 from bels.dwca_vocab_utils import darwinize_list
 from dwca_terms import locationmatchsanscoordstermlist
@@ -56,6 +59,8 @@ def process_csv_in_bulk(event, context):
     """
     import base64
 
+    starttime = time.perf_counter()
+    
     if 'data' not in event:
         raise ValueError('no data provided')
 
@@ -71,28 +76,39 @@ def process_csv_in_bulk(event, context):
     email = json_config['email']
     header = json_config['header']
 
-#    print('output_filename before: %s' % (output_filename))
-#    print('upload_file_url: %s' % (upload_file_url))
+#    print(f'output_filename before: {output_filename}')
+#    print(f'upload_file_url: {upload_file_url}')
     # Alter output file name to [filename]-[UUID of input file location].csv
     upload_file_parts = upload_file_url.split('/')
     file_suffix = upload_file_parts[len(upload_file_parts)-1].split('.')[0]
-    output_filename = '%s-%s.csv' % (output_filename, file_suffix)
-#    print('output_filename after: %s' % (output_filename))
 
     # Don't allow any of the following characters in output file names, substitute '_'
     output_filename = re.sub(r'[ ~`!@#$%^&*()_+={\[}\]|\\:;"<,>?\'/]', '_', output_filename)
 
-#    print('process_csv_in_bulk() upload_file_url: %s' % upload_file_url)
-#    print('process_csv_in_bulk() output_filename: %s' % output_filename)
-#    print('process_csv_in_bulk() header: %s' % header)
-#    print('process_csv_in_bulk() email: %s' % email)
+    output_filename = '%s-%s-*.csv.gz' % (output_filename, file_suffix)
+#    print(f'output_filename after: {output_filename}')
+
+#    print(f'process_csv_in_bulk() upload_file_url: {upload_file_url}')
+#    print(f'process_csv_in_bulk() output_filename: {output_filename}')
+#    print(f'process_csv_in_bulk() header: {header}')
+#    print(f'process_csv_in_bulk() email: {email}')
 
     # Darwinize the header
     vocabpath = '../vocabularies/'
     dwccloudfile = vocabpath + 'darwin_cloud.txt'
-#    print('raw fields: %s' % header)
+#    print(f'raw fields: {header}')
     darwinized_header = darwinize_list(header,dwccloudfile)
-#    print('dwc fields: %s' % darwinized_header)
+#    print(f'dwc fields: {darwinized_header}')
+    # Modify header to comply with requirements (minimum necessary fields, 
+    # no field duplication. etc.)
+    checked_header, msg = check_header_for_bels(darwinized_header)
+    if checked_header is None:
+        raise Exception(msg)
+#    print(f'Checked header\n{checked_header}')
+    preptime = time.perf_counter() - starttime
+    msg = f'Prep time = {preptime:1.3f}s\n'
+    logging.info(f'{msg}')
+#    print(f'{msg}')
 
     # Set up the blob where the uploaded file is located
 #     storage_client = storage.Client()
@@ -108,23 +124,38 @@ def process_csv_in_bulk(event, context):
 
     # Faster
     # Load the file into BigQuery table making table name from source file name by default
-    table_id = import_table(bq_client, upload_file_url, darwinized_header)
-    # print('process_csv_in_bulk() table_id: %s' % table_id)
-    
+    table_id = import_table(bq_client, upload_file_url, checked_header)
+    # print(f'process_csv_in_bulk() table_id: {table_id}')
+    importtime = time.perf_counter()-preptime
+    msg = f'Import time = {importtime:1.3f}s\n'
+    logging.info(f'{msg}')
+#    print(f'{msg}')
+
     # Do georeferencing on the imported table with SQL script
     output_table_id = process_import_table(bq_client, table_id)
-    # print('process_csv_in_bulk() output_table_id: %s' % output_table_id)
-    
+    # print(f'process_csv_in_bulk() output_table_id: {output_table_id}')
+    georeftime = time.perf_counter()-importtime
+    msg = f'Georef time = {georeftime:1.3f}s\n'
+    logging.info(f'{msg}')
+#    print(f'{msg}')
+
     # Export results to Google Cloud Storage
     # Make this work for big files that get split
-    destination_uri = "gs://localityservice/output/{}".format(output_filename)
-#    print('process_csv_in_bulk() destination_uri: %s' % destination_uri)
+    destination_uri = f'gs://localityservice/output/{output_filename}'
+#    print(f'process_csv_in_bulk() destination_uri: {destination_uri}')
     export_table(bq_client, output_table_id, destination_uri)
+    exporttime = time.perf_counter()-georeftime
+    elapsedtime = time.perf_counter()-starttime
+    msg = []
+    msg.append(f'Export time = {exporttime:1.3f}s\n')
+    msg.append(f'Total elapsed time = {elapsedtime:1.3f}s')
+    logging.info(''.join(msg))
+#    print(f'{''.join(msg)}'')
 
 #     blob = bucket.blob('output/' + filename)
 #     blob.make_public()
 #     output_url = blob.public_url
-#     print('process_csv() output_url: %s' % output_url)
+#     print(f'process_csv() output_url: {output_url}')
 
     # Remove the georefs table from BigQuery
 #     try:
@@ -133,23 +164,22 @@ def process_csv_in_bulk(event, context):
 #         try:
 #             bq_client.get_table(table_id)
 #         except Exception as e:
-#             print('Table %s was deleted.' % (table_id))
+#             print(f'Table {table_id} was deleted.')
 #     except Exception as e:
-#         print('Table %s does not exist.' % (table_id))
-
+#         print(f'Table {table_id} does not exist.')
 
 #     output = create_output(return_list)
 #     blob = bucket.blob('output/' + filename)
 #     blob.upload_from_string(output, content_type='application/csv')
 #     blob.make_public()
 #     output_url = blob.public_url
-#     print('process_csv() output_url: %s' % output_url)
+#     print(f'process_csv() output_url: {output_url}')
 
     # Store that output
 #     try:
 #         send_email(email, output_url)
 #     except Exception as e:
-#         print("Error sending email: %s. File stored at %s" % (e, output_url))
+#         print(f'Error sending email: {e}. File stored at {output_url}')
 
 def process_csv(event, context):
     """Background Cloud Function to be triggered by Pub/Sub.
@@ -162,9 +192,9 @@ def process_csv(event, context):
          `timestamp` field contains the publish time.
     """
     import base64
-
-    print("""This Function was triggered by messageId {} published at {}
-    """.format(context.event_id, context.timestamp))
+    s = []
+    s.append(f'This Function was triggered by messageId {context.event_id} ')
+    logging.info(''.join(s))
 
     if 'data' not in event:
         raise ValueError('no data provided')
@@ -183,10 +213,10 @@ def process_csv(event, context):
     # Don't allow any of the following characters in output file names, substitute '_'
     filename = re.sub(r'[ ~`!@#$%^&*()_+={\[}\]|\\:;"<,>?\'/]', '_', filename)
 
-    print('process_csv() file_url: %s' % file_url)
-    print('process_csv() filename: %s' % filename)
-    print('process_csv() header: %s' % header)
-    print('process_csv() email: %s' % email)
+    print(f'process_csv() file_url: {file_url}')
+    print(f'process_csv() filename: {filename}')
+    print(f'process_csv() header: {header}')
+    print(f'process_csv() email: {email}')
 
     storage_client = storage.Client()
     bucket = storage_client.get_bucket('localityservice')
@@ -202,13 +232,13 @@ def process_csv(event, context):
     blob.upload_from_string(output, content_type='application/csv')
     blob.make_public()
     output_url = blob.public_url
-    print('process_csv() output_url: %s' % output_url)
+    print(f'process_csv() output_url: {output_url}')
 
     # Store that output
     try:
         send_email(email, output_url)
     except Exception as e:
-        print("Error sending email: %s. File stored at %s" % (e, output_url))
+        print(f'Error sending email: {e}. File stored at {output_url}')
 
 def find_best_georef(client, filename):
     # vocabpath is the location of vocabulary files to test with
@@ -220,18 +250,20 @@ def find_best_georef(client, filename):
     listToCsv = []
     # logging.info('find_best_georef() filename: %s' % filename)
     for row in safe_read_csv_row(filename):
-        # logging.info('row: %s' % row)
+        # logging.info(f'row: {row}')
         rowdict = row_as_dict(row)
 
         loc = darwinize_dict(row_as_dict(row), darwincloudfile)
         lowerloc = lower_dict_keys(loc)
 
-        sanscoordslocmatchstr = location_match_str(locationmatchsanscoordstermlist, lowerloc)
+        sanscoordslocmatchstr = location_match_str(locationmatchsanscoordstermlist, \
+            lowerloc)
         matchstr = super_simplify(sanscoordslocmatchstr)
 
-#         s = '%s' % __version__
-#         s += ' getting best_georef for: %s' % matchstr
-#         print(s)
+#         s = []
+#         s.append(__version__)
+#         s.append(f' getting best_georef for: {matchstr}'
+#         print(''.join(s))
 
         result = get_best_sans_coords_georef_reduced(client, matchstr)
         if result:
@@ -239,15 +271,17 @@ def find_best_georef(client, filename):
                 if field in result:
                     result[field] = base64.b64encode(result[field]).decode('utf-8')
             row.update(result)
-#             s = '%s' % __version__
-#             s += ' best_georef: %s' % row
-#             print(s)
+#             s = []
+#             s.append(__version__)
+#             s.append(f' best_georef: {row}'
+#             print(''.join(s))
         else:
             # Create a dict of empty results for all results fields anyway to make sure
             # the header is correct even if the first result is empty.
-#             s = '%s' % __version__
-#             s += ' no georef found for: %s' % matchstr
-#             print(s)
+#             s = []
+#             s.append(__version__)
+#             s.append(f' no georef found for: {matchstr}'
+#             print(''.join(s))
             pass
 
         listToCsv.append(row)
@@ -274,7 +308,12 @@ def send_email(target, output_url):
     from_email = Email("vertnetinfo@vertnet.org")
     to_email = To(target)
     subject = "File ready for download from Biodiversity Enhanced Location Services (BELS)"
-    content = Content("text/plain", "A request to process a file uploaded to BELS to find the best existing georeferences and send the results to this email address has been completed. The resulting file can be found at %s. This file will be retained at this location for a period of at least 30 days." % output_url)
+    s = []
+    s.append('A request to process a file uploaded to BELS to find the best existing ')
+    s.append('georeferences and send the results to this email address has been ')
+    s.append(f'completed. The resulting file can be found at {output_url}. This file ')
+    s.append('will be retained at this location for a period of at least 30 days.')
+    content = Content("text/plain", ''.join(s))
     message = Mail(from_email, to_email, subject, content)
 
     sg.client.mail.send.post(request_body=message.get())

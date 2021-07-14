@@ -2,14 +2,15 @@ import setuptools
 import sys
 
 reqs = [
-    'regex==2020.11.13',
+    'regex==2021.4.4',
     'chardet==4.0.0',
-    'google-cloud-bigquery==2.6.1',
+    'google-cloud-bigquery==2.15.0',
     'flask',
-    'google-cloud-pubsub==2.2.0',
-    'google-cloud-storage==1.35.0',
+    'google-cloud-pubsub==2.4.1',
+    'google-cloud-storage==1.38.0',
     'requests',
     'sendgrid',
+    'logging',
 ]
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -18,7 +19,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 sys.dont_write_bytecode = True
 setuptools.setup(
     name="bels", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     description="Biodiversity Enhanced Location Services",
     long_description=long_description,
     long_description_content_type="text/markdown",

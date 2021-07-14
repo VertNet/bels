@@ -342,7 +342,7 @@ class DarwinizeHeaderTestCase(unittest.TestCase):
         header = read_header(outfilelocation)
         #print('response2:\n%s' % response)
         expected = ['dwc_location_hash','higherGeographyID','higherGeography','continent',
-        'waterBody','islandGroup','island','country','countryCode','stateProvince',
+        'waterBody','islandGroup','island','country','v_countryCode','stateProvince',
         'county','municipality','locality','verbatimLocality','minimumElevationInMeters',
         'maximumElevationInMeters','verbatimElevation','minimumDepthInMeters',
         'maximumDepthInMeters','verbatimDepth','minimumDistanceAboveSurfaceInMeters',

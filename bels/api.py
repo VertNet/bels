@@ -16,7 +16,8 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "api.py 2021-07-01T18:54-03:00"
+__filename__ = "api.py"
+__version__ = __filename__ + " 2021-07-13T13:39-03:00"
 
 from flask import Flask, request
 import bels
@@ -27,7 +28,7 @@ import json
 import re
 import csv
 import io
-#import logging
+import logging
 
 from google.cloud import pubsub_v1
 from google.cloud import storage
@@ -39,14 +40,19 @@ PROJECT_ID = os.getenv('GOOGLE_CLOUD_PROJECT')
 
 topic_name = 'csv_processing'
 
-@app.route('/api/csv', methods=['POST'])
-def csv():
+@app.route('/api/bels_csv', methods=['POST'])
+def bels_csv():
+    # Create a FileStorage object for the input file
     f = request.files['csv']
+
+    # Specify the email address to which to send the notification
     email = request.form['email']
+    
+    # Set the root file name for the output
     filename = request.form['filename']
 
     # Don't allow any of the following characters in output file names, substitute '_'
-    filename = re.sub(r'[ ~`!@#$%^&*()_+={\[}\]|\\:;"<,>?\'/]', '_', filename)
+    filename = re.sub(r'[ ~`!@#$%^&()+={\[}\]|\\:;"<,>?\'/]', '_', filename)
 
     csv_content = f.read()
 
@@ -58,17 +64,19 @@ def csv():
     if not f:
         return "File not uploaded."
 
-    stream = io.TextIOWrapper(f.stream._file, "UTF8", newline=None)
-    csv_input = csv.reader(stream)
-
-    fieldnames = None    
-    with open(stream, 'r') as infile:
-        reader = csv.DictReader(infile)
-        fieldnames = reader.fieldnames
-        if fieldnames is None:
-            return "File has no header."
-
-    stream.seek(0)
+#     stream = io.TextIOWrapper(f.stream._file, "UTF8", newline=None)
+#     csv_input = csv.reader(stream)
+# 
+    headerline = csv_content[:csv_content.index(b'\n')]
+    fieldnames = headerline.decode("utf-8").split(',')
+#     fieldnames = None    
+#     with open(csv_content, 'r') as infile:
+#         reader = csv.DictReader(infile)
+#         fieldnames = reader.fieldnames
+#         if fieldnames is None:
+#             return "File has no header."
+# 
+#     stream.seek(0)
     ###
     
     client = storage.Client()
@@ -76,12 +84,13 @@ def csv():
     bucket = client.get_bucket('localityservice')
 
     # Google Cloud Storage location for uploaded file
-    url = 'jobs/%s' % str(uuid.uuid4())
+    url = f'jobs/{str(uuid.uuid4())}'
     blob = bucket.blob(url)
     blob.upload_from_string(csv_content)
 
     # TODO: add PROJECT_ID
-    topic_path = publisher.topic_path(PROJECT_ID, topic_name)
+    topic_path = publisher.topic_path('localityservice', topic_name)
+#    topic_path = publisher.topic_path(PROJECT_ID, topic_name)
 
     message_json = json.dumps({
         'data': {
@@ -93,27 +102,34 @@ def csv():
     })
     message_bytes = message_json.encode('utf-8')
 
+    logging.info(message_json)
     # Publishes a message
     try:
         publish_future = publisher.publish(topic_path, data=message_bytes)
-        r = publish_future.result()  # Verify the publish succeeded
-        s = '%s publishing gave results' % __version__
-        print('Success print statement: %s' %s)
+        # Verify that publish() succeeded
+        r = publish_future.result()
+        s = f'Success publishing request {message_json}'
+        logging.info(s)
         app.logger.info(s)
 
         blacklist = ["email@example.com", "stuff@things.com"]
-        m = "An email with a link to the results for this request will be sent to %s." % email
+        m = []
         if email in blacklist:
-           m = "Email is disallowed to destination %s. Please try another email address." % email
-        return m
+           m.append(f'Email is disallowed to destination {email}. ')
+           m.append(f'Please try another email address.')
+        else:
+            m = f'An email with a link to the results will be sent to {email}.'
+        return ''.join(m)
     except Exception as e:
-        print('Exception print statement: %s' % e)
+        loggin.error(f'Exception print statement: {e}')
         app.logger.error(e)
         return (e, 500)
 
 @app.route('/')
 def index():
-	return '''
+    emailplaceholder = 'email@example.com'
+    outputfilenameplaceholder = 'georefsfoundforme.csv'
+	return f'''
 <!DOCTYPE html>
 <!--
 	/*
@@ -130,8 +146,8 @@ def index():
 	limitations under the License.
 	
 	__author__ = "John Wieczorek"
-	__copyright__ = {0}
-	__version__ = {1}
+	__copyright__ = {__copyright__}
+	__version__ = __version__
 	*/
 	-->
 <html>
@@ -141,10 +157,10 @@ def index():
 		<TITLE>BELS Georeference Matcher</TITLE>
 	</head>
 
-    <form method="post" action="/api/csv" enctype="multipart/form-data">
+    <form method="post" action="/api/bels_csv" enctype="multipart/form-data">
         <p><input type=file name=csv>
-        <p><input type=email name=email placeholder="email@example.com">
-        <p><input type=text name=filename placeholder="findgeorefsforme.csv">
+        <p><input type=email name=email placeholder="{emailplaceholder}">
+        <p><input type=text name=filename placeholder="{outputfilenameplaceholder}">
         <p><input type=submit value=Submit>
     </form>
 		<DIV id="divLinks" style="background-color: #FFFFFF";>
@@ -155,7 +171,7 @@ def index():
 						<TD width="60%" valign="MIDDLE">
 							<FONT size="2">
 								<P align="LEFT">
-									{0}
+									{__copyright__}
 							</FONT>
 						</TD>
 						<TD width="40%" valign="MIDDLE" align="RIGHT">
@@ -173,10 +189,10 @@ def index():
 				<TBODY>
 					<TR>
 						<TD width="50%" valign="MIDDLE">
-							<P>VertNet 20 Mar 2021 </P>
+							<P>VertNet 12 Jul 2021 </P>
 						</TD>
 						<TD width="50%" valign="MIDDLE" align="RIGHT">
-							<i>Version {1}</i>
+							<i>Version {__version__}</i>
 						</TD>
 					</TR>
 				</TBODY>
@@ -185,7 +201,7 @@ def index():
 		</DIV>
 	</body>
 </html>        
-    '''.format(__copyright__, __version__)
+'''
 
 if __name__ == "__main__":
 	app.run(debug=True)
@@ -195,5 +211,7 @@ if __name__ == "__main__":
 # virtualenv --python=python3 env - only the 1st time
 # source env/bin/activate
 # pip install flask - only the 1st time
+# Make sure the environment value is set for 'GOOGLE_CLOUD_PROJECT'
+# If there are changes in job.py, those need to be deployed to be used by running api.py locally
 # python3 api.py
-# curl -v --data-binary @test.csv http://127.0.0.1:5000/api/csv
+# curl -v --data-binary @test.csv http://127.0.0.1:5000/api/bels_csv
