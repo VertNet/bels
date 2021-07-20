@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-07-20T14:03-03:00"
+__version__ = __filename__ + ' ' + "2021-07-20T18:51-03:00"
 
 from flask import Flask, request
 import bels
@@ -67,6 +67,30 @@ def bels_csv():
 #     stream = io.TextIOWrapper(f.stream._file, "UTF8", newline=None)
 #     csv_input = csv.reader(stream)
 # 
+    first_newline = 2^63-1
+    first_return = 2^63-1
+    try:
+        first_newline = csv_content.index(b'\n')
+    except:
+        pass
+    try:
+        first_return = csv_content.index(b'\r')
+    except:
+        pass
+
+    seekto = None
+    if first_newline < first_return:
+        seekto = first_newline
+    elif first_return < first_newline:
+        seekto = first_return
+    
+    if seekto is None:
+        s = 'File has no more than one row, so it is data without a header or a header '
+        s += 'without data, in neither circumstance of which I am able to help you.'
+        print(s)
+        app.logger.error(s)
+        return -1
+
     headerline = csv_content[:csv_content.index(b'\n')]
     fieldnames = headerline.decode("utf-8").split(',')
 #     fieldnames = None    
