@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-20T14:00-3:00"
+__version__ = __filename__ + ' ' + "2021-07-20T14:35-3:00"
 
 import base64
 import json
@@ -108,7 +108,7 @@ def process_csv_in_bulk(event, context):
     preptime = time.perf_counter() - starttime
     msg = f'Prep time = {preptime:1.3f}s\n'
     logging.info(f'{msg}')
-    print(f'{msg}')
+    print(msg)
 
     # Set up the blob where the uploaded file is located
 #     storage_client = storage.Client()
@@ -125,21 +125,21 @@ def process_csv_in_bulk(event, context):
     # Faster
     # Load the file into BigQuery table making table name from source file name by default
 #    table_id = import_table(bq_client, upload_file_url, checked_header)
-    print(f'{darwinized_header}')
+    print(darwinized_header)
     table_id = import_table(bq_client, upload_file_url, darwinized_header)
     # print(f'process_csv_in_bulk() table_id: {table_id}')
     importtime = time.perf_counter()-preptime
     msg = f'Import time = {importtime:1.3f}s\n'
-    logging.info(f'{msg}')
-    print(f'{msg}')
+    logging.info(msg)
+    print(msg)
 
     # Do georeferencing on the imported table with SQL script
     output_table_id = process_import_table(bq_client, table_id)
     # print(f'process_csv_in_bulk() output_table_id: {output_table_id}')
     georeftime = time.perf_counter()-importtime
     msg = f'Georef time = {georeftime:1.3f}s\n'
-    logging.info(f'{msg}')
-    print(f'{msg}')
+    logging.info(msg)
+    print(msg)
 
     # Export results to Google Cloud Storage
     # Make this work for big files that get split
@@ -152,7 +152,7 @@ def process_csv_in_bulk(event, context):
     msg.append(f'Export time = {exporttime:1.3f}s\n')
     msg.append(f'Total elapsed time = {elapsedtime:1.3f}s')
     logging.info(''.join(msg))
-    print(f'{''.join(msg)}'')
+    print(''.join(msg))
 
 #     blob = bucket.blob('output/' + filename)
 #     blob.make_public()
