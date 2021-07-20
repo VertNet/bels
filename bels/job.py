@@ -66,6 +66,7 @@ def process_csv_in_bulk(event, context):
 
     config = base64.b64decode(event['data']).decode('utf-8')
     json_config = json.loads(config)
+    print(f'json_config going into job.py: {json_config}')
     json_config = json_config['data']
 
     # Google Cloud Storage location of input file
@@ -75,6 +76,7 @@ def process_csv_in_bulk(event, context):
     output_filename = json_config['output_filename'] 
     email = json_config['email']
     header = json_config['header']
+    print(f'header going to darwinize_header: {header}')
 
 #    print(f'output_filename before: {output_filename}')
 #    print(f'upload_file_url: {upload_file_url}')
@@ -98,6 +100,7 @@ def process_csv_in_bulk(event, context):
     dwccloudfile = vocabpath + 'darwin_cloud.txt'
 #    print(f'raw fields: {header}')
     darwinized_header = darwinize_list(header,dwccloudfile)
+    print(f'darwinized header: {darwinized_header}')
 #    print(f'dwc fields: {darwinized_header}')
     # Modify header to comply with requirements (minimum necessary fields, 
     # no field duplication. etc.)
@@ -125,7 +128,8 @@ def process_csv_in_bulk(event, context):
     # Faster
     # Load the file into BigQuery table making table name from source file name by default
 #    table_id = import_table(bq_client, upload_file_url, checked_header)
-    print(darwinized_header)
+    print(f'Prepping for import_table. upload_file_url: {upload_file_url}')
+    print(f'darwinized_header: {darwinized_header}')
     table_id = import_table(bq_client, upload_file_url, darwinized_header)
     # print(f'process_csv_in_bulk() table_id: {table_id}')
     importtime = time.perf_counter()-preptime
@@ -144,7 +148,9 @@ def process_csv_in_bulk(event, context):
     # Export results to Google Cloud Storage
     # Make this work for big files that get split
     destination_uri = f'gs://localityservice/output/{output_filename}'
-#    print(f'process_csv_in_bulk() destination_uri: {destination_uri}')
+
+    print(f'Prepping for export_table. destination_uri: {destination_uri}')
+    print(f'output_table_id: {output_table_id}')
     export_table(bq_client, output_table_id, destination_uri)
     exporttime = time.perf_counter()-georeftime
     elapsedtime = time.perf_counter()-starttime
