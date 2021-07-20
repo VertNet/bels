@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api_test.py"
-__version__ = __filename__ + ' ' + "2021-07-19T22:16-03:00"
+__version__ = __filename__ + ' ' + "2021-07-20T15:34-03:00"
 
 from bels.job import process_csv_in_bulk
 from collections import namedtuple
@@ -90,32 +90,48 @@ logging.basicConfig(level=logging.INFO)
 ## 17576 records. Size: 2.3MB Format: CSV Compression: None Prep: 0.42s Import: 9s 
 ## Georef: 23s Export: 12s Elapsed: 34s
 
-upload_file_to_test = 'gs://localityservice/jobs/test_matchme_sans_coords_best_georef.csv'
+# upload_file_to_test = 'gs://localityservice/jobs/test_matchme_sans_coords_best_georef.csv'
+# event = {
+#   'data': {
+#     'upload_file_url': upload_file_to_test,
+#     'email': 'gtuco.btuco@gmail.com',
+#     'output_filename': 'test_jrw_from_local',
+#     'header': [ 'dwc_location_hash', 'v_highergeographyid', 'v_highergeography', 
+#         'v_continent', 'v_waterbody', 'v_islandgroup', 'v_island', 'v_country', 
+#         'v_countrycode', 'v_stateprovince', 'v_county', 'v_municipality', 'v_locality', 
+#         'v_verbatimlocality', 'v_minimumelevationinmeters', 'v_maximumelevationinmeters', 
+#         'v_verbatimelevation', 'v_minimumdepthinmeters', 'v_maximumdepthinmeters', 
+#         'v_verbatimdepth', 'v_minimumdistanceabovesurfaceinmeters', 
+#         'v_maximumdistanceabovesurfaceinmeters', 'v_locationaccordingto', 
+#         'v_locationremarks', 'v_decimallatitude', 'v_decimallongitude', 
+#         'v_geodeticdatum', 'v_coordinateuncertaintyinmeters', 'v_coordinateprecision', 
+#         'v_pointradiusspatialfit', 'v_verbatimcoordinates', 'v_verbatimlatitude', 
+#         'v_verbatimlongitude', 'v_verbatimcoordinatesystem', 'v_verbatimsrs', 
+#         'v_footprintwkt', 'v_footprintsrs', 'v_footprintspatialfit', 'v_georeferencedby', 
+#         'v_georeferenceddate', 'v_georeferenceprotocol', 'v_georeferencesources', 
+#         'v_georeferenceverificationstatus', 'v_georeferenceremarks', 
+#         'matchme_sans_coords', 'unc_numeric', 'center', 
+#         'best_interpreted_decimallongitude', 'best_interpreted_decimallatitude', 
+#         'best_interpreted_countrycode', 'best_georeferencedby', 'best_georeferenceddate', 
+#         'best_georeferenceprotocol', 'best_georeferencesources', 
+#         'best_georeferenceremarks', 'georef_score', 'georef_count', 'max_uncertainty', 
+#         'centroid_dist', 'min_centroid_dist', 'matchid']
+#   }
+# }
+## 10 records. Size: 5.5KB Format: CSV Compression: None Prep: 0.42s Import: 12s 
+## Georef: 27s Export: 14s Elapsed: 40s
+
+upload_file_to_test = 'gs://localityservice/jobs/test_demo.csv'
 event = {
   'data': {
     'upload_file_url': upload_file_to_test,
     'email': 'gtuco.btuco@gmail.com',
-    'output_filename': 'test_jrw_from_local',
-    'header': [ 'dwc_location_hash', 'v_highergeographyid', 'v_highergeography', 
-        'v_continent', 'v_waterbody', 'v_islandgroup', 'v_island', 'v_country', 
-        'v_countrycode', 'v_stateprovince', 'v_county', 'v_municipality', 'v_locality', 
-        'v_verbatimlocality', 'v_minimumelevationinmeters', 'v_maximumelevationinmeters', 
-        'v_verbatimelevation', 'v_minimumdepthinmeters', 'v_maximumdepthinmeters', 
-        'v_verbatimdepth', 'v_minimumdistanceabovesurfaceinmeters', 
-        'v_maximumdistanceabovesurfaceinmeters', 'v_locationaccordingto', 
-        'v_locationremarks', 'v_decimallatitude', 'v_decimallongitude', 
-        'v_geodeticdatum', 'v_coordinateuncertaintyinmeters', 'v_coordinateprecision', 
-        'v_pointradiusspatialfit', 'v_verbatimcoordinates', 'v_verbatimlatitude', 
-        'v_verbatimlongitude', 'v_verbatimcoordinatesystem', 'v_verbatimsrs', 
-        'v_footprintwkt', 'v_footprintsrs', 'v_footprintspatialfit', 'v_georeferencedby', 
-        'v_georeferenceddate', 'v_georeferenceprotocol', 'v_georeferencesources', 
-        'v_georeferenceverificationstatus', 'v_georeferenceremarks', 
-        'matchme_sans_coords', 'unc_numeric', 'center', 
-        'best_interpreted_decimallongitude', 'best_interpreted_decimallatitude', 
-        'best_interpreted_countrycode', 'best_georeferencedby', 'best_georeferenceddate', 
-        'best_georeferenceprotocol', 'best_georeferencesources', 
-        'best_georeferenceremarks', 'georef_score', 'georef_count', 'max_uncertainty', 
-        'centroid_dist', 'min_centroid_dist', 'matchid']
+    'output_filename': 'test_demo',
+    'header': [ 'continent', 'country', 'countrycode', 'stateprovince', 'county', 
+        'municipality', 'locality', 'verbatimlocality', 'minimumelevationinmeters', 
+        'maximumelevationinmeters', 'verbatimelevation', 'v_locationaccordingto', 
+        'v_locationremarks', 'v_verbatimcoordinates', 'v_verbatimlatitude', 
+        'v_verbatimlongitude', 'v_verbatimcoordinatesystem']
   }
 }
 ## 10 records. Size: 5.5KB Format: CSV Compression: None Prep: 0.42s Import: 12s 

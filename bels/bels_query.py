@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2021-07-19T23:34-03:00"
+__version__ = __filename__ + ' ' + "2021-07-20T15:34-03:00"
 
 import json
 import logging
@@ -357,7 +357,7 @@ def export_table(bq_client, table_id, destination_uri):
         destination_uri,
         job_config = job_config,
         # Location must match that of the source table.
-        location="US",
+#        location="US",
     ) # API request
     # Wait for job to complete.
     result = extract_job.result()
