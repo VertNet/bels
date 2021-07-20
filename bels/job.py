@@ -38,7 +38,7 @@ from bels_query import import_table
 from bels_query import export_table
 from bels_query import delete_table
 from bels_query import process_import_table
-from bels_query import check_header_for_bels
+#from bels_query import check_header_for_bels
 from dwca_vocab_utils import darwinize_dict
 from bels.dwca_vocab_utils import darwinize_list
 from dwca_terms import locationmatchsanscoordstermlist
@@ -101,9 +101,9 @@ def process_csv_in_bulk(event, context):
 #    print(f'dwc fields: {darwinized_header}')
     # Modify header to comply with requirements (minimum necessary fields, 
     # no field duplication. etc.)
-    checked_header, msg = check_header_for_bels(darwinized_header)
-    if checked_header is None:
-        raise Exception(msg)
+#    checked_header, msg = check_header_for_bels(darwinized_header)
+#    if checked_header is None:
+#        raise Exception(msg)
 #    print(f'Checked header\n{checked_header}')
     preptime = time.perf_counter() - starttime
     msg = f'Prep time = {preptime:1.3f}s\n'
@@ -124,7 +124,8 @@ def process_csv_in_bulk(event, context):
 
     # Faster
     # Load the file into BigQuery table making table name from source file name by default
-    table_id = import_table(bq_client, upload_file_url, checked_header)
+#    table_id = import_table(bq_client, upload_file_url, checked_header)
+    table_id = import_table(bq_client, upload_file_url, darwinized_header)
     # print(f'process_csv_in_bulk() table_id: {table_id}')
     importtime = time.perf_counter()-preptime
     msg = f'Import time = {importtime:1.3f}s\n'

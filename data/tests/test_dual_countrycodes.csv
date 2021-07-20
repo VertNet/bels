@@ -1,0 +1,8 @@
+country, countryCode, v_countryCode
+Denmark, DKcc, DKvcc
+Denmark, , DKvcc
+Denmark, DKcc, 
+Denmark, ,
+, DKcc, DKvcc
+, , DKvcc
+, DKcc, 

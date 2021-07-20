@@ -15,7 +15,8 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "bels_query.py 2021-07-13T17:59-03:00"
+__filename__ = "bels_query.py"
+__version__ = __filename__ + " 2021-07-19T21:17-03:00"
 
 import json
 import logging
@@ -29,38 +30,38 @@ BQ_PROJECT='localityservice'
 BQ_INPUT_DATASET='belsapi'
 BQ_OUTPUT_DATASET='results'
 
-def check_header_for_bels(header):
-    if header is None or len(header) == 0:
-        return None, 'No header to check'
-#    print(f'Check header:\n{header}')
-    lheader = []
-    for f in header:
-        lheader.append(f.lower())
-#    print(f'Lower-cased header:\n{lheader}')
-    if 'country' not in lheader and 'countrycode' not in lheader and \
-            'interpreted_countrycode' not in lheader:
-            return None, 'Header contains no recognizable country field.'
-    mapping = {}
-    # Make sure we have a country field that is the most derived version in the input
-    # file. The content of the field mapped to 'country' will be used to do an 
-    # interpretation to 'interpreted_countrycode' in the georeference matching service.
-    if 'interpreted_countrycode' in lheader:
-        mapping['country']='country_orig'
-        mapping['interpreted_countrycode']='country'
-    elif 'countrycode' in lheader:
-        mapping['country']='country_orig'
-        mapping['countrycode']='country'      
-    checked_header = []
-    for f in lheader:
-        try:
-            checked_header.append(mapping[f])
-#            print(f'Mapped {f} to {mapping[f]}')
-        except:
-            checked_header.append(f)
-#            print(f'Did not map {f}')
-#    print(f'Checked header\n{checked_header}')
-    msg = "Header checked"
-    return checked_header, msg
+# def check_header_for_bels(header):
+#     if header is None or len(header) == 0:
+#         return None, 'No header to check'
+# #    print(f'Check header:\n{header}')
+#     lheader = []
+#     for f in header:
+#         lheader.append(f.lower())
+# #    print(f'Lower-cased header:\n{lheader}')
+#     if 'country' not in lheader and 'countrycode' not in lheader and \
+#             'interpreted_countrycode' not in lheader:
+#             return None, 'Header contains no recognizable country field.'
+#     mapping = {}
+#     # Make sure we have a country field that is the most derived version in the input
+#     # file. The content of the field mapped to 'country' will be used to do an 
+#     # interpretation to 'interpreted_countrycode' in the georeference matching service.
+#     if 'interpreted_countrycode' in lheader:
+#         mapping['country']='country_orig'
+#         mapping['interpreted_countrycode']='country'
+#     elif 'countrycode' in lheader:
+#         mapping['country']='country_orig'
+#         mapping['countrycode']='country'      
+#     checked_header = []
+#     for f in lheader:
+#         try:
+#             checked_header.append(mapping[f])
+# #            print(f'Mapped {f} to {mapping[f]}')
+#         except:
+#             checked_header.append(f)
+# #            print(f'Did not map {f}')
+# #    print(f'Checked header\n{checked_header}')
+#     msg = "Header checked"
+#     return checked_header, msg
  
 def schema_from_header(header):
     # Create a BigQuery schema from the fields in a header.
@@ -78,14 +79,57 @@ def process_import_table(bq_client, input_table_id):
 
     # Script georeference matching in BigQuery
     query =f"""
--- Interpret country to interpreted_countrycode in case countryCode isn't populated
+-- Georeference matching script. Input table is expected to have been Location column 
+-- names mapped to Darwin Core Location term names.
+BEGIN
+-- Make a table adding a field match_country to the input table, mapping the best existing
+-- matching country field in the input, prioritizing by countrycode, then country.
+-- First try filling from countrycode if it isn't NULL, country otherwise
+CREATE TEMP TABLE countrify AS (
+  SELECT 
+    *,
+    IF(countrycode IS NULL,country,countrycode) AS match_country
+  FROM 
+    `{input_table_id}`);
+-- If that didn't work because at least one of the two country-ish fields didn't exist,
+-- try filling from countrycode, assuming a missing country field was the cause.
+EXCEPTION WHEN ERROR THEN
+  BEGIN
+  CREATE TEMP TABLE countrify AS (
+    SELECT 
+      *,
+      countrycode AS match_country,
+    FROM 
+      `{input_table_id}`);
+-- If that didn't work, because countrycode didn't exist in the input table,
+-- try filling from country.
+  EXCEPTION WHEN ERROR THEN
+    BEGIN
+    CREATE TEMP TABLE countrify AS (
+    SELECT 
+      *,
+      country AS match_country,
+    FROM 
+      `{input_table_id}`);
+    EXCEPTION WHEN ERROR THEN
+-- If that didn't work, because country didn't exist in the input table, create the field
+-- anyway and fill it with NULLs.
+      CREATE TEMP TABLE countrify AS (
+      SELECT 
+        a.*,
+        NULL AS match_country,
+      FROM 
+        `{input_table_id}`);
+    END;
+  END;
+
 CREATE TEMP TABLE interpreted AS (
 SELECT 
   a.*,
   b.countrycode AS interpreted_countryCode, 
   GENERATE_UUID() AS id
 FROM 
-  `{input_table_id}` a 
+  countrify a 
 LEFT JOIN
   `localityservice.vocabs.countrycode_lookup` b 
 ON 
@@ -198,6 +242,7 @@ FROM
   interpreted a
 JOIN matcher b ON a.id=b.id
 LEFT JOIN georefs c ON b.id=c.id;
+END;
 """
     # Make a BigQuery API job request.
     query_job = bq_client.query(query)
@@ -285,7 +330,7 @@ def import_table(bq_client, gcs_uri, header, table_name=None):
         # Wait for the job to complete.
         load_job.result()
     except Exception as e:
-        logging.error(f'Unable to load {gcs_uri} to {table_id}. {e}")
+        logging.error(f'Unable to load {gcs_uri} to {table_id}. {e}')
 
     destination_table = None
     try:
