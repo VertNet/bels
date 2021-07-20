@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2021-07-20T15:34-03:00"
+__version__ = __filename__ + ' ' + "2021-07-20T15:52-03:00"
 
 import json
 import logging
@@ -122,6 +122,7 @@ EXCEPTION WHEN ERROR THEN
         `{input_table_id}`);
     END;
   END;
+END;
 
 CREATE TEMP TABLE interpreted AS (
 SELECT 
@@ -242,7 +243,6 @@ FROM
   interpreted a
 JOIN matcher b ON a.id=b.id
 LEFT JOIN georefs c ON b.id=c.id;
-END;
 """
     # Make a BigQuery API job request.
     query_job = bq_client.query(query)
