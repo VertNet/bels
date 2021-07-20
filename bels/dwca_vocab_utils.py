@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "dwca_vocab_utils.py"
-__version__ = __filename__ + ' ' + "2021-07-20T15:13-03:00"
+__version__ = __filename__ + ' ' + "2021-07-20T20:16-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_vocab_utils.py"
 
 # This file contains common utility functions for dealing with the vocabulary management
@@ -594,7 +594,7 @@ def darwinize_list(termlist, dwccloudfile, namespace=None):
     if os.path.isfile(dwccloudfile) == False:
         message = 'Darwin Cloud vocabulary file not found. Returning original term list. %s' % __version__
         logging.debug('message:\n%s' % message)
-        print(s)
+        print(message)
         return termlist
 
     if termlist is None or len(termlist)==0:
