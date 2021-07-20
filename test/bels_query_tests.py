@@ -47,7 +47,7 @@ from bels.bels_query import get_best_with_verbatim_coords_georef_reduced
 from bels.bels_query import get_location_by_id
 from bels.bels_query import get_location_by_hashid
 from bels.bels_query import row_as_dict
-from bels.bels_query import check_header_for_bels
+#from bels.bels_query import check_header_for_bels
 from decimal import *
 import json
 import unittest
