@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query_tests.py"
-__version__ = __filename__ + ' ' + "2021-07-19T21:17-03:00"
+__version__ = __filename__ + ' ' + "2021-07-19T23:37-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -47,11 +47,10 @@ from bels.bels_query import get_best_with_verbatim_coords_georef_reduced
 from bels.bels_query import get_location_by_id
 from bels.bels_query import get_location_by_hashid
 from bels.bels_query import row_as_dict
-#from bels.bels_query import check_header_for_bels
+#from .bels_query import check_header_for_bels
 from decimal import *
 import json
 import unittest
-
 
 class BELSQueryTestFramework():
     # testdatapath is the location of example files to test with
@@ -84,6 +83,7 @@ class BELSQueryTestCase(unittest.TestCase):
         self.framework = None
         self.BQ.close()
 
+## Deprecate
 #     def test_check_header_for_bels(self):
 #         print('Running test_check_header_for_bels')
 #         input_header = ['country', 'countrycode', 'interpreted_country']

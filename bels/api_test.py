@@ -16,10 +16,10 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__filename__ = 'api_test.py'
-__version__ = __filename__ + "2021-07-19T22:16-03:00"
+__filename__ = "api_test.py"
+__version__ = __filename__ + ' ' + "2021-07-19T22:16-03:00"
 
-from job import process_csv_in_bulk
+from bels.job import process_csv_in_bulk
 from collections import namedtuple
 import base64
 import json
@@ -51,7 +51,8 @@ logging.basicConfig(level=logging.INFO)
 #     'idigbio_decimallongitude_wgs84']
 #   }
 # }
-## 6825038 records. Size: 430MB Format: CSV Compression: GZIP Prep: 0.42s Import: 209s Georef: 596s Export: 257s Elapsed: 852s
+## 6825038 records. Size: 430MB Format: CSV Compression: GZIP Prep: 0.42s Import: 209s 
+## Georef: 596s Export: 257s Elapsed: 852s
 
 # upload_file_to_test = 'gs://localityservice/Geographyexport.csv'
 # event = {
@@ -66,7 +67,8 @@ logging.basicConfig(level=logging.INFO)
 #     'island', 'countrycode', 'error' ,'notHigherGeography', 'higherGeography']
 #   }
 # }
-## 197994 records. Size: 36.4MB Format: CSV Compression: None Prep: 0.42s Import: 20s Georef: 62s Export: 27s Elapsed: 89s
+## 197994 records. Size: 36.4MB Format: CSV Compression: None Prep: 0.42s Import: 20s 
+## Georef: 62s Export: 27s Elapsed: 89s
 
 # upload_file_to_test = 'gs://localityservice/UFHerpsForBELSMatch.csv'
 # event = {
@@ -79,7 +81,8 @@ logging.basicConfig(level=logging.INFO)
 #         'v_stateprovince', 'v_county', 'interpreted_countrycode']
 #   }
 # }
-## 17576 records. Size: 2.3MB Format: CSV Compression: None Prep: 0.42s Import: 9s Georef: 23s Export: 12s Elapsed: 34s
+## 17576 records. Size: 2.3MB Format: CSV Compression: None Prep: 0.42s Import: 9s 
+## Georef: 23s Export: 12s Elapsed: 34s
 
 upload_file_to_test = 'gs://localityservice/jobs/test_matchme_sans_coords_best_georef.csv'
 event = {
@@ -109,7 +112,8 @@ event = {
         'centroid_dist', 'min_centroid_dist', 'matchid']
   }
 }
-## 10 records. Size: 5.5KB Format: CSV Compression: None Prep: 0.42s Import: 12s Georef: 27s Export: 14s Elapsed: 40s
+## 10 records. Size: 5.5KB Format: CSV Compression: None Prep: 0.42s Import: 12s 
+## Georef: 27s Export: 14s Elapsed: 40s
 
 event = base64.b64encode(json.dumps(event).encode('utf-8'))
 event = {'data':event}

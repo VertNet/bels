@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + " 2021-07-19T22:13-03:00"
+__version__ = __filename__ + ' ' + "2021-07-19T22:13-03:00"
 
 from flask import Flask, request
 import bels

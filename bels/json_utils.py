@@ -15,7 +15,8 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "json_utils.py 2021-01-04T14:08-03:00"
+__filename__ = "json_utils.py"
+__version__ = __filename__ + ' ' + "2021-01-04T14:08-03:00"
 
 import json
 import base64

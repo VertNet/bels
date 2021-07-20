@@ -15,12 +15,13 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "csv_fieldcount_checker.py 2021-02-12T15:04-03:00"
+__filename__ = "csv_fieldcount_checker.py"
+__version__ = __filename__ + ' ' + "2021-07-19T23:34-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/csv_fieldcount_checker.py"
 
-from bels.dwca_utils import csv_field_checker
-from bels.dwca_utils import response
-from bels.dwca_utils import setup_actor_logging
+from .dwca_utils import csv_field_checker
+from .dwca_utils import response
+from .dwca_utils import setup_actor_logging
 import os
 import logging
 import argparse

@@ -15,7 +15,8 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "id_utils.py 2021-06-30T16:53-03:00"
+__filename__ = "id_utils.py"
+__version__ = __filename__ + ' ' + "2021-07-19T23:36-03:00"
 
 from .dwca_terms import locationmatchwithcoordstermlist
 from .dwca_terms import locationkeytermlist
