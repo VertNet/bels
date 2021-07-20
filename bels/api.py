@@ -212,6 +212,8 @@ if __name__ == "__main__":
 # source env/bin/activate
 # pip install flask - only the 1st time
 # Make sure the environment value is set for 'GOOGLE_CLOUD_PROJECT'
-# If there are changes in job.py, those need to be deployed to be used by running api.py locally
-# python3 api.py
+# If there are changes in job.py, those need to be deployed to be used in api.py locally
+# $ python api.py
+# open http://127.0.0.1:5000/ in a browser
+# Check that the version is as expected
 # curl -v --data-binary @test.csv http://127.0.0.1:5000/api/bels_csv

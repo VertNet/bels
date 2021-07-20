@@ -1,9 +1,28 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+__author__ = "Marie-Elise Lecoq"
+__contributors__ = "John Wieczorek"
+__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__filename__ = "main.py"
+__version__ = __filename__ + ' ' + "2021-07-20T00:40-03:00"
+
 """
 This file is provided as a wrapper to execute code from google cloud functions
 """
-
 import bels.job
-
 
 def csv_processing_entrypoint(event, context):
     """Background Cloud Function to be triggered by Pub/Sub.
@@ -16,7 +35,8 @@ def csv_processing_entrypoint(event, context):
          `timestamp` field contains the publish time.
     """
 
-    bels.job.process_csv(event, context)
+#    bels.job.process_csv(event, context)
+    bels.job.process_csv_in_bulk(event, context)
 
 # Expose api endpoint
 import bels.api

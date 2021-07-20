@@ -116,7 +116,7 @@ EXCEPTION WHEN ERROR THEN
 -- anyway and fill it with NULLs.
       CREATE TEMP TABLE countrify AS (
       SELECT 
-        a.*,
+        *,
         NULL AS match_country,
       FROM 
         `{input_table_id}`);
@@ -126,14 +126,14 @@ EXCEPTION WHEN ERROR THEN
 CREATE TEMP TABLE interpreted AS (
 SELECT 
   a.*,
-  b.countrycode AS interpreted_countryCode, 
+  b.countrycode AS interpreted_countrycode, 
   GENERATE_UUID() AS id
 FROM 
   countrify a 
 LEFT JOIN
   `localityservice.vocabs.countrycode_lookup` b 
 ON 
-  UPPER(a.country)=b.u_country
+  UPPER(a.match_country)=b.u_country
 );
 
 -- Make the match strings
