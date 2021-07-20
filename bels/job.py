@@ -30,7 +30,7 @@ import re
 import time
 
 from contextlib import contextmanager
-from id_utils import dwc_location_hash, location_match_str, super_simplify
+from .id_utils import dwc_location_hash, location_match_str, super_simplify
 from dwca_utils import safe_read_csv_row, lower_dict_keys
 from bels_query import get_location_by_hashid, row_as_dict
 from bels_query import get_best_sans_coords_georef_reduced
