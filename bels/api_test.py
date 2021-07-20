@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'api_test.py'
-__version__ = __filename__ + "2021-07-13T13:50-03:00"
+__version__ = __filename__ + "2021-07-19T22:16-03:00"
 
 from job import process_csv_in_bulk
 from collections import namedtuple
@@ -109,7 +109,7 @@ event = {
         'centroid_dist', 'min_centroid_dist', 'matchid']
   }
 }
-## 10 records. Size: 5.5KB Format: CSV Compression: None Prep: 0.42s Import: 13s Georef: 17s Export: 15s Elapsed: 31s
+## 10 records. Size: 5.5KB Format: CSV Compression: None Prep: 0.42s Import: 12s Georef: 27s Export: 14s Elapsed: 40s
 
 event = base64.b64encode(json.dumps(event).encode('utf-8'))
 event = {'data':event}
