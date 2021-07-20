@@ -28,7 +28,13 @@ import logging
 logging.basicConfig(level=logging.INFO)
 #logging.basicConfig(level=logging.DEBUG)
 
-# Uploaded file in GCS where the input Location fields to be tested are located. 
+
+# This test relies on files already accessible in Google Cloud Storage. A few of these 
+# have been prepared in advance for testing. Part of the preparation is to provide
+# the header for the file, as the processing of that is otherwise done by api.py, which 
+# isn't invoked here
+
+# Uploaded files in GCS where the input Location fields to be tested are located. 
 
 # upload_file_to_test = 'gs://localityservice/idigbio_2021-02-13a13.csv.gz'
 # event = {

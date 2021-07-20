@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-07-19T22:13-03:00"
+__version__ = __filename__ + ' ' + "2021-07-20T14:03-03:00"
 
 from flask import Flask, request
 import bels
@@ -94,9 +94,9 @@ def bels_csv():
 
     message_json = json.dumps({
         'data': {
-            'file_url': url, # Google Cloud Storage location of input file
+            'upload_file_url': url, # Google Cloud Storage location of input file
             'email': email,
-            'filename': filename, # Altered output file name
+            'output_filename': filename, # Altered output file name
             'header' : fieldnames, # Header read from uploaded file
         }
     })

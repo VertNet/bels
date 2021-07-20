@@ -355,9 +355,9 @@ def export_table(bq_client, table_id, destination_uri):
         table_id,
 #        table_ref,
         destination_uri,
-        job_config = job_config
+        job_config = job_config,
         # Location must match that of the source table.
-#        location="US",
+        location="US",
     ) # API request
     # Wait for job to complete.
     result = extract_job.result()
