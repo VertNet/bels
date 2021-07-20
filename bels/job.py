@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-20T14:35-3:00"
+__version__ = __filename__ + ' ' + "2021-07-20T15:13-3:00"
 
 import base64
 import json
@@ -76,7 +76,6 @@ def process_csv_in_bulk(event, context):
     output_filename = json_config['output_filename'] 
     email = json_config['email']
     header = json_config['header']
-    print(f'header going to darwinize_header: {header}')
 
 #    print(f'output_filename before: {output_filename}')
 #    print(f'upload_file_url: {upload_file_url}')
@@ -99,6 +98,8 @@ def process_csv_in_bulk(event, context):
     vocabpath = '../vocabularies/'
     dwccloudfile = vocabpath + 'darwin_cloud.txt'
 #    print(f'raw fields: {header}')
+    print(f'header: {header}')
+    print(f'dwccloudfile: {dwccloudfile}')
     darwinized_header = darwinize_list(header,dwccloudfile)
     print(f'darwinized header: {darwinized_header}')
 #    print(f'dwc fields: {darwinized_header}')
