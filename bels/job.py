@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-22T13:09-3:00"
+__version__ = __filename__ + ' ' + "2021-07-22T13:19-3:00"
 
 import base64
 import json
@@ -105,7 +105,7 @@ def process_csv_in_bulk(event, context):
     #   - be at most 128 characters long
     #   - can't be blank
     # In addition we do not want duplicate field names
-    bigqueryized_header = bigquerified_header(darwinized_header)
+    bigqueryized_header = bigquerify_header(darwinized_header)
     i = 1
     for f in darwinized_header:
         if f == '' or f is None:
