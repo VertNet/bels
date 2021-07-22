@@ -15,7 +15,8 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "id_utils_tests.py 2021-01-08T17:15-03:00"
+__filename__ = "id_utils_tests.py"
+__version__ = "2021-07-20T22:31-03:00"
 
 # This file contains unit tests for the functions in id_utils.
 #
@@ -48,7 +49,7 @@ class IDUtilsTestCase(unittest.TestCase):
     # testdatapath is the location of example files to test with
     testdatapath = '../data/tests/'
     # vocabpath is the location of vocabulary files to test with
-    vocabpath = '../vocabularies/'
+    vocabpath = '../bels/vocabularies/'
 
     # following are files used as input during the tests, don't remove these
     darwincloudfile = vocabpath + 'darwin_cloud.txt'

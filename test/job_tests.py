@@ -16,7 +16,7 @@
 __author__ = "Marie-Elise Lecoq"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job_tests.py'
-__version__ = __filename__ + "2021-07-13T20:49-03:00"
+__version__ = __filename__ + "2021-07-20T22:02-03:00"
 
 # This file contains unit tests for the job functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -34,7 +34,7 @@ class BELSQueryTestFramework():
     # testdatapath is the location of example files to test with
     testdatapath = '../data/tests/'
     # vocabpath is the location of vocabulary files to test with
-    vocabpath = '../vocabularies/'
+    vocabpath = './vocabularies/'
     # following are files used as input during the tests, don't remove these
     locationswithhashfile = testdatapath + 'test_locations_with_hash.csv'
 

@@ -16,10 +16,11 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2021-07-20T15:52-03:00"
+__version__ = __filename__ + ' ' + "2021-07-21T19:52-03:00"
 
 import json
 import logging
+import re
 from google.cloud import bigquery
 from .dwca_terms import locationkeytermlist
 from .json_utils import CustomJsonEncoder
@@ -69,6 +70,27 @@ def schema_from_header(header):
     for field in header:
         schema.append(bigquery.SchemaField(field, "STRING"))
     return schema
+
+def bigquerify_header(header):
+    # The rules for field names in BigQuery are:
+    #   - start with a letter or underscore
+    #   - contain only letters, numbers, and underscores, 
+    #   - be at most 128 characters long
+    #   - can't be blank
+    bigqueryized_header = []
+    i = 1
+    for f in header:
+        if f == '' or f is None:
+            f = str(i)
+        if f[0] != '_' and f[0].isalpha()==False:
+            f = '_' + f
+        f = re.sub(r'[^\w_]','_',f)
+        while f in bigqueryized_header:
+            f = '_' + f
+        f = f[0:127]
+        bigqueryized_header.append(f)
+        i += 1
+    return bigqueryized_header
 
 def process_import_table(bq_client, input_table_id):
     if input_table_id is None:

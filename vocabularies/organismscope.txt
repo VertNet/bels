@@ -1,8 +1,0 @@
-organismscope	standard	vetted
-CLONE	clone	1
-COLONY	colony	1
-INDIVIDUAL	multicellular organism	1
-LOT	lot	1
-PACK	pack	1
-POPULATION	population	1
-VIRUS	virus	1

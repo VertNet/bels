@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-20T15:13-3:00"
+__version__ = __filename__ + ' ' + "2021-07-20T21:57-3:00"
 
 import base64
 import json
@@ -38,6 +38,7 @@ from .bels_query import import_table
 from .bels_query import export_table
 from .bels_query import delete_table
 from .bels_query import process_import_table
+from .bels_query import bigquerified_header
 #from .bels_query import check_header_for_bels
 from .dwca_vocab_utils import darwinize_dict
 from .dwca_vocab_utils import darwinize_list
@@ -89,19 +90,34 @@ def process_csv_in_bulk(event, context):
     output_filename = '%s-%s-*.csv.gz' % (output_filename, file_suffix)
 #    print(f'output_filename after: {output_filename}')
 
-#    print(f'process_csv_in_bulk() upload_file_url: {upload_file_url}')
-#    print(f'process_csv_in_bulk() output_filename: {output_filename}')
-#    print(f'process_csv_in_bulk() header: {header}')
-#    print(f'process_csv_in_bulk() email: {email}')
-
     # Darwinize the header
-    vocabpath = '../vocabularies/'
+    vocabpath = './vocabularies/'
     dwccloudfile = vocabpath + 'darwin_cloud.txt'
 #    print(f'raw fields: {header}')
     print(f'header: {header}')
     print(f'dwccloudfile: {dwccloudfile}')
     darwinized_header = darwinize_list(header,dwccloudfile)
     print(f'darwinized header: {darwinized_header}')
+    
+    # Finally, the rules for field names in BigQuery are:
+    #   - start with a letter or underscore
+    #   - contain only letters, numbers, and underscores, 
+    #   - be at most 128 characters long
+    #   - can't be blank
+    # In addition we do not want duplicate field names
+    bigqueryized_header = bigquerified_header(darwinized_header)
+    i = 1
+    for f in darwinized_header:
+        if f == '' or f is None:
+            f = str(i)
+        elif f[0] != '_' and f[0].isalpha()==False:
+            f = '_' + f
+        f = re.sub(r'[^0-9a-zA-Z_]','_',f)
+        while f in bigqueryized_header:
+            f = '_' + f
+        f = f[0:127]
+        bigqueryized_header.append(f)
+    
 #    print(f'dwc fields: {darwinized_header}')
     # Modify header to comply with requirements (minimum necessary fields, 
     # no field duplication. etc.)
@@ -252,7 +268,7 @@ def process_csv(event, context):
 def find_best_georef(client, filename):
     # vocabpath is the location of vocabulary files to test with
     dirname = os.path.dirname(__file__)
-    vocabpath = os.path.join(dirname, '../vocabularies/')
+    vocabpath = os.path.join(dirname, './vocabularies/')
 
     darwincloudfile = os.path.join(vocabpath, 'darwin_cloud.txt')
     

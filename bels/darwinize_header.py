@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "darwinize_header.py"
-__version__ = __filename__ + ' ' + "2021-07-19T23:35-03:00"
+__version__ = __filename__ + ' ' + "2021-07-20T21:56-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/darwinize_header.py"
 
 from .dwca_vocab_utils import darwinize_list
@@ -228,7 +228,7 @@ def main():
         s =  'syntax:\n'
         s += 'python darwinize_header.py'
         s += ' -w ./workspace'
-        s += ' -v ./data/vocabularies/darwin_cloud.txt'
+        s += ' -v ./vocabularies/darwin_cloud.txt'
         s += ' -o darwinized.csv'
         s += ' -i ./data/tests/test_eight_specimen_records.csv'
         s += ' -n yes'

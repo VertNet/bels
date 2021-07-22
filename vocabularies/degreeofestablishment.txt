@@ -1,1 +1,0 @@
-degreeofestablishment	standard	vettedNATIVE	native	1CAPTIVE	captive	1CULTIVATED	cultivated	1RELEASED	released	1FAILING	failing	1CASUAL	casual	1REPRODUCING	reproducing	1ESTABLISHED	established	1COLONISING	colonising	1INVASIVE	invasive	1WIDESPREADINVASIVE	widespreadInvasive	1

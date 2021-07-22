@@ -1,1 +1,0 @@
-pathway	standard	vettedRELEASEDFORUSE	releasedForUse	1OTHERESCAPE	otherEscape	1TRANSPORTCONTAMINANT	transportContaminant	1TRANSPORTSTOWAWAY	transportStowaway	1CORRIDOR	corridor	1UNAIDED	unaided	1

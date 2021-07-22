@@ -1,6 +1,0 @@
-occurrencestatus	standard	vetted
-0	absent	1
-1	present	1
-ABSENT	absent	1
-OCCSTAT		1
-PRESENT	present	1

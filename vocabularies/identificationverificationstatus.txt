@@ -1,3 +1,0 @@
-identificationverificationstatus	standard	vetted
-UNKNOWN	unverified	1
-UNVERIFIED	unverified	1

@@ -15,7 +15,8 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "dwca_vocab_utils_tests.py 2021-01-10T00:50-03:00"
+__filename__ + "dwca_vocab_utils_tests.py"
+__version__ = "2021-07-20T22:01-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/test/dwca_vocab_utils_test.py"
 
 # This file contains unit tests for the functions in dwca_vocab_utils.
@@ -58,7 +59,7 @@ class DWCAVocabUtilsTestFramework():
     # testdatapath is the location of example files to test with
     testdatapath = '../data/tests/'
     # vocabpath is the location of vocabulary files to test with
-    vocabpath = '../vocabularies/'
+    vocabpath = './vocabularies/'
 
     # following are files used as input during the tests, don't remove these
     compositetestfile = testdatapath + 'test_eight_specimen_records.csv'

@@ -15,7 +15,8 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "darwinize_header_tests.py 2021-01-08T16:56-03:00"
+__filename__ = "darwinize_header_tests.py"
+__version__ = __filename__ + ' ' + "2021-07-20T22:00-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/test/darwinize_header_test.py"
 
 # This file contains unit tests for the darwinize_header function.
@@ -38,7 +39,7 @@ class DarwinizeHeaderTestFramework():
     """Test framework for Darwinize Header."""
     # location for the test inputs and outputs
     testdatapath = '../data/tests/'
-    vocabpath = '../vocabularies/'
+    vocabpath = '../bels/vocabularies/'
 
     # input data files to tests, don't remove these
     testfile1 = testdatapath + 'test_eight_records_utf8_lf.csv'
@@ -371,7 +372,7 @@ class DarwinizeHeaderTestCase(unittest.TestCase):
         'best_interpreted_countrycode','best_interpreted_decimallatitude',
         'best_interpreted_decimallongitude','center','centroid_dist','dwc_location_hash',
         'georef_count','georef_score','matchid','matchme_sans_coords','max_uncertainty',
-        'min_centroid_dist','unc_numeric']
+        'min_centroid_dist','unc_numeric', 'v_countryCode']
         s = 'From input: %s\nFound:\n%s\nExpected:\n%s' % (testfile1, notdwc, expected)
         self.assertEqual(notdwc, expected, s)
 
