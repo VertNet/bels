@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-22T13:19-3:00"
+__version__ = __filename__ + ' ' + "2021-07-22T13:53-3:00"
 
 import base64
 import json
@@ -91,7 +91,7 @@ def process_csv_in_bulk(event, context):
 #    print(f'output_filename after: {output_filename}')
 
     # Darwinize the header
-    vocabpath = './vocabularies/'
+    vocabpath = './bels/vocabularies/'
     dwccloudfile = vocabpath + 'darwin_cloud.txt'
 #    print(f'raw fields: {header}')
     print(f'header: {header}')

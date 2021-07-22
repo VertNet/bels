@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-07-20T18:51-03:00"
+__version__ = __filename__ + ' ' + "2021-07-22T13:29-03:00"
 
 from flask import Flask, request
 import bels
@@ -91,7 +91,7 @@ def bels_csv():
         app.logger.error(s)
         return -1
 
-    headerline = csv_content[:csv_content.index(b'\n')]
+    headerline = csv_content[:seekto]
     fieldnames = headerline.decode("utf-8").split(',')
 #     fieldnames = None    
 #     with open(csv_content, 'r') as infile:

@@ -115,8 +115,10 @@ class BELSQueryTestCase(unittest.TestCase):
     def test_bigquerify_header(self):
         print('Running test_bigquerify_header')
         input_fields = ['a', '1', '', '_', '$', u'ł', 'm"@#%', 'test', 'test', 'test', \
+            'v_verbatimcoordinates\r', \
 '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789']
         target = ['a', '_1', '_3', '_', '__', 'ł', 'm____', 'test', '_test', '__test', \
+            'v_verbatimcoordinates', \
 '_012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345']
         result = bigquerify_header(input_fields)
         self.assertEqual(result, target)
