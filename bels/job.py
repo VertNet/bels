@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-20T21:57-3:00"
+__version__ = __filename__ + ' ' + "2021-07-22T13:09-3:00"
 
 import base64
 import json
@@ -38,7 +38,7 @@ from .bels_query import import_table
 from .bels_query import export_table
 from .bels_query import delete_table
 from .bels_query import process_import_table
-from .bels_query import bigquerified_header
+from .bels_query import bigquerify_header
 #from .bels_query import check_header_for_bels
 from .dwca_vocab_utils import darwinize_dict
 from .dwca_vocab_utils import darwinize_list
