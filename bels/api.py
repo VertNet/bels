@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-07-22T15:11-03:00"
+__version__ = __filename__ + ' ' + "2021-07-22T18:55-03:00"
 
 from flask import Flask, request
 import bels
@@ -43,31 +43,63 @@ topic_name = 'csv_processing'
 
 @app.route('/api/bels_csv', methods=['POST'])
 def bels_csv():
-    # Create a FileStorage object for the input file
-    f = request.files['csv']
-
-    # Specify the email address to which to send the notification
+    # Retrieve the HTTP POST request parameter value for 'email' from 'request.form' 
+    # dictionary.
+    # Specifies the email address to which to send the notification
     email = request.form['email']
     
+    # An email address must be provided.
+    if email is None or len(email)==0:
+        s = f'A notification email address must be provided.'
+        app.logger.error(s)
+        return s, 400  # 400 Bad Request
+
+    # Do not accept invalid email addresses.
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    if re.match(regex, email) == False:
+        s = f'{email} is not a valid email address.'
+        app.logger.error(s)
+        return s, 400  # 400 Bad Request
+ 
+    # Do not accept the following email addresses.
+    blacklist = ["email@example.com", "stuff@things.com"]
+    m = []
+    if email.lower() in blacklist:
+        s = f'Email email address {email} is not allowed. '
+        s += f'Please try another email address.'
+        app.logger.error(s)
+        return s, 400  # 400 Bad Request
+
     # Set the root file name for the output
     filename = request.form['filename']
+
+    # An file name must be provided.
+    if filename is None or len(filename)==0:
+        s = f'A name for the output file must be provided.'
+        app.logger.error(s)
+        return s, 400  # 400 Bad Request
 
     # Don't allow any of the following characters in output file names, substitute '_'
     filename = re.sub(r'[ ~`!@#$%^&()+={\[}\]|\\:;"<,>?\'/]', '_', filename)
 
+    # Create a FileStorage object for the input file
+    f = request.files['csv']
+
+    # An input file  must be provided.
+    if f is None:
+        s = f'Input file was not uploaded.'
+        app.logger.error(s)
+        return s, 400  # 400 Bad Request
+
     csv_content = f.read()
+    
+    # The input file can not be empty.
+    if len(csv_content) == 0:
+        s = f'Input file can not be empty.'
+        app.logger.error(s)
+        return s, 400  # 400 Bad Request
 
-    ###
-    # Try to get the header from uploaded file and figure out how to pass that to the 
-    # job that creates the tables to do bulk georeferencing.
-    # The following from 
-    # https://stackoverflow.com/questions/33070395/not-able-to-parse-a-csv-file-uploaded-using-flask/64280382#64280382
-    if not f:
-        return "File not uploaded."
-
-#     stream = io.TextIOWrapper(f.stream._file, "UTF8", newline=None)
-#     csv_input = csv.reader(stream)
-# 
+    # Try to get the header from uploaded file.
     first_newline = 2^63-1
     first_return = 2^63-1
     try:
@@ -79,33 +111,24 @@ def bels_csv():
     except:
         pass
 
+    # Find the erlier of \r or \n in the file. This should be the end of the header.
     seekto = None
     if first_newline < first_return:
         seekto = first_newline
     elif first_return < first_newline:
         seekto = first_return
-    
+
     if seekto is None:
         s = 'File has no more than one row, so it is data without a header or a header '
         s += 'without data, in neither circumstance of which I am able to help you.'
-        print(s)
         app.logger.error(s)
-        return -1
+        return s, 400  # 400 Bad Request
 
+    # Get the header line and split on commas. Requires the input to be comma-separated.
     headerline = csv_content[:seekto]
     fieldnames = headerline.decode("utf-8").split(',')
-#     fieldnames = None    
-#     with open(csv_content, 'r') as infile:
-#         reader = csv.DictReader(infile)
-#         fieldnames = reader.fieldnames
-#         if fieldnames is None:
-#             return "File has no header."
-# 
-#     stream.seek(0)
-    ###
     
     client = storage.Client()
-    # TODO: make bucket name configurable?
     bucket = client.get_bucket(PROJECT_ID)
 
     # Google Cloud Storage location for uploaded file
@@ -116,6 +139,7 @@ def bels_csv():
     gcs_uri = f'gs://{PROJECT_ID}/{blob_location}'
     topic_path = publisher.topic_path(PROJECT_ID, topic_name)
 
+    # Create the message to publish.
     message_json = json.dumps({
         'data': {
             'upload_file_url': gcs_uri, # Google Cloud Storage location of input file
@@ -127,7 +151,11 @@ def bels_csv():
     message_bytes = message_json.encode('utf-8')
 
     logging.info(message_json)
-    # Publishes a message
+
+    # Publish the message to the Cloud Pub/Sub topic given by topic_path. This topic is 
+    # the trigger for the Cloud functions that subscribe to it. Specifically in this case 
+    # csv_processing-1, which gets all the georeferences it can matching the localities
+    # in the input file.
     try:
         publish_future = publisher.publish(topic_path, data=message_bytes)
         # Verify that publish() succeeded
@@ -136,23 +164,16 @@ def bels_csv():
         logging.info(s)
         app.logger.info(s)
 
-        blacklist = ["email@example.com", "stuff@things.com"]
-        m = []
-        if email in blacklist:
-           m.append(f'Email is disallowed to destination {email}. ')
-           m.append(f'Please try another email address.')
-        else:
-            m = f'An email with a link to the results will be sent to {email}.'
-        return ''.join(m)
+        return f'An email with a link to the results will be sent to {email}.'
     except Exception as e:
-        loggin.error(f'Exception print statement: {e}')
+        loggin.error(e)
         app.logger.error(e)
         return (e, 500)
 
 @app.route('/')
 def index():
-    emailplaceholder = 'email@example.com'
-    outputfilenameplaceholder = 'georefsfoundforme.csv'
+    emailplaceholder = 'Notification email address'
+    outputfilenameplaceholder = 'Output file name (e.g.,georefsfoundforme.csv)'
     return f'''
 <!DOCTYPE html>
 <!--
@@ -183,8 +204,8 @@ def index():
 
     <form method="post" action="/api/bels_csv" enctype="multipart/form-data">
         <p><input type=file name=csv>
-        <p><input type=email name=email placeholder="{emailplaceholder}">
-        <p><input type=text name=filename placeholder="{outputfilenameplaceholder}">
+        <p><input type=email name=email placeholder="{emailplaceholder}" size="50">
+        <p><input type=text name=filename placeholder="{outputfilenameplaceholder}" size="50">
         <p><input type=submit value=Submit>
     </form>
         <DIV id="divLinks" style="background-color: #FFFFFF";>

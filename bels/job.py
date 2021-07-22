@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-22T13:53-3:00"
+__version__ = __filename__ + ' ' + "2021-07-22T18:28-3:00"
 
 import base64
 import json
@@ -176,6 +176,7 @@ def process_csv_in_bulk(event, context):
     logging.info(''.join(msg))
     print(''.join(msg))
 
+    # Output is already public. The following is not necessary.
 #     blob = bucket.blob('output/' + filename)
 #     blob.make_public()
 #     output_url = blob.public_url
@@ -192,18 +193,11 @@ def process_csv_in_bulk(event, context):
 #     except Exception as e:
 #         print(f'Table {table_id} does not exist.')
 
-#     output = create_output(return_list)
-#     blob = bucket.blob('output/' + filename)
-#     blob.upload_from_string(output, content_type='application/csv')
-#     blob.make_public()
-#     output_url = blob.public_url
-#     print(f'process_csv() output_url: {output_url}')
-
-    # Store that output
-#     try:
-#         send_email(email, output_url)
-#     except Exception as e:
-#         print(f'Error sending email: {e}. File stored at {output_url}')
+    # Notify the receiving party by email given.
+    try:
+        send_email(email, output_url)
+    except Exception as e:
+        print(f'Error sending email: {e}. File stored at {output_url}')
 
 def process_csv(event, context):
     """Background Cloud Function to be triggered by Pub/Sub.
