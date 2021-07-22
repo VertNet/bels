@@ -1,0 +1,24 @@
+establishmentmeans	standard	vetted
+?	uncertain	1
+ACCIDENTAL TRANSPORT	introduced	1
+CAPTIVE	introducedAssistedColonisation	1
+CULTIVATED	introducedAssistedColonisation	1
+DOMESTIC	introducedAssistedColonisation	1
+DOMESTIC?	introducedAssistedColonisation	1
+DOMESTICATED	introducedAssistedColonisation	1
+EM		1
+ESCAPED FROM CAPTIVITY	vagrant	1
+HUMAN DEPOSITION	uncertain	1
+INVASIVE	introduced	1
+MANAGED	introducedAssistedColonisation	1
+NATIVE	native	1
+NATIVO	native	1
+PURCHASED	uncertain	1
+UNCERTAIN	uncertain	1
+UNKNOWN	uncertain	1
+WILD	native	1
+WILD CAUGHT	native	1
+NATIVEREINTRODUCED	nativeIntroduced	1
+INTRODUCED	introduced	1
+INTRODUCEDASSISTEDCOLINISATION	introducedAssistedColonisation	1
+VAGRANT	vagrant	1

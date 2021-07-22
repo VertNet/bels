@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api_test.py"
-__version__ = __filename__ + ' ' + "2021-07-20T15:34-03:00"
+__version__ = __filename__ + ' ' + "2021-07-22T15:51-03:00"
 
 from bels.job import process_csv_in_bulk
 from collections import namedtuple
@@ -134,8 +134,8 @@ event = {
         'v_verbatimlongitude', 'v_verbatimcoordinatesystem']
   }
 }
-## 10 records. Size: 5.5KB Format: CSV Compression: None Prep: 0.42s Import: 12s 
-## Georef: 27s Export: 14s Elapsed: 40s
+## 10 records. Size: 5.5KB Format: CSV Compression: None Prep: 0.001s Import: 11s 
+## Georef: 22s Export: 13s Elapsed: 33s
 
 event = base64.b64encode(json.dumps(event).encode('utf-8'))
 event = {'data':event}

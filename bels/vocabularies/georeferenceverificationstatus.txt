@@ -1,0 +1,92 @@
+georeferenceverificationstatus	standard	vetted
+'	requires verification	1
+	LINDSEY MERCER	verified by curator	1
+[ORNIS]GEOREFERENCEVERIFICATIONS	requires verification	1
+`	requires verification	1
+7	requires verification	1
+C HECKED, KC	verified by curator	1
+CHECK KC	verified by curator	1
+CHECKED	verified by curator	1
+CHECKED  BY KC	verified by curator	1
+CHECKED BY COLLECTOR	verified by collector	1
+CHECKED BY CURATOR	verified by curator	1
+CHECKED BY KC	verified by curator	1
+CHECKED DEK	verified by curator	1
+CHECKED DEK, KC	verified by curator	1
+CHECKED JLW	verified by curator	1
+CHECKED KC	verified by curator	1
+CHECKED RC	verified by curator	1
+CHECKED RS	verified by curator	1
+CHECKED RS & KC	verified by curator	1
+CHECKED RS, KC	verified by curator	1
+CHECKED, JLW	verified by curator	1
+CHECKED, KC	verified by curator	1
+CHECKED, RS	verified by curator	1
+CHECVERIFIED BY LOCALITY MATCHUP	verified by curator	1
+COGE_CORRECTED_2015-02-04	verified by curator	1
+COGE_SKIPPED_2015-02-04	requires verification	1
+COLLECTOR VERIFIED	verified by collector	1
+COLLECTOR'S INPUT REQUIRED	requires verification	1
+CURATOR VERIFIED	verified by curator	1
+E=REQUIRES VERIFICATION	requires verification	1
+FROM BIOGEOMANCER	requires verification	1
+GVS		1
+NEED VERIFICATION	requires verification	1
+NEEDS GEOREFERENCING		1
+NEEDS GEOREFRENCING		1
+NEEDS VALIDATION	requires verification	1
+NEEDS VERIFICATION	requires verification	1
+NO	requires verification	1
+NOT GEOREFERENCED		1
+NOT RECORDED	requires verification	1
+NOT VERIDIED	requires verification	1
+NOT VERIFIED	requires verification	1
+ORNIS GEOREF DATA EXISTS BUT HAS	requires verification	1
+RCHECKED RS	verified by curator	1
+REBECCA GRIDLEY	verified by curator	1
+REQUCHECKED DEK	verified by curator	1
+REQUIRES INPUT	requires verification	1
+REQUIRES VERIFICATION	requires verification	1
+REQUIRES VERRIFICATION	requires verification	1
+REQURES VERIFICATION	requires verification	1
+TYNER, MEGAN	verified by curator	1
+UNAVAILABLE	requires verification	1
+UNVERFIED	requires verification	1
+UNVERIFED	requires verification	1
+UNVERIFIED	requires verification	1
+UNVERRIFED	requires verification	1
+UNVERRIFIED	requires verification	1
+UNVERRRIFIED	requires verification	1
+VCHECKED, KC	verified by curator	1
+VEREFIED	verified by curator	1
+VERFIED	verified by curator	1
+VERFIED BY KC	verified by curator	1
+VERIFED	verified by curator	1
+VERIFED BY LOCALITY MATCHUP	verified by curator	1
+VERIFICATION REQUIRED	requires verification	1
+VERIFIED	verified by curator	1
+VERIFIED 20030729	verified by curator	1
+VERIFIED BY ALLEN CHARTIER	verified by curator	1
+VERIFIED BY COLLECTION MANAGER	verified by curator	1
+VERIFIED BY COLLECTOR	verified by collector	1
+VERIFIED BY COLLECTOR APR 2007	verified by collector	1
+VERIFIED BY CONTRIBUTOR	requires verification	1
+VERIFIED BY CURATOR	verified by curator	1
+VERIFIED BY DATA CONTRIBUTOR	requires verification	1
+VERIFIED BY DATA CUSTODIAN	verified by curator	1
+VERIFIED BY INSTITUTION	verified by curator	1
+VERIFIED BY KC	verified by curator	1
+VERIFIED BY LOCALITY LOOKUP	verified by curator	1
+VERIFIED BY LOCALITY MATCHP	verified by curator	1
+VERIFIED BY LOCALITY MATCHUP	verified by curator	1
+VERIFIED BY MATCH	verified by curator	1
+VERIFIED BY RENE	verified by curator	1
+VERIFIED BY STAFF	verified by curator	1
+VERIFIED BY VOLUNTEER	requires verification	1
+VERIFIED JLW	verified by curator	1
+VERIFIED RS	verified by curator	1
+VERIFIED, 20081023	verified by curator	1
+VERIFIED, KC	verified by curator	1
+VERIFIIED	verified by curator	1
+WGS84	requires verification	1
+Y	verified by curator	1

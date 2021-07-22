@@ -97,7 +97,6 @@ def process_csv_in_bulk(event, context):
     print(f'header: {header}')
     print(f'dwccloudfile: {dwccloudfile}')
     darwinized_header = darwinize_list(header,dwccloudfile)
-    print(f'darwinized header: {darwinized_header}')
     
     # Finally, the rules for field names in BigQuery are:
     #   - start with a letter or underscore

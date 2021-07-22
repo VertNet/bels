@@ -348,7 +348,7 @@ def import_table(bq_client, gcs_uri, header, table_name=None):
 
     try:
         # Load the table from Google Cloud Storage to the identified table
-        load_job = bq_client.load_table_from_uri( gcs_uri, table_id, job_config=job_config)
+        load_job = bq_client.load_table_from_uri(gcs_uri, table_id, job_config=job_config)
         # Wait for the job to complete.
         load_job.result()
     except Exception as e:

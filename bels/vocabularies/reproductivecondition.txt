@@ -1,0 +1,313 @@
+reproductivecondition	standard	vetted
+ 		1
+'		1
+-		1
+--		1
+---	unknown	1
+--------------------------------------------------		1
+-----------------------------------------------------------------------------------------------------------------		1
+ TESTES ABDOMINAL, SUBADULT	subadult	1
+(LACTATING)	adult	1
+(SEE COMMENT)		1
+*	unknown	1
+.		1
+?	unknown	1
+??	unknown	1
+1EMB 28X18	pregnant	1
+1EMB 28X21	pregnant	1
+1EMB 4.5X2.5 MM	pregnant	1
+2 EMB 1DER 1 IZQ 6MM	pregnant	1
+4EMBS 15X11	pregnant	1
+5EMBS 10X8	pregnant	1
+5EMBS 30X15	pregnant	1
+8EMBS 11X7	pregnant	1
+A	unknown	1
+A LAC	lactating	1
+A PREÑ.	pregnant	1
+A PROBABLEMENTE POST-LACTANDO	probably post-lactating	1
+A T 2*4	unknown	1
+A T 3*2	unknown	1
+A T 4*5	unknown	1
+A T 5*4	unknown	1
+A T 5X3	unknown	1
+A T 6*4	unknown	1
+A T8X6	unknown	1
+A T9MM	unknown	1
+A TE 16X10	scrotal testicles	1
+A TES	scrotal testicles	1
+AD	unknown	1
+AD T 4X2	unknown	1
+ADULTA	unknown	1
+ADULTA (MULTÍPARA)	multiparous	1
+ADULTA LAC	lactating	1
+ADULTA, INACTIVA	inactive	1
+ADULTA, MULTIPARA, INACTIVA	inactive, multiparous	1
+ADULTA, NUDIPARA, PREÑADA	nulliparous, pregnant	1
+ADULTO	unknown	1
+ADULTO (TESTÍCULOS ABDOMINALES)	abdominal testicles	1
+ADULTO: 4 MAM ABDOMINALES	unknown	1
+ADULTO: LACTANTE	lactating	1
+AI	inactive	1
+ALAC	lactating	1
+AM	multiparous	1
+AMI	multiparous, inactive	1
+AML?	lactating?	1
+AMP	pregnant	1
+AMUL	multiparous	1
+AN	nulliparous	1
+ANI	inactive	1
+AP	pregnant	1
+APRE	pregnant	1
+AT 3X2	unknown	1
+ATA	unknown	1
+ATE	scrotal testicles	1
+BREEDING	breeding	1
+DETERMINE	unknown	1
+DISSECT	unknown	1
+EMB  	pregnant	1
+EMB 1 EMB. 18MM	pregnant	1
+EMB 18 MM	pregnant	1
+EMB 22X15	pregnant	1
+EMB 2X1	pregnant	1
+EMB 3 EMB. 1 DER, 2 1ZQ.	pregnant	1
+EMB 3X7	pregnant	1
+ENB 1 EMB 4 MM	pregnant	1
+F	unknown	1
+F-	unknown	1
+F ?	unknown	1
+F/J		1
+F?	unknown	1
+F?, JUV		1
+F+	unknown	1
+FORMATIVE	formative	1
+G	gravid	1
+GF	gravid	1
+GF(3)	gravid	1
+GF(4)	gravid	1
+GF(5)	gravid	1
+GF(6)	gravid	1
+GF(7)	gravid	1
+GF(8)	gravid	1
+GF(9)	gravid	1
+H		1
+HAD LACTATED (NON-RECENT).	lactating	1
+HAD LACTATED (NOT RECENT).	lactating	1
+HAD LACTATED; PLACENTAL SCARS NOT SEEN.	lactating	1
+HAD SUCKLED	lactating	1
+HAS LACATED, UTERINE SCARS NOT IDENT.	lactating	1
+HEMBRA		1
+HEMBRA 2 PARES MA		1
+HEMBRA A		1
+HEMBRA AD		1
+HEMBRA AD IN		1
+HEMBRA AD MA		1
+HEMBRA AD NI		1
+HEMBRA AI		1
+HEMBRA AM		1
+HEMBRA GESTAL		1
+HEMBRA INM		1
+HEMBRA J		1
+HEMBRA JUV		1
+HEMBRA LAC	lactating	1
+HEMBRA LACTANDO	lactating	1
+HEMBRA MA		1
+HEMBRA MAMAS		1
+HEMBRA NO LAC	non-lactating	1
+HEMBRA PREG 2-2 EMB 15MM		1
+HEMBRA SA		1
+I		1
+IMMATURE	immature	1
+INMAD	immature	1
+J	juvenile	1
+J?	juvenile	1
+JUV	juvenile	1
+JUV.	juvenile	1
+JUV.; TESTES 3 X 2	juvenile	1
+JUV; NO EMBS	juvenile	1
+JUVENIL	juvenile	1
+JUVENILE	juvenile	1
+JUVENILE, NO EMBRYO	juvenile	1
+JUVENILE, NO EMBRYOS	juvenile	1
+JUVENILE, TA=2X1	juvenile	1
+JUVENILE, TA=3X2	juvenile	1
+JUVENILE, TA=4X3	juvenile	1
+JUVENILE, TESTES 1 X 2	juvenile	1
+JUVENILE, TESTES ABDOMINAL	juvenile	1
+JUVENILE, TESTES ABDOMINAL = 3X1	juvenile	1
+JUVENILE, TESTES ABDOMINAL 2X1.5	juvenile	1
+JUVENILE, TESTES ABDOMINAL; T = 4 X 1.5	juvenile	1
+JUVENILE, YOUNG OF UCM6175, NOT YET CAPABLE OF FLIGHT	juvenile	1
+JUVENILE; NON REPRODUCTIVE	juvenile	1
+JUVENILE; NOT BREEDING	juvenile	1
+LAC	lactating	1
+LAC, PREÑ	lactating, pregnant	1
+LAC./	lactating	1
+LAC?	lactating	1
+LACATATING	lactating	1
+LACT	lactating	1
+LACT HEAVY	lactating	1
+LACTANDO	lactating	1
+LACTATING	lactating	1
+LACTATING, SCARS	lactating, scars	1
+M	unknown	1
+M/F	unknown	1
+M?	unknown	1
+M?, JUV		1
+MACHO		1
+MACHO A		1
+MACHO AD		1
+MACHO AD TA		1
+MACHO AD TES		1
+MACHO AD TES 3X4		1
+MACHO AD TES 6X4		1
+MACHO AD TES 7X4		1
+MACHO AD TEST 9X5		1
+MACHO INM		1
+MACHO J		1
+MACHO JUV		1
+MACHO JUV TEST 5X3		1
+MACHO SA TES 5X3		1
+MACHO SUBAD		1
+MACHO TES 10X6		1
+MACHO TEST		1
+MACHO TEST 15X9		1
+MACHO TEST 16X9		1
+MACHO TEST 18X13		1
+MACHO TEST 20X13		1
+MACHO TEST 20X14		1
+MACHO TEST 5X3		1
+MACHO TEST 5X4		1
+MACHO TEST 8X4		1
+MACHO TEST ESC		1
+MAMAS PTE.	mammaries present	1
+MI		1
+MM	unknown	1
+N	unknown	1
+NEONATO		1
+NO EMB	not pregnant	1
+NO EMBARAZADA	not pregnant	1
+NO EMBS	not pregnant	1
+NO LAC	non-lactating	1
+NO LAC, NO EMB	non-lactating, not pregnant	1
+NO LAC, NO PREÑ	non-lactating, not pregnant	1
+NO PREÑ, NO LAC	non-lactating, not pregnant	1
+NON-BREEDING	non-breeding	1
+NURSING	nursing	1
+POSTLAC	post-lactating	1
+PREGNANT	pregnant	1
+PREN	pregnant	1
+PREÑ	pregnant	1
+PREÑ 1 EMB 11MM	pregnant	1
+PREÑ 1 EMB 12MM	pregnant	1
+PREÑ 1 EMB 16MM	pregnant	1
+PREN 1 EMB 19MM	pregnant	1
+PREÑ 1 EMB 20MM	pregnant	1
+PREÑ 1EMB 14 MM	pregnant	1
+PREN 1EMB 23 MM	pregnant	1
+PREÑ 32MM	pregnant	1
+PREÑ: 1 EMB 20MM IZQ	pregnant	1
+PREÑ: 1 EMB IZQ 22MM	pregnant	1
+PREÑ: 1 EMB. 25MM IZQ	pregnant	1
+PREÑADA	pregnant	1
+PREÑADA, EMBRION 23MM	pregnant	1
+SA		1
+SEX	unknown	1
+SUB A		1
+SUB A TE 4X2	unknown	1
+SUB ADULTO		1
+SUBA		1
+SUBADULTA		1
+SUBADULTA (NULÍPARA)		1
+SUBADULTO		1
+T = 6X4	unknown	1
+T = 9X4	unknown	1
+T 10X6	unknown	1
+T 25X1.5	unknown	1
+T 3X2	unknown	1
+T 4X3	unknown	1
+T 7.25	unknown	1
+T 7X4	unknown	1
+T 9X7	unknown	1
+T= 12X7	unknown	1
+T2.4X1.3	unknown	1
+T3X2	unknown	1
+T3X3	unknown	1
+T4X3	unknown	1
+T5	unknown	1
+T5MM	unknown	1
+T5X3	unknown	1
+T5X4	unknown	1
+T6	unknown	1
+T6X4	unknown	1
+T7X4	unknown	1
+T8.2	unknown	1
+T8X5	unknown	1
+T8X6	unknown	1
+TA	unknown	1
+TA 3X2	unknown	1
+TA 5X3	unknown	1
+TA4X3	unknown	1
+TE	scrotal testicles	1
+TE 10*06 MM	scrotal testicles	1
+TE 10*6	scrotal testicles	1
+TE 10X6	scrotal testicles	1
+TE 10X9.5	scrotal testicles	1
+TE 11*6	scrotal testicles	1
+TE 11*7	scrotal testicles	1
+TE 11X5	scrotal testicles	1
+TE 11X6	scrotal testicles	1
+TE 11X7	scrotal testicles	1
+TE 12X7	scrotal testicles	1
+TE 13X7	scrotal testicles	1
+TE 13X8	scrotal testicles	1
+TE 14*09	scrotal testicles	1
+TE 14*8	scrotal testicles	1
+TE 14X9	scrotal testicles	1
+TE 15*10	scrotal testicles	1
+TE 15.5X10	scrotal testicles	1
+TE 15X10	scrotal testicles	1
+TE 15X9	scrotal testicles	1
+TE 16*12MM	scrotal testicles	1
+TE 16X10	scrotal testicles	1
+TE 16X11	scrotal testicles	1
+TE 16X8	scrotal testicles	1
+TE 16X9	scrotal testicles	1
+TE 17*11	scrotal testicles	1
+TE 17X10	scrotal testicles	1
+TE 17X11	scrotal testicles	1
+TE 17X13	scrotal testicles	1
+TE 17X7	scrotal testicles	1
+TE 17X9	scrotal testicles	1
+TE 18X11	scrotal testicles	1
+TE 18X9MM	scrotal testicles	1
+TE 19X2	scrotal testicles	1
+TE 2*1	scrotal testicles	1
+TE 20X13	scrotal testicles	1
+TE 23X14	scrotal testicles	1
+TE 26X11	scrotal testicles	1
+TE 3*2	scrotal testicles	1
+TE 3X2	scrotal testicles	1
+TE 3X3	scrotal testicles	1
+TE 4*3	scrotal testicles	1
+TE 4X2	scrotal testicles	1
+TE 4X3	scrotal testicles	1
+TE 5*2	scrotal testicles	1
+TE 5X3	scrotal testicles	1
+TE 6*3	scrotal testicles	1
+TE 6*4	scrotal testicles	1
+TE 6X3	scrotal testicles	1
+TE 6X4	scrotal testicles	1
+TE 7*4	scrotal testicles	1
+TE 7X4	scrotal testicles	1
+TE 8*4	scrotal testicles	1
+TE 8X5	scrotal testicles	1
+TE 9*4	scrotal testicles	1
+TE 9*5	scrotal testicles	1
+TE 9*6	scrotal testicles	1
+TE 9X5	scrotal testicles	1
+TE 9X6	scrotal testicles	1
+TEST	unknown	1
+TESTÍCULOS ESCROTADOS	scrotal testicles	1
+TO	unknown	1
+U	unknown	1
+XXX	unknown	1

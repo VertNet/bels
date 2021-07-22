@@ -112,6 +112,7 @@ class BELSQueryTestCase(unittest.TestCase):
 #         result = row['dwc_location_hash']
 #         self.assertEqual(result, target)
 # 
+
     def test_bigquerify_header(self):
         print('Running test_bigquerify_header')
         input_fields = ['a', '1', '', '_', '$', u'ł', 'm"@#%', 'test', 'test', 'test', \

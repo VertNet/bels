@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-07-22T13:29-03:00"
+__version__ = __filename__ + ' ' + "2021-07-22T15:11-03:00"
 
 from flask import Flask, request
 import bels
@@ -36,7 +36,8 @@ from google.cloud import storage
 app = Flask(__name__)
 
 publisher = pubsub_v1.PublisherClient()
-PROJECT_ID = os.getenv('GOOGLE_CLOUD_PROJECT')
+#PROJECT_ID = os.getenv('GOOGLE_CLOUD_PROJECT')
+PROJECT_ID = 'localityservice'
 
 topic_name = 'csv_processing'
 
@@ -105,20 +106,19 @@ def bels_csv():
     
     client = storage.Client()
     # TODO: make bucket name configurable?
-    bucket = client.get_bucket('localityservice')
+    bucket = client.get_bucket(PROJECT_ID)
 
     # Google Cloud Storage location for uploaded file
-    url = f'jobs/{str(uuid.uuid4())}'
-    blob = bucket.blob(url)
+    blob_location = f'jobs/{str(uuid.uuid4())}'
+    blob = bucket.blob(blob_location)
     blob.upload_from_string(csv_content)
-
-    # TODO: add PROJECT_ID
-    topic_path = publisher.topic_path('localityservice', topic_name)
-#    topic_path = publisher.topic_path(PROJECT_ID, topic_name)
+    url = f'https://storage.cloud.google.com/{PROJECT_ID}/{blob_location}'
+    gcs_uri = f'gs://{PROJECT_ID}/{blob_location}'
+    topic_path = publisher.topic_path(PROJECT_ID, topic_name)
 
     message_json = json.dumps({
         'data': {
-            'upload_file_url': url, # Google Cloud Storage location of input file
+            'upload_file_url': gcs_uri, # Google Cloud Storage location of input file
             'email': email,
             'output_filename': filename, # Altered output file name
             'header' : fieldnames, # Header read from uploaded file
