@@ -15,8 +15,8 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__filename__ + "dwca_vocab_utils_tests.py"
-__version__ = "2021-07-20T22:01-03:00"
+__filename__ = "dwca_vocab_utils_tests.py"
+__version__ = __filename__ + ' ' + "2021-07-22T21:07-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/test/dwca_vocab_utils_test.py"
 
 # This file contains unit tests for the functions in dwca_vocab_utils.
@@ -59,7 +59,7 @@ class DWCAVocabUtilsTestFramework():
     # testdatapath is the location of example files to test with
     testdatapath = '../data/tests/'
     # vocabpath is the location of vocabulary files to test with
-    vocabpath = './vocabularies/'
+    vocabpath = '../bels/vocabularies/'
 
     # following are files used as input during the tests, don't remove these
     compositetestfile = testdatapath + 'test_eight_specimen_records.csv'
@@ -409,6 +409,18 @@ class DWCAVocabUtilsTestCase(unittest.TestCase):
         notdwc = darwinize_list(checklist, darwincloudfile)
         expectedlist = ['STUFF', 'Nonsense', 'year', 'UNNAMED_COLUMN_1', 'day', 'month', \
             'lifeStage', 'Id']
+        s = 'Found:\n%s\nNot as expected:\n%s' % (notdwc, expectedlist)
+        self.assertEqual(notdwc, expectedlist, s)
+
+        notdwc = darwinize_list(checklist, darwincloudfile, case='Upper')
+        expectedlist = ['STUFF', 'NONSENSE', 'YEAR', 'UNNAMED_COLUMN_1', 'DAY', 'MONTH', \
+            'LIFESTAGE', 'ID']
+        s = 'Found:\n%s\nNot as expected:\n%s' % (notdwc, expectedlist)
+        self.assertEqual(notdwc, expectedlist, s)
+
+        notdwc = darwinize_list(checklist, darwincloudfile, case='lowercase')
+        expectedlist = ['stuff', 'nonsense', 'year', 'unnamed_column_1', 'day', 'month', \
+            'lifestage', 'id']
         s = 'Found:\n%s\nNot as expected:\n%s' % (notdwc, expectedlist)
         self.assertEqual(notdwc, expectedlist, s)
 

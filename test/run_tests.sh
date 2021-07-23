@@ -1,3 +1,5 @@
+date
+
 python bels_query_tests.py
 date
 #python: 0s
@@ -18,7 +20,7 @@ python id_utils_tests.py
 date
 #python: 0s
 
-python job_tests.py
+python job_test.py
 date
 #python: 0s
 

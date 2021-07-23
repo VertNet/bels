@@ -16,8 +16,8 @@
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__filename__ = "api_test.py"
-__version__ = __filename__ + ' ' + "2021-07-22T15:51-03:00"
+__filename__ = "job_test.py"
+__version__ = __filename__ + ' ' + "2021-07-23T17:30-03:00"
 
 from bels.job import process_csv_in_bulk
 from collections import namedtuple
@@ -26,8 +26,6 @@ import json
 import logging
 
 logging.basicConfig(level=logging.INFO)
-#logging.basicConfig(level=logging.DEBUG)
-
 
 # This test relies on files already accessible in Google Cloud Storage. A few of these 
 # have been prepared in advance for testing. Part of the preparation is to provide

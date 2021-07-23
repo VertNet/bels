@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-07-22T18:55-03:00"
+__version__ = __filename__ + ' ' + "2021-07-22T20:29-03:00"
 
 from flask import Flask, request
 import bels
@@ -38,6 +38,7 @@ app = Flask(__name__)
 publisher = pubsub_v1.PublisherClient()
 #PROJECT_ID = os.getenv('GOOGLE_CLOUD_PROJECT')
 PROJECT_ID = 'localityservice'
+INPUT_LOCATION = 'bels_input'
 
 topic_name = 'csv_processing'
 
@@ -85,7 +86,7 @@ def bels_csv():
     # Create a FileStorage object for the input file
     f = request.files['csv']
 
-    # An input file  must be provided.
+    # An input file must be provided.
     if f is None:
         s = f'Input file was not uploaded.'
         app.logger.error(s)
@@ -132,10 +133,10 @@ def bels_csv():
     bucket = client.get_bucket(PROJECT_ID)
 
     # Google Cloud Storage location for uploaded file
-    blob_location = f'jobs/{str(uuid.uuid4())}'
+    blob_location = f'{INPUT_LOCATION}/{str(uuid.uuid4())}'
     blob = bucket.blob(blob_location)
     blob.upload_from_string(csv_content)
-    url = f'https://storage.cloud.google.com/{PROJECT_ID}/{blob_location}'
+#    url = f'https://storage.cloud.google.com/{PROJECT_ID}/{blob_location}'
     gcs_uri = f'gs://{PROJECT_ID}/{blob_location}'
     topic_path = publisher.topic_path(PROJECT_ID, topic_name)
 

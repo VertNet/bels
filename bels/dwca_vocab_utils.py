@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "dwca_vocab_utils.py"
-__version__ = __filename__ + ' ' + "2021-07-22T14:08-03:00"
+__version__ = __filename__ + ' ' + "2021-07-22T21:08-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_vocab_utils.py"
 
 # This file contains common utility functions for dealing with the vocabulary management
@@ -573,26 +573,34 @@ def terms_not_in_darwin_cloud(checklist, dwccloudfile, encoding=None, vetted=Tru
 
     return notfound
 
-def darwinize_list(termlist, dwccloudfile, namespace=None):
+def darwinize_list(termlist, dwccloudfile, namespace=None, case=None):
     ''' Translate the terms in a list to standard Darwin Core terms.
     parameters:
         termlist - list of values to translate (required)
         dwccloudfile - the vocabulary file for the Darwin Cloud (required)
         namespace - a flag to determine if the dwc: namespace should be prepended to the
-            term name
+            term name (optional)
+        case - an indicator of what to do about the case of the output terms; options
+            are 'u' for uppercase, 'l' for lowercase, default is unchanged (optional)
     returns:
         a list with all translatable terms translated
     '''
     functionname = 'darwinize_list()'
 
+    if case is not None and case[0].lower()=='u':
+        case = 'u'
+    elif case is not None and case[0].lower()=='l':
+        case = 'l'
+    
     if dwccloudfile is None or len(dwccloudfile)==0:
-        message = 'Darwin Cloud vocabulary file not given. Returning original terms list. %s' % __version__
+        message = 'Darwin Cloud vocabulary file not given. '
+        message += f'Returning original terms list. {__version__}'
         logging.debug(message)
         print(s)
         return termlist
 
-    print(f'Current working directory: {os.getcwd()}')
-    print(f'Yeah, but where are we really with respect to the code? {os.listdir()}')
+#    print(f'Current working directory: {os.getcwd()}')
+#    print(f'Yeah, but where are we really with respect to the code? {os.listdir()}')
     if os.path.isfile(dwccloudfile) == False:
         message = f'Darwin Cloud vocabulary file not found at {dwccloudfile}. '
         message += f'Returning original term list. {__version__}'
@@ -643,6 +651,11 @@ def darwinize_list(termlist, dwccloudfile, namespace=None):
             if len(newterm) == 0:
                 newterm = 'UNNAMED_COLUMN_%s' % j
                 j += 1
+        if case == 'u':
+            newterm = newterm.upper()
+        elif case == 'l':
+            newterm = newterm.lower() 
+       
         darwinizedlist.append(newterm)
         i += 1
 

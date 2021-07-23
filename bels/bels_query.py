@@ -16,12 +16,13 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2021-07-21T19:52-03:00"
+__version__ = __filename__ + ' ' + "2021-07-23T20:43-03:00"
 
 import json
 import logging
 import re
 from google.cloud import bigquery
+from google.cloud import storage
 from .dwca_terms import locationkeytermlist
 from .json_utils import CustomJsonEncoder
 
@@ -30,39 +31,6 @@ BQ_GAZ_DATASET='gazetteer'
 BQ_PROJECT='localityservice'
 BQ_INPUT_DATASET='belsapi'
 BQ_OUTPUT_DATASET='results'
-
-# def check_header_for_bels(header):
-#     if header is None or len(header) == 0:
-#         return None, 'No header to check'
-# #    print(f'Check header:\n{header}')
-#     lheader = []
-#     for f in header:
-#         lheader.append(f.lower())
-# #    print(f'Lower-cased header:\n{lheader}')
-#     if 'country' not in lheader and 'countrycode' not in lheader and \
-#             'interpreted_countrycode' not in lheader:
-#             return None, 'Header contains no recognizable country field.'
-#     mapping = {}
-#     # Make sure we have a country field that is the most derived version in the input
-#     # file. The content of the field mapped to 'country' will be used to do an 
-#     # interpretation to 'interpreted_countrycode' in the georeference matching service.
-#     if 'interpreted_countrycode' in lheader:
-#         mapping['country']='country_orig'
-#         mapping['interpreted_countrycode']='country'
-#     elif 'countrycode' in lheader:
-#         mapping['country']='country_orig'
-#         mapping['countrycode']='country'      
-#     checked_header = []
-#     for f in lheader:
-#         try:
-#             checked_header.append(mapping[f])
-# #            print(f'Mapped {f} to {mapping[f]}')
-#         except:
-#             checked_header.append(f)
-# #            print(f'Did not map {f}')
-# #    print(f'Checked header\n{checked_header}')
-#     msg = "Header checked"
-#     return checked_header, msg
  
 def schema_from_header(header):
     # Create a BigQuery schema from the fields in a header.
@@ -288,7 +256,7 @@ LEFT JOIN georefs c ON b.id=c.id;
 #    destination = bq_client.get_table(destination)
 
     if isinstance(result, bigquery.table._EmptyRowIterator) == False:
-        print('Correctly detected _EmptyRowIterator.')
+        logging.debug('Correctly detected _EmptyRowIterator.')
         return output_table_id
     return output_table_id
 
@@ -298,10 +266,10 @@ def import_table(bq_client, gcs_uri, header, table_name=None):
     #  Example: gcs_uri = "gs://localityservice/jobs/test_matchme_sans_coords_best_georef.csv"
 
     if gcs_uri is None:
-        print('No Google Cloud Storage location provided.')
+        logging.error('No Google Cloud Storage location provided.')
         return None
     if header is None:
-        print('No file header provided.')
+        logging.error('No file header provided.')
         return None
 
     # Set table_id to the ID of the table to create.
@@ -313,7 +281,7 @@ def import_table(bq_client, gcs_uri, header, table_name=None):
     table_id = BQ_PROJECT+'.'+BQ_INPUT_DATASET+'.'+table_name
 
     schema = schema_from_header(header)
-    print(f'Header: {header}\nSchema: {schema}')
+    logging.debug(f'Header: {header}\nSchema: {schema}')
 
     job_config = bigquery.LoadJobConfig(
         schema=schema,
@@ -331,9 +299,9 @@ def import_table(bq_client, gcs_uri, header, table_name=None):
         try:
             bq_client.get_table(table_id)
         except Exception as e:
-            print(f'Table {table_id} was deleted.')
+            logging.debug(f'Table {table_id} was deleted.')
     except Exception as e:
-        print(f'Table {table_id} does not exist.')
+        logging.debug(f'Table {table_id} does not exist.')
 
     output_table_id = BQ_PROJECT+'.'+BQ_OUTPUT_DATASET+'.'+table_name
     try:
@@ -342,9 +310,9 @@ def import_table(bq_client, gcs_uri, header, table_name=None):
         try:
             bq_client.get_table(output_table_id)
         except Exception as e:
-            print(f'Table {output_table_id} was deleted.')
+            logging.debug(f'Table {output_table_id} was deleted.')
     except Exception as e:
-        print(f'Table {output_table_id} does not exist.')
+        logging.debug(f'Table {output_table_id} does not exist.')
 
     try:
         # Load the table from Google Cloud Storage to the identified table
@@ -358,9 +326,9 @@ def import_table(bq_client, gcs_uri, header, table_name=None):
     try:
         destination_table = bq_client.get_table(table_id)
     except Exception as e:
-        print(f'Table {table_id} was not created.')
+        logging.error(f'Table {table_id} was not created.')
         return None
-    print(f'Loaded {destination_table.num_rows} rows from {gcs_uri} into {table_id}.')
+    logging.debug(f'Loaded {destination_table.num_rows} rows from {gcs_uri} into {table_id}.')
     # Success. Return the full table identifier.
     return table_id
 
@@ -370,7 +338,7 @@ def delete_table(bq_client, table_id):
 
 def export_table(bq_client, table_id, destination_uri):
     # From https://cloud.google.com/bigquery/docs/exporting-data
-    # print(f'table_id: {table_id} destination_uri: {destination_uri}')
+    # logging.debug(f'table_id: {table_id} destination_uri: {destination_uri}')
     job_config = bigquery.job.ExtractJobConfig()
     job_config.compression = 'GZIP'
     extract_job = bq_client.extract_table(
@@ -382,9 +350,38 @@ def export_table(bq_client, table_id, destination_uri):
 #        location="US",
     ) # API request
     # Wait for job to complete.
-    result = extract_job.result()
-    print(f'Exported {table_id} to {destination_uri}')
-    return result
+    extract_job.result()
+
+    storage_client = storage.Client()
+    locparts = destination_uri.split('/')
+    bucket = storage_client.get_bucket(locparts[2])
+    blobname = destination_uri[destination_uri.find(locparts[3]):]
+    bloblist = []
+#    if blob.exists == False or blob.size == 0:
+    if bucket.get_blob(blobname) is None:
+        # The blob did not get written. It is likely that this is because it exceeded the
+        # size limit for an export to a single file. Change the destination_uri to 
+        # include a wildcard and try again.
+        destination_uri = destination_uri.split('.csv.gz')[0]+'*.csv.gz'
+        extract_job = bq_client.extract_table(
+            table_id,
+#            table_ref,
+            destination_uri,
+            job_config = job_config,
+            # Location must match that of the source table.
+#            location="US",
+        ) # API request
+        # Wait for job to complete.
+        extract_job.result()
+        blobpattern = destination_uri[destination_uri.find(locparts[3]):].split('*.csv.gz')[0]+'-0'
+        logging.info(f'blob pattern: {blobpattern}')
+        for blob in bucket.list_blobs():
+            logging.info(f'blob name: {blob.name}')
+            if blob.name.find(blobpattern) != -1:
+                bloblist.append(blob.name)
+    else:
+        bloblist.append(blobname)
+    return bloblist
 
 def query_location_by_id(base64locationhash, table_name=None):
     ''' Create a query string to get a location record from the distinct Locations data
@@ -566,7 +563,7 @@ def get_best_sans_coords_georef_reduced(bq_client, matchstr):
     functionname = 'get_best_sans_coords_georef_reduced()'
     query = query_best_sans_coords_georef_reduced(matchstr)
     rows = run_bq_query(bq_client, query, 1)
-    # print(f'{__version__} query: {query} row count: {rows.total_rows}')
+    # logging.debug(f'{__version__} query: {query} row count: {rows.total_rows}')
     if rows.total_rows==0:
         # Create a dict of an empty row so that every record can have a result
         # This has to match the structure of the rows query result.
@@ -871,19 +868,19 @@ def row_as_json(row):
     row_json=json.dumps(row_as_dict(row), cls=CustomJsonEncoder)
     return row_json
     
-def main():
-    BQ = bigquery.Client()
-    matchstr = 'auwac73kmsofbillabongroadhouse'
-    result = get_best_sans_coords_georef(BQ, matchstr)
-    print(result)
-
-    matchstr = 'aqbechervaiseisland00-66.49559.49'
-    result = get_best_with_coords_georef(BQ, matchstr)
-    print(result)
-
-    matchstr = 'usminnesotawadenat136nr33ws.1012-jul-71,'
-    result = get_best_with_verbatim_coords_georef(BQ, matchstr)
-    print(result)
-
-if __name__ == '__main__':
-    main()
+# def main():
+#     BQ = bigquery.Client()
+#     matchstr = 'auwac73kmsofbillabongroadhouse'
+#     result = get_best_sans_coords_georef(BQ, matchstr)
+#     print(result)
+# 
+#     matchstr = 'aqbechervaiseisland00-66.49559.49'
+#     result = get_best_with_coords_georef(BQ, matchstr)
+#     print(result)
+# 
+#     matchstr = 'usminnesotawadenat136nr33ws.1012-jul-71,'
+#     result = get_best_with_verbatim_coords_georef(BQ, matchstr)
+#     print(result)
+# 
+# if __name__ == '__main__':
+#     main()
