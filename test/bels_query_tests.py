@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query_tests.py"
-__version__ = __filename__ + ' ' + "2021-07-22T21:25-03:00"
+__version__ = __filename__ + ' ' + "2021-07-24T18:37-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -109,10 +109,12 @@ class BELSQueryTestCase(unittest.TestCase):
         print('Running test_bigquerify_header')
         input_fields = ['a', '1', '', '_', '$', u'ł', 'm"@#%', 'test', 'test', 'test', \
             'v_verbatimcoordinates\r', \
-'0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789']
+'0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789', \
+            'body_mass.1.ambiguous_key']
         target = ['a', '_1', '_3', '_', '__', 'ł', 'm____', 'test', '_test', '__test', \
             'v_verbatimcoordinates_', \
-'_012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345']
+'_012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345', \
+            'body_mass_1_ambiguous_key']
         result = bigquerify_header(input_fields)
         self.assertEqual(result, target)
 

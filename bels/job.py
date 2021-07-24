@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-24T17:31-3:00"
+__version__ = __filename__ + ' ' + "2021-07-24T18:36-3:00"
 
 import base64
 import json
@@ -102,32 +102,9 @@ def process_csv_in_bulk(event, context):
     logging.debug(f'dwccloudfile: {dwccloudfile}')
     darwinized_header = darwinize_list(header,dwccloudfile)
     
-    # Finally, the rules for field names in BigQuery are:
-    #   - start with a letter or underscore
-    #   - contain only letters, numbers, and underscores, 
-    #   - be at most 128 characters long
-    #   - can't be blank
-    # In addition we do not want duplicate field names
+    # Make sure the field names satisfy BigQuery field name requirements
     bigqueryized_header = bigquerify_header(darwinized_header)
-    i = 1
-    for f in darwinized_header:
-        if f == '' or f is None:
-            f = str(i)
-        elif f[0] != '_' and f[0].isalpha()==False:
-            f = '_' + f
-        f = re.sub(r'[^0-9a-zA-Z_]','_',f)
-        while f in bigqueryized_header:
-            f = '_' + f
-        f = f[0:127]
-        bigqueryized_header.append(f)
     
-#    print(f'dwc fields: {darwinized_header}')
-    # Modify header to comply with requirements (minimum necessary fields, 
-    # no field duplication. etc.)
-#    checked_header, msg = check_header_for_bels(darwinized_header)
-#    if checked_header is None:
-#        raise Exception(msg)
-#    print(f'Checked header\n{checked_header}')
     preptime = time.perf_counter() - starttime
     msg = f'Prep time = {preptime:1.3f}s\n'
     logging.info(f'{msg}')

@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2021-07-23T20:43-03:00"
+__version__ = __filename__ + ' ' + "2021-07-24T18:38-03:00"
 
 import json
 import logging
@@ -45,6 +45,7 @@ def bigquerify_header(header):
     #   - contain only letters, numbers, and underscores, 
     #   - be at most 128 characters long
     #   - can't be blank
+    # In addition, we don't want any duplicated field names.
     bigqueryized_header = []
     i = 1
     for f in header:
