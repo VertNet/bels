@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-24T18:36-3:00"
+__version__ = __filename__ + ' ' + "2021-07-24T18:55-3:00"
 
 import base64
 import json
@@ -106,20 +106,17 @@ def process_csv_in_bulk(event, context):
     bigqueryized_header = bigquerify_header(darwinized_header)
     
     preptime = time.perf_counter() - starttime
-    msg = f'Prep time = {preptime:1.3f}s\n'
+    msg = f'Prep time = {preptime:1.3f}s'
     logging.info(f'{msg}')
 #    print(msg)
 
     bq_client = bigquery.Client()
-
-    # Load the file into BigQuery table making table name from source file name by default
-#    table_id = import_table(bq_client, upload_file_url, checked_header)
     logging.debug(f'Prepping for import_table. upload_file_url: {upload_file_url}')
-    logging.debug(f'darwinized_header: {darwinized_header}')
-    table_id = import_table(bq_client, upload_file_url, darwinized_header)
-    # print(f'process_csv_in_bulk() table_id: {table_id}')
+    logging.debug(f'bigqueryized_header: {bigqueryized_header}')
+    table_id = import_table(bq_client, upload_file_url, bigqueryized_header)
+    logging.debug(f'process_csv_in_bulk() table_id: {table_id}')
     importtime = time.perf_counter()-preptime
-    msg = f'Import time = {importtime:1.3f}s\n'
+    msg = f'Import time = {importtime:1.3f}s for table_id {table_id}'
     logging.info(msg)
 #    print(msg)
 
@@ -127,7 +124,7 @@ def process_csv_in_bulk(event, context):
     output_table_id = process_import_table(bq_client, table_id)
     # print(f'process_csv_in_bulk() output_table_id: {output_table_id}')
     georeftime = time.perf_counter()-importtime
-    msg = f'Georef time = {georeftime:1.3f}s\n'
+    msg = f'Georef time = {georeftime:1.3f}s'
     logging.info(msg)
 #    print(msg)
 
@@ -155,6 +152,7 @@ def process_csv_in_bulk(event, context):
         output_url_list.append(blob.public_url)
     output_url_list.sort()
 #    print(f'sorted output_url_list: {output_url_list}')
+
     # Remove the georefs table from BigQuery
 #     try:
 #         bq_client.get_table(table_id)
