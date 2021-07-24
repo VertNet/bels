@@ -62,7 +62,7 @@ def process_csv_in_bulk(event, context):
     """
     import base64
 
-    logging.basicConfig(level=DEBUG')
+    logging.basicConfig(level=logging.DEBUG)
 
     starttime = time.perf_counter()
     
