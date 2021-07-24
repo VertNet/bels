@@ -174,7 +174,7 @@ def bels_csv():
 @app.route('/')
 def index():
     emailplaceholder = 'Notification email address'
-    outputfilenameplaceholder = 'Output file name (e.g.,georefsfoundforme.csv)'
+    outputfilenameplaceholder = 'Output file name only (output will be CSV)'
     return f'''
 <!DOCTYPE html>
 <!--
@@ -201,8 +201,13 @@ def index():
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <LINK href="api.css" rel="stylesheet" type="text/css">
         <TITLE>BELS Georeference Matcher</TITLE>
+<!-- TODO: Add an icon to the title bar> -->
+<!--        <link rel="icon" href="icon_path" type="image/icon type"> -->
     </head>
 
+    <h1>Biodiversity Enhanced Location Services (BELS) - Georeference Matcher</h1>
+    <p>Upload a comma-separated input file that contains 
+       <a href="https://dwc.tdwg.org/terms/#location" target="_blank">location information</a>. Choose an email address to which to send the notification when the results are ready. Choose an output file name. This name will form an identifying part of the results file name, which will be a gzipped CSV file or files with an extension .csv.gz added.</p>
     <form method="post" action="/api/bels_csv" enctype="multipart/form-data">
         <p><input type=file name=csv>
         <p><input type=email name=email placeholder="{emailplaceholder}" size="50">
@@ -235,7 +240,7 @@ def index():
                 <TBODY>
                     <TR>
                         <TD width="50%" valign="MIDDLE">
-                            <P>VertNet 12 Jul 2021 </P>
+                            <P>VertNet 23 Jul 2021 </P>
                         </TD>
                         <TD width="50%" valign="MIDDLE" align="RIGHT">
                             <i>Version {__version__}</i>

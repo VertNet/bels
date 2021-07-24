@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-23T20:44-3:00"
+__version__ = __filename__ + ' ' + "2021-07-23T22:32-3:00"
 
 import base64
 import json
@@ -89,7 +89,7 @@ def process_csv_in_bulk(event, context):
     # Don't allow any of the following characters in output file names, substitute '_'
     output_filename = re.sub(r'[ ~`!@#$%^&*()_+={\[}\]|\\:;"<,>?\'/]', '_', output_filename)
 
-    output_filename = '%s-%s-.csv.gz' % (output_filename, file_suffix)
+    output_filename = '%s-%s.csv.gz' % (output_filename, file_suffix)
 #    print(f'output_filename after: {output_filename}')
 
     # Darwinize the header
