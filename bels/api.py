@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-07-22T20:29-03:00"
+__version__ = __filename__ + ' ' + "2021-07-24T17:31-03:00"
 
 from flask import Flask, request
 import bels
@@ -85,7 +85,8 @@ def bels_csv():
 
     # Create a FileStorage object for the input file
     f = request.files['csv']
-
+# with urllib.request.urlopen(url) as response, open(file_name, 'wb') as out_file:
+#        shutil.copyfileobj(response, out_file)
     # An input file must be provided.
     if f is None:
         s = f'Input file was not uploaded.'

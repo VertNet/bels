@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-23T22:32-3:00"
+__version__ = __filename__ + ' ' + "2021-07-24T17:31-3:00"
 
 import base64
 import json
@@ -61,6 +61,8 @@ def process_csv_in_bulk(event, context):
          `timestamp` field contains the publish time.
     """
     import base64
+
+    logging.basicConfig(level=DEBUG')
 
     starttime = time.perf_counter()
     
@@ -175,7 +177,7 @@ def process_csv_in_bulk(event, context):
         print(f'For file {file}, blob {blob}')
         output_url_list.append(blob.public_url)
     output_url_list.sort()
-    print(f'sorted output_url_list: {output_url_list}')
+#    print(f'sorted output_url_list: {output_url_list}')
     # Remove the georefs table from BigQuery
 #     try:
 #         bq_client.get_table(table_id)
