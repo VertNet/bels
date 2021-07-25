@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-24T18:55-3:00"
+__version__ = __filename__ + ' ' + "2021-07-25T16:17-03:00"
 
 import base64
 import json
@@ -113,16 +113,16 @@ def process_csv_in_bulk(event, context):
     bq_client = bigquery.Client()
     logging.debug(f'Prepping for import_table. upload_file_url: {upload_file_url}')
     logging.debug(f'bigqueryized_header: {bigqueryized_header}')
-    table_id = import_table(bq_client, upload_file_url, bigqueryized_header)
-    logging.debug(f'process_csv_in_bulk() table_id: {table_id}')
+    input_table_id = import_table(bq_client, upload_file_url, bigqueryized_header)
+    logging.debug(f'process_csv_in_bulk() input_table_id: {input_table_id}')
     importtime = time.perf_counter()-preptime
-    msg = f'Import time = {importtime:1.3f}s for table_id {table_id}'
+    msg = f'Import time = {importtime:1.3f}s for input_table_id {input_table_id}'
     logging.info(msg)
 #    print(msg)
 
     # Do georeferencing on the imported table with SQL script
-    output_table_id = process_import_table(bq_client, table_id)
-    # print(f'process_csv_in_bulk() output_table_id: {output_table_id}')
+    output_table_id = process_import_table(bq_client, input_table_id)
+    logging.debug(f'process_csv_in_bulk() output_table_id: {output_table_id}')
     georeftime = time.perf_counter()-importtime
     msg = f'Georef time = {georeftime:1.3f}s'
     logging.info(msg)
@@ -133,10 +133,9 @@ def process_csv_in_bulk(event, context):
     destination_uri = f'gs://{PROJECT_ID}/{OUTPUT_LOCATION}/{output_filename}'
 
     logging.debug(f'Prepping for export_table. destination_uri: {destination_uri}')
-    logging.debug(f'output_table_id: {output_table_id}')
     outputfilelist = export_table(bq_client, output_table_id, destination_uri)
     exporttime = time.perf_counter()-georeftime
-    print(f'outputfilelist: {outputfilelist}')
+    logging.debug(f'outputfilelist: {outputfilelist}')
 
     # Output is already public. The following is not necessary.
     storage_client = storage.Client()
@@ -148,27 +147,37 @@ def process_csv_in_bulk(event, context):
     output_url_list = []
     for file in outputfilelist:
         blob = bucket.blob(f'{file}')
-        print(f'For file {file}, blob {blob}')
+        # print(f'For file {file}, blob {blob}')
         output_url_list.append(blob.public_url)
     output_url_list.sort()
 #    print(f'sorted output_url_list: {output_url_list}')
 
-    # Remove the georefs table from BigQuery
-#     try:
-#         bq_client.get_table(table_id)
-#         delete_table(bq_client, table_id)
-#         try:
-#             bq_client.get_table(table_id)
-#         except Exception as e:
-#             print(f'Table {table_id} was deleted.')
-#     except Exception as e:
-#         print(f'Table {table_id} does not exist.')
+    # Remove the input and output tables from BigQuery
+    try:
+        bq_client.get_table(input_table_id)
+        delete_table(bq_client, input_table_id)
+        try:
+            bq_client.get_table(input_table_id)
+        except Exception as e:
+            logging.debug(f'Table {input_table_id} was deleted.')
+    except Exception as e:
+        logging.debug(f'Table {input_table_id} does not exist.')
+
+    try:
+        bq_client.get_table(output_table_id)
+        delete_table(bq_client, output_table_id)
+        try:
+            bq_client.get_table(output_table_id)
+        except Exception as e:
+            logging.debug(f'Table {output_table_id} was deleted.')
+    except Exception as e:
+        logging.debug(f'Table {output_table_id} does not exist.')
 
     # Notify the receiving party by email given.
     try:
         send_email(email, output_url_list)
     except Exception as e:
-        print(f'Error sending email: {e}. Files stored at {output_url_list}')
+        logging.error(f'Error sending email: {e}. Files stored at {output_url_list}')
 
     elapsedtime = time.perf_counter()-starttime
     msg = []
