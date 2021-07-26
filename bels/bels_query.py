@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2021-07-24T18:38-03:00"
+__version__ = __filename__ + ' ' + "2021-07-26T20:24-03:00"
 
 import json
 import logging
@@ -119,7 +119,7 @@ CREATE TEMP TABLE interpreted AS (
 SELECT 
   a.*,
   b.countrycode AS interpreted_countrycode, 
-  GENERATE_UUID() AS id
+  GENERATE_UUID() AS bels_id
 FROM 
   countrify a 
 LEFT JOIN
@@ -131,7 +131,7 @@ ON
 -- Make the match strings
 CREATE TEMP TABLE matcher AS (
 SELECT
-  id,
+  bels_id,
 REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(functions.matchString(TO_JSON_STRING(t), "withcoords"))),NFKC)),r"[\s]+",'') AS matchwithcoords,
 REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(functions.matchString(TO_JSON_STRING(t), "verbatimcoords"))),NFKC)),r"[\s]+",'') AS matchverbatimcoords,
 REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(functions.matchString(TO_JSON_STRING(t), "sanscoords"))),NFKC)),r"[\s]+",'') AS matchsanscoords
@@ -142,7 +142,7 @@ FROM
 -- CREATE table georefs from matchme_with_coords
 CREATE TEMP TABLE georefs AS (
 SELECT
-  a.id,
+  a.bels_id,
   interpreted_decimallatitude AS bels_decimallatitude,
   interpreted_decimallongitude AS bels_decimallongitude,
   IF(interpreted_decimallatitude IS NULL,NULL,'epsg:4326') AS bels_geodeticdatum,
@@ -166,7 +166,7 @@ WHERE
 -- APPEND verbatim coords matches to georefs
 INSERT INTO georefs (
 SELECT
-  a.id,
+  a.bels_id,
   interpreted_decimallatitude AS bels_decimallatitude,
   interpreted_decimallongitude AS bels_decimallongitude,
   IF(interpreted_decimallatitude IS NULL,NULL,'epsg:4326') AS bels_geodeticdatum,
@@ -185,9 +185,9 @@ FROM
   `localityservice.gazetteer.matchme_verbatimcoords_best_georef` b
 WHERE
   a.matchverbatimcoords=b.matchme AND
-  a.id NOT IN (
+  a.bels_id NOT IN (
 SELECT 
-  id
+  bels_id
 FROM georefs
 )
 );
@@ -195,7 +195,7 @@ FROM georefs
 -- APPEND sans coords matches to georefs
 INSERT INTO georefs (
 SELECT
-  a.id,
+  a.bels_id,
   interpreted_decimallatitude AS bels_decimallatitude,
   interpreted_decimallongitude AS bels_decimallongitude,
   IF(interpreted_decimallatitude IS NULL,NULL,'epsg:4326') AS bels_geodeticdatum,
@@ -214,9 +214,9 @@ FROM
   `localityservice.gazetteer.matchme_sans_coords_best_georef` b
 WHERE
   a.matchsanscoords=b.matchme_sans_coords AND
-  a.id NOT IN (
+  a.bels_id NOT IN (
 SELECT 
-  id
+  bels_id
 FROM georefs
 )
 );
@@ -225,15 +225,15 @@ FROM georefs
 CREATE OR REPLACE TABLE `{output_table_id}`
 AS
 SELECT
-  a.*,
+  a.* EXCEPT (bels_id),
   b.matchwithcoords,
   b.matchverbatimcoords,
   b.matchsanscoords,
-  c.* EXCEPT (id)
+  c.* EXCEPT (bels_id)
 FROM
   interpreted a
-JOIN matcher b ON a.id=b.id
-LEFT JOIN georefs c ON b.id=c.id;
+JOIN matcher b ON a.bels_id=b.bels_id
+LEFT JOIN georefs c ON b.bels_id=c.bels_id;
 """
     # Make a BigQuery API job request.
     query_job = bq_client.query(query)

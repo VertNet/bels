@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-07-24T17:31-03:00"
+__version__ = __filename__ + ' ' + "2021-07-26T18:49-03:00"
 
 from flask import Flask, request
 import bels
@@ -102,8 +102,8 @@ def bels_csv():
         return s, 400  # 400 Bad Request
 
     # Try to get the header from uploaded file.
-    first_newline = 2^63-1
-    first_return = 2^63-1
+    first_newline = 2**63-1
+    first_return = 2**63-1
     try:
         first_newline = csv_content.index(b'\n')
     except:
@@ -113,13 +113,15 @@ def bels_csv():
     except:
         pass
 
-    # Find the erlier of \r or \n in the file. This should be the end of the header.
+    # Find the earlier of \r or \n in the file. This should be the end of the header.
     seekto = None
     if first_newline < first_return:
         seekto = first_newline
     elif first_return < first_newline:
         seekto = first_return
 
+    print(f'first_return={first_return} first_newline={first_newline} seekto={seekto}')
+    
     if seekto is None:
         s = 'File has no more than one row, so it is data without a header or a header '
         s += 'without data, in neither circumstance of which I am able to help you.'
@@ -129,6 +131,11 @@ def bels_csv():
     # Get the header line and split on commas. Requires the input to be comma-separated.
     headerline = csv_content[:seekto]
     fieldnames = headerline.decode("utf-8").split(',')
+    cleaned_fieldnames = []
+    for field in fieldnames:
+        cleaned_fieldnames.append(field.strip().strip('"').strip("'"))
+    app.logger.info(f'headerline: {headerline}')
+    app.logger.info(f'cleaned_fieldnames: {cleaned_fieldnames}')
     
     client = storage.Client()
     bucket = client.get_bucket(PROJECT_ID)
@@ -147,12 +154,12 @@ def bels_csv():
             'upload_file_url': gcs_uri, # Google Cloud Storage location of input file
             'email': email,
             'output_filename': filename, # Altered output file name
-            'header' : fieldnames, # Header read from uploaded file
+            'header' : cleaned_fieldnames, # Header read from uploaded file
         }
     })
     message_bytes = message_json.encode('utf-8')
 
-    logging.info(message_json)
+    app.logger.info(message_json)
 
     # Publish the message to the Cloud Pub/Sub topic given by topic_path. This topic is 
     # the trigger for the Cloud functions that subscribe to it. Specifically in this case 
