@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-07-26T18:49-03:00"
+__version__ = __filename__ + ' ' + "2021-09-24T19:21-03:00"
 
 from flask import Flask, request
 import bels
@@ -32,6 +32,8 @@ import logging
 
 from google.cloud import pubsub_v1
 from google.cloud import storage
+
+from bels.dwca_vocab_utils import darwinize_list
 
 app = Flask(__name__)
 
@@ -74,7 +76,7 @@ def bels_csv():
     # Set the root file name for the output
     filename = request.form['filename']
 
-    # An file name must be provided.
+    # A file name must be provided.
     if filename is None or len(filename)==0:
         s = f'A name for the output file must be provided.'
         app.logger.error(s)
@@ -85,8 +87,7 @@ def bels_csv():
 
     # Create a FileStorage object for the input file
     f = request.files['csv']
-# with urllib.request.urlopen(url) as response, open(file_name, 'wb') as out_file:
-#        shutil.copyfileobj(response, out_file)
+
     # An input file must be provided.
     if f is None:
         s = f'Input file was not uploaded.'
@@ -137,6 +138,18 @@ def bels_csv():
     app.logger.info(f'headerline: {headerline}')
     app.logger.info(f'cleaned_fieldnames: {cleaned_fieldnames}')
     
+    # Darwinize the header
+    vocabpath = './bels/vocabularies/'
+    dwccloudfile = vocabpath + 'darwin_cloud.txt'
+    darwinized_header = darwinize_list(cleaned_fieldnames,dwccloudfile, case='l')
+    app.logger.info(f'darwinized_header: {darwinized_header}')
+    if 'country' not in darwinized_header and 'countrycode' not in darwinized_header:
+        s = 'The uploaded file has no field that can be interpreted as country or '
+        s += 'countrycode, at least one of which is required.<br>\n'
+        s += f'Darwin Core interpretation of fields found:<br>\n{darwinized_header}'
+        app.logger.error(s)
+        return s, 400  # 400 Bad Request
+
     client = storage.Client()
     bucket = client.get_bucket(PROJECT_ID)
 
@@ -261,6 +274,10 @@ def index():
     </body>
 </html>        
 '''
+
+@app.route('/greet')
+def say_hello():
+  return 'Hello from Server'
 
 if __name__ == "__main__":
     app.run(debug=True)
