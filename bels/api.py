@@ -17,10 +17,10 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-09-24T19:21-03:00"
+__version__ = __filename__ + ' ' + "2021-10-01T17:48-03:00"
 
-from flask import Flask, request
 import bels
+import resources
 import os
 import uuid
 import datetime
@@ -32,9 +32,14 @@ import logging
 
 from google.cloud import pubsub_v1
 from google.cloud import storage
+from google.cloud import bigquery
+from flask import Flask, request, render_template
+from flask_restful import Api
 
 from bels.dwca_vocab_utils import darwinize_list
+from bels.bels_query import BELS_Client
 
+counter = 0
 app = Flask(__name__)
 
 publisher = pubsub_v1.PublisherClient()
@@ -192,92 +197,16 @@ def bels_csv():
         app.logger.error(e)
         return (e, 500)
 
+bels_client = BELS_Client()
+bels_client.populate()
+#bels_client.country_report(10)
+ 
+api = Api(app)
+api.add_resource(resources.BestGeoref, '/api/bestgeoref', resource_class_kwargs={'bels_client': bels_client})
+
 @app.route('/')
-def index():
-    emailplaceholder = 'Notification email address'
-    outputfilenameplaceholder = 'Output file name only (output will be CSV)'
-    return f'''
-<!DOCTYPE html>
-<!--
-    /*
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-    
-    http://www.apache.org/licenses/LICENSE-2.0
-    
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-    
-    __author__ = "John Wieczorek"
-    __copyright__ = {__copyright__}
-    __version__ = __version__
-    */
-    -->
-<html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <LINK href="api.css" rel="stylesheet" type="text/css">
-        <TITLE>BELS Georeference Matcher</TITLE>
-<!-- TODO: Add an icon to the title bar> -->
-<!--        <link rel="icon" href="icon_path" type="image/icon type"> -->
-    </head>
-
-    <h1>Biodiversity Enhanced Location Services (BELS) - Georeference Matcher</h1>
-    <p>Upload a comma-separated input file that contains 
-       <a href="https://dwc.tdwg.org/terms/#location" target="_blank">location information</a>. Choose an email address to which to send the notification when the results are ready. Choose an output file name. This name will form an identifying part of the results file name, which will be a gzipped CSV file or files with an extension .csv.gz added.</p>
-    <form method="post" action="/api/bels_csv" enctype="multipart/form-data">
-        <p><input type=file name=csv>
-        <p><input type=email name=email placeholder="{emailplaceholder}" size="50">
-        <p><input type=text name=filename placeholder="{outputfilenameplaceholder}" size="50">
-        <p><input type=submit value=Submit>
-    </form>
-        <DIV id="divLinks" style="background-color: #FFFFFF";>
-            <HR>
-            <TABLE cellspacing="0" border="0" width="100%">
-                <TBODY>
-                    <TR>
-                        <TD width="60%" valign="MIDDLE">
-                            <FONT size="2">
-                                <P align="LEFT">
-                                    {__copyright__}
-                            </FONT>
-                        </TD>
-                        <TD width="40%" valign="MIDDLE" align="RIGHT">
-                            <A rel="license" href="http://www.apache.org/licenses/LICENSE-2.0">
-                            <img alt="Creative Commons License" style="border-width:0" 
-                                src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png"></A>
-                            <!--    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png">-->
-                        </TD>
-                    </TR>
-                </TBODY>
-            </TABLE>
-<!--            <iframe width="100%" height="300px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTRfHPphVPJhHGMIotzHEUfNUB1PWyBldGp6p2e7deNfYaj4IvKhaKIwm1go5tGmhHdBAc_n5nfX72S/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
--->
-            <TABLE cellspacing="0" border="0" width="100%">
-                <TBODY>
-                    <TR>
-                        <TD width="50%" valign="MIDDLE">
-                            <P>VertNet 23 Jul 2021 </P>
-                        </TD>
-                        <TD width="50%" valign="MIDDLE" align="RIGHT">
-                            <i>Version {__version__}</i>
-                        </TD>
-                    </TR>
-                </TBODY>
-            </TABLE>
-            <HR>
-        </DIV>
-    </body>
-</html>        
-'''
-
-@app.route('/greet')
-def say_hello():
-  return 'Hello from Server'
+def index(version=None):
+    return render_template('index.html', version=__version__)
 
 if __name__ == "__main__":
     app.run(debug=True)
@@ -289,7 +218,18 @@ if __name__ == "__main__":
 # pip install flask - only the 1st time
 # Make sure the environment value is set for 'GOOGLE_CLOUD_PROJECT'
 # If there are changes in job.py, those need to be deployed to be used in api.py locally
+
 # $ python api.py
 # open http://127.0.0.1:5000/ in a browser
 # Check that the version is as expected
 # curl -v --data-binary @test.csv http://127.0.0.1:5000/api/bels_csv
+
+# With Coords bestgeoref examples
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"continent":"Asia","country":"Philippines", "countrycode":"PH", "locality":"Bacon", "verbatimlocality":"Bacon", "decimallatitude":"13.040245", "decimallongitude":"124.039609"}}' http://127.0.0.1:5000/api/bestgeoref
+
+# Using verbatim coords bestgeoref examples
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"countrycode": "DK","locality":"Gudhjem"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"countrycode": "ES","stateprovince":"Cc", "locality":"Acebo"}}' http://127.0.0.1:5000/api/bestgeoref
+
+# Sans Coords bestgeoref examples
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"continent":"Europe", "country":"United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' http://127.0.0.1:5000/api/bestgeoref

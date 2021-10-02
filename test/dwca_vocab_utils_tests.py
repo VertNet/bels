@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "dwca_vocab_utils_tests.py"
-__version__ = __filename__ + ' ' + "2021-07-22T21:07-03:00"
+__version__ = __filename__ + ' ' + "2021-10-02T00:33-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/test/dwca_vocab_utils_test.py"
 
 # This file contains unit tests for the functions in dwca_vocab_utils.
@@ -39,6 +39,7 @@ from bels.dwca_vocab_utils import compose_key_from_row
 from bels.dwca_vocab_utils import darwin_cloud_vocab_dict_from_file
 from bels.dwca_vocab_utils import darwinize_list
 from bels.dwca_vocab_utils import darwinize_dict
+from bels.dwca_vocab_utils import Darwinizer
 from bels.dwca_vocab_utils import distinct_vocabs_to_file
 from bels.dwca_vocab_utils import matching_vocab_dict_from_file
 from bels.dwca_vocab_utils import missing_vocab_list_from_file
@@ -671,6 +672,18 @@ class DWCAVocabUtilsTestCase(unittest.TestCase):
         s += 'in entry %s' % entry
         self.assertEqual(seek, expected, s)
 
+    def test_darwinizer(self):
+        print('Running test_darwinizer')
+        darwincloudfile = self.framework.darwincloudfile
+        darwinizer = Darwinizer(darwincloudfile)
+        
+        inputdict = {"":"1", " ":"2", "Collector":"3", "año":"4", "SPECIAL ":"5"}
+        expected = {"UNNAMED_COLUMN_1":"1", "UNNAMED_COLUMN_2":"2", "recordedBy":"3", "year":"4", "SPECIAL":"5"}
+        outputdict = darwinizer.darwinize_dict(inputdict)
+        
+        s = f'Output\n{outputdict}\ndoes not match expected\n{expected}'
+        self.assertEqual(outputdict, expected, s)
+        
 if __name__ == '__main__':
     print('=== dwca_vocab_utils_test.py ===')
     #setup_actor_logging({'loglevel':'DEBUG'})

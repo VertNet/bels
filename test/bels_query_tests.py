@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query_tests.py"
-__version__ = __filename__ + ' ' + "2021-07-24T18:37-03:00"
+__version__ = __filename__ + ' ' + "2021-09-27T15:12-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -49,9 +49,7 @@ from bels.bels_query import get_location_by_id
 from bels.bels_query import get_location_by_hashid
 from bels.bels_query import row_as_dict
 from bels.bels_query import bigquerify_header
-#from bels.bels_query import check_header_for_bels
 from decimal import *
-import json
 import unittest
 
 class BELSQueryTestFramework():

@@ -16,22 +16,104 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2021-07-26T20:24-03:00"
+__version__ = __filename__ + ' ' + "2021-10-02T00:32-03:00"
 
 import json
 import logging
 import re
 from google.cloud import bigquery
 from google.cloud import storage
-from .dwca_terms import locationkeytermlist
 from .json_utils import CustomJsonEncoder
 
 BQ_SERVICE='localityservice'
 BQ_GAZ_DATASET='gazetteer'
+BQ_VOCABS_DATASET='vocabs'
 BQ_PROJECT='localityservice'
 BQ_INPUT_DATASET='belsapi'
 BQ_OUTPUT_DATASET='results'
- 
+
+# def coordinates_score(locdict, darwinize=True)
+#     if locdict is None:
+#         return None
+#     if darwinize:
+#         
+# IF(v_georeferenceprotocol IS NULL,0,16) +
+# IF(v_georeferencesources IS NULL,0,8) +
+# IF(v_georeferenceddate IS NULL,0,4) +
+# IF(v_georeferencedby IS NULL,0,2) +
+# IF(v_georeferenceremarks IS NULL,0,1)
+# AS georef_score,
+# IF(interpreted_decimallatitude IS NULL or interpreted_decimallongitude IS NULL,0,128) +
+# IF(epsg IS NULL,0,64) +
+# IF(SAFE_CAST(v_coordinateuncertaintyinmeters AS NUMERIC)>=1 AND
+# SAFE_CAST(v_coordinateuncertaintyinmeters AS NUMERIC)<20037509,32,0) +
+# IF(v_georeferenceprotocol IS NULL,0,16) +
+# IF(v_georeferencesources IS NULL,0,8) +
+# IF(v_georeferenceddate IS NULL,0,4) +
+# IF(v_georeferencedby IS NULL,0,2) +
+# IF(v_georeferenceremarks IS NULL,0,1)
+# 
+# def has_georef(locdict):
+#     if locdict is None:
+#         return None
+
+class BELS_Client():
+    def __init__(self, bq_client=None):
+        self.bq_client = bq_client;
+        if self.bq_client is None:
+            print(f'New BigQuery Client instantiated for {self.__class__.__name__}')
+            self.bq_client = bigquery.Client()
+        self.countrycode_dict = {}
+
+    def get_bq_client(self):
+        return self.bq_client
+
+    def populate(self, table_id=None):
+        self.countrycode_dict = {}
+        if table_id is None:
+            table_id = BQ_SERVICE+'.'+BQ_VOCABS_DATASET+'.'+'countrycode_lookup'
+        query =f"""
+SELECT 
+    *
+FROM 
+    {table_id}
+"""
+        table = self.bq_client.get_table(table_id)  # Make an API request.
+        rowlist = list(self.bq_client.list_rows(table))
+        for row in rowlist:
+            self.countrycode_dict[row['u_country']]=row['countrycode']
+
+    def country_report(self, count=0):
+        if self.countrycode_dict is None:
+            print(f"Countrycode dictionary not populated.")
+            return
+
+        print(f"Loaded {len(self.countrycode_dict)} rows for countrycode lookup.")
+        if count>0:
+            counter = 0
+            print(f'First {count} countrycode lookups:')
+            for key in self.countrycode_dict:
+                print(f'{key}: {self.countrycode_dict[key]}')
+                counter += 1
+                if counter == count:
+                    break
+        else:
+            print(self.countrycode_dict)
+
+    def get_best_countrycode(self, locdict):
+#        print(f'locdict:{locdict}')
+        if locdict is None:
+            return None
+        best_country = locdict.get('countrycode')
+        if best_country is None:
+            best_country = locdict.get('country')
+        if best_country is not None:
+#            print(f'bestcountry:{best_country}')
+            countrycode = self.countrycode_dict.get(best_country.upper())
+#            print(f'bestcountrycode:{countrycode}')
+            return countrycode
+        return None
+
 def schema_from_header(header):
     # Create a BigQuery schema from the fields in a header.
     schema = []
@@ -502,19 +584,21 @@ def query_best_sans_coords_georef_reduced(matchstr, table_name=None):
         table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_sans_coords_best_georef'
     query =f"""
 SELECT 
-    matchme_sans_coords as sans_coords_match_string,
-    interpreted_countrycode as sans_coords_countrycode,
-    interpreted_decimallatitude as sans_coords_decimallatitude,
-    interpreted_decimallongitude as sans_coords_decimallongitude,
-    unc_numeric as sans_coords_coordinateuncertaintyinmeters,
-    v_georeferencedby as sans_coords_georeferencedby,
-    v_georeferenceddate as sans_coords_georeferenceddate,
-    v_georeferenceprotocol as sans_coords_georeferenceprotocol,
-    v_georeferencesources as sans_coords_georeferencesources,
-    v_georeferenceremarks as sans_coords_georeferenceremarks,
-    georef_score as sans_coords_georef_score,
-    centroid_dist as sans_coords_centroid_distanceinmeters,
-    georef_count as sans_coords_georef_count
+  interpreted_countrycode as bels_countrycode,
+  matchme_sans_coords as bels_match_string,
+  interpreted_decimallatitude as bels_decimallatitude,
+  interpreted_decimallongitude as bels_decimallongitude,
+  'epsg:4326' as bels_geodeticdatum,
+  SAFE_CAST(round(unc_numeric,0) AS INT64) AS bels_coordinateuncertaintyinmeters,
+  v_georeferencedby as bels_georeferencedby,
+  v_georeferenceddate as bels_georeferenceddate,
+  v_georeferenceprotocol as bels_georeferenceprotocol,
+  v_georeferencesources as bels_georeferencesources,
+  v_georeferenceremarks as bels_georeferenceremarks,
+  georef_score as bels_georeference_score,
+  source as bels_georeference_source,
+  georef_count as bels_best_of_n_georeferences,
+  'match sans coords' as bels_match_type
 FROM 
     {table_name}
 WHERE 
@@ -568,20 +652,21 @@ def get_best_sans_coords_georef_reduced(bq_client, matchstr):
     if rows.total_rows==0:
         # Create a dict of an empty row so that every record can have a result
         # This has to match the structure of the rows query result.
-        return {
-        'sans_coords_match_string': None, 
-        'sans_coords_countrycode': None, 
-        'sans_coords_decimallatitude': None, 
-        'sans_coords_decimallongitude': None, 
-        'sans_coords_coordinateuncertaintyinmeters': None, 
-        'sans_coords_georeferencedby': None, 
-        'sans_coords_georeferenceddate': None, 
-        'sans_coords_georeferenceprotocol': None, 
-        'sans_coords_georeferencesources': None, 
-        'sans_coords_georeferenceremarks': None, 
-        'sans_coords_georef_score': None, 
-        'sans_coords_centroid_distanceinmeters': None, 
-        'sans_coords_georef_count': None }
+        return None
+#         return {
+#         'sans_coords_match_string': None, 
+#         'sans_coords_countrycode': None, 
+#         'sans_coords_decimallatitude': None, 
+#         'sans_coords_decimallongitude': None, 
+#         'sans_coords_coordinateuncertaintyinmeters': None, 
+#         'sans_coords_georeferencedby': None, 
+#         'sans_coords_georeferenceddate': None, 
+#         'sans_coords_georeferenceprotocol': None, 
+#         'sans_coords_georeferencesources': None, 
+#         'sans_coords_georeferenceremarks': None, 
+#         'sans_coords_georef_score': None, 
+#         'sans_coords_centroid_distanceinmeters': None, 
+#         'sans_coords_georef_count': None }
     for row in rows:
         return row_as_dict(row)
 
@@ -626,19 +711,21 @@ def query_best_with_verbatim_coords_georef_reduced(matchstr, table_name=None):
         table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_verbatimcoords_best_georef'
     query =f"""
 SELECT 
-  matchme as verbatim_coords_match_string,
-  interpreted_countrycode as verbatim_coords_countrycode,
-  interpreted_decimallatitude as verbatim_coords_decimallatitude,
-  interpreted_decimallongitude as verbatim_coords_decimallongitude,
-  unc_numeric as verbatim_coords_coordinateuncertaintyinmeters,
-  v_georeferencedby as verbatim_coords_georeferencedby,
-  v_georeferenceddate as verbatim_coords_georeferenceddate,
-  v_georeferenceprotocol as verbatim_coords_georeferenceprotocol,
-  v_georeferencesources as verbatim_coords_georeferencesources,
-  v_georeferenceremarks as verbatim_coords_georeferenceremarks,
-  georef_score as verbatim_coords_georef_score,
-  centroid_dist as verbatim_coords_centroid_distanceinmeters,
-  georef_count as verbatim_coords_georef_count
+  interpreted_countrycode as bels_countrycode,
+  matchme as bels_match_string,
+  interpreted_decimallatitude as bels_decimallatitude,
+  interpreted_decimallongitude as bels_decimallongitude,
+  'epsg:4326' as bels_geodeticdatum,
+  SAFE_CAST(round(unc_numeric,0) AS INT64) AS bels_coordinateuncertaintyinmeters,
+  v_georeferencedby as bels_georeferencedby,
+  v_georeferenceddate as bels_georeferenceddate,
+  v_georeferenceprotocol as bels_georeferenceprotocol,
+  v_georeferencesources as bels_georeferencesources,
+  v_georeferenceremarks as bels_georeferenceremarks,
+  georef_score as bels_georeference_score,
+  source as bels_georeference_source,
+  georef_count as bels_best_of_n_georeferences,
+  'match using verbatim coords' as bels_match_type
 FROM 
   {table_name}
 WHERE 
@@ -672,22 +759,23 @@ def get_best_with_verbatim_coords_georef_reduced(bq_client, matchstr):
 
     rows = run_bq_query(bq_client, query_best_with_verbatim_coords_georef_reduced(matchstr), 1)
     if rows.total_rows==0:
-        # Create a dict of an empty row so that every record can have a result
-        # This has to match the structure of the rows query result.
-        return {
-        'sans_coords_match_string': None, 
-        'sans_coords_countrycode': None, 
-        'sans_coords_decimallatitude': None, 
-        'sans_coords_decimallongitude': None, 
-        'sans_coords_coordinateuncertaintyinmeters': None, 
-        'sans_coords_georeferencedby': None, 
-        'sans_coords_georeferenceddate': None, 
-        'sans_coords_georeferenceprotocol': None, 
-        'sans_coords_georeferencesources': None, 
-        'sans_coords_georeferenceremarks': None, 
-        'sans_coords_georef_score': None, 
-        'sans_coords_centroid_distanceinmeters': None, 
-        'sans_coords_georef_count': None }
+#        # Create a dict of an empty row so that every record can have a result
+#        # This has to match the structure of the rows query result.
+        return None
+#         return {
+#         'sans_coords_match_string': None, 
+#         'sans_coords_countrycode': None, 
+#         'sans_coords_decimallatitude': None, 
+#         'sans_coords_decimallongitude': None, 
+#         'sans_coords_coordinateuncertaintyinmeters': None, 
+#         'sans_coords_georeferencedby': None, 
+#         'sans_coords_georeferenceddate': None, 
+#         'sans_coords_georeferenceprotocol': None, 
+#         'sans_coords_georeferencesources': None, 
+#         'sans_coords_georeferenceremarks': None, 
+#         'sans_coords_georef_score': None, 
+#         'sans_coords_centroid_distanceinmeters': None, 
+#         'sans_coords_georef_count': None }
     for row in rows:
         return row_as_dict(row)
 
@@ -731,19 +819,21 @@ def query_best_with_coords_georef_reduced(matchstr, table_name=None):
         table_name = BQ_SERVICE+'.'+BQ_GAZ_DATASET+'.'+'matchme_with_coords_best_georef'
     query =f"""
 SELECT 
-  matchme_with_coords as with_coords_match_string,
-  interpreted_countrycode as with_coords_countrycode,
-  interpreted_decimallatitude as with_coords_decimallatitude,
-  interpreted_decimallongitude as with_coords_decimallongitude,
-  unc_numeric as with_coords_coordinateuncertaintyinmeters,
-  v_georeferencedby as with_coords_georeferencedby,
-  v_georeferenceddate as with_coords_georeferenceddate,
-  v_georeferenceprotocol as with_coords_georeferenceprotocol,
-  v_georeferencesources as with_coords_georeferencesources,
-  v_georeferenceremarks as with_coords_georeferenceremarks,
-  georef_score as with_coords_georef_score,
-  centroid_dist as with_coords_centroid_distanceinmeters,
-  georef_count as with_coords_georef_count
+  interpreted_countrycode as bels_countrycode,
+  matchme_with_coords as bels_match_string,
+  interpreted_decimallatitude as bels_decimallatitude,
+  interpreted_decimallongitude as bels_decimallongitude,
+  'epsg:4326' as bels_geodeticdatum,
+  SAFE_CAST(round(unc_numeric,0) AS INT64) AS bels_coordinateuncertaintyinmeters,
+  v_georeferencedby as bels_georeferencedby,
+  v_georeferenceddate as bels_georeferenceddate,
+  v_georeferenceprotocol as bels_georeferenceprotocol,
+  v_georeferencesources as bels_georeferencesources,
+  v_georeferenceremarks as bels_georeferenceremarks,
+  georef_score as bels_georeference_score,
+  source as bels_georeference_source,
+  georef_count as bels_best_of_n_georeferences,
+  'match with coords' as bels_match_type
 FROM 
   {table_name}
 WHERE 
@@ -777,22 +867,23 @@ def get_best_with_coords_georef_reduced(bq_client, matchstr):
 
     rows = run_bq_query(bq_client, query_best_with_coords_georef_reduced(matchstr), 1)
     if rows.total_rows==0:
-        # Create a dict of an empty row so that every record can have a result
-        # This has to match the structure of the rows query result.
-        return {
-        'sans_coords_match_string': None, 
-        'sans_coords_countrycode': None, 
-        'sans_coords_decimallatitude': None, 
-        'sans_coords_decimallongitude': None, 
-        'sans_coords_coordinateuncertaintyinmeters': None, 
-        'sans_coords_georeferencedby': None, 
-        'sans_coords_georeferenceddate': None, 
-        'sans_coords_georeferenceprotocol': None, 
-        'sans_coords_georeferencesources': None, 
-        'sans_coords_georeferenceremarks': None, 
-        'sans_coords_georef_score': None, 
-        'sans_coords_centroid_distanceinmeters': None, 
-        'sans_coords_georef_count': None }
+        return None
+#         # Create a dict of an empty row so that every record can have a result
+#         # This has to match the structure of the rows query result.
+#         return {
+#         'sans_coords_match_string': None, 
+#         'sans_coords_countrycode': None, 
+#         'sans_coords_decimallatitude': None, 
+#         'sans_coords_decimallongitude': None, 
+#         'sans_coords_coordinateuncertaintyinmeters': None, 
+#         'sans_coords_georeferencedby': None, 
+#         'sans_coords_georeferenceddate': None, 
+#         'sans_coords_georeferenceprotocol': None, 
+#         'sans_coords_georeferencesources': None, 
+#         'sans_coords_georeferenceremarks': None, 
+#         'sans_coords_georef_score': None, 
+#         'sans_coords_centroid_distanceinmeters': None, 
+#         'sans_coords_georef_count': None }
     for row in rows:
         return row_as_dict(row)
 

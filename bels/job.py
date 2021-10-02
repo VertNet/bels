@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-07-25T16:17-03:00"
+__version__ = __filename__ + ' ' + "2021-09-27T16:07-03:00"
 
 import base64
 import json
@@ -110,6 +110,7 @@ def process_csv_in_bulk(event, context):
     logging.info(f'{msg}')
 #    print(msg)
 
+    # TODO: Would like to have a persistent client available rather than firing one up on demand
     bq_client = bigquery.Client()
     logging.debug(f'Prepping for import_table. upload_file_url: {upload_file_url}')
     logging.debug(f'bigqueryized_header: {bigqueryized_header}')
