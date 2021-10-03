@@ -17,16 +17,20 @@ __author__ = "John Wieczorek"
 __contributors__ = ""
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "resources.py"
-__version__ = __filename__ + ' ' + "2021-10-01T18:04-03:00"
+__version__ = __filename__ + ' ' + "2021-10-03T14:44-03:00"
 
 import os
 import base64
 import time
 
-from bels.bels_query import row_as_dict
+from bels.bels_query import bels_original_georef
 from bels.bels_query import get_best_sans_coords_georef_reduced
 from bels.bels_query import get_best_with_verbatim_coords_georef_reduced
 from bels.bels_query import get_best_with_coords_georef_reduced
+from bels.bels_query import has_decimal_coords
+from bels.bels_query import has_georef
+from bels.bels_query import has_verbatim_coords
+from bels.bels_query import row_as_dict
 from bels.dwca_terms import locationmatchsanscoordstermlist
 from bels.dwca_terms import locationmatchverbatimcoordstermlist
 from bels.dwca_terms import locationmatchwithcoordstermlist
@@ -47,6 +51,7 @@ class BestGeoref(Resource):
         self.darwinizer = Darwinizer('./vocabularies/darwin_cloud.txt')
 
     def post(self):
+        starttime = time.perf_counter()
         if request.is_json == False:
             return {"Message": {"status": "error", "Result": f"Request is empty or is not valid JSON."}}, 400
 
@@ -70,31 +75,41 @@ class BestGeoref(Resource):
         if 'country' not in lowerloc and 'countrycode' not in lowerloc:
             return {"Message": {"status": "error", "Result": f"No interpretable country field in : {requestjson}"}}, 400
 
+        # Short-cut if the row already has a georeference
+        if has_georef(loc):
+            row = bels_original_georef(lowerloc)
+            row['bels_countrycode'] = self.bels_client.get_best_countrycode(lowerloc)
+            return {"Message": {"status": "success", "Result": row}}, 200
+        
         if self.bq_client is None:
             return {"Message": {"status": "error", "Result": "No BigQuery client."}}, 500
 
         bestcountrycode = self.bels_client.get_best_countrycode(lowerloc)
         lowerloc['countrycode'] = bestcountrycode
-
+        result = None
+        matchstr = None
         if give_me == 'BEST_GEOREF':
-            matchme = location_match_str(locationmatchwithcoordstermlist, lowerloc)
-            matchstr = super_simplify(matchme)
             starttime = time.perf_counter()
-            result = get_best_with_coords_georef_reduced(self.bq_client, matchstr)
-            print(f'Matchstr: {matchstr}\nResult: {result}')
-            if result is None:
-                print(f'No result for with coords string {matchstr}')
+            if has_decimal_coords(lowerloc) == True:
+                matchme = location_match_str(locationmatchwithcoordstermlist, lowerloc)
+                matchstr = super_simplify(matchme)
+                result = get_best_with_coords_georef_reduced(self.bq_client, matchstr)
+                if result is None:
+                    print(f'No match with coords found {matchstr}')
+            if result is None and has_verbatim_coords(lowerloc): 
                 matchme = location_match_str(locationmatchverbatimcoordstermlist, lowerloc)
                 matchstr = super_simplify(matchme)
                 result = get_best_with_verbatim_coords_georef_reduced(self.bq_client, matchstr)
                 if result is None:
-                    print(f'No result for verbatim coords string {matchstr}')
-                    matchme = location_match_str(locationmatchsanscoordstermlist, lowerloc)
-                    matchstr = super_simplify(matchme)
-                    result = get_best_sans_coords_georef_reduced(self.bq_client, matchstr)
+                    print(f'No match with verbatim coords found {matchstr}')
+            if result is None:
+                matchme = location_match_str(locationmatchsanscoordstermlist, lowerloc)
+                matchstr = super_simplify(matchme)
+                result = get_best_sans_coords_georef_reduced(self.bq_client, matchstr)    
+                if result is None:
+                    print(f'No match sans coords found {matchstr}')
 
-            endtime = time.perf_counter()
-            querytime = endtime-starttime
+            querytime = time.perf_counter()-starttime
             print(f'Execution time: {querytime:1.3f}s')
 
             if result:
@@ -103,7 +118,6 @@ class BestGeoref(Resource):
                         result[field] = base64.b64encode(result[field]).decode('utf-8')
                 row.update(result)
                 return {"Message": {"status": "success", "Result": row}}, 200
-#                return {"Message": {"status": "success", "Result": {row}}}, 200
             else:
-                print(f'No result for sans coords string {matchstr}')
+                print(f'No georeference found')
                 return {"Message": {"status": "failure", "Result": {row}}}, 200

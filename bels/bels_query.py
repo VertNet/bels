@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2021-10-02T00:32-03:00"
+__version__ = __filename__ + ' ' + "2021-10-03T13:24-01:00"
 
 import json
 import logging
@@ -24,6 +24,7 @@ import re
 from google.cloud import bigquery
 from google.cloud import storage
 from .json_utils import CustomJsonEncoder
+from bels.dwca_utils import lower_dict_keys
 
 BQ_SERVICE='localityservice'
 BQ_GAZ_DATASET='gazetteer'
@@ -32,30 +33,102 @@ BQ_PROJECT='localityservice'
 BQ_INPUT_DATASET='belsapi'
 BQ_OUTPUT_DATASET='results'
 
-# def coordinates_score(locdict, darwinize=True)
-#     if locdict is None:
-#         return None
-#     if darwinize:
-#         
-# IF(v_georeferenceprotocol IS NULL,0,16) +
-# IF(v_georeferencesources IS NULL,0,8) +
-# IF(v_georeferenceddate IS NULL,0,4) +
-# IF(v_georeferencedby IS NULL,0,2) +
-# IF(v_georeferenceremarks IS NULL,0,1)
-# AS georef_score,
-# IF(interpreted_decimallatitude IS NULL or interpreted_decimallongitude IS NULL,0,128) +
-# IF(epsg IS NULL,0,64) +
-# IF(SAFE_CAST(v_coordinateuncertaintyinmeters AS NUMERIC)>=1 AND
-# SAFE_CAST(v_coordinateuncertaintyinmeters AS NUMERIC)<20037509,32,0) +
-# IF(v_georeferenceprotocol IS NULL,0,16) +
-# IF(v_georeferencesources IS NULL,0,8) +
-# IF(v_georeferenceddate IS NULL,0,4) +
-# IF(v_georeferencedby IS NULL,0,2) +
-# IF(v_georeferenceremarks IS NULL,0,1)
-# 
-# def has_georef(locdict):
-#     if locdict is None:
-#         return None
+def georeference_score(locdict):
+    # Assumes the locdict has been darwinized
+    if locdict is None:
+        return None
+    lowerlocdict = lower_dict_keys(locdict)
+    georeferenceprotocol = lowerlocdict.get('georeferenceprotocol')
+    georeferencesources = lowerlocdict.get('georeferencesources')
+    georeferenceddate = lowerlocdict.get('georeferenceddate')
+    georeferencedby = lowerlocdict.get('georeferencedby')
+    georeferenceremarks = lowerlocdict.get('georeferenceremarks')
+    
+    score = 0
+    if georeferenceprotocol is not None and len(georeferenceprotocol.strip())>0:
+        score += 16
+    if georeferencesources is not None and len(georeferencesources.strip())>0:
+        score += 8
+    if georeferenceddate is not None and len(georeferenceddate.strip())>0:
+        score += 4
+    if georeferencedby is not None and len(georeferencedby.strip())>0:
+        score += 2
+    if georeferenceremarks is not None and len(georeferenceremarks.strip())>0:
+        score += 1
+    return score
+
+def coordinates_score(locdict):
+    # Assumes the locdict has been darwinized
+    if locdict is None:
+        return None
+    lowerlocdict = lower_dict_keys(locdict)
+    decimallatitude = lowerlocdict.get('decimallatitude')
+    decimallongitude = lowerlocdict.get('decimallongitude')
+    geodeticdatum = lowerlocdict.get('geodeticdatum')
+    coordinateuncertaintyinmeters = lowerlocdict.get('coordinateuncertaintyinmeters')
+    
+    score = 0
+    try:
+        lat = float(decimallatitude)
+        lng = float(decimallongitude)
+        if lat>=-90 and lat <=90 and lng>=-180 and lng<=180:
+            score += 128
+    except Exception as e:
+        pass
+    if geodeticdatum is not None:
+        score += 64
+    try:
+        unc = float(coordinateuncertaintyinmeters)
+        if unc>=1 and unc<=20037509:
+            score += 32
+    except Exception as e:
+        pass
+    score += georeference_score(locdict)
+    return score
+
+def has_georef(locdict):
+    if locdict is None:
+         return None
+    if coordinates_score(locdict)>=224:
+        return True
+    return False
+
+def has_decimal_coords(locdict):
+    if locdict is None:
+         return None
+    if coordinates_score(locdict)>=128:
+        return True
+    return False
+
+def has_verbatim_coords(locdict):
+    if locdict is None:
+         return None
+    if (locdict.get('verbatimlatitude') is not None and \
+        locdict.get('verbatimlongitude') is not None) or \
+        locdict.get('verbatimcoordinates') is not None:
+        return True
+    return False
+
+def bels_original_georef(locdict):
+    if locdict is None:
+         return None
+    row = {}
+    row['bels_countrycode'] = None
+    row['bels_match_string'] = None
+    row['bels_decimallatitude'] = locdict.get('decimallatitude')
+    row['bels_decimallongitude'] = locdict.get('decimallongitude')
+    row['bels_geodeticdatum'] = locdict.get('geodeticdatum')
+    row['bels_coordinateuncertaintyinmeters'] = locdict.get('coordinateuncertaintyinmeters')
+    row['bels_georeferencedby'] = locdict.get('georeferencedby')
+    row['bels_georeferenceddate'] = locdict.get('georeferenceddate')
+    row['bels_georeferenceprotocol'] = locdict.get('georeferenceprotocol')
+    row['bels_georeferencesources'] = locdict.get('georeferencesources')
+    row['bels_georeferenceremarks'] = locdict.get('georeferenceremarks')
+    row['bels_georeference_score'] = georeference_score(locdict)
+    row['bels_georeference_source'] = 'original data'
+    row['bels_best_of_n_georeferences'] = None
+    row['bels_match_type'] = 'no match attempted'
+    return row
 
 class BELS_Client():
     def __init__(self, bq_client=None):

@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-10-01T17:48-03:00"
+__version__ = __filename__ + ' ' + "2021-10-03T15:02-03:00"
 
 import bels
 import resources
@@ -228,8 +228,12 @@ if __name__ == "__main__":
 #curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"continent":"Asia","country":"Philippines", "countrycode":"PH", "locality":"Bacon", "verbatimlocality":"Bacon", "decimallatitude":"13.040245", "decimallongitude":"124.039609"}}' http://127.0.0.1:5000/api/bestgeoref
 
 # Using verbatim coords bestgeoref examples
-#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"countrycode": "DK","locality":"Gudhjem"}}' http://127.0.0.1:5000/api/bestgeoref
-#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"countrycode": "ES","stateprovince":"Cc", "locality":"Acebo"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"continent":"Europe", "country":"Portugal", "stateprovince":"Bragança", "municipality":"Bragança", "locality":"Carção", "verbatimlocality":"MC13", "verbatimlatitude":"41.67", "verbatimlongitude":"-6.58"}}' http://127.0.0.1:5000/api/bestgeoref
 
 # Sans Coords bestgeoref examples
 #curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"continent":"Europe", "country":"United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"countrycode": "DK","locality":"Gudhjem"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"countrycode": "ES","stateprovince":"Cc", "locality":"Acebo"}}' http://127.0.0.1:5000/api/bestgeoref
+
+# Original record has georef examples
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"country":"Denmark", "decimallatitude":"20", "decimallongitude":"30", "geodeticdatum":"epsg:4326", "coordinateuncertaintyinmeters":"10", "georeferenceprotocol":"protocol", "georeferencesources":"sources", "georeferenceddate":"date", "georeferencedby":"georefby", "georeferenceremarks":"remarks"}}' http://127.0.0.1:5000/api/bestgeoref

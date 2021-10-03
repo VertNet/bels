@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query_tests.py"
-__version__ = __filename__ + ' ' + "2021-09-27T15:12-03:00"
+__version__ = __filename__ + ' ' + "2021-10-03T02:28-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -39,6 +39,9 @@ from bels.dwca_vocab_utils import darwinize_list
 from bels.id_utils import dwc_location_hash
 from bels.id_utils import location_match_str
 from bels.id_utils import super_simplify
+from bels.bels_query import bels_original_georef
+from bels.bels_query import georeference_score
+from bels.bels_query import coordinates_score
 from bels.bels_query import get_best_sans_coords_georef
 from bels.bels_query import get_best_with_coords_georef
 from bels.bels_query import get_best_with_verbatim_coords_georef
@@ -47,6 +50,7 @@ from bels.bels_query import get_best_with_coords_georef_reduced
 from bels.bels_query import get_best_with_verbatim_coords_georef_reduced
 from bels.bels_query import get_location_by_id
 from bels.bels_query import get_location_by_hashid
+from bels.bels_query import has_georef
 from bels.bels_query import row_as_dict
 from bels.bels_query import bigquerify_header
 from decimal import *
@@ -102,6 +106,159 @@ class BELSQueryTestCase(unittest.TestCase):
 #         result = row['dwc_location_hash']
 #         self.assertEqual(result, target)
 # 
+
+    def test_georeference_score(self):
+        print('Running test_georeference_score')
+
+        inputrow = {'countrycode':'DK', 'locality':'Gudhjem'}
+        result = georeference_score(inputrow)
+        expected = 0
+        self.assertEqual(result, expected)
+        
+        inputrow = {'georeferenceprotocol':'protocol', 'georeferencesources':'sources', \
+            'georeferenceddate':'date', 'georeferencedby':'georefby', \
+            'georeferenceremarks':'remarks'}
+        result = georeference_score(inputrow)
+        expected = 31
+        self.assertEqual(result, expected)
+
+        inputrow = {'georeferenceprotocol':'', 'georeferencesources':'', \
+            'georeferenceddate':'', 'georeferencedby':'', 'georeferenceremarks':''}
+        result = georeference_score(inputrow)
+        expected = 0
+        self.assertEqual(result, expected)
+
+        inputrow = {'georeferenceprotocol':None, 'georeferencesources':None, \
+            'georeferenceddate':None, 'georeferencedby':None, 'georeferenceremarks':None}
+        result = georeference_score(inputrow)
+        expected = 0
+        self.assertEqual(result, expected)
+
+    def test_coordinates_score(self):
+        print('Running test_coordinates_score')
+
+        inputrow = {'countrycode':'DK', 'locality':'Gudhjem'}
+        result = coordinates_score(inputrow)
+        expected = 0
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':'20', 'decimallongitude':'30', \
+            'geodeticdatum':'epsg:4326', 'coordinateuncertaintyinmeters':'10'}
+        result = coordinates_score(inputrow)
+        expected = 224
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':'200', 'decimallongitude':'30', \
+            'geodeticdatum':'epsg:4326', 'coordinateuncertaintyinmeters':'10'}
+        result = coordinates_score(inputrow)
+        expected = 96
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':'20', 'decimallongitude':'-300', \
+            'geodeticdatum':'epsg:4326', 'coordinateuncertaintyinmeters':'10'}
+        result = coordinates_score(inputrow)
+        expected = 96
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':'20', 'decimallongitude':'30', \
+            'geodeticdatum':'epsg:4326', 'coordinateuncertaintyinmeters':'0'}
+        result = coordinates_score(inputrow)
+        expected = 192
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':'', 'decimallongitude':'', \
+            'geodeticdatum':'', 'coordinateuncertaintyinmeters':''}
+        result = georeference_score(inputrow)
+        expected = 0
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':None, 'decimallongitude':None, \
+            'geodeticdatum':None, 'coordinateuncertaintyinmeters':None}
+        result = coordinates_score(inputrow)
+        expected = 0
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':'20', 'decimallongitude':'30', \
+            'geodeticdatum':'epsg:4326', 'coordinateuncertaintyinmeters':'10', \
+            'georeferenceprotocol':'protocol', 'georeferencesources':'sources', \
+            'georeferenceddate':'date', 'georeferencedby':'georefby', \
+            'georeferenceremarks':'remarks'}
+        result = coordinates_score(inputrow)
+        expected = 255
+        self.assertEqual(result, expected)
+
+    def test_has_georef(self):
+        print('Running test_has_georef')
+
+        inputrow = {'countrycode':'DK', 'locality':'Gudhjem'}
+        result = has_georef(inputrow)
+        expected = False
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':'20', 'decimallongitude':'30', \
+            'geodeticdatum':'epsg:4326', 'coordinateuncertaintyinmeters':'10'}
+        result = has_georef(inputrow)
+        expected = True
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':'200', 'decimallongitude':'30', \
+            'geodeticdatum':'epsg:4326', 'coordinateuncertaintyinmeters':'10'}
+        result = has_georef(inputrow)
+        expected = False
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':'20', 'decimallongitude':'-300', \
+            'geodeticdatum':'epsg:4326', 'coordinateuncertaintyinmeters':'10'}
+        result = has_georef(inputrow)
+        expected = False
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':'20', 'decimallongitude':'30', \
+            'geodeticdatum':'epsg:4326', 'coordinateuncertaintyinmeters':'0'}
+        result = has_georef(inputrow)
+        expected = False
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':'', 'decimallongitude':'', \
+            'geodeticdatum':'', 'coordinateuncertaintyinmeters':''}
+        result = has_georef(inputrow)
+        expected = False
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':None, 'decimallongitude':None, \
+            'geodeticdatum':None, 'coordinateuncertaintyinmeters':None}
+        result = has_georef(inputrow)
+        expected = False
+        self.assertEqual(result, expected)
+
+        inputrow = {'decimallatitude':'20', 'decimallongitude':'30', \
+            'geodeticdatum':'epsg:4326', 'coordinateuncertaintyinmeters':'10', \
+            'georeferenceprotocol':'protocol', 'georeferencesources':'sources', \
+            'georeferenceddate':'date', 'georeferencedby':'georefby', \
+            'georeferenceremarks':'remarks'}
+        result = has_georef(inputrow)
+        expected = True
+        self.assertEqual(result, expected)
+
+    def test_bels_original_georef(self):
+        print('Running test_bels_original_georef')
+
+        inputrow = {'country':'Denmark', 'decimallatitude':'20', 'decimallongitude':'30', \
+            'geodeticdatum':'epsg:4326', 'coordinateuncertaintyinmeters':'10', \
+            'georeferenceprotocol':'protocol', 'georeferencesources':'sources', \
+            'georeferenceddate':'date', 'georeferencedby':'georefby', \
+            'georeferenceremarks':'remarks'}
+        result = bels_original_georef(inputrow)
+        expected = {
+            'bels_countrycode':None, 'bels_match_string':None, 
+            'bels_decimallatitude':'20', 'bels_decimallongitude':'30', 
+            'bels_geodeticdatum':'epsg:4326', 'bels_coordinateuncertaintyinmeters':'10', 
+            'bels_georeferencedby':'georefby', 'bels_georeferenceddate':'date',
+            'bels_georeferenceprotocol':'protocol', 'bels_georeferencesources':'sources',
+            'bels_georeferenceremarks':'remarks', 'bels_georeference_score':31, 
+            'bels_georeference_source':'original data', 
+            'bels_best_of_n_georeferences':None, 'bels_match_type':'no match attempted'}
+        self.assertEqual(result, expected)
 
     def test_bigquerify_header(self):
         print('Running test_bigquerify_header')
@@ -184,19 +341,21 @@ class BELSQueryTestCase(unittest.TestCase):
 #        matchid='3CKYu8SB2PDattd8KYrAn6w4b6rNmlJzCKB4PVxHJwY='
         result = get_best_sans_coords_georef_reduced(self.BQ, matchstr)
         target = {
-            'sans_coords_match_string': 'auwac73kmsofbillabongroadhouse', 
-            'sans_coords_countrycode': 'AU', 
-            'sans_coords_decimallatitude': -27.48333333, 
-            'sans_coords_decimallongitude': 114.7, 
-            'sans_coords_coordinateuncertaintyinmeters': Decimal('10000'), 
-            'sans_coords_georeferencedby': None, 
-            'sans_coords_georeferenceddate': None, 
-            'sans_coords_georeferenceprotocol': None, 
-            'sans_coords_georeferencesources': None, 
-            'sans_coords_georeferenceremarks': None, 
-            'sans_coords_georef_score': 0, 
-            'sans_coords_centroid_distanceinmeters': 0.0, 
-            'sans_coords_georef_count': 1, 
+            'bels_countrycode': 'AU', 
+            'bels_match_string': 'auwac73kmsofbillabongroadhouse', 
+            'bels_decimallatitude': -27.48333333, 
+            'bels_decimallongitude': 114.7, 
+            'bels_geodeticdatum':'epsg:4326',
+            'bels_coordinateuncertaintyinmeters': 10000, 
+            'bels_georeferencedby': None, 
+            'bels_georeferenceddate': None, 
+            'bels_georeferenceprotocol': None, 
+            'bels_georeferencesources': None, 
+            'bels_georeferenceremarks': None, 
+            'bels_georeference_score': 0, 
+            'bels_georeference_source': 'iDigBio', 
+            'bels_best_of_n_georeferences': 1, 
+            'bels_match_type':'match sans coords'
         }
         self.assertEqual(result, target)
         
@@ -204,39 +363,27 @@ class BELSQueryTestCase(unittest.TestCase):
 #        matchid = 'stPXsf74ZDnGF6wBRiMoyq8ku5b0xmnzGP1IK/nK0wU=''
         result = get_best_sans_coords_georef_reduced(self.BQ, matchstr)
         target = {
-            'sans_coords_match_string': 'asiaidsulawesiutarapulaunainindonesiasulawesiutarapulaunain',
-            'sans_coords_countrycode': 'ID',
-            'sans_coords_decimallatitude': 1.78333,
-            'sans_coords_decimallongitude': 124.78333,
-            'sans_coords_coordinateuncertaintyinmeters': Decimal('3615'),
-            'sans_coords_georeferencedby': 'JBH (MCZ)',
-            'sans_coords_georeferenceddate': None,
-            'sans_coords_georeferenceprotocol': 'MaNIS/HerpNET/ORNIS Georeferencing Guidelines',
-            'sans_coords_georeferencesources': 'Gazetteer of Indonesia: US Defense Mapping Agency (1982)',
-            'sans_coords_georeferenceremarks': 'Used Nain, ISL  Also known as Naeng-besar, Pulau.',
-            'sans_coords_georef_score': 27,
-            'sans_coords_centroid_distanceinmeters': 0.0,
-            'sans_coords_georef_count': 1,
+            'bels_countrycode': 'ID', 
+            'bels_match_string': 'asiaidsulawesiutarapulaunainindonesiasulawesiutarapulaunain', 
+            'bels_decimallatitude': 1.78333, 
+            'bels_decimallongitude': 124.78333, 
+            'bels_geodeticdatum':'epsg:4326',
+            'bels_coordinateuncertaintyinmeters': 3615, 
+            'bels_georeferencedby': 'JBH (MCZ)', 
+            'bels_georeferenceddate': None, 
+            'bels_georeferenceprotocol': 'MaNIS/HerpNET/ORNIS Georeferencing Guidelines', 
+            'bels_georeferencesources': 'Gazetteer of Indonesia: US Defense Mapping Agency (1982)', 
+            'bels_georeferenceremarks': 'Used Nain, ISL  Also known as Naeng-besar, Pulau.', 
+            'bels_georeference_score': 27, 
+            'bels_georeference_source': 'GBIF', 
+            'bels_best_of_n_georeferences': 1, 
+            'bels_match_type':'match sans coords'
         }
         self.assertEqual(result, target)
 
         matchstr = 'nowatthisshouldreturnaresult'
         result = get_best_sans_coords_georef_reduced(self.BQ, matchstr)
-        target = {
-            'sans_coords_match_string': None,
-            'sans_coords_countrycode': None,
-            'sans_coords_decimallatitude': None,
-            'sans_coords_decimallongitude': None,
-            'sans_coords_coordinateuncertaintyinmeters': None,
-            'sans_coords_georeferencedby': None,
-            'sans_coords_georeferenceddate': None,
-            'sans_coords_georeferenceprotocol': None,
-            'sans_coords_georeferencesources': None,
-            'sans_coords_georeferenceremarks': None,
-            'sans_coords_georef_score': None,
-            'sans_coords_centroid_distanceinmeters': None,
-            'sans_coords_georef_count': None,
-        }
+        target = None
         self.assertEqual(result, target)
 
     def test_get_best_with_coords_georef(self):
@@ -273,39 +420,27 @@ class BELSQueryTestCase(unittest.TestCase):
 #        matchid='WXAe63f0h1LKMujroFLYoRVY03vWmCdvQynV5Y/9wUg='
         result = get_best_with_coords_georef_reduced(self.BQ, matchstr)
         target = {
-            'with_coords_match_string': 'aqbechervaiseisland00-66.49559.49', 
-            'with_coords_countrycode': 'AQ', 
-            'with_coords_decimallatitude': -66.495, 
-            'with_coords_decimallongitude': 59.49, 
-            'with_coords_coordinateuncertaintyinmeters': Decimal('5000'), 
-            'with_coords_georeferencedby': None, 
-            'with_coords_georeferenceddate': None, 
-            'with_coords_georeferenceprotocol': None, 
-            'with_coords_georeferencesources': None, 
-            'with_coords_georeferenceremarks': None, 
-            'with_coords_georef_score': 0, 
-            'with_coords_centroid_distanceinmeters': 0.0, 
-            'with_coords_georef_count': 1, 
+            'bels_countrycode': 'AQ', 
+            'bels_match_string': 'aqbechervaiseisland00-66.49559.49', 
+            'bels_decimallatitude': -66.495, 
+            'bels_decimallongitude': 59.49, 
+            'bels_geodeticdatum':'epsg:4326',
+            'bels_coordinateuncertaintyinmeters': 5000, 
+            'bels_georeferencedby': None, 
+            'bels_georeferenceddate': None, 
+            'bels_georeferenceprotocol': None, 
+            'bels_georeferencesources': None, 
+            'bels_georeferenceremarks': None, 
+            'bels_georeference_score': 0, 
+            'bels_georeference_source': 'GBIF', 
+            'bels_best_of_n_georeferences': 1, 
+            'bels_match_type':'match with coords'
         }
         self.assertEqual(result, target)
 
-        matchstr = 'nowatthisshouldreturnaresult'
+        matchstr = 'nowaythisshouldreturnaresult'
         result = get_best_with_coords_georef_reduced(self.BQ, matchstr)
-        target = {
-            'sans_coords_match_string': None,
-            'sans_coords_countrycode': None,
-            'sans_coords_decimallatitude': None,
-            'sans_coords_decimallongitude': None,
-            'sans_coords_coordinateuncertaintyinmeters': None,
-            'sans_coords_georeferencedby': None,
-            'sans_coords_georeferenceddate': None,
-            'sans_coords_georeferenceprotocol': None,
-            'sans_coords_georeferencesources': None,
-            'sans_coords_georeferenceremarks': None,
-            'sans_coords_georef_score': None,
-            'sans_coords_centroid_distanceinmeters': None,
-            'sans_coords_georef_count': None,
-        }
+        target = None
         self.assertEqual(result, target)
 
     def test_get_best_with_verbatim_coords_georef(self):
