@@ -17,10 +17,11 @@ __author__ = "John Wieczorek"
 __contributors__ = ""
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "resources.py"
-__version__ = __filename__ + ' ' + "2021-10-03T14:44-03:00"
+__version__ = __filename__ + ' ' + "2021-10-03T21:46-03:00"
 
-import os
 import base64
+import logging
+import os
 import time
 
 from bels.bels_query import bels_original_georef
@@ -48,41 +49,58 @@ class BestGeoref(Resource):
         self.__name__='BestGeoref'
         self.bels_client = bels_client
         self.bq_client = bels_client.bq_client
-        self.darwinizer = Darwinizer('./vocabularies/darwin_cloud.txt')
+        self.darwinizer = Darwinizer('./bels/vocabularies/darwin_cloud.txt')
+        logging.basicConfig(level=logging.DEBUG)
 
     def post(self):
         starttime = time.perf_counter()
         if request.is_json == False:
-            return {"Message": {"status": "error", "Result": f"Request is empty or is not valid JSON."}}, 400
+            response = {"Message": {"status": "error", "Result": f"Request is empty or is not valid JSON."}}
+            logging.debug(f'BestGeoref request: {request}\nresponse: {response}')
+            return response, 400
 
         requestjson = request.get_json()
         give_me = requestjson.get('give_me')
         if give_me is None:
-            return {"Message": {"status": "error", "Result": f"No 'give_me' directive in request: {requestjson}"}}, 400
+            response = {"Message": {"status": "error", "Result": f"No 'give_me' directive in request: {requestjson}"}}
+            logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
+            return response, 400
         
         if give_me.upper() not in ['BEST_GEOREF']:
-            return {"Message": {"status": "error", "Result": f"Directive {give_me.upper()} not supported"}}, 400
+            response = {"Message": {"status": "error", "Result": f"Directive {give_me.upper()} not supported"}}
+            logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
+            return response, 400
 
         row = requestjson.get('row')
         if row is None or len(row)==0:
-            return {"Message": {"status": "error", "Result": f"No row data in request: {requestjson}"}}, 400
+            response = {"Message": {"status": "error", "Result": f"No row data in request: {requestjson}"}}
+            logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
+            return response, 400
 
         loc = self.darwinizer.darwinize_dict(row_as_dict(row))
         if loc is None:
-            return {"Message": {"status": "error", "Result": f"Darwinize failed for {requestjson}."}}, 500
+            response = {"Message": {"status": "error", "Result": f"Darwinize failed for {requestjson}."}}
+            logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
+            return response, 500
 
         lowerloc = lower_dict_keys(loc)
         if 'country' not in lowerloc and 'countrycode' not in lowerloc:
-            return {"Message": {"status": "error", "Result": f"No interpretable country field in : {requestjson}"}}, 400
+            response = {"Message": {"status": "error", "Result": f"No interpretable country field in : {requestjson}"}}
+            logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
+            return response, 400
 
         # Short-cut if the row already has a georeference
         if has_georef(loc):
             row = bels_original_georef(lowerloc)
             row['bels_countrycode'] = self.bels_client.get_best_countrycode(lowerloc)
-            return {"Message": {"status": "success", "Result": row}}, 200
+            response = {"Message": {"status": "success", "Result": row}}
+            logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
+            return response, 200
         
         if self.bq_client is None:
-            return {"Message": {"status": "error", "Result": "No BigQuery client."}}, 500
+            response = {"Message": {"status": "error", "Result": "No BigQuery client."}}
+            logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
+            return response, 500
 
         bestcountrycode = self.bels_client.get_best_countrycode(lowerloc)
         lowerloc['countrycode'] = bestcountrycode
@@ -110,14 +128,16 @@ class BestGeoref(Resource):
                     print(f'No match sans coords found {matchstr}')
 
             querytime = time.perf_counter()-starttime
-            print(f'Execution time: {querytime:1.3f}s')
-
             if result:
                 for field in ['dwc_location_hash', 'locationid']:
                     if field in result:
                         result[field] = base64.b64encode(result[field]).decode('utf-8')
                 row.update(result)
-                return {"Message": {"status": "success", "Result": row}}, 200
+                response = {"Message": {"status": "success", "elapsed_time": f'{querytime:1.3f}s', "Result": row}}
+                logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
+                return response, 200
             else:
                 print(f'No georeference found')
-                return {"Message": {"status": "failure", "Result": {row}}}, 200
+                response = {"Message": {"status": "failure", "Result": row}}
+                logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
+                return response, 200

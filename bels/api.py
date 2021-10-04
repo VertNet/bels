@@ -17,10 +17,9 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-10-03T15:02-03:00"
+__version__ = __filename__ + ' ' + "2021-10-03T15:25-03:00"
 
 import bels
-import resources
 import os
 import uuid
 import datetime
@@ -38,6 +37,7 @@ from flask_restful import Api
 
 from bels.dwca_vocab_utils import darwinize_list
 from bels.bels_query import BELS_Client
+from bels.resources import BestGeoref
 
 counter = 0
 app = Flask(__name__)
@@ -202,7 +202,7 @@ bels_client.populate()
 #bels_client.country_report(10)
  
 api = Api(app)
-api.add_resource(resources.BestGeoref, '/api/bestgeoref', resource_class_kwargs={'bels_client': bels_client})
+api.add_resource(BestGeoref, '/api/bestgeoref', resource_class_kwargs={'bels_client': bels_client})
 
 @app.route('/')
 def index(version=None):
