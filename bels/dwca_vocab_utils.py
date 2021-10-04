@@ -16,27 +16,63 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "dwca_vocab_utils.py"
-__version__ = __filename__ + ' ' + "2021-07-22T21:08-03:00"
+__version__ = __filename__ + ' ' + "2021-10-03T21:14-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_vocab_utils.py"
 
 # This file contains common utility functions for dealing with the vocabulary management
 # for Darwin Core-related terms
 
-from .dwca_terms import simpledwctermlist
-from .dwca_terms import vocabfieldlist
-from .dwca_terms import vocabrowdict
+import os.path
+import logging
+import copy
+import csv
+
 from .dwca_utils import csv_file_dialect
 from .dwca_utils import csv_file_encoding
 from .dwca_utils import extract_values_from_file
 from .dwca_utils import read_csv_row
 from .dwca_utils import read_header
+from .dwca_terms import simpledwctermlist
 from .dwca_utils import tsv_dialect
 from .dwca_utils import ustripstr
+from .dwca_terms import vocabfieldlist
+from .dwca_terms import vocabrowdict
 from .dwca_utils import write_header
-import os.path
-import logging
-import copy
-import csv
+
+class Darwinizer():
+    def __init__(self, dwccloudfile=None):
+        self.darwinclouddict = self.get_darwinizer_dict(dwccloudfile)
+
+    def get_darwinizer_dict(self, dwccloudfile):
+        dirname = os.path.dirname(__file__)
+        if dwccloudfile is None:
+            vocabpath = os.path.join(dirname, './vocabularies/')
+            dwcloudfile = os.path.join(vocabpath, 'darwin_cloud.txt')
+        darwinclouddict = darwin_cloud_vocab_dict_from_file(dwccloudfile)
+        return darwinclouddict
+
+    def darwinize_dict(self, inputdict, namespace=False):
+        if self.darwinclouddict is None:
+            return None
+        darwinizeddict = {}
+        i = 1
+        for term, value in inputdict.items():
+            newterm = term.strip()
+            searchterm = ustripstr(term)
+            standardterm = None
+            if searchterm in self.darwinclouddict:
+                standardterm = self.darwinclouddict[searchterm].get('standard')
+                if standardterm is not None and len(standardterm) > 0:
+                    if namespace == True:
+                        ns = self.darwinclouddict[searchterm].get('namespace')
+                        newterm = f'{ns}:{standardterm}'
+                    else:
+                        newterm = standardterm
+            elif len(newterm) == 0:
+                newterm = f'UNNAMED_COLUMN_{i}'
+                i += 1
+            darwinizeddict[newterm]=value
+        return darwinizeddict
 
 def vocabheader(key, separator=None):
     ''' Construct the header row for a vocabulary file. Begin with a field name equal to 
@@ -170,15 +206,11 @@ def matching_vocab_dict_from_file(
         logging.debug(s)
         return None
 
-    #print('checklist: %s' % checklist)
-
     vocabdict = vocab_dict_from_file(vocabfile, key, separator, dialect, encoding)
     if vocabdict is None or len(vocabdict)==0:
         s = 'No vocabdict constructed in %s' % functionname
         logging.debug(s)
         return None
-
-    #print('vocabdict: %s' % vocabdict)
 
     matchingvocabdict = {}
 
@@ -596,7 +628,6 @@ def darwinize_list(termlist, dwccloudfile, namespace=None, case=None):
         message = 'Darwin Cloud vocabulary file not given. '
         message += f'Returning original terms list. {__version__}'
         logging.debug(message)
-        print(s)
         return termlist
 
 #    print(f'Current working directory: {os.getcwd()}')
@@ -605,7 +636,6 @@ def darwinize_list(termlist, dwccloudfile, namespace=None, case=None):
         message = f'Darwin Cloud vocabulary file not found at {dwccloudfile}. '
         message += f'Returning original term list. {__version__}'
         logging.debug('message:\n%s' % message)
-        print(message)
         return termlist
 
     if termlist is None or len(termlist)==0:

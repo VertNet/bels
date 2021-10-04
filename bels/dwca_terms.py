@@ -15,56 +15,88 @@
 
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "dwca_terms.py 2021-01-09T15:28-03:00"
+__version__ = "dwca_terms.py 2021-09-27T13:57-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_terms.py"
 
 # This file contains definitions of standard sets of Darwin Core terms.
 
-# Terms that make up the current Simple Darwin Core
-simpledwctermlist = [
-    'type','modified','language','license','rightsHolder','accessRights',
-    'bibliographicCitation','references','institutionID','collectionID','datasetID',
-    'institutionCode','collectionCode','datasetName','ownerInstitutionCode',
-    'basisOfRecord','informationWithheld','dataGeneralizations','dynamicProperties',
-    'occurrenceID','catalogNumber','recordNumber','recordedBy','individualCount',
-    'organismQuantity','organismQuantityType','sex','lifeStage','reproductiveCondition',
-    'behavior','establishmentMeans','degreeOfEstablishment','pathway','occurrenceStatus',
-    'preparations','disposition','associatedMedia','associatedReferences',
-    'associatedSequences','associatedTaxa','otherCatalogNumbers','occurrenceRemarks',
-    'organismID','organismName','organismScope','associatedOccurrences',
-    'associatedOrganisms','previousIdentifications','organismRemarks','materialSampleID',
-    'eventID','parentEventID','fieldNumber','eventDate','eventTime','startDayOfYear',
-    'endDayOfYear','year','month','day','verbatimEventDate','habitat','samplingProtocol',
-    'samplingEffort','sampleSizeValue','sampleSizeUnit','fieldNotes','eventRemarks',
-    'locationID','higherGeographyID','higherGeography','continent','waterBody',
-    'islandGroup','island','country','countryCode','stateProvince','county',
-    'municipality','locality','verbatimLocality','minimumElevationInMeters',
-    'maximumElevationInMeters','verbatimElevation','minimumDepthInMeters',
-    'maximumDepthInMeters','verbatimDepth','minimumDistanceAboveSurfaceInMeters',
-    'maximumDistanceAboveSurfaceInMeters','locationAccordingTo','locationRemarks',
-    'decimalLatitude','decimalLongitude','geodeticDatum','coordinateUncertaintyInMeters',
-    'coordinatePrecision','pointRadiusSpatialFit','verbatimCoordinates',
-    'verbatimLatitude','verbatimLongitude','verbatimCoordinateSystem','verbatimSRS',
-    'footprintWKT','footprintSRS','footprintSpatialFit','georeferencedBy',
-    'georeferencedDate','georeferenceProtocol','georeferenceSources',
-    'georeferenceVerificationStatus','georeferenceRemarks',
-    'geologicalContextID','earliestEonOrLowestEonothem','latestEonOrHighestEonothem',
-    'earliestEraOrLowestErathem','latestEraOrHighestErathem',
-    'earliestPeriodOrLowestSystem','latestPeriodOrHighestSystem',
-    'earliestEpochOrLowestSeries','latestEpochOrHighestSeries','earliestAgeOrLowestStage',
-    'latestAgeOrHighestStage','lowestBiostratigraphicZone','highestBiostratigraphicZone',
-    'lithostratigraphicTerms','group','formation','member','bed',
-    'identificationID','identificationQualifier','typeStatus','identifiedBy',
-    'dateIdentified','identificationReferences','identificationVerificationStatus',
-    'identificationRemarks',
-    'taxonID','scientificNameID','acceptedNameUsageID','parentNameUsageID',
-    'originalNameUsageID','nameAccordingToID','namePublishedInID','taxonConceptID',
-    'scientificName','acceptedNameUsage','parentNameUsage','originalNameUsage',
-    'nameAccordingTo','namePublishedIn','namePublishedInYear','higherClassification',
-    'kingdom','phylum','class','order','family','genus','subgenus','specificEpithet',
-    'infraspecificEpithet','taxonRank','verbatimTaxonRank','scientificNameAuthorship',
-    'vernacularName','nomenclaturalCode','taxonomicStatus','nomenclaturalStatus',
-    'taxonRemarks']
+# Terms that make up the current Simple Darwin Core version 2021-07-15
+simpledwc_recordlevel_terms = [
+    'type', 'modified', 'language', 'license', 'rightsHolder', 'accessRights', 
+    'bibliographicCitation', 'references', 'institutionID', 'collectionID', 'datasetID', 
+    'institutionCode', 'collectionCode', 'datasetName', 'ownerInstitutionCode', 
+    'basisOfRecord', 'informationWithheld', 'dataGeneralizations', 'dynamicProperties'
+    ]
+simpledwc_occurrence_terms = [
+    'occurrenceID', 'catalogNumber', 'recordNumber', 'recordedBy', 'recordedByID', 
+    'individualCount', 'organismQuantity', 'organismQuantityType', 'sex', 'lifeStage', 
+    'reproductiveCondition', 'behavior', 'establishmentMeans', 'degreeOfEstablishment', 
+    'pathway', 'georeferenceVerificationStatus', 'occurrenceStatus', 'preparations', 
+    'disposition', 'associatedMedia', 'associatedOccurrences', 'associatedReferences', 
+    'associatedSequences', 'associatedTaxa', 'otherCatalogNumbers', 'occurrenceRemarks'
+    ]
+simpledwc_organism_terms = [
+    'organismID', 'organismName', 'organismScope', 'associatedOrganisms', 
+    'previousIdentifications', 'organismRemarks'
+    ]
+simpledwc_materialsample_terms = [
+    'materialSampleID'
+    ]
+simpledwc_event_terms = [
+    'eventID', 'parentEventID', 'fieldNumber', 'eventDate', 'eventTime', 
+    'startDayOfYear', 'endDayOfYear', 'year', 'month', 'day', 'verbatimEventDate', 
+    'habitat', 'samplingProtocol', 'sampleSizeValue', 'sampleSizeUnit', 'samplingEffort', 
+    'fieldNotes', 'eventRemarks']
+simpledwc_location_terms = [
+    'locationID', 'higherGeographyID', 'higherGeography', 
+    'continent', 'waterBody', 'islandGroup', 'island', 'country', 'countryCode', 
+    'stateProvince', 'county', 'municipality', 'locality', 'verbatimLocality', 
+    'minimumElevationInMeters', 'maximumElevationInMeters', 'verbatimElevation', 
+    'verticalDatum', 'minimumDepthInMeters', 'maximumDepthInMeters', 'verbatimDepth', 
+    'minimumDistanceAboveSurfaceInMeters', 'maximumDistanceAboveSurfaceInMeters', 
+    'locationAccordingTo', 'locationRemarks', 'decimalLatitude', 'decimalLongitude', 
+    'geodeticDatum', 'coordinateUncertaintyInMeters', 'coordinatePrecision', 
+    'pointRadiusSpatialFit', 'verbatimCoordinates', 'verbatimLatitude', 
+    'verbatimLongitude', 'verbatimCoordinateSystem', 'verbatimSRS', 'footprintWKT', 
+    'footprintSRS', 'footprintSpatialFit', 'georeferencedBy', 'georeferencedDate', 
+    'georeferenceProtocol', 'georeferenceSources', 'georeferenceRemarks'
+    ]
+simpledwc_geologicalcontext_terms = [
+    'geologicalContextID', 'earliestEonOrLowestEonothem', 'latestEonOrHighestEonothem', 
+    'earliestEraOrLowestErathem', 'latestEraOrHighestErathem', 
+    'earliestPeriodOrLowestSystem', 'latestPeriodOrHighestSystem', 
+    'earliestEpochOrLowestSeries', 'latestEpochOrHighestSeries', 
+    'earliestAgeOrLowestStage', 'latestAgeOrHighestStage', 'lowestBiostratigraphicZone', 
+    'highestBiostratigraphicZone', 'lithostratigraphicTerms', 'group', 'formation', 
+    'member', 'bed'
+    ]
+simpledwc_identification_terms = [
+    'identificationID', 'verbatimIdentification', 'identificationQualifier', 
+    'typeStatus', 'identifiedBy', 'identifiedByID', 'dateIdentified', 
+    'identificationReferences', 'identificationVerificationStatus', 
+    'identificationRemarks'
+    ]
+simpledwc_taxon_terms = [
+    'taxonID', 'scientificNameID', 'acceptedNameUsageID', 'parentNameUsageID', 
+    'originalNameUsageID', 'nameAccordingToID', 'namePublishedInID', 'taxonConceptID', 
+    'scientificName', 'acceptedNameUsage', 'parentNameUsage', 'originalNameUsage', 
+    'nameAccordingTo', 'namePublishedIn', 'namePublishedInYear', 'higherClassification', 
+    'kingdom', 'phylum', 'class', 'order', 'family', 'subfamily', 'genus', 'genericName', 
+    'subgenus', 'infragenericEpithet', 'specificEpithet', 'infraspecificEpithet', 
+    'cultivarEpithet', 'taxonRank', 'verbatimTaxonRank', 'scientificNameAuthorship', 
+    'vernacularName', 'nomenclaturalCode', 'taxonomicStatus', 'nomenclaturalStatus', 
+    'taxonRemarks'
+    ]
+
+simpledwctermlist = simpledwc_recordlevel_terms
+simpledwctermlist.extend(simpledwc_occurrence_terms)
+simpledwctermlist.extend(simpledwc_organism_terms)
+simpledwctermlist.extend(simpledwc_materialsample_terms)
+simpledwctermlist.extend(simpledwc_event_terms)
+simpledwctermlist.extend(simpledwc_location_terms)
+simpledwctermlist.extend(simpledwc_geologicalcontext_terms)
+simpledwctermlist.extend(simpledwc_identification_terms)
+simpledwctermlist.extend(simpledwc_taxon_terms)
 
 # Terms that make up a distinct geography combination
 geogkeytermlist = [
