@@ -15,9 +15,9 @@
 
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2021-09-27T16:07-03:00"
+__version__ = __filename__ + ' ' + "2022-05-17T12:05-03:00"
 
 import base64
 import json
@@ -97,13 +97,16 @@ def process_csv_in_bulk(event, context):
     # Darwinize the header
     vocabpath = './bels/vocabularies/'
     dwccloudfile = vocabpath + 'darwin_cloud.txt'
-#    print(f'raw fields: {header}')
     logging.debug(f'header: {header}')
     logging.debug(f'dwccloudfile: {dwccloudfile}')
-    darwinized_header = darwinize_list(header,dwccloudfile)
+
+    # Translate the fields in the header to lowercase Darwin Core standard field name.
+    darwinized_header = darwinize_list(header, dwccloudfile, case='l')
+    logging.debug(f'darwinized_header: {darwinized_header}')
     
     # Make sure the field names satisfy BigQuery field name requirements
     bigqueryized_header = bigquerify_header(darwinized_header)
+    logging.debug(f'bigqueryized_header: {bigqueryized_header}')
     
     preptime = time.perf_counter() - starttime
     msg = f'Prep time = {preptime:1.3f}s'
@@ -113,7 +116,6 @@ def process_csv_in_bulk(event, context):
     # TODO: Would like to have a persistent client available rather than firing one up on demand
     bq_client = bigquery.Client()
     logging.debug(f'Prepping for import_table. upload_file_url: {upload_file_url}')
-    logging.debug(f'bigqueryized_header: {bigqueryized_header}')
     input_table_id = import_table(bq_client, upload_file_url, bigqueryized_header)
     logging.debug(f'process_csv_in_bulk() input_table_id: {input_table_id}')
     importtime = time.perf_counter()-preptime

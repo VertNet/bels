@@ -301,8 +301,8 @@ class DarwinizeHeaderTestCase(unittest.TestCase):
         notdwc = terms_not_in_dwc(header, casesensitive)
         expected = [
         'associatedCollectors', 'collId', 'cultivationStatus', 'id', 'localitySecurity', 
-        'localitySecurityReason', 'recordEnteredBy', 'recordId', 'recordedByID', 
-        'sourcePrimaryKey', 'substrate', 'verbatimAttributes']
+        'localitySecurityReason', 'recordEnteredBy', 'recordId', 'sourcePrimaryKey', 
+        'substrate', 'verbatimAttributes']
         s = 'From input: %s\nFound:\n%s\nExpected:\n%s' % (testfile1, notdwc, expected)
         self.assertEqual(notdwc, expected, s)
 

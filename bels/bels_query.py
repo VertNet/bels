@@ -14,9 +14,9 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2021-10-03T13:24-01:00"
+__version__ = __filename__ + ' ' + "2022-05-17T09:48-03:00"
 
 import json
 import logging
@@ -126,8 +126,8 @@ def bels_original_georef(locdict):
     row['bels_georeferenceremarks'] = locdict.get('georeferenceremarks')
     row['bels_georeference_score'] = georeference_score(locdict)
     row['bels_georeference_source'] = 'original data'
-    row['bels_best_of_n_georeferences'] = None
-    row['bels_match_type'] = 'no match attempted'
+    row['bels_best_of_n_georeferences'] = 1
+    row['bels_match_type'] = 'original georeference'
     return row
 
 class BELS_Client():
@@ -225,7 +225,7 @@ def process_import_table(bq_client, input_table_id):
 
     # Script georeference matching in BigQuery
     query =f"""
--- Georeference matching script. Input table is expected to have been Location column 
+-- Georeference matching script. Input table is expected to have Location column 
 -- names mapped to Darwin Core Location term names.
 BEGIN
 -- Make a table adding a field match_country to the input table, mapping the best existing
@@ -692,21 +692,22 @@ def get_best_sans_coords_georef(bq_client, matchstr):
     rows = run_bq_query(bq_client, query_best_sans_coords_georef(matchstr), 1)
     if rows.total_rows==0:
         # Create a dict of an empty row so that every record can have a result
-        # This has to match the structure of the rows query result.
-        return {
-        'sans_coords_match_string': None, 
-        'sans_coords_countrycode': None, 
-        'sans_coords_decimallatitude': None, 
-        'sans_coords_decimallongitude': None, 
-        'sans_coords_coordinateuncertaintyinmeters': None, 
-        'sans_coords_georeferencedby': None, 
-        'sans_coords_georeferenceddate': None, 
-        'sans_coords_georeferenceprotocol': None, 
-        'sans_coords_georeferencesources': None, 
-        'sans_coords_georeferenceremarks': None, 
-        'sans_coords_georef_score': None, 
-        'sans_coords_centroid_distanceinmeters': None, 
-        'sans_coords_georef_count': None }
+        # This has to match the structure of the rows query result.        
+        return None
+#         return {
+#         'sans_coords_match_string': None, 
+#         'sans_coords_countrycode': None, 
+#         'sans_coords_decimallatitude': None, 
+#         'sans_coords_decimallongitude': None, 
+#         'sans_coords_coordinateuncertaintyinmeters': None, 
+#         'sans_coords_georeferencedby': None, 
+#         'sans_coords_georeferenceddate': None, 
+#         'sans_coords_georeferenceprotocol': None, 
+#         'sans_coords_georeferencesources': None, 
+#         'sans_coords_georeferenceremarks': None, 
+#         'sans_coords_georef_score': None, 
+#         'sans_coords_centroid_distanceinmeters': None, 
+#         'sans_coords_georef_count': None }
     for row in rows:
         return row_as_dict(row)
 

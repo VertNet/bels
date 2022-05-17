@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query_tests.py"
-__version__ = __filename__ + ' ' + "2021-10-03T02:28-03:00"
+__version__ = __filename__ + ' ' + "2022-05-17T09:54-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -24,6 +24,14 @@ __version__ = __filename__ + ' ' + "2021-10-03T02:28-03:00"
 # Example:
 #
 # python bels_query_tests.py
+#
+# Note: Set the GOOGLE_APPLICATION_CREDENTIALS environment variable to point to the JSON
+# file that contains the service account key (auth.json) if there are authentication 
+# issues resulting in exceptions such as below (see Setting the Environment Variable at
+# https://cloud.google.com/docs/authentication/getting-started):
+#  File "/Users/johnwieczorek/.virtualenvs/bels/lib/python3.8/site-packages/google/oauth2/_client.py", line 60, in _handle_error_response
+#  raise exceptions.RefreshError(error_details, response_data)
+#  google.auth.exceptions.RefreshError: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
 
 from google.cloud import bigquery
 from bels.dwca_terms import locationmatchwithcoordstermlist
@@ -91,7 +99,7 @@ class BELSQueryTestCase(unittest.TestCase):
 #         print('Running test_get_location_by_id')
 #         base64id='CR4zFCgFe/9cbkTpI2pCiOhOmJiE74Zq8fknbmSISPw='
 #         row = get_location_by_id(self.BQ,base64id)
-# #        print('row = %s' % row)
+# #        print(f'row = {row}')
 #         target = b"\t\x1e3\x14(\x05{\xff\\nD\xe9#jB\x88\xe8N\x98\x98\x84\xef\x86j\xf1\xf9'nd\x88H\xfc"
 #         result = row['dwc_location_hash']
 #         self.assertEqual(result, target)
@@ -100,7 +108,7 @@ class BELSQueryTestCase(unittest.TestCase):
 #         print('Running test_get_location_by_hashid')
 #         hashid = b"\t\x1e3\x14(\x05{\xff\\nD\xe9#jB\x88\xe8N\x98\x98\x84\xef\x86j\xf1\xf9'nd\x88H\xfc"
 #         row = get_location_by_hashid(self.BQ,hashid)
-# #        print('row = %s' % row)
+# #        print(f'row = {row}')
 # #        target='CR4zFCgFe/9cbkTpI2pCiOhOmJiE74Zq8fknbmSISPw='
 #         target=hashid
 #         result = row['dwc_location_hash']
@@ -257,7 +265,7 @@ class BELSQueryTestCase(unittest.TestCase):
             'bels_georeferenceprotocol':'protocol', 'bels_georeferencesources':'sources',
             'bels_georeferenceremarks':'remarks', 'bels_georeference_score':31, 
             'bels_georeference_source':'original data', 
-            'bels_best_of_n_georeferences':None, 'bels_match_type':'no match attempted'}
+            'bels_best_of_n_georeferences':1, 'bels_match_type':'original georeference'}
         self.assertEqual(result, expected)
 
     def test_bigquerify_header(self):
@@ -284,62 +292,150 @@ class BELSQueryTestCase(unittest.TestCase):
     def test_get_best_sans_coords_georef(self):
         print('Running test_get_best_sans_coords_georef')
         matchstr = 'auwac73kmsofbillabongroadhouse'
-#        matchid='3CKYu8SB2PDattd8KYrAn6w4b6rNmlJzCKB4PVxHJwY='
         result = get_best_sans_coords_georef(self.BQ, matchstr)
-        # print('AU: %s' % result)
+        #print(f'AU result: {result}')
         target = {
-            'matchme_sans_coords': 'auwac73kmsofbillabongroadhouse', 
-            'unc_numeric': Decimal('10000'), 
-            'center': 'POINT(114.7 -27.48333333)', 
-            'interpreted_decimallongitude': 114.7, 
-            'interpreted_decimallatitude': -27.48333333, 
-            'interpreted_countrycode': 'AU', 
+            'dwc_location_hash': b'\x03.\x8c\xc2$\xb17\xbb%\xef>\xa8Y\x01DQ\xb5F_\x9f\xf8\x89\xc5\xb3Y\xda\r\xc6i\xce\xbc\x1c',
+            'v_highergeographyid': None,
+            'v_highergeography': None,
+            'v_continent': None,
+            'v_waterbody': None,
+            'v_islandgroup': None,
+            'v_island': None,
+            'v_country': 'Australia',
+            'v_countrycode': None,
+            'v_stateprovince': 'WA',
+            'v_county': None,
+            'v_municipality': None,
+            'v_locality': 'c. 73 km S of Billabong Roadhouse',
+            'v_verbatimlocality': None,
+            'v_minimumelevationinmeters': None,
+            'v_maximumelevationinmeters': None,
+            'v_verbatimelevation': None,
+            'v_verticaldatum':'',
+            'v_minimumdepthinmeters': None,
+            'v_maximumdepthinmeters': None,
+            'v_verbatimdepth': None,
+            'v_minimumdistanceabovesurfaceinmeters': '',
+            'v_maximumdistanceabovesurfaceinmeters': '',
+            'v_locationaccordingto': None,
+            'v_locationremarks': None,
+            'v_decimallatitude': '-27.48333333',
+            'v_decimallongitude': '114.7',
+            'v_geodeticdatum': 'GDA94',
+            'v_coordinateuncertaintyinmeters': '10000',
+            'v_coordinateprecision': None,
+            'v_pointradiusspatialfit': None,
+            'v_verbatimcoordinates': None,
+            'v_verbatimlatitude': None,
+            'v_verbatimlongitude': None,
+            'v_verbatimcoordinatesystem': None,
+            'v_verbatimsrs': None,
+            'v_footprintwkt': None,
+            'v_footprintsrs': None,
+            'v_footprintspatialfit': None,
             'v_georeferencedby': None, 
             'v_georeferenceddate': None, 
             'v_georeferenceprotocol': None, 
             'v_georeferencesources': None, 
             'v_georeferenceremarks': None, 
+            'interpreted_decimallongitude': 114.7, 
+            'interpreted_decimallatitude': -27.48333333, 
+            'interpreted_countrycode': 'AU', 
+            'occcount': 1,
+            'u_datumstr': 'GDA94',
+            'tokens': 'australia wa c 73 km s of billabong roadhouse au',
+            'matchme_with_coords': 'auwac73kmsofbillabongroadhouse-27.4833333114.7',
+            'matchme': 'auwac73kmsofbillabongroadhouse',
+            'matchme_sans_coords': 'auwac73kmsofbillabongroadhouse', 
+            'epsg': 4283,
             'georef_score': 0, 
+            'coordinates_score': 224,
             'source': 'iDigBio', 
-            'georef_count': 1, 
-            'max_uncertainty': Decimal('10000'), 
-            'centroid_dist': 0.0, 
-            'min_centroid_dist': 0.0, 
-            'matchid': b'\xdc"\x98\xbb\xc4\x81\xd8\xf0\xda\xb6\xd7|)\x8a\xc0\x9f\xac8o\xaa\xcd\x9aRs\x08\xa0x=\\G\'\x06'
+            'unc_numeric': Decimal('10000'), 
+            'bels_decimallatitude': Decimal('-27.4833333'),
+            'bels_decimallongitude': Decimal('114.7'),
+            'bels_coordinateuncertaintyinmeters': Decimal('10000'),
+            'center': 'POINT(114.7 -27.4833333)', 
+            'georef_count': 1
         }
         self.assertEqual(result, target)
         
-        matchstr = 'asiaidsulawesiutarapulaunainindonesiasulawesiutarapulaunain'
-#        matchid = 'stPXsf74ZDnGF6wBRiMoyq8ku5b0xmnzGP1IK/nK0wU=''
+        matchstr = 'idsulawesiutarapulaunainindonesiasulawesiutarapulaunain'
         result = get_best_sans_coords_georef(self.BQ, matchstr)
-        #print('ID: %s' % result)
+        #print(f'ID result: {result}')
         target = {
-            'matchme_sans_coords': 'asiaidsulawesiutarapulaunainindonesiasulawesiutarapulaunain',
-            'unc_numeric': Decimal('3615'),
-            'center': 'POINT(124.78333 1.78333)',
-            'interpreted_decimallongitude': 124.78333,
-            'interpreted_decimallatitude': 1.78333,
-            'interpreted_countrycode': 'ID',
+            'dwc_location_hash': b'h\x93\x0c\xe3\xb2\xc2\xa3\xee\x0e"P%v>2\x92\xf5\xceO\n\xe2)\xf0b\x99\x85\x05|!\xeb\x0c\xb7',
+            'v_highergeographyid': 'http://vocab.getty.edu/tgn/1000116',
+            'v_highergeography': 'Asia: Indonesia',
+            'v_continent': 'Asia',
+            'v_waterbody': None,
+            'v_islandgroup': None,
+            'v_island': None,
+            'v_country': 'Indonesia',
+            'v_countrycode': 'ID',
+            'v_stateprovince': None,
+            'v_county': None,
+            'v_municipality': None,
+            'v_locality': 'Sulawesi Utara,Pulau Nain',
+            'v_verbatimlocality': 'Indonesia:Sulawesi Utara,Pulau Nain',
+            'v_minimumelevationinmeters': None,
+            'v_maximumelevationinmeters': None,
+            'v_verbatimelevation': None,
+            'v_verticaldatum': None,
+            'v_minimumdepthinmeters': None,
+            'v_maximumdepthinmeters': None,
+            'v_verbatimdepth': None,
+            'v_minimumdistanceabovesurfaceinmeters': None,
+            'v_maximumdistanceabovesurfaceinmeters': None,
+            'v_locationaccordingto': None,
+            'v_locationremarks': None,
+            'v_decimallatitude': '1.78333',
+            'v_decimallongitude': '124.78333',
+            'v_geodeticdatum': 'WGS84',
+            'v_coordinateuncertaintyinmeters': '3615',
+            'v_coordinateprecision': None,
+            'v_pointradiusspatialfit': None,
+            'v_verbatimcoordinates': None,
+            'v_verbatimlatitude': None,
+            'v_verbatimlongitude': None,
+            'v_verbatimcoordinatesystem': 'decimal degrees',
+            'v_verbatimsrs': None,
+            'v_footprintwkt': None,
+            'v_footprintsrs': None,
+            'v_footprintspatialfit': None,
             'v_georeferencedby': 'JBH (MCZ)',
             'v_georeferenceddate': None,
             'v_georeferenceprotocol': 'MaNIS/HerpNET/ORNIS Georeferencing Guidelines',
             'v_georeferencesources': 'Gazetteer of Indonesia: US Defense Mapping Agency (1982)',
             'v_georeferenceremarks': 'Used Nain, ISL  Also known as Naeng-besar, Pulau.',
+            'interpreted_decimallatitude': 1.78333,
+            'interpreted_decimallongitude': 124.78333,
+            'interpreted_countrycode': 'ID',
+            'occcount': 41,
+            'u_datumstr': 'WGS84',
+            'tokens': 'asia asia indonesia indonesia id sulawesi utara pulau nain indonesiasulawesi utara pulau nain jbh mcz gazetteer of indonesia us defense mapping agency 1982 manis herpnet ornis georeferencing guidelines used nain isl also known as naeng besar pulau id',
+            'matchme_with_coords': 'idsulawesiutarapulaunainindonesiasulawesiutarapulaunain1.78333124.78333',
+            'matchme': 'idsulawesiutarapulaunainindonesiasulawesiutarapulaunain',
+            'matchme_sans_coords': 'idsulawesiutarapulaunainindonesiasulawesiutarapulaunain',
+            'epsg': 4326,
             'georef_score': 27,
+            'coordinates_score': 251,
             'source': 'GBIF',
-            'georef_count': 1,
-            'max_uncertainty': Decimal('3615'),
-            'centroid_dist': 0.0,
-            'min_centroid_dist': 0.0,
-            'matchid': b'\xb2\xd3\xd7\xb1\xfe\xf8d9\xc6\x17\xac\x01F#(\xca\xaf$\xbb\x96\xf4\xc6i\xf3\x18\xfdH+\xf9\xca\xd3\x05'
+            'unc_numeric': Decimal('3615'),
+            'bels_decimallatitude': Decimal('1.78333'),
+            'bels_decimallongitude': Decimal('124.78333'),
+            'bels_coordinateuncertaintyinmeters': Decimal('3615'),
+            'center': 'POINT(124.78333 1.78333)',
+            'georef_count': 2
         }
         self.assertEqual(result, target)
 
     def test_get_best_sans_coords_georef_reduced(self):
         print('Running test_get_best_sans_coords_georef_reduced')
         matchstr = 'auwac73kmsofbillabongroadhouse'
-#        matchid='3CKYu8SB2PDattd8KYrAn6w4b6rNmlJzCKB4PVxHJwY='
         result = get_best_sans_coords_georef_reduced(self.BQ, matchstr)
+        #print(f'AU result reduced: {result}')
         target = {
             'bels_countrycode': 'AU', 
             'bels_match_string': 'auwac73kmsofbillabongroadhouse', 
@@ -359,12 +455,12 @@ class BELSQueryTestCase(unittest.TestCase):
         }
         self.assertEqual(result, target)
         
-        matchstr = 'asiaidsulawesiutarapulaunainindonesiasulawesiutarapulaunain'
-#        matchid = 'stPXsf74ZDnGF6wBRiMoyq8ku5b0xmnzGP1IK/nK0wU=''
+        matchstr = 'idsulawesiutarapulaunainindonesiasulawesiutarapulaunain'
         result = get_best_sans_coords_georef_reduced(self.BQ, matchstr)
+        #print(f'ID result reduced: {result}')
         target = {
             'bels_countrycode': 'ID', 
-            'bels_match_string': 'asiaidsulawesiutarapulaunainindonesiasulawesiutarapulaunain', 
+            'bels_match_string': 'idsulawesiutarapulaunainindonesiasulawesiutarapulaunain', 
             'bels_decimallatitude': 1.78333, 
             'bels_decimallongitude': 124.78333, 
             'bels_geodeticdatum':'epsg:4326',
@@ -376,7 +472,7 @@ class BELSQueryTestCase(unittest.TestCase):
             'bels_georeferenceremarks': 'Used Nain, ISL  Also known as Naeng-besar, Pulau.', 
             'bels_georeference_score': 27, 
             'bels_georeference_source': 'GBIF', 
-            'bels_best_of_n_georeferences': 1, 
+            'bels_best_of_n_georeferences': 2, 
             'bels_match_type':'match sans coords'
         }
         self.assertEqual(result, target)
@@ -388,44 +484,88 @@ class BELSQueryTestCase(unittest.TestCase):
 
     def test_get_best_with_coords_georef(self):
         print('Running test_get_best_with_coords_georef')
-        matchstr = 'aqbechervaiseisland00-66.49559.49'
-#        matchid='WXAe63f0h1LKMujroFLYoRVY03vWmCdvQynV5Y/9wUg='
+        matchstr = 'setukholmanorrstrom59.3281918.067591'
         result = get_best_with_coords_georef(self.BQ, matchstr)
-        #print('AQ: %s' % result)
+        #print(f'SE result: {result}')
         target = {
-            'matchme_with_coords': 'aqbechervaiseisland00-66.49559.49', 
-            'unc_numeric': Decimal('5000'), 
-            'center': 'POINT(59.49 -66.495)', 
-            'interpreted_decimallongitude': 59.49, 
-            'interpreted_decimallatitude': -66.495, 
-            'interpreted_countrycode': 'AQ', 
-            'v_georeferencedby': None, 
-            'v_georeferenceddate': None, 
-            'v_georeferenceprotocol': None, 
-            'v_georeferencesources': None, 
-            'v_georeferenceremarks': None, 
-            'georef_score': 0, 
+            'dwc_location_hash': b"\xb8\x82\x92\x1c\xb5\xdc(\x03\xe2\rD\xd5'\xb9D\xe6\xe0\x11V\x8c%C\x17\xda]\x17o\x93o\xeai\xda",
+            'v_highergeographyid': None,
+            'v_highergeography': None,
+            'v_continent': None,
+            'v_waterbody': None,
+            'v_islandgroup': None,
+            'v_island': None,
+            'v_country': None,
+            'v_countrycode': None,
+            'v_stateprovince': None,
+            'v_county': None,
+            'v_municipality': None,
+            'v_locality': 'Tukholma, Norrström',
+            'v_verbatimlocality': None,
+            'v_minimumelevationinmeters': None,
+            'v_maximumelevationinmeters': None,
+            'v_verbatimelevation': None,
+            'v_verticaldatum': None,
+            'v_minimumdepthinmeters': None,
+            'v_maximumdepthinmeters': None,
+            'v_verbatimdepth': None,
+            'v_minimumdistanceabovesurfaceinmeters': None,
+            'v_maximumdistanceabovesurfaceinmeters': None,
+            'v_locationaccordingto': None,
+            'v_locationremarks': None,
+            'v_decimallatitude': '59.32819',
+            'v_decimallongitude': '18.067591',
+            'v_geodeticdatum': 'EPSG:4326',
+            'v_coordinateuncertaintyinmeters': '1',
+            'v_coordinateprecision': None,
+            'v_pointradiusspatialfit': None,
+            'v_verbatimcoordinates': None,
+            'v_verbatimlatitude': None,
+            'v_verbatimlongitude': None,
+            'v_verbatimcoordinatesystem': None,
+            'v_verbatimsrs': None,
+            'v_footprintwkt': 'POINT(18.067590594292 59.328190216457)',
+            'v_footprintsrs': 'EPSG:4326',
+            'v_footprintspatialfit': None,
+            'v_georeferencedby': None,
+            'v_georeferenceddate': None,
+            'v_georeferenceprotocol': None,
+            'v_georeferencesources': None,
+            'v_georeferenceremarks': None,
+            'interpreted_decimallatitude': 59.32819,
+            'interpreted_decimallongitude': 18.067591,
+            'interpreted_countrycode': 'SE',
+            'occcount': 1,
+            'u_datumstr': 'EPSG:4326',
+            'tokens': 'tukholma norrstrom se',
+            'matchme_with_coords': 'setukholmanorrstrom59.3281918.067591',
+            'matchme': 'setukholmanorrstrom',
+            'matchme_sans_coords': 'setukholmanorrstrom',
+            'epsg': 4326,
+            'georef_score': 0,
+            'coordinates_score': 224,
             'source': 'GBIF',
-            'georef_count': 1, 
-            'max_uncertainty': Decimal('5000'), 
-            'centroid_dist': 0.0, 
-            'min_centroid_dist': 0.0, 
-            'matchid': b'Yp\x1e\xebw\xf4\x87R\xca2\xe8\xeb\xa0R\xd8\xa1\x15X\xd3{\xd6\x98\'oC)\xd5\xe5\x8f\xfd\xc1H'
+            'unc_numeric': Decimal('1'),
+            'bels_decimallatitude': Decimal('59.32819'),
+            'bels_decimallongitude': Decimal('18.067591'),
+            'bels_coordinateuncertaintyinmeters': Decimal('1'),
+            'center': 'POINT(18.067591 59.32819)',
+            'georef_count': 1
         }
         self.assertEqual(result, target)
 
     def test_get_best_with_coords_georef_reduced(self):
         print('Running test_get_best_with_coords_georef_reduced')
-        matchstr = 'aqbechervaiseisland00-66.49559.49'
-#        matchid='WXAe63f0h1LKMujroFLYoRVY03vWmCdvQynV5Y/9wUg='
+        matchstr = 'setukholmanorrstrom59.3281918.067591'
         result = get_best_with_coords_georef_reduced(self.BQ, matchstr)
+        #print(f'SE result reduced: {result}')
         target = {
-            'bels_countrycode': 'AQ', 
-            'bels_match_string': 'aqbechervaiseisland00-66.49559.49', 
-            'bels_decimallatitude': -66.495, 
-            'bels_decimallongitude': 59.49, 
+            'bels_countrycode': 'SE', 
+            'bels_match_string': 'setukholmanorrstrom59.3281918.067591', 
+            'bels_decimallatitude': 59.32819, 
+            'bels_decimallongitude': 18.067591, 
             'bels_geodeticdatum':'epsg:4326',
-            'bels_coordinateuncertaintyinmeters': 5000, 
+            'bels_coordinateuncertaintyinmeters': 1, 
             'bels_georeferencedby': None, 
             'bels_georeferenceddate': None, 
             'bels_georeferenceprotocol': None, 
@@ -448,26 +588,71 @@ class BELSQueryTestCase(unittest.TestCase):
         matchstr = 'usminnesotawadenat136nr33ws.1012-jul-71,'
 #        matchid='YcHC5X1M3bUVjMAav1D2XYKLTLihxhGh1JDGs/C+m00='
         result = get_best_with_verbatim_coords_georef(self.BQ, matchstr)
-        #print('US: %s' % result)
+        # print(f'US result: {result}')
         target = {
-            'matchme': 'usminnesotawadenat136nr33ws.1012-jul-71,', 
-            'unc_numeric': Decimal('1137'), 
-            'center': 'POINT(-94.832611 46.608118)', 
-            'interpreted_decimallongitude': -94.832611, 
-            'interpreted_decimallatitude': 46.608118, 
-            'interpreted_countrycode': 'US', 
-            'v_georeferencedby': 'Lisa Strait (MSU)', 
-            'v_georeferenceddate': None, 
-            'v_georeferenceprotocol': 'MaNIS/HerpNet/ORNIS Georeferencing Guidelines, GBIF Best Practices', 
-            'v_georeferencesources': 'BioGeomancer', 
-            'v_georeferenceremarks': None, 
-            'georef_score': 26, 
-            'source': 'GBIF',
-            'georef_count': 1, 
-            'max_uncertainty': Decimal('1137'), 
-            'centroid_dist': 1.0042073245224715e-09, 
-            'min_centroid_dist': 1.0042073245224715e-09, 
-            'matchid': b'a\xc1\xc2\xe5}L\xdd\xb5\x15\x8c\xc0\x1a\xbfP\xf6]\x82\x8bL\xb8\xa1\xc6\x11\xa1\xd4\x90\xc6\xb3\xf0\xbe\x9bM'
+          'dwc_location_hash': b'\xd4\xeb\x9f=\x84k1\xaa=E\x98\x06nw"\xc3\xc0&\x11\x04#\xf8t\xa5r\xd2\x82\xb7\xf88%\xda',
+          'v_highergeographyid': None,
+          'v_highergeography': None,
+          'v_continent': None,
+          'v_waterbody': None,
+          'v_islandgroup': None,
+          'v_island': None,
+          'v_country': 'United States',
+          'v_countrycode': None,
+          'v_stateprovince': 'Minnesota',
+          'v_county': 'Wadena',
+          'v_municipality': None,
+          'v_locality': 'T136N, R33W, S.10',
+          'v_verbatimlocality': None,
+          'v_minimumelevationinmeters': None,
+          'v_maximumelevationinmeters': None,
+          'v_verbatimelevation': None,
+          'v_verticaldatum': None,
+          'v_minimumdepthinmeters': None,
+          'v_maximumdepthinmeters': None,
+          'v_verbatimdepth': None,
+          'v_minimumdistanceabovesurfaceinmeters': None,
+          'v_maximumdistanceabovesurfaceinmeters': None,
+          'v_locationaccordingto': None,
+          'v_locationremarks': None,
+          'v_decimallatitude': '46.6081179',
+          'v_decimallongitude': '-94.832611',
+          'v_geodeticdatum': 'WGS84',
+          'v_coordinateuncertaintyinmeters': '1137',
+          'v_coordinateprecision': None,
+          'v_pointradiusspatialfit': None,
+          'v_verbatimcoordinates': '12-Jul-71,',
+          'v_verbatimlatitude': None,
+          'v_verbatimlongitude': None,
+          'v_verbatimcoordinatesystem': None,
+          'v_verbatimsrs': None,
+          'v_footprintwkt': None,
+          'v_footprintsrs': None,
+          'v_footprintspatialfit': None,
+          'v_georeferencedby': 'Lisa Strait (MSU)',
+          'v_georeferenceddate': None,
+          'v_georeferenceprotocol': 'MaNIS/HerpNet/ORNIS Georeferencing Guidelines, GBIF Best Practices',
+          'v_georeferencesources': 'BioGeomancer',
+          'v_georeferenceremarks': None,
+          'interpreted_decimallatitude': 46.608118,
+          'interpreted_decimallongitude': -94.832611,
+          'interpreted_countrycode': 'US',
+          'occcount': 1,
+          'u_datumstr': 'WGS84',
+          'tokens': 'united states minnesota wadena t136n r33w s.10 lisa strait msu biogeomancer manis herpnet ornis georeferencing guidelines gbif best practices us',
+          'matchme_with_coords': 'usminnesotawadenat136nr33ws.1012-jul-71,46.6081179-94.832611',
+          'matchme': 'usminnesotawadenat136nr33ws.1012-jul-71,',
+          'matchme_sans_coords': 'usminnesotawadenat136nr33ws.10',
+          'epsg': 4326,
+          'georef_score': 26,
+          'coordinates_score': 250,
+          'source': 'GBIF',
+          'unc_numeric': Decimal('1137'),
+          'bels_decimallatitude': Decimal('46.608118'),
+          'bels_decimallongitude': Decimal('-94.832611'),
+          'bels_coordinateuncertaintyinmeters': Decimal('1137'),
+          'center': 'POINT(-94.832611 46.608118)',
+          'georef_count': 1
         }
         self.assertEqual(result, target)
 
@@ -486,12 +671,12 @@ class BELSQueryTestCase(unittest.TestCase):
         darwincloudfile = self.framework.darwincloudfile
         for row in safe_read_csv_row(inputfile):
             rowdict = row_as_dict(row)
-            # print('test rowdict: %s' % rowdict)
+            # print(f'test rowdict: {rowdict}')
             loc = darwinize_dict(row_as_dict(row), darwincloudfile)
             lowerloc = lower_dict_keys(loc)
-            # print('lowerloc: %s' % lowerloc)
+            # print(f'lowerloc: {lowerloc}')
             locmatchstr = location_match_str(locationmatchsanscoordstermlist, lowerloc)
-            # print('locmatchstr: %s' % locmatchstr)
+            # print(f'locmatchstr: {locmatchstr}')
             matchstr=super_simplify(locmatchstr)
             # The result in the matchme_sans_coords field in the file was the one from 
             # processing in BELS where the countrycode was interpreted and included. 
@@ -508,12 +693,12 @@ class BELSQueryTestCase(unittest.TestCase):
         darwincloudfile = self.framework.darwincloudfile
         for row in safe_read_csv_row(inputfile):
             rowdict = row_as_dict(row)
-            # print('test rowdict: %s' % rowdict)
+            # print(f'test rowdict: {rowdict}')
             loc = darwinize_dict(row_as_dict(row), darwincloudfile)
             lowerloc = lower_dict_keys(loc)
-            # print('lowerloc: %s' % lowerloc)
+            # print(f'lowerloc: {lowerloc}')
             locmatchstr = location_match_str(gbiflocationmatchsanscoordstermlist, lowerloc)
-            # print('locmatchstr: %s' % locmatchstr)
+            # print(f'locmatchstr: {locmatchstr}')
             matchstr=super_simplify(locmatchstr)
             result = row['matchme_sans_coords']
             self.assertEqual(result, matchstr)
@@ -533,15 +718,15 @@ class BELSQueryTestCase(unittest.TestCase):
 #         darwincloudfile = self.framework.darwincloudfile
 #         for row in safe_read_csv_row(inputfile):
 #             rowdict = row_as_dict(row)
-#             # print('test rowdict: %s' % rowdict)
+#             # print(f'test rowdict: {rowdict}')
 #             loc = darwinize_dict(row_as_dict(row), darwincloudfile)
 #             lowerloc = lower_dict_keys(loc)
-#             # print('lowerloc: %s' % lowerloc)
+#             # print(f'lowerloc: {lowerloc}')
 #             locmatchstr = location_match_str(gbiflocationmatchsanscoordstermlist, lowerloc)
-#             # print('locmatchstr: %s' % locmatchstr)
+#             # print(f'locmatchstr: {locmatchstr}')
 #             matchstr=super_simplify(locmatchstr)
 #             result = get_best_sans_coords_georef(self.BQ, matchstr)
-# #            print('matchstr: %s best_sans_coords_georef: %s' % (matchstr,result))
+# #            print(f'matchstr: {matchstr} best_sans_coords_georef: {result}')
 #             result = row['matchme_sans_coords']
 #             self.assertEqual(result, matchstr)
 
@@ -551,12 +736,12 @@ class BELSQueryTestCase(unittest.TestCase):
         darwincloudfile = self.framework.darwincloudfile
         for row in safe_read_csv_row(inputfile):
             rowdict = row_as_dict(row)
-            # print('test rowdict: %s' % rowdict)
+            # print(f'test rowdict: {rowdict}')
             loc = darwinize_dict(row_as_dict(row), darwincloudfile)
             lowerloc = lower_dict_keys(loc)
-            # print('lowerloc: %s' % lowerloc)
+            # print(f'lowerloc: {lowerloc}')
             locmatchstr = location_match_str(locationmatchwithcoordstermlist, lowerloc)
-            # print('locmatchstr: %s' % locmatchstr)
+            # print(f'locmatchstr: {locmatchstr}')
             matchstr=super_simplify(locmatchstr)
             # The result in the matchme_with_coords field in the file was the one from 
             # processing in BELS where the countrycode was interpreted and included. 
@@ -580,12 +765,12 @@ class BELSQueryTestCase(unittest.TestCase):
         darwincloudfile = self.framework.darwincloudfile
         for row in safe_read_csv_row(inputfile):
             rowdict = row_as_dict(row)
-            # print('test rowdict: %s' % rowdict)
+            # print(f'test rowdict: {rowdict}')
             loc = darwinize_dict(row_as_dict(row), darwincloudfile)
             lowerloc = lower_dict_keys(loc)
-            # print('lowerloc: %s' % lowerloc)
+            # print(f'lowerloc: {lowerloc}')
             locmatchstr = location_match_str(gbiflocationmatchwithcoordstermlist, lowerloc)
-            # print('locmatchstr: %s' % locmatchstr)
+            # print(f'locmatchstr: {locmatchstr}')
             matchstr=super_simplify(locmatchstr)
             result = row['matchme_with_coords']
             self.assertEqual(result, matchstr)
@@ -598,12 +783,12 @@ class BELSQueryTestCase(unittest.TestCase):
         darwincloudfile = self.framework.darwincloudfile
         for row in safe_read_csv_row(inputfile):
             rowdict = row_as_dict(row)
-            # print('test rowdict: %s' % rowdict)
+            # print(f'test rowdict: {rowdict}')
             loc = darwinize_dict(row_as_dict(row), darwincloudfile)
             lowerloc = lower_dict_keys(loc)
-            # print('lowerloc: %s' % lowerloc)
+            # print(f'lowerloc: {lowerloc}')
             locmatchstr = location_match_str(locationmatchverbatimcoordstermlist, lowerloc)
-            # print('locmatchstr: %s' % locmatchstr)
+            # print(f'locmatchstr: {locmatchstr}')
             matchstr=super_simplify(locmatchstr)
             # The result in the matchme field in the file was the one from 
             # processing in BELS where the countrycode was interpreted and included. 
@@ -624,12 +809,12 @@ class BELSQueryTestCase(unittest.TestCase):
         darwincloudfile = self.framework.darwincloudfile
         for row in safe_read_csv_row(inputfile):
             rowdict = row_as_dict(row)
-            # print('test rowdict: %s' % rowdict)
+            # print(f'test rowdict: {rowdict}')
             loc = darwinize_dict(row_as_dict(row), darwincloudfile)
             lowerloc = lower_dict_keys(loc)
-            # print('lowerloc: %s' % lowerloc)
+            # print(f'lowerloc: {lowerloc}')
             locmatchstr = location_match_str(gbiflocationmatchverbatimcoordstermlist, lowerloc)
-            # print('locmatchstr: %s' % locmatchstr)
+            # print(f'locmatchstr: {locmatchstr}')
             matchstr=super_simplify(locmatchstr)
             result = row['matchme']
             self.assertEqual(result, matchstr)

@@ -14,9 +14,9 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "bels_query_tests.py"
-__version__ = __filename__ + ' ' + "2021-07-24T18:37-03:00"
+__version__ = __filename__ + ' ' + "2022-05-17T10:49-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -39,9 +39,6 @@ from bels.dwca_vocab_utils import darwinize_list
 from bels.bels_query import row_as_dict
 from bels.bels_query import bigquerify_header
 from bels.dwca_utils import read_header
-#from bels.bels_query import check_header_for_bels
-#from decimal import *
-#import json
 import unittest
 
 class BELSQueryTestFramework():
@@ -79,9 +76,10 @@ class BELSQueryTestCase(unittest.TestCase):
         print('Running test_header_2fieldsblank')
         csvreadheaderfile = '../data/tests/test_2fieldsblank.csv'
         header = read_header(csvreadheaderfile)
+        #print(f'header: {header}')
         expected = ['continent','country','','','county','municipality','locality','verbatimlocality','minimumelevationinmeters','maximumelevationinmeters','verbatimelevation','v_locationaccordingto','v_locationremarks','v_verbatimcoordinates','v_verbatimlatitude','v_verbatimlongitude','v_verbatimcoordinatesystem']
         self.assertEqual(len(header), 17, 'incorrect number of fields in header')
-        s = 'header:\n%s\nnot as expected:\n%s' % (header, expected)
+        s = f'header:\n{header}\nnot as expected:\n{expected}'
         self.assertEqual(header, expected, s)
 
     def test_bigquerify_header(self):
@@ -101,35 +99,35 @@ class BELSQueryTestCase(unittest.TestCase):
         input_fields = ['continent','!country','1countrycode','stateprovince','county','municipality']
         target = ['continent','__country','_1countrycode','stateprovince','county','municipality']
         result = bigquerify_header(input_fields)
-        print(f'target: {target}\nresult: {result}')
+        #print(f'target: {target}\nresult: {result}')
         self.assertEqual(result, target)
 
         # This header currently fails to return results from the web app.
         input_fields = ['continent','1country','2countrycode','stateprovince','county','municipality']
         target = ['continent','_1country','_2countrycode','stateprovince','county','municipality']
         result = bigquerify_header(input_fields)
-        print(f'target: {target}\nresult: {result}')
+        #print(f'target: {target}\nresult: {result}')
         self.assertEqual(result, target)
 
         # This header currently fails to return results from the web app.
         input_fields = ['continent','!country','#countrycode','stateprovince','county','municipality']
         target = ['continent','__country','__countrycode','stateprovince','county','municipality']
         result = bigquerify_header(input_fields)
-        print(f'target: {target}\nresult: {result}')
+        #print(f'target: {target}\nresult: {result}')
         self.assertEqual(result, target)
 
         # This header currently fails to return results from the web app.
         input_fields = ['continent','!country','!countrycode','stateprovince','county','municipality']
         target = ['continent','__country','__countrycode','stateprovince','county','municipality']
         result = bigquerify_header(input_fields)
-        print(f'target: {target}\nresult: {result}')
+        #print(f'target: {target}\nresult: {result}')
         self.assertEqual(result, target)
 
         # This header currently fails to return results from the web app.
         input_fields = ['continent','country','!countrycode','4stateprovince','county','municipality']
         target = ['continent','country','__countrycode','_4stateprovince','county','municipality']
         result = bigquerify_header(input_fields)
-        print(f'target: {target}\nresult: {result}')
+        #print(f'target: {target}\nresult: {result}')
         self.assertEqual(result, target)
 
         input_fields = ['a', '1', '', '_', '$', u'ł', 'm"@#%', 'test', 'test', 'test', \
@@ -143,7 +141,6 @@ class BELSQueryTestCase(unittest.TestCase):
         result = bigquerify_header(input_fields)
         self.assertEqual(result, target)
 
-
     def test_bigquery_countries(self):
         print('Running test_bigquery_countries')
         input_fields = ['country', 'countrycode', 'countryCode', 'v_countrycode']
@@ -151,7 +148,6 @@ class BELSQueryTestCase(unittest.TestCase):
         darwinized_fields = darwinize_list(input_fields, self.framework.darwincloudfile)
         result = bigquerify_header(darwinized_fields)
         self.assertEqual(result, target)
-
 
 if __name__ == '__main__':
     print('=== bels_query_tests.py ===')
