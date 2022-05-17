@@ -41,7 +41,7 @@ from .bels_query import process_import_table
 from .bels_query import bigquerify_header
 from .dwca_vocab_utils import darwinize_dict
 from .dwca_vocab_utils import darwinize_list
-from dwca_terms import locationmatchsanscoordstermlist
+from .dwca_terms import locationmatchsanscoordstermlist
 from google.cloud import bigquery
 from google.cloud import storage
 
