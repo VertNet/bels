@@ -15,9 +15,9 @@
 
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2021-10-03T15:25-03:00"
+__version__ = __filename__ + ' ' + "2022-05-18T19:18-03:00"
 
 import bels
 import os
@@ -70,10 +70,10 @@ def bels_csv():
         return s, 400  # 400 Bad Request
  
     # Do not accept the following email addresses.
-    blacklist = ["email@example.com", "stuff@things.com"]
+    denylist = ["email@example.com", "stuff@things.com", "datacleaner@researchlab.edu"]
     m = []
-    if email.lower() in blacklist:
-        s = f'Email email address {email} is not allowed. '
+    if email.lower() in denylist:
+        s = f'Email address {email} is not allowed. '
         s += f'Please try another email address.'
         app.logger.error(s)
         return s, 400  # 400 Bad Request
