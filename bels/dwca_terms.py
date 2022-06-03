@@ -14,8 +14,8 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
-__version__ = "dwca_terms.py 2021-09-27T13:57-03:00"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
+__version__ = "dwca_terms.py 2022-05-31T18:16-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_terms.py"
 
 # This file contains definitions of standard sets of Darwin Core terms.
@@ -109,36 +109,36 @@ locationkeytermlist = [
     'dwc:islandgroup', 'dwc:island', 'dwc:country', 'dwc:countrycode', 
     'dwc:stateprovince', 'dwc:county', 'dwc:municipality', 'dwc:locality', 
     'dwc:verbatimlocality', 'dwc:minimumelevationinmeters','dwc:maximumelevationinmeters',
-    'dwc:verbatimelevation', 'dwc:minimumdepthinmeters', 'dwc:maximumdepthinmeters', 
-    'dwc:verbatimdepth', 'dwc:minimumdistanceabovesurfaceinmeters', 
-    'dwc:maximumdistanceabovesurfaceinmeters', 'dwc:locationaccordingto', 
-    'dwc:locationremarks', 'dwc:decimallatitude', 'dwc:decimallongitude', 
-    'dwc:geodeticdatum', 'dwc:coordinateuncertaintyinmeters', 'dwc:coordinateprecision',
-    'dwc:pointradiusspatialfit', 'dwc:verbatimcoordinates', 'dwc:verbatimlatitude', 
-    'dwc:verbatimlongitude', 'dwc:verbatimcoordinatesystem', 'dwc:verbatimsrs',
-    'dwc:footprintwkt', 'dwc:footprintsrs', 'dwc:footprintspatialfit', 
+    'dwc:verbatimelevation', 'dwc:verticaldatum', 'dwc:minimumdepthinmeters', 
+    'dwc:maximumdepthinmeters', 'dwc:verbatimdepth', 
+    'dwc:minimumdistanceabovesurfaceinmeters', 'dwc:maximumdistanceabovesurfaceinmeters', 
+    'dwc:locationaccordingto', 'dwc:locationremarks', 'dwc:decimallatitude', 
+    'dwc:decimallongitude', 'dwc:geodeticdatum', 'dwc:coordinateuncertaintyinmeters', 
+    'dwc:coordinateprecision', 'dwc:pointradiusspatialfit', 'dwc:verbatimcoordinates', 
+    'dwc:verbatimlatitude', 'dwc:verbatimlongitude', 'dwc:verbatimcoordinatesystem', 
+    'dwc:verbatimsrs', 'dwc:footprintwkt', 'dwc:footprintsrs', 'dwc:footprintspatialfit', 
     'dwc:georeferencedby', 'dwc:georeferenceddate', 'dwc:georeferenceprotocol',
-    'dwc:georeferencesources', 'dwc:georeferenceverificationstatus', 
-    'dwc:georeferenceremarks'
+    'dwc:georeferencesources', 'dwc:georeferenceremarks'
     ]
 
 # Terms to use to match locations for a georeference search on table 
 # matchme_with_coords_best_georef
 locationmatchwithcoordstermlist = [
-    'continent', 'waterbody', 'islandgroup', 'island', 'countrycode', 'stateprovince', 
+    'waterbody', 'islandgroup', 'island', 'countrycode', 'stateprovince', 
     'county', 'municipality', 'locality', 'verbatimlocality', 'minimumelevationinmeters',
-    'maximumelevationinmeters', 'verbatimelevation', 'minimumdepthinmeters', 
-    'maximumdepthinmeters', 'verbatimdepth', 'verbatimcoordinates', 'verbatimlatitude', 
-    'verbatimlongitude', 'decimallatitude', 'decimallongitude'
+    'maximumelevationinmeters', 'verbatimelevation', 'verticaldatum', 
+    'minimumdepthinmeters', 'maximumdepthinmeters', 'verbatimdepth', 
+    'verbatimcoordinates', 'verbatimlatitude', 'verbatimlongitude', 'decimallatitude', 
+    'decimallongitude'
     ]
 
 # Terms to use to match locations for a georeference search on table 
 # matchme_with_coords_best_georef where the input has interpreted_countrycode
 gbiflocationmatchwithcoordstermlist = [
-    'continent', 'waterbody', 'islandgroup', 'island', 'interpreted_countrycode', 
+    'waterbody', 'islandgroup', 'island', 'interpreted_countrycode', 
     'stateprovince', 'county', 'municipality', 'locality', 'verbatimlocality', 
     'minimumelevationinmeters', 'maximumelevationinmeters', 'verbatimelevation', 
-    'minimumdepthinmeters', 'maximumdepthinmeters', 'verbatimdepth', 
+    'verticaldatum', 'minimumdepthinmeters', 'maximumdepthinmeters', 'verbatimdepth', 
     'verbatimcoordinates', 'verbatimlatitude', 'verbatimlongitude', 'decimallatitude', 
     'decimallongitude'
     ]
@@ -146,39 +146,39 @@ gbiflocationmatchwithcoordstermlist = [
 # Terms to use to match locations for a georeference search on table 
 # matchme_verbatimcoords_best_georef
 locationmatchverbatimcoordstermlist = [
-    'continent', 'waterbody', 'islandgroup', 'island', 'countrycode', 'stateprovince', 
+    'waterbody', 'islandgroup', 'island', 'countrycode', 'stateprovince', 
     'county', 'municipality', 'locality', 'verbatimlocality', 'minimumelevationinmeters',
-    'maximumelevationinmeters', 'verbatimelevation', 'minimumdepthinmeters', 
-    'maximumdepthinmeters', 'verbatimdepth', 'verbatimcoordinates', 'verbatimlatitude', 
-    'verbatimlongitude'
+    'maximumelevationinmeters', 'verbatimelevation', 'verticaldatum', 
+    'minimumdepthinmeters', 'maximumdepthinmeters', 'verbatimdepth', 
+    'verbatimcoordinates', 'verbatimlatitude', 'verbatimlongitude'
     ]
 
 # Terms to use to match locations for a georeference search on table 
 # matchme_verbatimcoords_best_georef where the input has interpreted_countrycode
 gbiflocationmatchverbatimcoordstermlist = [
-    'continent', 'waterbody', 'islandgroup', 'island', 'interpreted_countrycode', 
+    'waterbody', 'islandgroup', 'island', 'interpreted_countrycode', 
     'stateprovince', 'county', 'municipality', 'locality', 'verbatimlocality', 
     'minimumelevationinmeters', 'maximumelevationinmeters', 'verbatimelevation', 
-    'minimumdepthinmeters', 'maximumdepthinmeters', 'verbatimdepth', 
+    'verticaldatum', 'minimumdepthinmeters', 'maximumdepthinmeters', 'verbatimdepth', 
     'verbatimcoordinates', 'verbatimlatitude', 'verbatimlongitude'
     ]
 
 # Terms to use to match locations for a georeference search on table 
 # matchme_sans_coords_best_georef
 locationmatchsanscoordstermlist = [
-    'continent', 'waterbody', 'islandgroup', 'island', 'countrycode', 'stateprovince', 
+    'waterbody', 'islandgroup', 'island', 'countrycode', 'stateprovince', 
     'county', 'municipality', 'locality', 'verbatimlocality', 'minimumelevationinmeters',
-    'maximumelevationinmeters', 'verbatimelevation', 'minimumdepthinmeters', 
-    'maximumdepthinmeters', 'verbatimdepth'
+    'maximumelevationinmeters', 'verbatimelevation', 'verticaldatum', 
+    'minimumdepthinmeters', 'maximumdepthinmeters', 'verbatimdepth'
     ]
 
 # Terms to use to match locations for a georeference search on table 
 # matchme_sans_coords_best_georef where the input has interpreted_countrycode
 gbiflocationmatchsanscoordstermlist = [
-    'continent', 'waterbody', 'islandgroup', 'island', 'interpreted_countrycode', 
+    'waterbody', 'islandgroup', 'island', 'interpreted_countrycode', 
     'stateprovince', 'county', 'municipality', 'locality', 'verbatimlocality', 
     'minimumelevationinmeters', 'maximumelevationinmeters', 'verbatimelevation', 
-    'minimumdepthinmeters', 'maximumdepthinmeters', 'verbatimdepth'
+    'verticaldatum', 'minimumdepthinmeters', 'maximumdepthinmeters', 'verbatimdepth'
     ]
 
 # The taxonkeytermlist contains the terms that make up a distinct taxon name combination

@@ -14,9 +14,9 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "id_utils_tests.py"
-__version__ = "2021-07-20T22:31-03:00"
+__version__ = "2022-05-31T20:33-03:00"
 
 # This file contains unit tests for the functions in id_utils.
 #
@@ -53,6 +53,67 @@ class IDUtilsTestCase(unittest.TestCase):
 
     # following are files used as input during the tests, don't remove these
     darwincloudfile = vocabpath + 'darwin_cloud.txt'
+
+    loc1 = { 
+        'dummyfield':'',
+        'dwc:highergeographyid':'', 
+        'dwc:highergeography':'', 
+        'dwc:continent':'', 
+        'dwc:waterbody':'', 
+        'dwc:islandgroup':'', 
+        'dwc:island':'', 
+        'dwc:country':'', 
+        'dwc:countrycode':'RU', 
+        'dwc:stateprovince':'Moskovskaya oblast', 
+        'dwc:county':'', 
+        'dwc:municipality':'', 
+        'dwc:locality':'unknown', 
+        'dwc:verbatimlocality':'UNKNOWN ', 
+        'dwc:minimumelevationinmeters':'',
+        'dwc:maximumelevationinmeters':'',
+        'dwc:verbatimelevation':'', 
+        'dwc:verticaldatum':'', 
+        'dwc:minimumdepthinmeters':'', 
+        'dwc:maximumdepthinmeters':'', 
+        'dwc:verbatimdepth':'', 
+        'dummyfield2':'',
+        'dwc:minimumdistanceabovesurfaceinmeters':'', 
+        'dwc:maximumdistanceabovesurfaceinmeters':'', 
+        'dwc:locationaccordingto':'', 
+        'dwc:locationremarks':'', 
+        'dwc:decimallatitude':'55.802706', 
+        'dwc:decimallongitude':'37.423519', 
+        'dwc:geodeticdatum':'WGS84', 
+        'dwc:coordinateuncertaintyinmeters':'150', 
+        'dwc:coordinateprecision':'',
+        'dwc:pointradiusspatialfit':'', 
+        'dwc:verbatimcoordinates':'', 
+        'dwc:verbatimlatitude':'', 
+        'dwc:verbatimlongitude':'', 
+        'dwc:verbatimcoordinatesystem':'decimal degrees', 
+        'dwc:verbatimsrs':'',
+        'dwc:footprintwkt':'', 
+        'dwc:footprintsrs':'', 
+        'dwc:footprintspatialfit':'', 
+        'dwc:georeferencedby':'', 
+        'dwc:georeferenceddate':'', 
+        'dwc:georeferenceprotocol':'',
+        'dwc:georeferencesources':'', 
+        'dwc:georeferenceverificationstatus':'', 
+        'dwc:georeferenceremarks':'',
+        'dummyfield3':''
+    }
+    loc2 = { 
+        'dwc:countrycode':'RU', 
+        'dwc:stateprovince':'Moskovskaya oblast', 
+        'dwc:locality':'unknown', 
+        'dwc:verbatimlocality':'UNKNOWN ', 
+        'dwc:decimallatitude':'55,802706', 
+        'dwc:decimallongitude':'37,423519', 
+        'dwc:geodeticdatum':'WGS84', 
+        'dwc:coordinateuncertaintyinmeters':'150', 
+        'dwc:verbatimcoordinatesystem':'decimal degrees'
+    }
 
     def setUp(self):
         self.framework = IDUtilsTestFramework()
@@ -114,119 +175,24 @@ class IDUtilsTestCase(unittest.TestCase):
         cn = casefold_and_normalize(teststr)
         self.assertEqual(cn, target)
 
-#     def test_normalize_and_casefold(self):
-#         print('testing normalize_and_casefold')
-#         teststr=u'\u0061\u0301\u2168\u0041\u030A\u2167 áBçDèFGHïJKłMñoœPQRßTûVWXÿž'
-#         target='áⅸåⅷ ábçdèfghïjkłmñoœpqrsstûvwxÿž'
-#         nc = normalize_and_casefold(teststr)
-#         self.assertEqual(nc, target)
-
     def test_dwc_location_hash(self):
         print('Running test_dwc_location_hash')
         darwincloudfile = self.darwincloudfile
-        loc = { 
-            'dwc:highergeographyid':'', 
-            'dwc:highergeography':'', 
-            'dwc:continent':'', 
-            'dwc:waterbody':'', 
-            'dwc:islandgroup':'', 
-            'dwc:island':'', 
-            'dwc:country':'', 
-            'dwc:countrycode':'RU', 
-            'dwc:stateprovince':'Moskovskaya oblast', 
-            'dwc:county':'', 
-            'dwc:municipality':'', 
-            'dwc:locality':'', 
-            'dwc:verbatimlocality':'', 
-            'dwc:minimumelevationinmeters':'',
-            'dwc:maximumelevationinmeters':'',
-            'dwc:verbatimelevation':'', 
-            'dwc:minimumdepthinmeters':'', 
-            'dwc:maximumdepthinmeters':'', 
-            'dwc:verbatimdepth':'', 
-            'dwc:minimumdistanceabovesurfaceinmeters':'', 
-            'dwc:maximumdistanceabovesurfaceinmeters':'', 
-            'dwc:locationaccordingto':'', 
-            'dwc:locationremarks':'', 
-            'dwc:decimallatitude':'55,802706', 
-            'dwc:decimallongitude':'37,423519', 
-            'dwc:geodeticdatum':'WGS84', 
-            'dwc:coordinateuncertaintyinmeters':'', 
-            'dwc:coordinateprecision':'',
-            'dwc:pointradiusspatialfit':'', 
-            'dwc:verbatimcoordinates':'', 
-            'dwc:verbatimlatitude':'', 
-            'dwc:verbatimlongitude':'', 
-            'dwc:verbatimcoordinatesystem':'decimal degrees', 
-            'dwc:verbatimsrs':'',
-            'dwc:footprintwkt':'', 
-            'dwc:footprintsrs':'', 
-            'dwc:footprintspatialfit':'', 
-            'dwc:georeferencedby':'', 
-            'dwc:georeferenceddate':'', 
-            'dwc:georeferenceprotocol':'',
-            'dwc:georeferencesources':'', 
-            'dwc:georeferenceverificationstatus':'', 
-            'dwc:georeferenceremarks':''
-        }
+        loc = self.loc1
         # TO_HEX(dwc_location_hash)
         # target='091e331428057bff5c6e44e9236a4288e84e989884ef866af1f9276e648848fc'
         # TO_BASE64(dwc_location_hash)
-        target='CR4zFCgFe/9cbkTpI2pCiOhOmJiE74Zq8fknbmSISPw='
+        target='vAb0q/J2UnKzuyfipHQGAZWb73pYW1soxmeRSB2iEdw='
         locid=dwc_location_hash(loc, darwincloudfile)
         self.assertEqual(locid, target)
     
     def test_location_str(self):
         print('Running test_location_str')
-        loc = { 
-            'dwc:highergeographyid':'', 
-            'dwc:highergeography':'', 
-            'dwc:continent':'', 
-            'dwc:waterbody':'', 
-            'dwc:islandgroup':'', 
-            'dwc:island':'', 
-            'dwc:country':'', 
-            'dwc:countrycode':'RU', 
-            'dwc:stateprovince':'Moskovskaya oblast', 
-            'dwc:county':'', 
-            'dwc:municipality':'', 
-            'dwc:locality':'', 
-            'dwc:verbatimlocality':'', 
-            'dwc:minimumelevationinmeters':'',
-            'dwc:maximumelevationinmeters':'',
-            'dwc:verbatimelevation':'', 
-            'dwc:minimumdepthinmeters':'', 
-            'dwc:maximumdepthinmeters':'', 
-            'dwc:verbatimdepth':'', 
-            'dwc:minimumdistanceabovesurfaceinmeters':'', 
-            'dwc:maximumdistanceabovesurfaceinmeters':'', 
-            'dwc:locationaccordingto':'', 
-            'dwc:locationremarks':'', 
-            'dwc:decimallatitude':'55,802706', 
-            'dwc:decimallongitude':'37,423519', 
-            'dwc:geodeticdatum':'WGS84', 
-            'dwc:coordinateuncertaintyinmeters':'', 
-            'dwc:coordinateprecision':'',
-            'dwc:pointradiusspatialfit':'', 
-            'dwc:verbatimcoordinates':'', 
-            'dwc:verbatimlatitude':'', 
-            'dwc:verbatimlongitude':'', 
-            'dwc:verbatimcoordinatesystem':'decimal degrees', 
-            'dwc:verbatimsrs':'',
-            'dwc:footprintwkt':'', 
-            'dwc:footprintsrs':'', 
-            'dwc:footprintspatialfit':'', 
-            'dwc:georeferencedby':'', 
-            'dwc:georeferenceddate':'', 
-            'dwc:georeferenceprotocol':'',
-            'dwc:georeferencesources':'', 
-            'dwc:georeferenceverificationstatus':'', 
-            'dwc:georeferenceremarks':''
-        }
-        target='dwc:highergeographyiddwc:highergeographydwc:continentdwc:waterbodydwc:islandgroupdwc:islanddwc:countrydwc:countrycodeRUdwc:stateprovinceMoskovskaya oblastdwc:countydwc:municipalitydwc:localitydwc:verbatimlocalitydwc:minimumelevationinmetersdwc:maximumelevationinmetersdwc:verbatimelevationdwc:minimumdepthinmetersdwc:maximumdepthinmetersdwc:verbatimdepthdwc:minimumdistanceabovesurfaceinmetersdwc:maximumdistanceabovesurfaceinmetersdwc:locationaccordingtodwc:locationremarksdwc:decimallatitude55,802706dwc:decimallongitude37,423519dwc:geodeticdatumWGS84dwc:coordinateuncertaintyinmetersdwc:coordinateprecisiondwc:pointradiusspatialfitdwc:verbatimcoordinatesdwc:verbatimlatitudedwc:verbatimlongitudedwc:verbatimcoordinatesystemdecimal degreesdwc:verbatimsrsdwc:footprintwktdwc:footprintsrsdwc:footprintspatialfitdwc:georeferencedbydwc:georeferenceddatedwc:georeferenceprotocoldwc:georeferencesourcesdwc:georeferenceverificationstatusdwc:georeferenceremarks'
+        loc = self.loc1
+        target='dwc:highergeographyiddwc:highergeographydwc:continentdwc:waterbodydwc:islandgroupdwc:islanddwc:countrydwc:countrycodeRUdwc:stateprovinceMoskovskaya oblastdwc:countydwc:municipalitydwc:localityunknowndwc:verbatimlocalityUNKNOWN dwc:minimumelevationinmetersdwc:maximumelevationinmetersdwc:verbatimelevationdwc:verticaldatumdwc:minimumdepthinmetersdwc:maximumdepthinmetersdwc:verbatimdepthdwc:minimumdistanceabovesurfaceinmetersdwc:maximumdistanceabovesurfaceinmetersdwc:locationaccordingtodwc:locationremarksdwc:decimallatitude55.802706dwc:decimallongitude37.423519dwc:geodeticdatumWGS84dwc:coordinateuncertaintyinmeters150dwc:coordinateprecisiondwc:pointradiusspatialfitdwc:verbatimcoordinatesdwc:verbatimlatitudedwc:verbatimlongitudedwc:verbatimcoordinatesystemdecimal degreesdwc:verbatimsrsdwc:footprintwktdwc:footprintsrsdwc:footprintspatialfitdwc:georeferencedbydwc:georeferenceddatedwc:georeferenceprotocoldwc:georeferencesourcesdwc:georeferenceremarks'
         locid=location_str(loc)
+        #print(f'locid:  {locid}\ntarget: {target}')
         self.assertEqual(locid, target)
-    
     def test_location_match_str(self):
         print('Running test_location_match_str')
         loc = { 
@@ -243,26 +209,27 @@ class IDUtilsTestCase(unittest.TestCase):
             'minimumelevationinmeters':'11',
             'maximumelevationinmeters':'12', 
             'verbatimelevation':'13', 
-            'minimumdepthinmeters':'14', 
-            'maximumdepthinmeters':'15', 
-            'VERBATIMDEPTH':'16', 
-            'verbatimcoordinates':'17', 
-            'verbatimlatitude':'18', 
-            'verbatimlongitude':'19',
-            'decimallatitude': Decimal(20),
-            'decimallongitude': Decimal(21)
+            'verticaldatum':'14', 
+            'minimumdepthinmeters':'15', 
+            'maximumdepthinmeters':'16', 
+            'VERBATIMDEPTH':'17', 
+            'verbatimcoordinates':'18', 
+            'verbatimlatitude':'19', 
+            'verbatimlongitude':'20',
+            'decimallatitude': Decimal(21),
+            'decimallongitude': Decimal(22)
         }
         lowerloc = lower_dict_keys(loc)
         locstr=location_match_str(locationmatchwithcoordstermlist, lowerloc)
-        target='1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 '
+        target='2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 '
         self.assertEqual(locstr, target)
 
         locstr=location_match_str(locationmatchverbatimcoordstermlist, lowerloc)
-        target='1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 '
+        target='2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 '
         self.assertEqual(locstr, target)
 
         locstr=location_match_str(locationmatchsanscoordstermlist, lowerloc)
-        target='1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 '
+        target='2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 '
         self.assertEqual(locstr, target)
 
         loc = { 
@@ -275,35 +242,24 @@ class IDUtilsTestCase(unittest.TestCase):
             'county':'7', 
             'municipality':'8', 
             'locality':'9', 
-            'verbatimlocality':'10', 
+            'verbatimlocality':'9', 
             'minimumelevationinmeters':'11',
             'maximumelevationinmeters':'12', 
             'verbatimelevation':'13', 
-            'minimumdepthinmeters':'14', 
-            'maximumdepthinmeters':'15', 
-            'VERBATIMDEPTH':'16', 
-            'verbatimcoordinates':'17', 
-            'verbatimlatitude':'18', 
-            'verbatimlongitude':'19',
-            'decimallatitude': Decimal(20.12345675),
-            'decimallongitude': Decimal(-21.12345675)
+            'verticaldatum':'14', 
+            'minimumdepthinmeters':'15', 
+            'maximumdepthinmeters':'16', 
+            'VERBATIMDEPTH':'17', 
+            'verbatimcoordinates':'18', 
+            'verbatimlatitude':'19', 
+            'verbatimlongitude':'20',
+            'decimallatitude': Decimal(21.12345675),
+            'decimallongitude': Decimal(-22.12345675)
         }
         lowerloc = lower_dict_keys(loc)
         locstr=location_match_str(locationmatchwithcoordstermlist, lowerloc)
-        target='1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20.1234567 -21.1234567 '
+        target='2 3 4 5 6 7 8 9  11 12 13 14 15 16 17 18 19 20 21.1234567 -22.1234567 '
         self.assertEqual(locstr, target)
-
-#     def test_location_match_id_hex(self):
-#         print('Running test_location_match_id')
-#         teststr='Quién sabe?'
-#         target='c1ceb2f1888d8763ed44861b644056fb96b9a501cb7764f65ffb1e3343ae036d'
-#         id = location_match_id_hex(teststr)
-#         self.assertEqual(id, target)
-# 
-#         ss = super_simplify(teststr)
-#         target='412283b7ac7d301e19a3aef22adc0261145483a9310858f0d2dcad76558463d1'
-#         id = location_match_id_hex(ss)
-#         self.assertEqual(id, target)
 
 if __name__ == '__main__':
     print('=== id_utils_test.py ===')

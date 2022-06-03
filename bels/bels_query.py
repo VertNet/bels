@@ -494,7 +494,7 @@ def delete_table(bq_client, table_id):
 
 def export_table(bq_client, table_id, destination_uri):
     # From https://cloud.google.com/bigquery/docs/exporting-data
-    # logging.debug(f'table_id: {table_id} destination_uri: {destination_uri}')
+    logging.debug(f'table_id: {table_id} destination_uri: {destination_uri}')
     job_config = bigquery.job.ExtractJobConfig()
     job_config.compression = 'GZIP'
     extract_job = bq_client.extract_table(

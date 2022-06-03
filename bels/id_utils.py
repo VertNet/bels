@@ -14,9 +14,9 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "id_utils.py"
-__version__ = __filename__ + ' ' + "2021-07-19T23:36-03:00"
+__version__ = __filename__ + ' ' + "2022-05-31T20:35-03:00"
 
 from .dwca_terms import locationmatchwithcoordstermlist
 from .dwca_terms import locationkeytermlist
@@ -45,6 +45,7 @@ def location_match_str(termlist, inputdict):
     # For example, 1.235 rounded to 2 places would be 1.24 and -1.235 rounded to 2 places
     # would be -1.24. This matches the behavior of ROUND() in BigQuery.
     getcontext().rounding = ROUND_HALF_UP
+    locstr = ''
     for term in termlist:
         # print('term: %s inputdict[%s]: %s' % (term, term, inputdict[term]))
         try:
@@ -56,6 +57,14 @@ def location_match_str(termlist, inputdict):
                 # In BigQuery the coordinates for matching are truncated versions using:
                 # SAFE_CAST(round(10000000*safe_cast(v_decimallatitude as NUMERIC))/10000000 AS STRING)
                 idstr += valuestr
+            elif term=='locality':
+                locstr = inputdict[term]
+                idstr += inputdict[term]
+            elif term=='verbatimlocality':
+                if inputdict[term] is not None:
+                    if locstr.lower().strip() != inputdict[term].lower().strip():
+                        idstr += inputdict[term]
+
             else:
                 idstr += inputdict[term]
         except:
@@ -96,10 +105,12 @@ def dwc_location_hash(inputdict, darwincloudfile):
     functionname = 'dwc_location_hash()'
 
     darwindict = darwinize_dict(inputdict,darwincloudfile,namespace=True)
+    print(f'darwindict: {darwindict}')
     locstr=location_str(lower_dict_keys(darwindict))
+    print(f'locstr: {locstr}')
     hash = hashlib.sha256(locstr.encode('utf-8'))
     return base64.b64encode(hash.digest()).decode('utf-8')
-        
+
 def super_simplify(idstr):
     ''' Prepares an input location string for matching
     parameters:
@@ -265,30 +276,3 @@ def casefold_and_normalize(inputstr):
     cf = str.casefold()
     ns = unicodedata.normalize('NFKC',cf)
     return ns
-
-# def normalize_and_casefold(inputstr):
-#     ''' Normalizes unicode, then casefolds inputstr"
-#     parameters:
-#         inputstr - the string to casefold and normalize
-#     returns:
-#         str - a casefolded and normalized string
-#     '''
-#     functionname = 'normalize_and_casefold()'
-# 
-#     str=inputstr
-#     ns = unicodedata.normalize('NFKC',str)
-#     cf = str.casefold()
-#     return cf
-
-# def location_match_id_hex(inputstr):
-#     ''' Prepares an input location string for matching
-#     parameters:
-#         inputstr - the location string to create a match string for
-#     returns:
-#         id - the location match id
-#     '''
-#     functionname = 'location_match_id_hex()'
-# 
-#     id = hashlib.sha256(inputstr.encode('utf-8')).hexdigest()
-#     return id
-

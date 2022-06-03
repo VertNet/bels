@@ -24,3 +24,6 @@ python job_test.py
 date
 #python: 0s
 
+python resources_test.py
+date
+#python: 0s

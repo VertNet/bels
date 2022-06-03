@@ -231,8 +231,12 @@ if __name__ == "__main__":
 #curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"continent":"Europe", "country":"Portugal", "stateprovince":"Bragança", "municipality":"Bragança", "locality":"Carção", "verbatimlocality":"MC13", "verbatimlatitude":"41.67", "verbatimlongitude":"-6.58"}}' http://127.0.0.1:5000/api/bestgeoref
 
 # Sans Coords bestgeoref examples
-#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"continent":"Europe", "country":"United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"continent":"Europe", "country": "United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {                      "country": "United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {                      "country": "United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' https://localityservice.uc.r.appspot.com/api/bestgeoref
+#curl --insecure -X POST -H "Content-Type: application/json" -d "{\"give_me\": \"BEST_GEOREF\", \"row\":{\"country\": \"United Kingdom\",\"stateprovince\":\"England\",\"county\":\"Kent County\", \"locality\":\"Barnworth\"}}"
 #curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"countrycode": "DK","locality":"Gudhjem"}}' http://127.0.0.1:5000/api/bestgeoref
+ https://localityservice.uc.r.appspot.com/api/bestgeoref
 #curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"countrycode": "ES","stateprovince":"Cc", "locality":"Acebo"}}' http://127.0.0.1:5000/api/bestgeoref
 
 # Original record has georef examples
