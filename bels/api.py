@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2022-05-18T19:18-03:00"
+__version__ = __filename__ + ' ' + "2022-06-03T01:18-03:00"
 
 import bels
 import os
@@ -211,6 +211,8 @@ def index(version=None):
 if __name__ == "__main__":
     app.run(debug=True)
 
+# Deployed app location: https://localityservice.uc.r.appspot.com/api/bestgeoref
+
 # To test locally...
 # need a virtualenv to test
 # virtualenv --python=python3 env - only the 1st time
@@ -236,7 +238,7 @@ if __name__ == "__main__":
 #curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {                      "country": "United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' https://localityservice.uc.r.appspot.com/api/bestgeoref
 #curl --insecure -X POST -H "Content-Type: application/json" -d "{\"give_me\": \"BEST_GEOREF\", \"row\":{\"country\": \"United Kingdom\",\"stateprovince\":\"England\",\"county\":\"Kent County\", \"locality\":\"Barnworth\"}}"
 #curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"countrycode": "DK","locality":"Gudhjem"}}' http://127.0.0.1:5000/api/bestgeoref
- https://localityservice.uc.r.appspot.com/api/bestgeoref
+#https://localityservice.uc.r.appspot.com/api/bestgeoref
 #curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"countrycode": "ES","stateprovince":"Cc", "locality":"Acebo"}}' http://127.0.0.1:5000/api/bestgeoref
 
 # Original record has georef examples
