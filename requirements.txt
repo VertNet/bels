@@ -1,10 +1,26 @@
-regex==2020.11.13
-chardet==4.0.0
-google-cloud-bigquery==2.6.1
-flask
-flask-restful
-google-cloud-pubsub==2.2.0
-google-cloud-storage==1.35.0
+# Check current environment
+# $ pip freeze --local
+#
+# Functional deployment environment:
+#chardet==4.0.0
+#Flask==2.1.2
+#Flask-RESTful==0.3.9
+#google-cloud-bigquery==3.1.0
+#google-cloud-pubsub==2.13.0
+#google-cloud-storage==2.3.0
+#gunicorn==20.1.0
+#protobuf==3.20.1
+#regex==2022.6.2
+#requests==2.27.1
+#sendgrid==6.9.7
+
+chardet
+Flask
+Flask-RESTful
+google-cloud-bigquery
+google-cloud-pubsub
+google-cloud-storage
+gunicorn
+regex
 requests
-gunicorn==20.0.4
 sendgrid

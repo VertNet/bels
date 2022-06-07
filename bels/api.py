@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2022-06-03T01:18-03:00"
+__version__ = __filename__ + ' ' + "2022-06-07T01:02-03:00"
 
 import bels
 import os
@@ -126,8 +126,6 @@ def bels_csv():
     elif first_return < first_newline:
         seekto = first_return
 
-    print(f'first_return={first_return} first_newline={first_newline} seekto={seekto}')
-    
     if seekto is None:
         s = 'File has no more than one row, so it is data without a header or a header '
         s += 'without data, in neither circumstance of which I am able to help you.'
@@ -140,6 +138,8 @@ def bels_csv():
     cleaned_fieldnames = []
     for field in fieldnames:
         cleaned_fieldnames.append(field.strip().strip('"').strip("'"))
+
+    logging.info(f'headerline: {headerline}')
     app.logger.info(f'headerline: {headerline}')
     app.logger.info(f'cleaned_fieldnames: {cleaned_fieldnames}')
     
@@ -147,6 +147,7 @@ def bels_csv():
     vocabpath = './bels/vocabularies/'
     dwccloudfile = vocabpath + 'darwin_cloud.txt'
     darwinized_header = darwinize_list(cleaned_fieldnames,dwccloudfile, case='l')
+    logging.info(f'darwinized_header: {darwinized_header}')
     app.logger.info(f'darwinized_header: {darwinized_header}')
     if 'country' not in darwinized_header and 'countrycode' not in darwinized_header:
         s = 'The uploaded file has no field that can be interpreted as country or '
@@ -177,8 +178,6 @@ def bels_csv():
     })
     message_bytes = message_json.encode('utf-8')
 
-    app.logger.info(message_json)
-
     # Publish the message to the Cloud Pub/Sub topic given by topic_path. This topic is 
     # the trigger for the Cloud functions that subscribe to it. Specifically in this case 
     # csv_processing-1, which gets all the georeferences it can matching the localities
@@ -193,7 +192,10 @@ def bels_csv():
 
         return f'An email with a link to the results will be sent to {email}.'
     except Exception as e:
-        loggin.error(e)
+        s = f'Failure publishing request {message_json}'
+        logging.info(s)
+        app.logger.info(s)
+        logging.error(e)
         app.logger.error(e)
         return (e, 500)
 
@@ -211,7 +213,8 @@ def index(version=None):
 if __name__ == "__main__":
     app.run(debug=True)
 
-# Deployed app location: https://localityservice.uc.r.appspot.com/api/bestgeoref
+# Deployed app location: https://localityservice.uc.r.appspot.com/
+# Deployed api location: https://localityservice.uc.r.appspot.com/api/bestgeoref
 
 # To test locally...
 # need a virtualenv to test

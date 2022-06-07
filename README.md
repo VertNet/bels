@@ -29,9 +29,3 @@ To date, the services include:
 * Using the web interface (temporarily at https://localityservice.uc.r.appspot.com/, but eventually destined for [georeferencing.org](http://georeferencing.org/)), one can upload a file with Locations (and any additional data fields) and provide an email address. When the file has been uploaded and processed, the results, which include all of the input fields plus fields for the best georeference available, are saved in a CSV file and the link to the file is sent to the email provided by the requester.
 
 Next steps include a REST API and the incorporation of higher geography term standardization based on [VertNet vocabularies]( https://github.com/VertNet/DwCVocabs/blob/master/vocabs/Geography.csv), [Kurator workflows](https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/workflows/dwca_geography_cleaner.yaml), and verbatim data shared via VertNet, iDigBio, and GBIF. 
-
-## Installation
-
-```
-python setup.py develop
-```
