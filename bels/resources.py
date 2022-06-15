@@ -15,34 +15,32 @@
 
 __author__ = "John Wieczorek"
 __contributors__ = ""
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "resources.py"
-__version__ = __filename__ + ' ' + "2021-10-03T21:46-03:00"
+__version__ = __filename__ + ' ' + "2022-06-08T15:52-03:00"
 
 import base64
 import logging
 import os
 import time
-
-from bels.bels_query import bels_original_georef
-from bels.bels_query import get_best_sans_coords_georef_reduced
-from bels.bels_query import get_best_with_verbatim_coords_georef_reduced
-from bels.bels_query import get_best_with_coords_georef_reduced
-from bels.bels_query import has_decimal_coords
-from bels.bels_query import has_georef
-from bels.bels_query import has_verbatim_coords
-from bels.bels_query import row_as_dict
-from bels.dwca_terms import locationmatchsanscoordstermlist
-from bels.dwca_terms import locationmatchverbatimcoordstermlist
-from bels.dwca_terms import locationmatchwithcoordstermlist
-from bels.dwca_vocab_utils import Darwinizer
-from bels.dwca_utils import lower_dict_keys
-from bels.id_utils import location_match_str, super_simplify
-
 from flask import request
 from flask_restful import Resource
-
 from google.cloud import bigquery
+
+from bels_query import bels_original_georef
+from bels_query import get_best_sans_coords_georef_reduced
+from bels_query import get_best_with_verbatim_coords_georef_reduced
+from bels_query import get_best_with_coords_georef_reduced
+from bels_query import has_decimal_coords
+from bels_query import has_georef
+from bels_query import has_verbatim_coords
+from bels_query import row_as_dict
+from dwca_terms import locationmatchsanscoordstermlist
+from dwca_terms import locationmatchverbatimcoordstermlist
+from dwca_terms import locationmatchwithcoordstermlist
+from dwca_vocab_utils import Darwinizer
+from dwca_utils import lower_dict_keys
+from id_utils import location_match_str, super_simplify
 
 class BestGeoref(Resource):
     def __init__(self, bels_client):

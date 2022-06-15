@@ -14,9 +14,9 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "dwca_vocab_utils_tests.py"
-__version__ = __filename__ + ' ' + "2021-10-02T00:33-03:00"
+__version__ = __filename__ + ' ' + "2022-06-09T00:21-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/test/dwca_vocab_utils_test.py"
 
 # This file contains unit tests for the functions in dwca_vocab_utils.
@@ -25,36 +25,37 @@ __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/maste
 #
 # python dwca_vocab_utils_tests.py
 
-from bels.dwca_terms import controlledtermlist
-from bels.dwca_terms import geogkeytermlist
-from bels.dwca_terms import vocabfieldlist
-from bels.dwca_utils import csv_dialect
-from bels.dwca_utils import extract_values_from_file
-from bels.dwca_utils import read_header
-from bels.dwca_utils import tsv_dialect
-from bels.dwca_utils import ustripstr
-from bels.dwca_vocab_utils import compose_dict_from_key
-from bels.dwca_vocab_utils import compose_key_from_list
-from bels.dwca_vocab_utils import compose_key_from_row
-from bels.dwca_vocab_utils import darwin_cloud_vocab_dict_from_file
-from bels.dwca_vocab_utils import darwinize_list
-from bels.dwca_vocab_utils import darwinize_dict
-from bels.dwca_vocab_utils import Darwinizer
-from bels.dwca_vocab_utils import distinct_vocabs_to_file
-from bels.dwca_vocab_utils import matching_vocab_dict_from_file
-from bels.dwca_vocab_utils import missing_vocab_list_from_file
-from bels.dwca_vocab_utils import not_in_list
-from bels.dwca_vocab_utils import term_values_recommended
-from bels.dwca_vocab_utils import terms_not_in_darwin_cloud
-from bels.dwca_vocab_utils import terms_not_in_dwc
-from bels.dwca_vocab_utils import vetted_vocab_dict_from_file
-from bels.dwca_vocab_utils import vocab_dialect
-from bels.dwca_vocab_utils import vocab_dict_from_file
-from bels.dwca_vocab_utils import vocabheader
-from bels.dwca_vocab_utils import writevocabheader
 import os
 import unittest
 import csv
+
+from dwca_terms import controlledtermlist
+from dwca_terms import geogkeytermlist
+from dwca_terms import vocabfieldlist
+from dwca_utils import csv_dialect
+from dwca_utils import extract_values_from_file
+from dwca_utils import read_header
+from dwca_utils import tsv_dialect
+from dwca_utils import ustripstr
+from dwca_vocab_utils import compose_dict_from_key
+from dwca_vocab_utils import compose_key_from_list
+from dwca_vocab_utils import compose_key_from_row
+from dwca_vocab_utils import darwin_cloud_vocab_dict_from_file
+from dwca_vocab_utils import darwinize_list
+from dwca_vocab_utils import darwinize_dict
+from dwca_vocab_utils import Darwinizer
+from dwca_vocab_utils import distinct_vocabs_to_file
+from dwca_vocab_utils import matching_vocab_dict_from_file
+from dwca_vocab_utils import missing_vocab_list_from_file
+from dwca_vocab_utils import not_in_list
+from dwca_vocab_utils import term_values_recommended
+from dwca_vocab_utils import terms_not_in_darwin_cloud
+from dwca_vocab_utils import terms_not_in_dwc
+from dwca_vocab_utils import vetted_vocab_dict_from_file
+from dwca_vocab_utils import vocab_dialect
+from dwca_vocab_utils import vocab_dict_from_file
+from dwca_vocab_utils import vocabheader
+from dwca_vocab_utils import writevocabheader
 
 class DWCAVocabUtilsTestFramework():
     # testdatapath is the location of example files to test with

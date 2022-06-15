@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2022-05-17T12:05-03:00"
+__version__ = __filename__ + ' ' + "2022-06-08T15:52-03:00"
 
 import base64
 import json
@@ -28,22 +28,22 @@ import tempfile
 import logging
 import re
 import time
-
 from contextlib import contextmanager
-from .id_utils import dwc_location_hash, location_match_str, super_simplify
-from .dwca_utils import safe_read_csv_row, lower_dict_keys
-from .bels_query import get_location_by_hashid, row_as_dict
-from .bels_query import get_best_sans_coords_georef_reduced
-from .bels_query import import_table
-from .bels_query import export_table
-from .bels_query import delete_table
-from .bels_query import process_import_table
-from .bels_query import bigquerify_header
-from .dwca_vocab_utils import darwinize_dict
-from .dwca_vocab_utils import darwinize_list
-from .dwca_terms import locationmatchsanscoordstermlist
 from google.cloud import bigquery
 from google.cloud import storage
+
+from id_utils import dwc_location_hash, location_match_str, super_simplify
+from dwca_utils import safe_read_csv_row, lower_dict_keys
+from bels_query import get_location_by_hashid, row_as_dict
+from bels_query import get_best_sans_coords_georef_reduced
+from bels_query import import_table
+from bels_query import export_table
+from bels_query import delete_table
+from bels_query import process_import_table
+from bels_query import bigquerify_header
+from dwca_vocab_utils import darwinize_dict
+from dwca_vocab_utils import darwinize_list
+from dwca_terms import locationmatchsanscoordstermlist
 
 PROJECT_ID = 'localityservice'
 OUTPUT_LOCATION = 'bels_output'

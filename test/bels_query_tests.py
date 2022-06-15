@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2021 Rauthiflor LLC"
 __filename__ = "bels_query_tests.py"
-__version__ = __filename__ + ' ' + "2022-05-17T09:54-03:00"
+__version__ = __filename__ + ' ' + "2022-06-08T17:35-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -29,40 +29,46 @@ __version__ = __filename__ + ' ' + "2022-05-17T09:54-03:00"
 # file that contains the service account key (auth.json) if there are authentication 
 # issues resulting in exceptions such as below (see Setting the Environment Variable at
 # https://cloud.google.com/docs/authentication/getting-started):
-#  File "/Users/johnwieczorek/.virtualenvs/bels/lib/python3.8/site-packages/google/oauth2/_client.py", line 60, in _handle_error_response
+#  File "/Users/johnwieczorek/.virtualenvs/bels/lib/python3.8/site-packages/google/oauth2/_client.py", 
+#  line 60, in _handle_error_response
 #  raise exceptions.RefreshError(error_details, response_data)
-#  google.auth.exceptions.RefreshError: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
+#  google.auth.exceptions.RefreshError: ('invalid_grant: Bad Request', 
+#  {'error': 'invalid_grant', 'error_description': 'Bad Request'})
 
-from google.cloud import bigquery
-from bels.dwca_terms import locationmatchwithcoordstermlist
-from bels.dwca_terms import locationmatchsanscoordstermlist
-from bels.dwca_terms import locationmatchverbatimcoordstermlist
-from bels.dwca_terms import gbiflocationmatchwithcoordstermlist
-from bels.dwca_terms import gbiflocationmatchsanscoordstermlist
-from bels.dwca_terms import gbiflocationmatchverbatimcoordstermlist
-from bels.dwca_utils import safe_read_csv_row
-from bels.dwca_utils import lower_dict_keys
-from bels.dwca_vocab_utils import darwinize_dict
-from bels.dwca_vocab_utils import darwinize_list
-from bels.id_utils import dwc_location_hash
-from bels.id_utils import location_match_str
-from bels.id_utils import super_simplify
-from bels.bels_query import bels_original_georef
-from bels.bels_query import georeference_score
-from bels.bels_query import coordinates_score
-from bels.bels_query import get_best_sans_coords_georef
-from bels.bels_query import get_best_with_coords_georef
-from bels.bels_query import get_best_with_verbatim_coords_georef
-from bels.bels_query import get_best_sans_coords_georef_reduced
-from bels.bels_query import get_best_with_coords_georef_reduced
-from bels.bels_query import get_best_with_verbatim_coords_georef_reduced
-from bels.bels_query import get_location_by_id
-from bels.bels_query import get_location_by_hashid
-from bels.bels_query import has_georef
-from bels.bels_query import row_as_dict
-from bels.bels_query import bigquerify_header
 from decimal import *
 import unittest
+import os
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="../bels/auth.json"
+
+from google.cloud import bigquery
+
+from dwca_terms import locationmatchwithcoordstermlist
+from dwca_terms import locationmatchsanscoordstermlist
+from dwca_terms import locationmatchverbatimcoordstermlist
+from dwca_terms import gbiflocationmatchwithcoordstermlist
+from dwca_terms import gbiflocationmatchsanscoordstermlist
+from dwca_terms import gbiflocationmatchverbatimcoordstermlist
+from dwca_utils import safe_read_csv_row
+from dwca_utils import lower_dict_keys
+from dwca_vocab_utils import darwinize_dict
+from dwca_vocab_utils import darwinize_list
+from id_utils import dwc_location_hash
+from id_utils import location_match_str
+from id_utils import super_simplify
+from bels_query import bels_original_georef
+from bels_query import georeference_score
+from bels_query import coordinates_score
+from bels_query import get_best_sans_coords_georef
+from bels_query import get_best_with_coords_georef
+from bels_query import get_best_with_verbatim_coords_georef
+from bels_query import get_best_sans_coords_georef_reduced
+from bels_query import get_best_with_coords_georef_reduced
+from bels_query import get_best_with_verbatim_coords_georef_reduced
+from bels_query import get_location_by_id
+from bels_query import get_location_by_hashid
+from bels_query import has_georef
+from bels_query import row_as_dict
+from bels_query import bigquerify_header
 
 class BELSQueryTestFramework():
     # testdatapath is the location of example files to test with
@@ -94,26 +100,6 @@ class BELSQueryTestCase(unittest.TestCase):
         self.framework.dispose()
         self.framework = None
         self.BQ.close()
-
-#     def test_get_location_by_id(self):
-#         print('Running test_get_location_by_id')
-#         base64id='CR4zFCgFe/9cbkTpI2pCiOhOmJiE74Zq8fknbmSISPw='
-#         row = get_location_by_id(self.BQ,base64id)
-# #        print(f'row = {row}')
-#         target = b"\t\x1e3\x14(\x05{\xff\\nD\xe9#jB\x88\xe8N\x98\x98\x84\xef\x86j\xf1\xf9'nd\x88H\xfc"
-#         result = row['dwc_location_hash']
-#         self.assertEqual(result, target)
-
-#     def test_get_location_by_hashid(self):
-#         print('Running test_get_location_by_hashid')
-#         hashid = b"\t\x1e3\x14(\x05{\xff\\nD\xe9#jB\x88\xe8N\x98\x98\x84\xef\x86j\xf1\xf9'nd\x88H\xfc"
-#         row = get_location_by_hashid(self.BQ,hashid)
-# #        print(f'row = {row}')
-# #        target='CR4zFCgFe/9cbkTpI2pCiOhOmJiE74Zq8fknbmSISPw='
-#         target=hashid
-#         result = row['dwc_location_hash']
-#         self.assertEqual(result, target)
-# 
 
     def test_georeference_score(self):
         print('Running test_georeference_score')
@@ -656,15 +642,6 @@ class BELSQueryTestCase(unittest.TestCase):
         }
         self.assertEqual(result, target)
 
-    def test_dwc_location_hash_from_safe_read_csv_row(self):
-        print('Running test_dwc_location_hash_from_safe_read_csv_row')
-        inputfile = self.framework.locationswithhashfile
-        darwincloudfile = self.framework.darwincloudfile
-        for row in safe_read_csv_row(inputfile):
-            target = row['dwc_location_hash']
-            result = dwc_location_hash(row, darwincloudfile)
-            self.assertEqual(result, target)
-
     def test_matchme_sans_coords_best_georef_from_file(self):
         print('Running test_matchme_sans_coords_best_georef_from_file')
         inputfile = self.framework.locsanscoordsbestgeoreffile
@@ -684,7 +661,7 @@ class BELSQueryTestCase(unittest.TestCase):
             # matchme_sans_coords field.
             result = row['matchme_sans_coords']
             self.assertNotEqual(result, matchstr)
-            result = 'northamericawisconsinrichlandco5milesseofrichlandcenter'
+            result = 'wisconsinrichlandco5milesseofrichlandcenter'
             self.assertEqual(result, matchstr)
 
     def test_gbif_matchme_sans_coords_best_georef_from_file(self):
@@ -702,33 +679,6 @@ class BELSQueryTestCase(unittest.TestCase):
             matchstr=super_simplify(locmatchstr)
             result = row['matchme_sans_coords']
             self.assertEqual(result, matchstr)
-# 
-#     def test_gbif_matchme_sans_coords_best_georef_from_file2(self):
-# # oJZtuoTYbMjQ1IrdBWgFroLdzCxhWP2ShR3gdNwE7ko=
-# # bAcqFnoqie3GGRqoFvmKWXcuhKbnmOKrTq7W8XOzoRg=
-# # b8AuI53mC0Ke9+oDwHwzFsBgHVghA9TaX1pEAg8mX6s=
-# # FkKiS3RwTOLByklF2yq0dYpSvLqEZj+dU5HNJvSPL/8=
-# # 
-# # saconarinoricaurtereservanaturallaplanada
-# # northamericaqueencharlotteislandcabritishcolumbianorthamericacanadabritishcolumbia
-# # novestlandsunnfjordgrepstadvedbygdevegenhjajohangrepstad230
-# # dkvalloslotspark
-#         print('Running test_gbif_matchme_sans_coords_best_georef_from_file2')
-#         inputfile = self.framework.locsanscoordsbestgeoreffilemulti
-#         darwincloudfile = self.framework.darwincloudfile
-#         for row in safe_read_csv_row(inputfile):
-#             rowdict = row_as_dict(row)
-#             # print(f'test rowdict: {rowdict}')
-#             loc = darwinize_dict(row_as_dict(row), darwincloudfile)
-#             lowerloc = lower_dict_keys(loc)
-#             # print(f'lowerloc: {lowerloc}')
-#             locmatchstr = location_match_str(gbiflocationmatchsanscoordstermlist, lowerloc)
-#             # print(f'locmatchstr: {locmatchstr}')
-#             matchstr=super_simplify(locmatchstr)
-#             result = get_best_sans_coords_georef(self.BQ, matchstr)
-# #            print(f'matchstr: {matchstr} best_sans_coords_georef: {result}')
-#             result = row['matchme_sans_coords']
-#             self.assertEqual(result, matchstr)
 
     def test_matchme_with_coords_best_georef_from_file(self):
         print('Running test_matchme_with_coords_best_georef_from_file')
@@ -750,13 +700,13 @@ class BELSQueryTestCase(unittest.TestCase):
             result = row['matchme_with_coords']
             self.assertNotEqual(result, matchstr)
 
-            result = 'southamericamaranhaolagoverdefazendasaofranciscoestradaaltoalegrelagoverdekm9-3.9572-44.8219'
+            result = 'maranhaolagoverdefazendasaofranciscoestradaaltoalegrelagoverdekm9-3.9572-44.8219'
             self.assertEqual(result, matchstr)
 #             # Only test the first row
             return
 # Source file is test_loc_with_with_coords_best_georef.csv
-# southamericabrmaranhaolagoverdefazendasaofranciscoestradaaltoalegrelagoverdekm9-3.9572-44.8219
-# southamericamaranhaolagoverdefazendasaofranciscoestradaaltoalegrelagoverdekm9-3.9572-44.8219
+# brmaranhaolagoverdefazendasaofranciscoestradaaltoalegrelagoverdekm9-3.9572-44.8219
+# maranhaolagoverdefazendasaofranciscoestradaaltoalegrelagoverdekm9-3.9572-44.8219
 #             ^
 
     def test_gbif_matchme_with_coords_best_georef_from_file(self):
@@ -796,7 +746,7 @@ class BELSQueryTestCase(unittest.TestCase):
             # matchme field.
             result = row['matchme']
             self.assertNotEqual(result, matchstr)
-            result = 'southamericachilelagopuyehuesumpfgelandeeinflusflusthermaspuyehuechilechilelagopuyehuesumpfgelandeeinflusflusthermaspuyehue-40,66667-72,46667'
+            result = 'chilelagopuyehuesumpfgelandeeinflusflusthermaspuyehuechilechilelagopuyehuesumpfgelandeeinflusflusthermaspuyehue-40,66667-72,46667'
             self.assertEqual(result, matchstr)
 #             # Only test the first row
             return

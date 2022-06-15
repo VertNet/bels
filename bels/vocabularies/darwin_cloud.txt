@@ -221,6 +221,7 @@ DWC:VERBATIMLONGITUDE	verbatimLongitude	1	dwc
 DWC:VERBATIMSRS	verbatimSRS	1	dwc		
 DWC:VERBATIMTAXONRANK	verbatimTaxonRank	1	dwc		
 DWC:VERNACULARNAME	vernacularName	1	dwc		
+DWC:VERTICALDATUM	verticalDatum	1	dwc		
 DWC:WATERBODY	waterBody	1	dwc		
 DWC:YEAR	year	1	dwc		
 DYNAMICPROPERTIES	dynamicProperties	1	dwc		
@@ -568,6 +569,7 @@ V_VERBATIMLONGITUDE	verbatimLongitude	1	dwc	GBIF
 V_VERBATIMSRS	verbatimSRS	1	dwc	GBIF	
 V_VERBATIMTAXONRANK	verbatimTaxonRank	1	dwc	GBIF	
 V_VERNACULARNAME	vernacularName	1	dwc	GBIF	
+V_VERTICALDATUM	verticalDatum	1	dwc	GBIF	
 V_WATERBODY	waterBody	1	dwc	GBIF	
 V_YEAR	year	1	dwc	GBIF	
 VERBATIMCOORDINATES	verbatimCoordinates	1	dwc		
@@ -581,6 +583,7 @@ VERBATIMLONGITUDE	verbatimLongitude	1	dwc
 VERBATIMSRS	verbatimSRS	1	dwc		
 VERBATIMTAXONRANK	verbatimTaxonRank	1	dwc		
 VERNACULARNAME	vernacularName	1	dwc		
+VERTICALDATUM	verticalDatum	1	dwc		
 WATERBODY	waterBody	1	dwc		
 WEIGHT	weight	1	dwcloud		"dynamicProperties as weight, or MeasurementOrFact"
 WELLID		1		FIMS	

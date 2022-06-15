@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "bels_query_tests.py"
-__version__ = __filename__ + ' ' + "2022-05-17T10:49-03:00"
+__version__ = __filename__ + ' ' + "2022-06-08T15:56-03:00"
 
 # This file contains unit tests for the query functions in bels 
 # (Biodiversity Enhanced Location Services).
@@ -26,19 +26,19 @@ __version__ = __filename__ + ' ' + "2022-05-17T10:49-03:00"
 # python bels_query_tests.py
 
 #from google.cloud import bigquery
-from bels.dwca_terms import locationmatchwithcoordstermlist
-from bels.dwca_terms import locationmatchsanscoordstermlist
-from bels.dwca_terms import locationmatchverbatimcoordstermlist
-from bels.dwca_terms import gbiflocationmatchwithcoordstermlist
-from bels.dwca_terms import gbiflocationmatchsanscoordstermlist
-from bels.dwca_terms import gbiflocationmatchverbatimcoordstermlist
-from bels.dwca_utils import safe_read_csv_row
-from bels.dwca_utils import lower_dict_keys
-from bels.dwca_vocab_utils import darwinize_dict
-from bels.dwca_vocab_utils import darwinize_list
-from bels.bels_query import row_as_dict
-from bels.bels_query import bigquerify_header
-from bels.dwca_utils import read_header
+from dwca_terms import locationmatchwithcoordstermlist
+from dwca_terms import locationmatchsanscoordstermlist
+from dwca_terms import locationmatchverbatimcoordstermlist
+from dwca_terms import gbiflocationmatchwithcoordstermlist
+from dwca_terms import gbiflocationmatchsanscoordstermlist
+from dwca_terms import gbiflocationmatchverbatimcoordstermlist
+from dwca_utils import safe_read_csv_row
+from dwca_utils import lower_dict_keys
+from dwca_vocab_utils import darwinize_dict
+from dwca_vocab_utils import darwinize_list
+from bels_query import row_as_dict
+from bels_query import bigquerify_header
+from dwca_utils import read_header
 import unittest
 
 class BELSQueryTestFramework():

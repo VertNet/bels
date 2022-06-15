@@ -14,9 +14,9 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "darwinize_header_tests.py"
-__version__ = __filename__ + ' ' + "2021-07-20T22:00-03:00"
+__version__ = __filename__ + ' ' + "2022-06-08T20:00-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/test/darwinize_header_test.py"
 
 # This file contains unit tests for the darwinize_header function.
@@ -24,16 +24,16 @@ __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/maste
 # Example:
 #
 # python darwinize_header_test.py
-from bels import dwca_utils
-from bels.darwinize_header import darwinize_header
-from bels.dwca_vocab_utils import terms_not_in_dwc
-from bels.dwca_utils import read_header
-from bels.dwca_utils import csv_file_dialect
-from bels.dwca_utils import csv_dialect
-from bels.dwca_utils import tsv_dialect
-from bels.dwca_utils import dialects_equal
 import os
 import unittest
+
+from darwinize_header import darwinize_header
+from dwca_vocab_utils import terms_not_in_dwc
+from dwca_utils import read_header
+from dwca_utils import csv_file_dialect
+from dwca_utils import csv_dialect
+from dwca_utils import tsv_dialect
+from dwca_utils import dialects_equal
 
 class DarwinizeHeaderTestFramework():
     """Test framework for Darwinize Header."""

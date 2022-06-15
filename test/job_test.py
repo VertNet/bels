@@ -15,15 +15,16 @@
 
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "job_test.py"
-__version__ = __filename__ + ' ' + "2021-07-23T17:30-03:00"
+__version__ = __filename__ + ' ' + "2022-06-09T00:24-03:00"
 
-from bels.job import process_csv_in_bulk
-from collections import namedtuple
 import base64
 import json
 import logging
+
+from collections import namedtuple
+from job import process_csv_in_bulk
 
 logging.basicConfig(level=logging.INFO)
 

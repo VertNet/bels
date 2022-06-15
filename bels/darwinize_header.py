@@ -14,25 +14,26 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "darwinize_header.py"
-__version__ = __filename__ + ' ' + "2021-07-20T21:56-03:00"
+__version__ = __filename__ + ' ' + "2022-06-08T20:00-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/darwinize_header.py"
 
-from .dwca_vocab_utils import darwinize_list
-from .dwca_utils import read_header
-from .dwca_utils import write_header
-from .dwca_utils import read_csv_row
-from .dwca_utils import csv_file_dialect
-from .dwca_utils import csv_file_encoding
-from .dwca_utils import csv_dialect
-from .dwca_utils import tsv_dialect
-from .dwca_utils import response
-from .dwca_utils import setup_actor_logging
 import os
 import logging
 import argparse
 import csv
+
+from dwca_vocab_utils import darwinize_list
+from dwca_utils import read_header
+from dwca_utils import write_header
+from dwca_utils import read_csv_row
+from dwca_utils import csv_file_dialect
+from dwca_utils import csv_file_encoding
+from dwca_utils import csv_dialect
+from dwca_utils import tsv_dialect
+from dwca_utils import response
+from dwca_utils import setup_actor_logging
 
 def darwinize_header(options):
     ''' Translate field names from input file to Darwin Core field names in outputfile

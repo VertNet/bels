@@ -17,9 +17,8 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2022-06-07T01:02-03:00"
+__version__ = __filename__ + ' ' + "2022-06-08T15:52-03:00"
 
-import bels
 import os
 import uuid
 import datetime
@@ -35,9 +34,9 @@ from google.cloud import bigquery
 from flask import Flask, request, render_template
 from flask_restful import Api
 
-from bels.dwca_vocab_utils import darwinize_list
-from bels.bels_query import BELS_Client
-from bels.resources import BestGeoref
+from dwca_vocab_utils import darwinize_list
+from bels_query import BELS_Client
+from resources import BestGeoref
 
 counter = 0
 app = Flask(__name__)

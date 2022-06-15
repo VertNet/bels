@@ -14,23 +14,24 @@
 # limitations under the License.
 
 __author__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "dwca_utils.py"
-__version__ = __filename__ + ' ' + "2021-07-19T23:22-03:00"
+__version__ = __filename__ + ' ' + "2022-06-08T15:52-03:00"
 __adapted_from__ = "https://github.com/kurator-org/kurator-validation/blob/master/packages/kurator_dwca/dwca_utils.py"
 
 # This file contains common utility functions for dealing with the content of CSV and
 # TXT files.
 
-from .dwca_terms import simpledwctermlist
-from operator import itemgetter
-from uuid import uuid1
 import os.path
 import re
 import glob
 import codecs
 import logging
 import csv
+from operator import itemgetter
+from uuid import uuid1
+
+from dwca_terms import simpledwctermlist
 
 # Tried using cchardet, which is much faster, but it doesn't give as good results.
 try:

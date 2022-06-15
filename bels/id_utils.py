@@ -16,17 +16,18 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "id_utils.py"
-__version__ = __filename__ + ' ' + "2022-05-31T20:35-03:00"
+__version__ = __filename__ + ' ' + "2022-06-09T01:15-03:00"
 
-from .dwca_terms import locationmatchwithcoordstermlist
-from .dwca_terms import locationkeytermlist
-from .dwca_vocab_utils import darwinize_dict
-from .dwca_utils import lower_dict_keys
-from decimal import *
 import hashlib
 import base64
 import re
 import unicodedata
+
+from dwca_terms import locationmatchwithcoordstermlist
+from dwca_terms import locationkeytermlist
+from dwca_vocab_utils import darwinize_dict
+from dwca_utils import lower_dict_keys
+from decimal import *
 
 def location_match_str(termlist, inputdict):
     ''' Constructs a string to use to match Darwin Core Locations. Fields not matching 
@@ -105,9 +106,9 @@ def dwc_location_hash(inputdict, darwincloudfile):
     functionname = 'dwc_location_hash()'
 
     darwindict = darwinize_dict(inputdict,darwincloudfile,namespace=True)
-    print(f'darwindict: {darwindict}')
+    #print(f'darwindict: {darwindict}')
     locstr=location_str(lower_dict_keys(darwindict))
-    print(f'locstr: {locstr}')
+    #print(f'locstr: {locstr}')
     hash = hashlib.sha256(locstr.encode('utf-8'))
     return base64.b64encode(hash.digest()).decode('utf-8')
 

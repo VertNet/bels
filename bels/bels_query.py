@@ -16,15 +16,16 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2022-05-17T09:48-03:00"
+__version__ = __filename__ + ' ' + "2022-06-09T13:12-03:00"
 
 import json
 import logging
 import re
 from google.cloud import bigquery
 from google.cloud import storage
-from .json_utils import CustomJsonEncoder
-from bels.dwca_utils import lower_dict_keys
+
+from json_utils import CustomJsonEncoder
+from dwca_utils import lower_dict_keys
 
 BQ_SERVICE='localityservice'
 BQ_GAZ_DATASET='gazetteer'
@@ -177,7 +178,9 @@ FROM
 #        print(f'locdict:{locdict}')
         if locdict is None:
             return None
-        best_country = locdict.get('countrycode')
+        best_country = locdict.get('interpreted_countrycode')
+        if best_country is None:
+            best_country = locdict.get('v_countrycode')
         if best_country is None:
             best_country = locdict.get('country')
         if best_country is not None:
@@ -228,13 +231,14 @@ def process_import_table(bq_client, input_table_id):
 -- Georeference matching script. Input table is expected to have Location column 
 -- names mapped to Darwin Core Location term names.
 BEGIN
--- Make a table adding a field match_country to the input table, mapping the best existing
--- matching country field in the input, prioritizing by countrycode, then country.
+-- Make a table adding a field bels_match_country to the input table, mapping the best 
+-- existing matching country field in the input, prioritizing by countrycode, then 
+-- country.
 -- First try filling from countrycode if it isn't NULL, country otherwise
 CREATE TEMP TABLE countrify AS (
   SELECT 
     *,
-    IF(countrycode IS NULL,country,countrycode) AS match_country
+    IF(countrycode IS NULL,country,countrycode) AS bels_match_country
   FROM 
     `{input_table_id}`);
 -- If that didn't work because at least one of the two country-ish fields didn't exist,
@@ -244,7 +248,7 @@ EXCEPTION WHEN ERROR THEN
   CREATE TEMP TABLE countrify AS (
     SELECT 
       *,
-      countrycode AS match_country,
+      countrycode AS bels_match_country,
     FROM 
       `{input_table_id}`);
 -- If that didn't work, because countrycode didn't exist in the input table,
@@ -254,7 +258,7 @@ EXCEPTION WHEN ERROR THEN
     CREATE TEMP TABLE countrify AS (
     SELECT 
       *,
-      country AS match_country,
+      country AS bels_match_country,
     FROM 
       `{input_table_id}`);
     EXCEPTION WHEN ERROR THEN
@@ -263,7 +267,7 @@ EXCEPTION WHEN ERROR THEN
       CREATE TEMP TABLE countrify AS (
       SELECT 
         *,
-        NULL AS match_country,
+        NULL AS bels_match_country,
       FROM 
         `{input_table_id}`);
     END;
@@ -273,7 +277,7 @@ END;
 CREATE TEMP TABLE interpreted AS (
 SELECT 
   a.*,
-  b.countrycode AS interpreted_countrycode, 
+  b.countrycode AS bels_interpreted_countrycode, 
   GENERATE_UUID() AS bels_id
 FROM 
   countrify a 
@@ -287,9 +291,9 @@ ON
 CREATE TEMP TABLE matcher AS (
 SELECT
   bels_id,
-REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(functions.matchString(TO_JSON_STRING(t), "withcoords"))),NFKC)),r"[\s]+",'') AS matchwithcoords,
-REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(functions.matchString(TO_JSON_STRING(t), "verbatimcoords"))),NFKC)),r"[\s]+",'') AS matchverbatimcoords,
-REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(functions.matchString(TO_JSON_STRING(t), "sanscoords"))),NFKC)),r"[\s]+",'') AS matchsanscoords
+REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(functions.matchString(TO_JSON_STRING(t), "withcoords"))),NFKC)),r"[\s]+",'') AS bels_matchwithcoords,
+REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(functions.matchString(TO_JSON_STRING(t), "verbatimcoords"))),NFKC)),r"[\s]+",'') AS bels_matchverbatimcoords,
+REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(functions.matchString(TO_JSON_STRING(t), "sanscoords"))),NFKC)),r"[\s]+",'') AS bels_matchsanscoords
 FROM 
   interpreted AS t
 );
