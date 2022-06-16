@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2022-06-16T00:50-03:00"
+__version__ = __filename__ + ' ' + "2022-06-16T01:46-03:00"
 
 import base64
 import json
@@ -77,7 +77,7 @@ def process_csv_in_bulk(event, context):
 
     config = base64.b64decode(event['data']).decode('utf-8')
     json_config_in = json.loads(config)
-    logging.info(f'json_config going into job.py: {json_config_in}')
+    logging.info(f'New job: {json_config_in}')
     json_config = json_config_in['data']
 
     # Google Cloud Storage location of input file
@@ -189,69 +189,10 @@ def process_csv_in_bulk(event, context):
         logging.error(f'Error sending email: {e}. Files stored at {output_url_list}')
 
     elapsedtime = time.perf_counter()-starttime
-    msg = []
-    #msg.append(f'Export time = {exporttime:1.3f}s\n')
-    msg.append(f'Total elapsed time = {elapsedtime:1.3f}s')
-    logging.info(f'')
-
-# def process_csv(event, context):
-#     """Background Cloud Function to be triggered by Pub/Sub.
-#     Args:
-#          event (dict):  The dictionary with data specific to this type of
-#          event. The `data` field contains the PubsubMessage message. The
-#          `attributes` field will contain custom attributes if there are any.
-#          context (google.cloud.functions.Context): The Cloud Functions event
-#          metadata. The `event_id` field contains the Pub/Sub message ID. The
-#          `timestamp` field contains the publish time.
-#     """
-#     import base64
-#     s = []
-#     s.append(f'This Function was triggered by messageId {context.event_id} ')
-#     logging.info(''.join(s))
-# 
-#     if 'data' not in event:
-#         raise ValueError('no data provided')
-# 
-#     config = base64.b64decode(event['data']).decode('utf-8')
-#     json_config = json.loads(config)
-#     json_config = json_config['data']
-#     file_url = json_config['file_url'] # Google Cloud Storage location of input file
-#     filename = json_config['filename'] # User-provided Output file name
-#     email = json_config['email']
-#     header = json_config['header']
-# 
-#     # Alter output file name to [filename]-[UUID of input file location].csv
-#     filename = '%s-%s.csv' % (filename, file_url.split('/')[1])
-# 
-#     # Don't allow any of the following characters in output file names, substitute '_'
-#     filename = re.sub(r'[ ~`!@#$%^&*()_+={\[}\]|\\:;"<,>?\'/]', '_', filename)
-# 
-#     print(f'process_csv() file_url: {file_url}')
-#     print(f'process_csv() filename: {filename}')
-#     print(f'process_csv() header: {header}')
-#     print(f'process_csv() email: {email}')
-# 
-#     storage_client = storage.Client()
-#     bucket = storage_client.get_bucket(PROJECT_ID)
-#     blob = bucket.get_blob(file_url)
-#     bq_client = bigquery.Client()
-#     with temp_file() as name:
-#         blob.download_to_filename(name)
-#         #blob.delete() # Do not leak documents in storage
-#         return_list = find_best_georef(bq_client, name)
-# 
-#     output = create_output(return_list)
-#     blob = bucket.blob('output/' + filename)
-#     blob.upload_from_string(output, content_type='application/csv')
-#     blob.make_public()
-#     output_url = blob.public_url
-#     print(f'process_csv() output_url: {output_url}')
-# 
-#     # Store that output
-#     try:
-#         send_email(email, output_url)
-#     except Exception as e:
-#         print(f'Error sending email: {e}. File stored at {output_url}')
+    s = f'Success! Total elapsed time = {elapsedtime:1.3f}s\n'
+    s += f'Output to {output_url_list} for job:\n'
+    s += f'{json_config_in}'
+    logging.info(s)
 
 def find_best_georef(client, filename):
     # vocabpath is the location of vocabulary files to test with

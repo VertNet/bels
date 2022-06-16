@@ -138,16 +138,16 @@ def bels_csv():
     for field in fieldnames:
         cleaned_fieldnames.append(field.strip().strip('"').strip("'"))
 
-    logging.info(f'headerline: {headerline}')
-    app.logger.info(f'headerline: {headerline}')
-    app.logger.info(f'cleaned_fieldnames: {cleaned_fieldnames}')
+    #logging.info(f'headerline: {headerline}')
+    #app.logger.info(f'headerline: {headerline}')
+    #app.logger.info(f'cleaned_fieldnames: {cleaned_fieldnames}')
     
     # Darwinize the header
     vocabpath = './bels/vocabularies/'
     dwccloudfile = vocabpath + 'darwin_cloud.txt'
     darwinized_header = darwinize_list(cleaned_fieldnames,dwccloudfile, case='l')
-    logging.info(f'darwinized_header: {darwinized_header}')
-    app.logger.info(f'darwinized_header: {darwinized_header}')
+    #logging.info(f'darwinized_header: {darwinized_header}')
+    #app.logger.info(f'darwinized_header: {darwinized_header}')
     if 'country' not in darwinized_header and 'countrycode' not in darwinized_header:
         s = 'The uploaded file has no field that can be interpreted as country or '
         s += 'countrycode, at least one of which is required.<br>\n'
