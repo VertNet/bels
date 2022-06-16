@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2022-06-08T15:52-03:00"
+__version__ = __filename__ + ' ' + "2022-06-16T00:50-03:00"
 
 import base64
 import json
@@ -34,6 +34,8 @@ from google.cloud import bigquery
 from google.cloud import storage
 
 lib_path = os.path.abspath('./')
+sys.path.append(lib_path)
+lib_path = os.path.abspath('./bels')
 sys.path.append(lib_path)
 
 from id_utils import dwc_location_hash, location_match_str, super_simplify
