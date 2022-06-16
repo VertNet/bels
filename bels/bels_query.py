@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2022-06-09T13:12-03:00"
+__version__ = __filename__ + ' ' + "2022-06-15T21:10-03:00"
 
 import json
 import logging
@@ -284,7 +284,7 @@ FROM
 LEFT JOIN
   `localityservice.vocabs.countrycode_lookup` b 
 ON 
-  UPPER(a.match_country)=b.u_country
+  UPPER(a.bels_match_country)=b.u_country
 );
 
 -- Make the match strings
@@ -319,7 +319,7 @@ FROM
   matcher a,
   `localityservice.gazetteer.matchme_with_coords_best_georef` b
 WHERE
-  a.matchwithcoords=b.matchme_with_coords
+  a.bels_matchwithcoords=b.matchme_with_coords
 );
 
 -- APPEND verbatim coords matches to georefs
@@ -343,7 +343,7 @@ FROM
   matcher a,
   `localityservice.gazetteer.matchme_verbatimcoords_best_georef` b
 WHERE
-  a.matchverbatimcoords=b.matchme AND
+  a.bels_matchverbatimcoords=b.matchme AND
   a.bels_id NOT IN (
 SELECT 
   bels_id
@@ -372,7 +372,7 @@ FROM
   matcher a,
   `localityservice.gazetteer.matchme_sans_coords_best_georef` b
 WHERE
-  a.matchsanscoords=b.matchme_sans_coords AND
+  a.bels_matchsanscoords=b.matchme_sans_coords AND
   a.bels_id NOT IN (
 SELECT 
   bels_id
@@ -385,9 +385,9 @@ CREATE OR REPLACE TABLE `{output_table_id}`
 AS
 SELECT
   a.* EXCEPT (bels_id),
-  b.matchwithcoords,
-  b.matchverbatimcoords,
-  b.matchsanscoords,
+  b.bels_matchwithcoords,
+  b.bels_matchverbatimcoords,
+  b.bels_matchsanscoords,
   c.* EXCEPT (bels_id)
 FROM
   interpreted a

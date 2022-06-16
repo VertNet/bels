@@ -27,10 +27,14 @@ import os
 import tempfile
 import logging
 import re
+import sys
 import time
 from contextlib import contextmanager
 from google.cloud import bigquery
 from google.cloud import storage
+
+lib_path = os.path.abspath('./')
+sys.path.append(lib_path)
 
 from id_utils import dwc_location_hash, location_match_str, super_simplify
 from dwca_utils import safe_read_csv_row, lower_dict_keys
@@ -62,7 +66,7 @@ def process_csv_in_bulk(event, context):
     """
     import base64
 
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
 
     starttime = time.perf_counter()
     
@@ -70,9 +74,9 @@ def process_csv_in_bulk(event, context):
         raise ValueError('no data provided')
 
     config = base64.b64decode(event['data']).decode('utf-8')
-    json_config = json.loads(config)
-    logging.debug(f'json_config going into job.py: {json_config}')
-    json_config = json_config['data']
+    json_config_in = json.loads(config)
+    logging.info(f'json_config going into job.py: {json_config_in}')
+    json_config = json_config_in['data']
 
     # Google Cloud Storage location of input file
     upload_file_url = json_config['upload_file_url'] 
@@ -97,48 +101,48 @@ def process_csv_in_bulk(event, context):
     # Darwinize the header
     vocabpath = './bels/vocabularies/'
     dwccloudfile = vocabpath + 'darwin_cloud.txt'
-    logging.debug(f'header: {header}')
-    logging.debug(f'dwccloudfile: {dwccloudfile}')
+    #logging.debug(f'header: {header}')
+    #logging.debug(f'dwccloudfile: {dwccloudfile}')
 
     # Translate the fields in the header to lowercase Darwin Core standard field name.
     darwinized_header = darwinize_list(header, dwccloudfile, case='l')
-    logging.debug(f'darwinized_header: {darwinized_header}')
+    #logging.debug(f'darwinized_header: {darwinized_header}')
     
     # Make sure the field names satisfy BigQuery field name requirements
     bigqueryized_header = bigquerify_header(darwinized_header)
-    logging.debug(f'bigqueryized_header: {bigqueryized_header}')
+    #logging.debug(f'bigqueryized_header: {bigqueryized_header}')
     
-    preptime = time.perf_counter() - starttime
-    msg = f'Prep time = {preptime:1.3f}s'
-    logging.info(f'{msg}')
+    #preptime = time.perf_counter() - starttime
+    #msg = f'Prep time = {preptime:1.3f}s'
+    #logging.info(f'{msg}')
 #    print(msg)
 
     # TODO: Would like to have a persistent client available rather than firing one up on demand
     bq_client = bigquery.Client()
-    logging.debug(f'Prepping for import_table. upload_file_url: {upload_file_url}')
+    #logging.debug(f'Prepping for import_table. upload_file_url: {upload_file_url}')
     input_table_id = import_table(bq_client, upload_file_url, bigqueryized_header)
-    logging.debug(f'process_csv_in_bulk() input_table_id: {input_table_id}')
-    importtime = time.perf_counter()-preptime
-    msg = f'Import time = {importtime:1.3f}s for input_table_id {input_table_id}'
-    logging.info(msg)
+    #logging.debug(f'process_csv_in_bulk() input_table_id: {input_table_id}')
+    #importtime = time.perf_counter()-preptime
+    #msg = f'Import time = {importtime:1.3f}s for input_table_id {input_table_id}'
+    #logging.info(msg)
 #    print(msg)
 
     # Do georeferencing on the imported table with SQL script
     output_table_id = process_import_table(bq_client, input_table_id)
-    logging.debug(f'process_csv_in_bulk() output_table_id: {output_table_id}')
-    georeftime = time.perf_counter()-importtime
-    msg = f'Georef time = {georeftime:1.3f}s'
-    logging.info(msg)
+    #logging.debug(f'process_csv_in_bulk() output_table_id: {output_table_id}')
+    #georeftime = time.perf_counter()-importtime
+    #msg = f'Georef time = {georeftime:1.3f}s'
+    #logging.info(msg)
 #    print(msg)
 
     # Export results to Google Cloud Storage
     # Make this work for big files that get split
     destination_uri = f'gs://{PROJECT_ID}/{OUTPUT_LOCATION}/{output_filename}'
 
-    logging.debug(f'Prepping for export_table. destination_uri: {destination_uri}')
+    #logging.debug(f'Prepping for export_table. destination_uri: {destination_uri}')
     outputfilelist = export_table(bq_client, output_table_id, destination_uri)
-    exporttime = time.perf_counter()-georeftime
-    logging.debug(f'outputfilelist: {outputfilelist}')
+    #exporttime = time.perf_counter()-georeftime
+    #logging.debug(f'outputfilelist: {outputfilelist}')
 
     # Output is already public. The following is not necessary.
     storage_client = storage.Client()
@@ -164,7 +168,7 @@ def process_csv_in_bulk(event, context):
         except Exception as e:
             logging.debug(f'Table {input_table_id} was deleted.')
     except Exception as e:
-        logging.debug(f'Table {input_table_id} does not exist.')
+        logging.error(f'Table {input_table_id} does not exist.')
 
     try:
         bq_client.get_table(output_table_id)
@@ -174,7 +178,7 @@ def process_csv_in_bulk(event, context):
         except Exception as e:
             logging.debug(f'Table {output_table_id} was deleted.')
     except Exception as e:
-        logging.debug(f'Table {output_table_id} does not exist.')
+        logging.error(f'Table {output_table_id} does not exist.')
 
     # Notify the receiving party by email given.
     try:
@@ -184,10 +188,9 @@ def process_csv_in_bulk(event, context):
 
     elapsedtime = time.perf_counter()-starttime
     msg = []
-    msg.append(f'Export time = {exporttime:1.3f}s\n')
+    #msg.append(f'Export time = {exporttime:1.3f}s\n')
     msg.append(f'Total elapsed time = {elapsedtime:1.3f}s')
-    logging.info(''.join(msg))
-#    print(''.join(msg))
+    logging.info(f'')
 
 # def process_csv(event, context):
 #     """Background Cloud Function to be triggered by Pub/Sub.
