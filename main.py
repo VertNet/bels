@@ -15,9 +15,9 @@
 
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
-__copyright__ = "Copyright 2021 Rauthiflor LLC"
+__copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "main.py"
-__version__ = __filename__ + ' ' + "2021-07-20T00:40-03:00"
+__version__ = __filename__ + ' ' + "2022-06-18T23:58-03:00"
 
 """
 This file is provided as a wrapper to execute code from google cloud functions
@@ -34,8 +34,6 @@ def csv_processing_entrypoint(event, context):
          metadata. The `event_id` field contains the Pub/Sub message ID. The
          `timestamp` field contains the publish time.
     """
-
-#    bels.job.process_csv(event, context)
     bels.job.process_csv_in_bulk(event, context)
 
 # Expose api endpoint

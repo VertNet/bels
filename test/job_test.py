@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "job_test.py"
-__version__ = __filename__ + ' ' + "2022-06-09T00:24-03:00"
+__version__ = __filename__ + ' ' + "2022-06-19T15:00-03:00"
 
 import base64
 import json
@@ -32,6 +32,14 @@ logging.basicConfig(level=logging.INFO)
 # have been prepared in advance for testing. Part of the preparation is to provide
 # the header for the file, as the processing of that is otherwise done by api.py, which 
 # isn't invoked here
+
+# 2022-06-16 Benchmarks
+# 30s ./data/tests/test_benchmark_1.csv
+# 30s ./data/tests/test_benchmark_10.csv
+# 38s ./data/tests/test_benchmark_100.csv
+# 29s ./data/tests/test_benchmark_1000.csv
+# 34s ./data/tests/test_benchmark_10000.csv
+# 34s ./data/tests/test_benchmark_100000.csv
 
 # Uploaded files in GCS where the input Location fields to be tested are located. 
 

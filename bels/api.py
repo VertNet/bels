@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2022-06-08T15:52-03:00"
+__version__ = __filename__ + ' ' + "2022-06-19T01:53-03:00"
 
 import os
 import uuid
@@ -45,7 +45,6 @@ publisher = pubsub_v1.PublisherClient()
 #PROJECT_ID = os.getenv('GOOGLE_CLOUD_PROJECT')
 PROJECT_ID = 'localityservice'
 INPUT_LOCATION = 'bels_input'
-
 topic_name = 'csv_processing'
 
 @app.route('/api/bels_csv', methods=['POST'])
@@ -155,8 +154,8 @@ def bels_csv():
         app.logger.error(s)
         return s, 400  # 400 Bad Request
 
-    client = storage.Client()
-    bucket = client.get_bucket(PROJECT_ID)
+    storage_client = storage.Client()
+    bucket = storage_client.get_bucket(PROJECT_ID)
 
     # Google Cloud Storage location for uploaded file
     blob_location = f'{INPUT_LOCATION}/{str(uuid.uuid4())}'
@@ -185,7 +184,7 @@ def bels_csv():
         publish_future = publisher.publish(topic_path, data=message_bytes)
         # Verify that publish() succeeded
         r = publish_future.result()
-        s = f'Success publishing request {message_json}'
+        s = f'New request published:\n{message_json}'
         logging.info(s)
         app.logger.info(s)
 
@@ -197,17 +196,6 @@ def bels_csv():
         logging.error(e)
         app.logger.error(e)
         return (e, 500)
-
-bels_client = BELS_Client()
-bels_client.populate()
-#bels_client.country_report(10)
- 
-api = Api(app)
-api.add_resource(BestGeoref, '/api/bestgeoref', resource_class_kwargs={'bels_client': bels_client})
-
-@app.route('/')
-def index(version=None):
-    return render_template('index.html', version=__version__)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2022-06-15T21:10-03:00"
+__version__ = __filename__ + ' ' + "2022-06-19T14:58-03:00"
 
 import json
 import logging
@@ -219,60 +219,173 @@ def bigquerify_header(header):
         i += 1
     return bigqueryized_header
 
-def process_import_table(bq_client, input_table_id):
-    if input_table_id is None:
+def country_fields(header):
+    # Get a list containing the fields that can be used to interpret the countrycode in
+    # order of priority: interpreted_countrycode, countrycode, v_countrycode, country
+    # Depends on header being Darwinized as lower case.
+    countryfieldslist = ['interpreted_countrycode', 'countrycode', 'v_countrycode', 
+        'country']
+    countryfieldsfound = []
+    for countryfield in countryfieldslist:
+        if countryfield in header:
+            countryfieldsfound.append(countryfield)
+    if len(countryfieldsfound) == 0:
+        return None
+    return countryfieldsfound
+
+def process_import_table(bq_client, input_table_id, countryfieldlist):
+    if input_table_id is None or bq_client is None:
+        return None
+    if countryfieldlist is None or len(countryfieldlist) == 0:
         return None
     table_parts = input_table_id.split('.')
     table_name = table_parts[len(table_parts)-1]
     output_table_id = BQ_PROJECT+'.'+BQ_OUTPUT_DATASET+'.'+table_name
-
+    
+    matchcountryclause = None
+    
+    if 'interpreted_countrycode' in countryfieldlist:
+        # ['interpreted_countrycode',...]
+        if 'countrycode' in countryfieldlist:
+            # ['interpreted_countrycode','countrycode',...]
+            if 'v_countrycode' in countryfieldlist:
+                # ['interpreted_countrycode','countrycode','v_countrycode',...]
+                if 'country' in countryfieldlist:
+                    # ['interpreted_countrycode','countrycode','v_countrycode','country']
+                    matchcountryclause = \
+                    """
+                    IF(interpreted_countrycode IS NULL,IF(countrycode IS NULL,IF(v_countrycode IS NULL,country,v_countrycode),countrycode),interpreted_countrycode) AS bels_match_country
+                    """
+                else:
+                    # ['interpreted_countrycode','countrycode','v_countrycode']
+                    matchcountryclause = \
+                    """
+                    IF(interpreted_countrycode IS NULL,IF(countrycode IS NULL,v_countrycode,countrycode),interpreted_countrycode) AS bels_match_country
+                    """
+            else:
+                # ['interpreted_countrycode','countrycode',...]
+                # no v_countrycode
+                if 'country' in countryfieldlist:
+                    # ['interpreted_countrycode','countrycode','country']
+                    matchcountryclause = \
+                    """
+                    IF(interpreted_countrycode IS NULL,IF(countrycode IS NULL,country,countrycode),interpreted_countrycode) AS bels_match_country
+                    """
+                else:
+                    # ['interpreted_countrycode','countrycode']
+                    matchcountryclause = \
+                    """
+                    IF(interpreted_countrycode IS NULL,countrycode,interpreted_countrycode) AS bels_match_country
+                    """
+        else:
+            # ['interpreted_countrycode',...]
+            # no countrycode
+            if 'v_countrycode' in countryfieldlist:
+                # ['interpreted_countrycode','v_countrycode',...]
+                if 'country' in countryfieldlist:
+                    # ['interpreted_countrycode','v_countrycode','country']
+                    matchcountryclause = \
+                    """
+                    IF(interpreted_countrycode IS NULL,IF(v_countrycode IS NULL,country,v_countrycode),interpreted_countrycode) AS bels_match_country
+                    """
+                else:
+                    # ['interpreted_countrycode','v_countrycode']
+                    matchcountryclause = \
+                    """
+                    IF(interpreted_countrycode IS NULL,v_countrycode,interpreted_countrycode) AS bels_match_country
+                    """
+            else:
+                # ['interpreted_countrycode',...]
+                # no countrycode, no v_countrycode
+                if 'country' in countryfieldlist:
+                    # ['interpreted_countrycode','country']
+                    matchcountryclause = \
+                    """
+                    IF(interpreted_countrycode IS NULL,country,interpreted_countrycode) AS bels_match_country
+                    """
+                else:
+                    # ['interpreted_countrycode']
+                    matchcountryclause = \
+                    """
+                    interpreted_countrycode AS bels_match_country
+                    """
+    else:
+        # no interpreted_countrycode
+        if 'countrycode' in countryfieldlist:
+            # ['countrycode',...]
+            if 'v_countrycode' in countryfieldlist:
+                # ['countrycode','v_countrycode',...]
+                if 'country' in countryfieldlist:
+                    # ['countrycode','v_countrycode','country']
+                    matchcountryclause = \
+                    """
+                    IF(countrycode IS NULL,IF(v_countrycode IS NULL,country,v_countrycode),countrycode) AS bels_match_country
+                    """
+                else:
+                    # ['countrycode','v_countrycode']
+                    matchcountryclause = \
+                    """
+                    IF(countrycode IS NULL,v_countrycode,countrycode) AS bels_match_country
+                    """
+            else:
+                # ['countrycode',...]
+                # no interpreted_countrycode, no v_countrycode
+                if 'country' in countryfieldlist:
+                    # ['countrycode','country']
+                    matchcountryclause = \
+                    """
+                    IF(countrycode IS NULL,country,countrycode) AS bels_match_country
+                    """
+                else:
+                    # ['countrycode']
+                    matchcountryclause = \
+                    """
+                    countrycode AS bels_match_country
+                    """
+        else:
+            # no interpreted_countrycode, no countrycode
+            if 'v_countrycode' in countryfieldlist:
+                # ['v_countrycode',...]
+                if 'country' in countryfieldlist:
+                    # ['v_countrycode','country']
+                    matchcountryclause = \
+                    """
+                    IF(v_countrycode IS NULL,country,v_countrycode) AS bels_match_country
+                    """
+                else:
+                    # ['v_countrycode']
+                    matchcountryclause = \
+                    """
+                    v_countrycode AS bels_match_country
+                    """
+            else:
+                # no interpreted-countrycode, no countrycode, no v_countrycode
+                if 'country' in countryfieldlist:
+                    # ['country']
+                    matchcountryclause = \
+                    """
+                    country AS bels_match_country
+                    """
+                else:
+                    # no interpretable country fields
+                    return None
+        
     # Script georeference matching in BigQuery
-    query =f"""
+    query = \
+f"""
 -- Georeference matching script. Input table is expected to have Location column 
--- names mapped to Darwin Core Location term names.
+-- names mapped to Darwin Core Location term names with at least one interpretable
+-- country field from among the set: 'interpreted-countrycode', 'countrycode', 
+-- 'v_countrycode','country'
 BEGIN
 -- Make a table adding a field bels_match_country to the input table, mapping the best 
--- existing matching country field in the input, prioritizing by countrycode, then 
--- country.
--- First try filling from countrycode if it isn't NULL, country otherwise
+-- existing matching country field in the input.
 CREATE TEMP TABLE countrify AS (
   SELECT 
     *,
-    IF(countrycode IS NULL,country,countrycode) AS bels_match_country
+    {matchcountryclause}
   FROM 
     `{input_table_id}`);
--- If that didn't work because at least one of the two country-ish fields didn't exist,
--- try filling from countrycode, assuming a missing country field was the cause.
-EXCEPTION WHEN ERROR THEN
-  BEGIN
-  CREATE TEMP TABLE countrify AS (
-    SELECT 
-      *,
-      countrycode AS bels_match_country,
-    FROM 
-      `{input_table_id}`);
--- If that didn't work, because countrycode didn't exist in the input table,
--- try filling from country.
-  EXCEPTION WHEN ERROR THEN
-    BEGIN
-    CREATE TEMP TABLE countrify AS (
-    SELECT 
-      *,
-      country AS bels_match_country,
-    FROM 
-      `{input_table_id}`);
-    EXCEPTION WHEN ERROR THEN
--- If that didn't work, because country didn't exist in the input table, create the field
--- anyway and fill it with NULLs.
-      CREATE TEMP TABLE countrify AS (
-      SELECT 
-        *,
-        NULL AS bels_match_country,
-      FROM 
-        `{input_table_id}`);
-    END;
-  END;
-END;
 
 CREATE TEMP TABLE interpreted AS (
 SELECT 
@@ -393,7 +506,9 @@ FROM
   interpreted a
 JOIN matcher b ON a.bels_id=b.bels_id
 LEFT JOIN georefs c ON b.bels_id=c.bels_id;
+END;
 """
+
     # Make a BigQuery API job request.
     query_job = bq_client.query(query)
 
