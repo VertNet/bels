@@ -57,6 +57,7 @@ from dwca_terms import locationmatchsanscoordstermlist
 
 PROJECT_ID = 'localityservice'
 OUTPUT_LOCATION = 'bels_output'
+
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 
 def process_csv_in_bulk(event, context):

@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2022-06-19T01:53-03:00"
+__version__ = __filename__ + ' ' + "2022-06-19T23:51-03:00"
 
 import os
 import uuid
@@ -197,6 +197,17 @@ def bels_csv():
         app.logger.error(e)
         return (e, 500)
 
+bels_client = BELS_Client()
+bels_client.populate()
+#bels_client.country_report(10)
+
+api = Api(app)
+api.add_resource(BestGeoref, '/api/bestgeoref', resource_class_kwargs={'bels_client': bels_client})
+
+@app.route('/')
+def index(version=None):
+    return render_template('index.html', version=__version__)
+    
 if __name__ == "__main__":
     app.run(debug=True)
 
