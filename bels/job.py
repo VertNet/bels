@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2022-06-20T10:44-03:00"
+__version__ = __filename__ + ' ' + "2022-06-20T17:30-03:00"
 
 import base64
 import json
@@ -120,7 +120,7 @@ def process_csv_in_bulk(event, context, bq_client, storage_client):
         s += f'(interpreted_countrycode, countrycode, v_countrycode, country) '
         s += f'in the header after processing:\n{bigqueryized_header}.'
         logging.error(s)
-        send_failure_mail(email, s, sg_api)
+        send_failure_email(email, s, sg_api)
         return
     
     input_table_id = import_table(bq_client, upload_file_url, bigqueryized_header)
@@ -241,7 +241,7 @@ def send_email(target, output_url_list, sg_api):
     content = Content("text/plain", ''.join(s))
     message = Mail(from_email, to_email, subject, content)
 
-    sg.client.mail.send.post(request_body=message.get())
+    sg_api.client.mail.send.post(request_body=message.get())
 
 def send_failure_email(target, msg, sg_api):
     if sg_api is None:
@@ -257,7 +257,7 @@ def send_failure_email(target, msg, sg_api):
     s.append('for the following reason:\n')
     s.append(msg)
     message.content = Content("text/plain", ''.join(s))
-    sg.client.mail.send.post(request_body=message.get())
+    sg_api.client.mail.send.post(request_body=message.get())
 
 @contextmanager
 def temp_file():
