@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2022-06-19T23:51-03:00"
+__version__ = __filename__ + ' ' + "2022-06-20T16:34-03:00"
 
 import os
 import uuid
@@ -38,14 +38,23 @@ from dwca_vocab_utils import darwinize_list
 from bels_query import BELS_Client
 from resources import BestGeoref
 
-counter = 0
+bels_client = BELS_Client()
+bels_client.populate()
+#bels_client.country_report(10)
+
+storage_client = storage.Client()
+
 app = Flask(__name__)
+api = Api(app)
 
 publisher = pubsub_v1.PublisherClient()
 #PROJECT_ID = os.getenv('GOOGLE_CLOUD_PROJECT')
 PROJECT_ID = 'localityservice'
 INPUT_LOCATION = 'bels_input'
 topic_name = 'csv_processing'
+counter = 0
+
+api.add_resource(BestGeoref, '/api/bestgeoref', resource_class_kwargs={'bels_client': bels_client})
 
 @app.route('/api/bels_csv', methods=['POST'])
 def bels_csv():
@@ -154,7 +163,6 @@ def bels_csv():
         app.logger.error(s)
         return s, 400  # 400 Bad Request
 
-    storage_client = storage.Client()
     bucket = storage_client.get_bucket(PROJECT_ID)
 
     # Google Cloud Storage location for uploaded file
@@ -197,19 +205,13 @@ def bels_csv():
         app.logger.error(e)
         return (e, 500)
 
-bels_client = BELS_Client()
-bels_client.populate()
-#bels_client.country_report(10)
-
-api = Api(app)
-api.add_resource(BestGeoref, '/api/bestgeoref', resource_class_kwargs={'bels_client': bels_client})
-
 @app.route('/')
 def index(version=None):
     return render_template('index.html', version=__version__)
     
 if __name__ == "__main__":
-    app.run(debug=True)
+    # With debug=True the reloader will be run, so the BELS_Client will be initiated twice.
+    app.run(debug=False)
 
 # Deployed app location: https://localityservice.uc.r.appspot.com/
 # Deployed api location: https://localityservice.uc.r.appspot.com/api/bestgeoref

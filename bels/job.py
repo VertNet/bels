@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2022-06-19T15:04-03:00"
+__version__ = __filename__ + ' ' + "2022-06-20T10:44-03:00"
 
 import base64
 import json
@@ -59,8 +59,9 @@ PROJECT_ID = 'localityservice'
 OUTPUT_LOCATION = 'bels_output'
 
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+sg_api = sendgrid.SendGridAPIClient(SENDGRID_API_KEY)
 
-def process_csv_in_bulk(event, context):
+def process_csv_in_bulk(event, context, bq_client, storage_client):
     """ Background Cloud Function to be triggered by Pub/Sub to georeference all the rows
         in a CSV file by uploading the file to Cloud Storage and then loading that into
         a BigQuery table for processing.
@@ -73,6 +74,9 @@ def process_csv_in_bulk(event, context):
         `timestamp` field contains the publish time.
     """
     logging.basicConfig(level=logging.INFO)
+    if bq_client is None:
+        raise ValueError('no BigQuery client provided')
+        
     starttime = time.perf_counter()
     
     if 'data' not in event:
@@ -109,8 +113,6 @@ def process_csv_in_bulk(event, context):
     # Make sure the field names satisfy BigQuery field name requirements
     bigqueryized_header = bigquerify_header(darwinized_header)
 
-    ### TODO: Send distinct emails if there is a problem ###
-    
     # Get the list of field names that can be used for countrycode interpretation
     countryfieldlist = country_fields(bigqueryized_header)
     if countryfieldlist is None:
@@ -118,11 +120,9 @@ def process_csv_in_bulk(event, context):
         s += f'(interpreted_countrycode, countrycode, v_countrycode, country) '
         s += f'in the header after processing:\n{bigqueryized_header}.'
         logging.error(s)
-        send_failure_mail(email,s)
+        send_failure_mail(email, s, sg_api)
         return
     
-    # TODO: Would like to have a persistent client available rather than firing one up on demand
-    bq_client = bigquery.Client()
     input_table_id = import_table(bq_client, upload_file_url, bigqueryized_header)
 
     # Do georeferencing on the imported table with SQL script
@@ -133,11 +133,8 @@ def process_csv_in_bulk(event, context):
     # Export results to Google Cloud Storage
     # Make this work for big files that get split
     destination_uri = f'gs://{PROJECT_ID}/{OUTPUT_LOCATION}/{output_filename}'
-
     outputfilelist = export_table(bq_client, output_table_id, destination_uri)
 
-    # TODO: Would like to have a persistent client available rather than firing one up on demand
-    storage_client = storage.Client()
     bucket = storage_client.get_bucket(PROJECT_ID)
 
     output_url_list = []
@@ -169,7 +166,7 @@ def process_csv_in_bulk(event, context):
 
     # Notify the receiving party by email given.
     try:
-        send_email(email, output_url_list)
+        send_email(email, output_url_list, sg_api)
     except Exception as e:
         logging.error(f'Error sending email: {e}. Files stored at {output_url_list}')
 
@@ -223,9 +220,10 @@ def create_output(occurrences):
     dict_writer.writerows(occurrences)
     return output_file.getvalue()
 
-def send_email(target, output_url_list):
-    # TODO: Make global SendGridAPIClient
-    sg = sendgrid.SendGridAPIClient(SENDGRID_API_KEY)
+def send_email(target, output_url_list, sg_api):
+    if sg_api is None:
+        logging.error('Error! No SendGrid API Client.')
+        return
     from_email = Email("vertnetinfo@vertnet.org")
     to_email = To(target)
     subject = "File ready for download from Biodiversity Enhanced Location Services (BELS)"
@@ -245,8 +243,10 @@ def send_email(target, output_url_list):
 
     sg.client.mail.send.post(request_body=message.get())
 
-def send_failure_email(target, msg):
-    sg = sendgrid.SendGridAPIClient(SENDGRID_API_KEY)
+def send_failure_email(target, msg, sg_api):
+    if sg_api is None:
+        logging.error('Error! No SendGrid API Client.')
+        return
     message = Mail()
     message.from_email = From('vertnetinfo@vertnet.org', 'BELS Georeference Matcher')
     message.to = To(target)

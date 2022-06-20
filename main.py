@@ -17,12 +17,20 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "main.py"
-__version__ = __filename__ + ' ' + "2022-06-18T23:58-03:00"
+__version__ = __filename__ + ' ' + "2022-06-20T10:44-03:00"
 
 """
 This file is provided as a wrapper to execute code from google cloud functions
 """
 import bels.job
+import bels.api
+from google.cloud import bigquery
+from google.cloud import storage
+
+# Expose api endpoint
+app = bels.api.app
+bq_client = bigquery.Client()
+storage_client = storage.Client()
 
 def csv_processing_entrypoint(event, context):
     """Background Cloud Function to be triggered by Pub/Sub.
@@ -34,11 +42,7 @@ def csv_processing_entrypoint(event, context):
          metadata. The `event_id` field contains the Pub/Sub message ID. The
          `timestamp` field contains the publish time.
     """
-    bels.job.process_csv_in_bulk(event, context)
-
-# Expose api endpoint
-import bels.api
-app = bels.api.app
+    bels.job.process_csv_in_bulk(event, context, bq_client, storage_client)
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App

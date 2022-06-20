@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2022-06-19T14:58-03:00"
+__version__ = __filename__ + ' ' + "2022-06-20T13:25-03:00"
 
 import json
 import logging
@@ -175,18 +175,17 @@ FROM
             print(self.countrycode_dict)
 
     def get_best_countrycode(self, locdict):
-#        print(f'locdict:{locdict}')
         if locdict is None:
             return None
         best_country = locdict.get('interpreted_countrycode')
+        if best_country is None:
+            best_country = locdict.get('countrycode')
         if best_country is None:
             best_country = locdict.get('v_countrycode')
         if best_country is None:
             best_country = locdict.get('country')
         if best_country is not None:
-#            print(f'bestcountry:{best_country}')
             countrycode = self.countrycode_dict.get(best_country.upper())
-#            print(f'bestcountrycode:{countrycode}')
             return countrycode
         return None
 
