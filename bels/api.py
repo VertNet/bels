@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2022-06-20T16:34-03:00"
+__version__ = __filename__ + ' ' + "2022-06-20T18:23-03:00"
 
 import os
 import uuid
@@ -54,6 +54,8 @@ INPUT_LOCATION = 'bels_input'
 topic_name = 'csv_processing'
 counter = 0
 
+# The API endpoint for one-off georeferences instantiates a BestGeoref class to process
+# requests.
 api.add_resource(BestGeoref, '/api/bestgeoref', resource_class_kwargs={'bels_client': bels_client})
 
 @app.route('/api/bels_csv', methods=['POST'])
@@ -230,19 +232,19 @@ if __name__ == "__main__":
 # curl -v --data-binary @test.csv http://127.0.0.1:5000/api/bels_csv
 
 # With Coords bestgeoref examples
-#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"continent":"Asia","country":"Philippines", "countrycode":"PH", "locality":"Bacon", "verbatimlocality":"Bacon", "decimallatitude":"13.040245", "decimallongitude":"124.039609"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "for_location": {"continent":"Asia","country":"Philippines", "countrycode":"PH", "locality":"Bacon", "verbatimlocality":"Bacon", "decimallatitude":"13.040245", "decimallongitude":"124.039609"}}' http://127.0.0.1:5000/api/bestgeoref
 
 # Using verbatim coords bestgeoref examples
-#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"continent":"Europe", "country":"Portugal", "stateprovince":"Bragança", "municipality":"Bragança", "locality":"Carção", "verbatimlocality":"MC13", "verbatimlatitude":"41.67", "verbatimlongitude":"-6.58"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "for_location": {"continent":"Europe", "country":"Portugal", "stateprovince":"Bragança", "municipality":"Bragança", "locality":"Carção", "verbatimlocality":"MC13", "verbatimlatitude":"41.67", "verbatimlongitude":"-6.58"}}' http://127.0.0.1:5000/api/bestgeoref
 
 # Sans Coords bestgeoref examples
-#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"continent":"Europe", "country": "United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' http://127.0.0.1:5000/api/bestgeoref
-#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {                      "country": "United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' http://127.0.0.1:5000/api/bestgeoref
-#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {                      "country": "United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' https://localityservice.uc.r.appspot.com/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "for_location": {"continent":"Europe", "country": "United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "for_location": {                      "country": "United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "for_location": {                      "country": "United Kingdom", "stateprovince":"England", "county":"Kent County", "locality":"Barnworth"}}' https://localityservice.uc.r.appspot.com/api/bestgeoref
 #curl --insecure -X POST -H "Content-Type: application/json" -d "{\"give_me\": \"BEST_GEOREF\", \"row\":{\"country\": \"United Kingdom\",\"stateprovince\":\"England\",\"county\":\"Kent County\", \"locality\":\"Barnworth\"}}"
-#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"countrycode": "DK","locality":"Gudhjem"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "for_location": {"countrycode": "DK","locality":"Gudhjem"}}' http://127.0.0.1:5000/api/bestgeoref
 #https://localityservice.uc.r.appspot.com/api/bestgeoref
-#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"countrycode": "ES","stateprovince":"Cc", "locality":"Acebo"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "for_location": {"countrycode": "ES","stateprovince":"Cc", "locality":"Acebo"}}' http://127.0.0.1:5000/api/bestgeoref
 
 # Original record has georef examples
-#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "row": {"country":"Denmark", "decimallatitude":"20", "decimallongitude":"30", "geodeticdatum":"epsg:4326", "coordinateuncertaintyinmeters":"10", "georeferenceprotocol":"protocol", "georeferencesources":"sources", "georeferenceddate":"date", "georeferencedby":"georefby", "georeferenceremarks":"remarks"}}' http://127.0.0.1:5000/api/bestgeoref
+#curl -X POST -H "Content-Type: application/json" -d '{"give_me": "BEST_GEOREF", "for_location": {"country":"Denmark", "decimallatitude":"20", "decimallongitude":"30", "geodeticdatum":"epsg:4326", "coordinateuncertaintyinmeters":"10", "georeferenceprotocol":"protocol", "georeferencesources":"sources", "georeferenceddate":"date", "georeferencedby":"georefby", "georeferenceremarks":"remarks"}}' http://127.0.0.1:5000/api/bestgeoref

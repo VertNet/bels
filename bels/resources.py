@@ -17,7 +17,7 @@ __author__ = "John Wieczorek"
 __contributors__ = ""
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "resources.py"
-__version__ = __filename__ + ' ' + "2022-06-08T15:52-03:00"
+__version__ = __filename__ + ' ' + "2022-06-20T18:22-03:00"
 
 import base64
 import logging
@@ -69,7 +69,7 @@ class BestGeoref(Resource):
             logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
             return response, 400
 
-        row = requestjson.get('row')
+        row = requestjson.get('for_location')
         if row is None or len(row)==0:
             response = {"Message": {"status": "error", "Result": f"No row data in request: {requestjson}"}}
             logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
