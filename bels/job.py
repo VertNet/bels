@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2022-06-20T17:30-03:00"
+__version__ = __filename__ + ' ' + "2022-06-21T21:54-03:00"
 
 import base64
 import json
@@ -75,7 +75,10 @@ def process_csv_in_bulk(event, context, bq_client, storage_client):
     """
     logging.basicConfig(level=logging.INFO)
     if bq_client is None:
-        raise ValueError('no BigQuery client provided')
+        bq_client = bigquery.Client()
+        
+    if storage_client is None:
+        storage_client = storage.Client()
         
     starttime = time.perf_counter()
     

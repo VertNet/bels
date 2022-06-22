@@ -17,7 +17,7 @@ __author__ = "John Wieczorek"
 __contributors__ = ""
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "resources.py"
-__version__ = __filename__ + ' ' + "2022-06-20T18:22-03:00"
+__version__ = __filename__ + ' ' + "2022-06-21T01:25-03:00"
 
 import base64
 import logging
@@ -53,37 +53,37 @@ class BestGeoref(Resource):
     def post(self):
         starttime = time.perf_counter()
         if request.is_json == False:
-            response = {"Message": {"status": "error", "Result": f"Request is empty or is not valid JSON."}}
+            response = {"Message": {"status": "error", "result": f"Request is empty or is not valid JSON."}}
             logging.debug(f'BestGeoref request: {request}\nresponse: {response}')
             return response, 400
 
         requestjson = request.get_json()
         give_me = requestjson.get('give_me')
         if give_me is None:
-            response = {"Message": {"status": "error", "Result": f"No 'give_me' directive in request: {requestjson}"}}
+            response = {"Message": {"status": "error", "result": f"No 'give_me' directive in request: {requestjson}"}}
             logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
             return response, 400
         
         if give_me.upper() not in ['BEST_GEOREF']:
-            response = {"Message": {"status": "error", "Result": f"Directive {give_me.upper()} not supported"}}
+            response = {"Message": {"status": "error", "result": f"Directive {give_me.upper()} not supported"}}
             logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
             return response, 400
 
         row = requestjson.get('for_location')
         if row is None or len(row)==0:
-            response = {"Message": {"status": "error", "Result": f"No row data in request: {requestjson}"}}
+            response = {"Message": {"status": "error", "result": f"No row data in request: {requestjson}"}}
             logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
             return response, 400
 
         loc = self.darwinizer.darwinize_dict(row_as_dict(row))
         if loc is None:
-            response = {"Message": {"status": "error", "Result": f"Darwinize failed for {requestjson}."}}
+            response = {"Message": {"status": "error", "result": f"Darwinize failed for {requestjson}."}}
             logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
             return response, 500
 
         lowerloc = lower_dict_keys(loc)
         if 'country' not in lowerloc and 'countrycode' not in lowerloc:
-            response = {"Message": {"status": "error", "Result": f"No interpretable country field in : {requestjson}"}}
+            response = {"Message": {"status": "error", "result": f"No interpretable country field in : {requestjson}"}}
             logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
             return response, 400
 
@@ -91,12 +91,12 @@ class BestGeoref(Resource):
         if has_georef(loc):
             row = bels_original_georef(lowerloc)
             row['bels_countrycode'] = self.bels_client.get_best_countrycode(lowerloc)
-            response = {"Message": {"status": "success", "Result": row}}
+            response = {"Message": {"status": "success", "result": row}}
             logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
             return response, 200
         
         if self.bq_client is None:
-            response = {"Message": {"status": "error", "Result": "No BigQuery client."}}
+            response = {"Message": {"status": "error", "result": "No BigQuery client."}}
             logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
             return response, 500
 
@@ -131,11 +131,11 @@ class BestGeoref(Resource):
                     if field in result:
                         result[field] = base64.b64encode(result[field]).decode('utf-8')
                 row.update(result)
-                response = {"Message": {"status": "success", "elapsed_time": f'{querytime:1.3f}s', "Result": row}}
+                response = {"Message": {"status": "success", "elapsed_time": f'{querytime:1.3f}s', "result": row}}
                 logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
                 return response, 200
             else:
                 print(f'No georeference found')
-                response = {"Message": {"status": "failure", "Result": row}}
+                response = {"Message": {"status": "failure", "result": row}}
                 logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
                 return response, 200

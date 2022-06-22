@@ -149,6 +149,5 @@ event = {'data':event}
 Context = namedtuple('Context', 'event_id timestamp')
 context = Context('1234', '1234')
 
-# Process a file in Google Cloud Storage via BigQuery and back to GCS
-process_csv_in_bulk(event, context)
-#process_csv(event, context)
+# Process a file in Google Cloud Storage via BigQuery and back to GCS. Rely on the
+process_csv_in_bulk(event, context, None, None)
