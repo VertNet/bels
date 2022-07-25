@@ -1,15 +1,15 @@
--- iDigBio Loading Script (runtime 8m 37s)
-----------------------------------------------
--- Process iDigBio
--- Script to prepare Location data for the gazetteer
--- Before running this script, load the latest source data into tables in BigQuery
---   gbif.occurrences
---   idigbio.occurrences
---   vertnet.locations (static)
--- Then update the table vocabs.datums.epsg based on new values in the source tables
--- Make sure functions saveNumbers(), removeSymbols(), simplifyDiacritics() are
--- created.
-----------------------------------------------
+--------------------------------------------------------------------------------
+-- Load iDigBio - load_idigbio.sql  run time ~9 m
+-- Script to prepare iDigBio Location data for the gazetteer.
+-- Before running this script:
+--   1) run the script load_gbif.sql
+--   2) run the script load_vertnet.sql
+--   3) load the latest source data into the table idigbio.occurrences in BigQuery.
+--   4) reconcile and add any new values of u_datumstr with epsg codes to
+--      table vocabs.datumsepsg
+--   5) make sure the user defined functions saveNumbers(), removeSymbols(), and
+--      simplifyDiacritics() are created.
+--------------------------------------------------------------------------------
 BEGIN
 -- Make table occurences_iso2
 CREATE OR REPLACE TABLE `localityservice.idigbio.occurrences_iso2`
@@ -71,7 +71,7 @@ FROM
 `localityservice.idigbio_20210211.idigbio_taxonomy_20210319` c ON a.coreid=c.coreid
 LEFT JOIN
 `localityservice.vocabs.iso3_to_2` AS b ON a.idigbio_countrycode=b.iso3;
-----------------------------------------------
+--------------------------------------------------------------------------------
 -- Make table occurrence_location_lookup
 CREATE OR REPLACE TABLE localityservice.idigbio.occurrence_location_lookup
 AS
@@ -136,7 +136,7 @@ SHA256(CONCAT(
 AS dwc_location_hash
 FROM `localityservice.idigbio.occurrences_iso2`;
 -- End table occurrence_location_lookup
-----------------------------------------------
+--------------------------------------------------------------------------------
 -- Make table temp_locations_idigbio_distinct
 CREATE TEMP TABLE temp_locations_idigbio_distinct
 AS
@@ -395,8 +395,13 @@ interpreted_decimallatitude,
 interpreted_decimallongitude,
 u_datumstr;
 -- End table temp_locations_idigbio_distinct
-----------------------------------------------
+--------------------------------------------------------------------------------
 -- Make table locations_idigbio_distinct
+-- In this step we discard duplicates created due to distinct interpretations by iDigBio
+-- of interpreted_coordinates at exactly the same coordinates. It seems to be that 
+-- rules for coordinate precision in the interpreted coordinates changed at some point,
+-- and that the same Location can have distinct interpreted coordinates. In the 2021 snapshot
+-- there are 1990 dwc_location_hash values with multiple entries. These have to be removed.
 CREATE OR REPLACE TABLE localityservice.idigbio.locations_idigbio_distinct
 AS
 SELECT dwc_location_hash, v_highergeographyid, v_highergeography, v_continent,
@@ -417,9 +422,13 @@ REGEXP_REPLACE(REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(funct
 REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(for_match_with_coords)),NFKC)),r"[\s]+",'') AS matchme_with_coords,
 REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(for_match)),NFKC)),r"[\s]+",'') AS matchme,
 REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(for_match_sans_coords)),NFKC)),r"[\s]+",'') AS matchme_sans_coords
-FROM temp_locations_idigbio_distinct;
+FROM temp_locations_idigbio_distinct
+WHERE dwc_location_hash NOT IN (SELECT dwc_location_hash
+FROM temp_locations_idigbio_distinct
+GROUP BY dwc_location_hash
+HAVING count(*)>1);
 -- End of CREATE table locations_idigbio_distinct
-----------------------------------------------
+--------------------------------------------------------------------------------
 -- Make table locations_distinct_with_epsg
 CREATE OR REPLACE TABLE localityservice.idigbio.locations_distinct_with_epsg
 AS
@@ -428,7 +437,7 @@ FROM `localityservice.idigbio.locations_idigbio_distinct` a
 LEFT JOIN `localityservice.vocabs.datumsepsg` b
 ON a.u_datumstr=b.u_datumstr;
 -- End table locations_distinct_with_epsg
-----------------------------------------------
+--------------------------------------------------------------------------------
 -- Make table locations_distinct_with_scores
 CREATE OR REPLACE TABLE localityservice.idigbio.locations_distinct_with_scores
 AS
@@ -457,3 +466,4 @@ GROUP BY dwc_location_hash
 HAVING count(*)>1);
 -- End table locations_distinct_with_scores
 END;
+--------------------------------------------------------------------------------

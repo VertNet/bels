@@ -1,16 +1,13 @@
--- GBIF Loading Script (runtime 11m 38s)
--- New: The field continent is no longer used in matching strings, while the field 
--- verticaldatum is. The field verticaldatum is now used in the determination of distinct 
--- Locations, while the field georeferenceverificationstatus is not.
-----------------------------------------------
--- Process GBIF
--- Script to prepare Location data for the gazetteer
--- Before running this script, load the latest source data into tables in BigQuery
---   gbif.occurrences
--- Then update the table vocabs.datums.epsg based on new values in the source tables
--- Make sure functions saveNumbers(), removeSymbols(), simplifyDiacritics() are
--- created.
-----------------------------------------------
+--------------------------------------------------------------------------------
+-- Load GBIF - load_gbif.sql  run time ~12 m
+-- Script to prepare GBIF Location data for the gazetteer.
+-- Before running this script:
+--   1) load the latest source data into the table gbif.occurrences in BigQuery.
+--   2) reconcile and add any new values of u_datumstr with epsg codes to
+--      table vocabs.datumsepsg
+--   3) make sure the user defined functions saveNumbers(), removeSymbols(), and
+--      simplifyDiacritics() are created.
+--------------------------------------------------------------------------------
 BEGIN
 -- Make table temp_locations_gbif_distinct
 CREATE TEMP TABLE temp_locations_gbif_distinct
@@ -272,7 +269,7 @@ interpreted_countrycode,
 interpreted_decimallatitude,
 interpreted_decimallongitude;
 -- End table temp_locations_gbif_distinct
-----------------------------------------------
+--------------------------------------------------------------------------------
 -- Make table occurrence_location_lookup
 CREATE OR REPLACE TABLE localityservice.gbif.occurrence_location_lookup
 AS
@@ -345,8 +342,13 @@ SHA256(CONCAT(
 AS dwc_location_hash
 FROM `localityservice.gbif.occurrences` t;
 -- End table occurrence_location_lookup
-----------------------------------------------
+--------------------------------------------------------------------------------
 -- Make table locations_gbif_distinct
+-- In this step we discard duplicates created due to distinct interpretations by GBIF
+-- of interpreted_countrycode at exactly the same coordinates. It's not entirely clear
+-- why this happens, but may be due records with the same location passing through the
+-- processing pipeline at different times and methods or underlying data. In any case, 
+-- we need to remove them.
 CREATE OR REPLACE TABLE localityservice.gbif.locations_gbif_distinct
 AS
 SELECT dwc_location_hash, v_highergeographyid, v_highergeography, v_continent, v_waterbody, v_islandgroup, v_island, v_country, v_countrycode, v_stateprovince, v_county, v_municipality, v_locality, v_verbatimlocality, v_minimumelevationinmeters, v_maximumelevationinmeters, v_verbatimelevation, v_verticaldatum, v_minimumdepthinmeters, v_maximumdepthinmeters, v_verbatimdepth, v_minimumdistanceabovesurfaceinmeters, v_maximumdistanceabovesurfaceinmeters, v_locationaccordingto, v_locationremarks, v_decimallatitude, v_decimallongitude, v_geodeticdatum, v_coordinateuncertaintyinmeters, v_coordinateprecision, v_pointradiusspatialfit, v_verbatimcoordinates, v_verbatimlatitude, v_verbatimlongitude, v_verbatimcoordinatesystem, v_verbatimsrs, v_footprintwkt, v_footprintsrs, v_footprintspatialfit, v_georeferencedby, v_georeferenceddate, v_georeferenceprotocol, v_georeferencesources, v_georeferenceremarks, interpreted_decimallatitude, interpreted_decimallongitude, interpreted_countrycode, occcount, UPPER(v_geodeticdatum) AS u_datumstr,
@@ -354,9 +356,13 @@ REGEXP_REPLACE(REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(funct
 REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(for_match_with_coords)),NFKC)),r"[\s]+",'') AS matchme_with_coords,
 REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(for_match)),NFKC)),r"[\s]+",'') AS matchme,
 REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(for_match_sans_coords)),NFKC)),r"[\s]+",'') AS matchme_sans_coords
-FROM temp_locations_gbif_distinct;
+FROM temp_locations_gbif_distinct
+WHERE dwc_location_hash NOT IN (SELECT dwc_location_hash
+FROM temp_locations_gbif_distinct
+GROUP BY dwc_location_hash
+HAVING count(*)>1);
 -- End table locations_gbif_distinct
-----------------------------------------------
+--------------------------------------------------------------------------------
 -- Make table locations_distinct_with_epsg
 CREATE OR REPLACE TABLE localityservice.gbif.locations_distinct_with_epsg
 AS
@@ -365,7 +371,7 @@ FROM `localityservice.gbif.locations_gbif_distinct` a
 LEFT JOIN `localityservice.vocabs.datumsepsg` b
 ON a.u_datumstr=b.u_datumstr;
 -- End table locations_distinct_with_epsg
-----------------------------------------------
+--------------------------------------------------------------------------------
 -- Make table locations_distinct_with_scores
 CREATE OR REPLACE TABLE localityservice.gbif.locations_distinct_with_scores
 AS
@@ -387,10 +393,7 @@ IF(v_georeferencedby IS NULL,0,2) +
 IF(v_georeferenceremarks IS NULL,0,1)
 AS coordinates_score,
 'GBIF' AS source
-FROM `localityservice.gbif.locations_distinct_with_epsg`
-WHERE dwc_location_hash NOT IN (SELECT dwc_location_hash
-FROM `localityservice.gbif.locations_distinct_with_epsg`
-GROUP BY dwc_location_hash
-HAVING count(*)>1);
+FROM `localityservice.gbif.locations_distinct_with_epsg`;
 -- End table locations_distinct_with_scores
 END;
+--------------------------------------------------------------------------------

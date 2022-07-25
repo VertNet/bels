@@ -1,14 +1,14 @@
--- VertNet Loading Script (runtime 2m 39s)
-----------------------------------------------
--- Process VertNet
--- Script to prepare MaNIS/HerpNET/ORNS georeference data for the gazetteer
--- Before running this script, load the latest source data into tables in BigQuery
---   vertnet.locations (static)
--- Make sure functions saveNumbers(), removeSymbols(), simplifyDiacritics() are
--- created.
-----------------------------------------------
+--------------------------------------------------------------------------------
+-- Load VertNet - load_vertnet.sql  run time ~3 m
+-- Script to prepare VertNet Gazetteer Location data for the BELS gazetteer.
+-- Before running this script:
+--   1) run the script load_gbif.sql
+--   2) load the latest source data into the table vertnet.locations in BigQuery.
+--   3) make sure the user defined functions saveNumbers(), removeSymbols(), and
+--      simplifyDiacritics() are created.
+--------------------------------------------------------------------------------
 BEGIN
--- Make table locations (need not persist)
+-- Make table locations (n=523,091 , need not persist)
 CREATE OR REPLACE TABLE `localityservice.vertnet.locations`
 AS
 SELECT
@@ -55,8 +55,8 @@ verbatimGeoreferencedDate AS verbatimgeoreferenceddate,
 verbatimCoordinateSystem AS v_verbatimcoordinatesystem
 FROM `localityservice.vertnet.MaNISORNISHerpNETBestPracticeGeorefs`;
 -- End table locations
-----------------------------------------------
--- Make table temp_locations_manis_distinct (need not persist)
+--------------------------------------------------------------------------------
+-- Make table temp_locations_manis_distinct (n=152,854 , need not persist)
 CREATE OR REPLACE TABLE localityservice.vertnet.temp_locations_manis_distinct
 AS
 SELECT
@@ -276,8 +276,8 @@ occcount,
 u_datumstr,
 source;
 -- End table temp_locations_manis_distinct
-----------------------------------------------
--- Make table temp_locations_herpnet_distinct (need not persist)
+--------------------------------------------------------------------------------
+-- Make table temp_locations_herpnet_distinct (n=205,772, need not persist)
 CREATE OR REPLACE TABLE localityservice.vertnet.temp_locations_herpnet_distinct
 AS
 SELECT
@@ -490,8 +490,8 @@ occcount,
 u_datumstr,
 source;
 -- End table temp_locations_herpnet_distinct
-----------------------------------------------
--- Make table temp_locations_ornis_distinct (need not persist)
+--------------------------------------------------------------------------------
+-- Make table temp_locations_ornis_distinct (n=146,316, need not persist)
 CREATE OR REPLACE TABLE localityservice.vertnet.temp_locations_ornis_distinct
 AS
 SELECT
@@ -711,17 +711,19 @@ occcount,
 u_datumstr,
 source;
 -- End table temp_locations_ornis_distinct
-----------------------------------------------
--- Make table temp_locations_vertnet_distinct (need not persist)
+--------------------------------------------------------------------------------
+-- Make table temp_locations_vertnet_distinct (n=503.970, need not persist)
 CREATE OR REPLACE TABLE `localityservice.vertnet.temp_locations_vertnet_distinct`
 AS
 SELECT *  FROM `localityservice.vertnet.temp_locations_manis_distinct`;
+ 
 INSERT INTO `localityservice.vertnet.temp_locations_vertnet_distinct`
 (SELECT *  FROM `localityservice.vertnet.temp_locations_herpnet_distinct`
 WHERE dwc_location_hash NOT IN
 (SELECT dwc_location_hash FROM
 `localityservice.vertnet.temp_locations_vertnet_distinct`)
 );
+ 
 INSERT INTO `localityservice.vertnet.temp_locations_vertnet_distinct`
 (SELECT *  FROM `localityservice.vertnet.temp_locations_ornis_distinct`
 WHERE dwc_location_hash NOT IN
@@ -729,8 +731,8 @@ WHERE dwc_location_hash NOT IN
 `localityservice.vertnet.temp_locations_vertnet_distinct`)
 );
 -- End table temp_locations_vertnet_distinct
-----------------------------------------------
--- Make table locations_distinct_with_scores (persist)
+--------------------------------------------------------------------------------
+-- Make table locations_distinct_with_scores (n=503,970, persist)
 CREATE OR REPLACE TABLE localityservice.vertnet.locations_distinct_with_scores
 AS
 SELECT dwc_location_hash, v_highergeographyid, v_highergeography, v_continent,
@@ -770,3 +772,4 @@ AS coordinates_score,
 source
 FROM localityservice.vertnet.temp_locations_vertnet_distinct;
 END;
+--------------------------------------------------------------------------------
