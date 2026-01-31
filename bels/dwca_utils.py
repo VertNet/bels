@@ -252,7 +252,7 @@ def csv_file_dialect(fullpath, encoding=None):
                 return csv_dialect()
     
     # Fill in some standard values for the remaining dialect attributes        
-    if dialect.escapechar is None:
+    if not dialect.escapechar: # This catches both None and empty string ''
         dialect.escapechar = '\\'
 
     dialect.skipinitialspace = True
