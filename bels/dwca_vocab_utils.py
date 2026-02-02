@@ -421,6 +421,7 @@ def darwin_cloud_vocab_dict_from_file(vocabfile):
         return None
 
     dialect = csv_file_dialect(vocabfile)
+    logging.debug(dialect)
 
     # Create a dictionary to hold the vocabulary
     vocabdict = {}

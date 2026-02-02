@@ -37,8 +37,8 @@ __version__ = __filename__ + ' ' + "2022-06-08T17:35-03:00"
 
 from decimal import *
 import unittest
-import os
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="../bels/auth.json"
+#import os
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="../bels/auth.json"
 
 from google.cloud import bigquery
 

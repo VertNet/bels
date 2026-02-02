@@ -134,9 +134,9 @@ def tsv_dialect():
     dialect = csv.excel_tab
     dialect.lineterminator='\r'
     dialect.delimiter='\t'
-    dialect.escapechar=''
+    dialect.escapechar='\\'
     dialect.doublequote=True
-    dialect.quotechar=''
+    dialect.quotechar='"'
     dialect.quoting=csv.QUOTE_NONE
     dialect.skipinitialspace=True
     dialect.strict=False
@@ -251,13 +251,11 @@ def csv_file_dialect(fullpath, encoding=None):
                 logging.debug(s)
                 return csv_dialect()
     
-    # Fill in some standard values for the remaining dialect attributes        
-    if not dialect.escapechar: # This catches both None and empty string ''
-        dialect.escapechar = '\\'
-
     dialect.skipinitialspace = True
     dialect.strict = False
     dialect.doublequote = found_doublequotes
+    if dialect.escapechar is None:
+        dialect.escapechar='\\'
     return dialect
 
 def dialects_equal(dialect1, dialect2):
@@ -277,8 +275,10 @@ def dialects_equal(dialect1, dialect2):
     if dialect1.delimiter != dialect2.delimiter:
         return False
     if dialect1.escapechar != dialect2.escapechar:
+        print(f'escapechar dialect1: {dialect1.escapechar} escapechar dialect2: {dialect2.escapechar}')
         return False
     if dialect1.quotechar != dialect2.quotechar:
+        print(f'quotechar dialect1: {dialect1.quotechar} quotechar dialect2: {dialect2.quotechar}')
         return False
     if dialect1.doublequote != dialect2.doublequote:
         return False
@@ -873,7 +873,7 @@ def csv_clean_whitespace(inputfile, outputfile, dialect=None, encoding=None, for
         logging.debug(s)
         return False
 
-    print(dialect_attributes(dialect))
+    # print(dialect_attributes(dialect))
 
     with open(outputfile, 'w', encoding='utf-8') as outfile:
         writer = csv.DictWriter(outfile, dialect=outdialect, fieldnames=inputheader)
@@ -884,7 +884,7 @@ def csv_clean_whitespace(inputfile, outputfile, dialect=None, encoding=None, for
             header=True, fieldnames=inputheader):
             for field in inputheader:
                 row[field]=collapse_whitespace(row[field])
-            print(row)
+            # print(row)
             writer.writerow(row)
 
     s = 'File written to %s in %s.' % (outputfile, functionname)

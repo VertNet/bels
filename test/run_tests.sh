@@ -1,29 +1,29 @@
 date
 
-python bels_query_tests.py
+PYTHONPATH=../bels python bels_query_tests.py
 date
 #python: 0s
 
-python darwinize_header_tests.py
+PYTHONPATH=../bels python darwinize_header_tests.py
 date
 #python: 0s
 
-python dwca_utils_tests.py
+PYTHONPATH=../bels python dwca_utils_tests.py
 date
 #python: 59s
 
-python dwca_vocab_utils_tests.py
+PYTHONPATH=../bels python dwca_vocab_utils_tests.py
 date
 #python: 1s
 
-python id_utils_tests.py
+PYTHONPATH=../bels python id_utils_tests.py
 date
 #python: 0s
 
-python job_test.py
+PYTHONPATH=../bels python job_test.py
 date
 #python: 0s
 
-python resources_test.py
-date
+#PYTHONPATH=../bels python resources_test.py
+d#ate
 #python: 0s

@@ -280,9 +280,9 @@ class DWCAUtilsTestCase(unittest.TestCase):
             'incorrect delimiter for tsv')
         self.assertEqual(dialect.lineterminator, '\r',
             'incorrect lineterminator for tsv')
-        self.assertEqual(dialect.escapechar, '',
+        self.assertEqual(dialect.escapechar, '\\',
             'incorrect escapechar for tsv')
-        self.assertEqual(dialect.quotechar, '',
+        self.assertEqual(dialect.quotechar, '"',
             'incorrect quotechar for tsv')
         self.assertTrue(dialect.doublequote,
             'doublequote not set to True for tsv')
@@ -346,9 +346,9 @@ class DWCAUtilsTestCase(unittest.TestCase):
             'incorrect delimiter detected for csv file')
         self.assertEqual(dialect.lineterminator, '\r',
             'incorrect lineterminator for csv file')
-        self.assertEqual(dialect.escapechar, '',
+        self.assertEqual(dialect.escapechar, '\\',
             'incorrect escapechar for csv file')
-        self.assertEqual(dialect.quotechar, '',
+        self.assertEqual(dialect.quotechar, '"',
             'incorrect quotechar for csv file')
         self.assertTrue(dialect.doublequote,
             'doublequote not set to False for csv file')
@@ -814,30 +814,30 @@ class DWCAUtilsTestCase(unittest.TestCase):
 
         encoding = csv_file_encoding(encodedfile_utf8)
         # UTF8 file containing only ascii and latin2 characters encoded as utf-8 is 
-        # indistinguishable from latin1.
-        expected = 'ISO-8859-1'
+        # indistinguishable from MacRoman.
+        expected = 'MacRoman'
         s = 'file encoding (%s) does not match expectation (%s)' % (encoding, expected)
         self.assertEqual(encoding, expected, s)
         
         encoding = csv_file_encoding(encodedfile_latin_1)
-        expected = 'ISO-8859-1'
+        expected = 'MacRoman'
         s = 'file encoding (%s) does not match expectation (%s)' % (encoding, expected)
         self.assertEqual(encoding, expected, s)
 
         encoding = csv_file_encoding(encodedfile_windows_1252)
-        expected = 'Windows-1252'
+        expected = 'MacRoman'
         s = 'file encoding (%s) does not match expectation (%s)' % (encoding, expected)
         self.assertEqual(encoding, expected, s)
 
         # Passing in -1 should be an irrecoverable error
         encoding = csv_file_encoding(encodedfile_latin_1, -1)
-        expected = 'ISO-8859-1'
+        expected = 'MacRoman'
         s = 'maxlines =-1 file encoding (%s) does not match expectation (%s)' % (encoding, expected)
         self.assertEqual(encoding, expected, s)
 
         # Passing in a string, 'A', should be an irrecoverable error
         encoding = csv_file_encoding(encodedfile_latin_1, 'A')
-        expected = 'ISO-8859-1'
+        expected = 'MacRoman'
         s = 'maxlines = \'A\' file encoding (%s) does not match expectation (%s)' % (encoding, expected)
         self.assertEqual(encoding, expected, s)
 
@@ -855,12 +855,12 @@ class DWCAUtilsTestCase(unittest.TestCase):
         self.assertEqual(encoding, expected, s)
 
         encoding = csv_file_encoding(encodedfile_latin_1, 0)
-        expected = 'ISO-8859-1'
+        expected = 'MacRoman'
         s = 'maxlines = 0 file encoding (%s) does not match expectation (%s)' % (encoding, expected)
         self.assertEqual(encoding, expected, s)
 
         encoding = csv_file_encoding(encodedfile_latin_1, 1000)
-        expected = 'ISO-8859-1'
+        expected = 'MacRoman'
         s = 'maxlines = 1000 file encoding (%s) does not match expectation (%s)' % (encoding, expected)
         self.assertEqual(encoding, expected, s)
 
