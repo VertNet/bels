@@ -421,7 +421,8 @@ def darwin_cloud_vocab_dict_from_file(vocabfile):
         return None
 
     dialect = csv_file_dialect(vocabfile)
-    logging.debug(dialect)
+#    print(f'dialect: -------\n {vars(dialect)}')
+#    logging.debug(f'dialect: -------\n {vars(dialect)}')
 
     # Create a dictionary to hold the vocabulary
     vocabdict = {}
@@ -648,6 +649,8 @@ def darwinize_list(termlist, dwccloudfile, namespace=None, case=None):
 
     # No need to check if dwccloudfile is given and exists, vetted_vocab_dict_from_file() 
     # does that.
+    if len(dialect.escapechar)!=1:
+        print(f'In dwca_vocab_utils.py: darwinize_list(), dialect: -------\n {vars(dialect)}')
     darwinclouddict = darwin_cloud_vocab_dict_from_file(dwccloudfile)
 
     if darwinclouddict is None:

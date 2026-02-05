@@ -254,7 +254,7 @@ def csv_file_dialect(fullpath, encoding=None):
     dialect.skipinitialspace = True
     dialect.strict = False
     dialect.doublequote = found_doublequotes
-    if dialect.escapechar is None:
+    if dialect.escapechar is None or dialect.escapechar=='':
         dialect.escapechar='\\'
     return dialect
 
