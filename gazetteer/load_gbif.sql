@@ -9,8 +9,8 @@
 --      simplifyDiacritics() are created.
 --------------------------------------------------------------------------------
 BEGIN
--- Make table temp_locations_gbif_distinct
-CREATE TEMP TABLE temp_locations_gbif_distinct
+-- Make table `localityservice.gbif.temp_locations_gbif_distinct`
+CREATE TABLE `localityservice.gbif.temp_locations_gbif_distinct`
 AS
 SELECT
 SHA256(CONCAT(
@@ -346,7 +346,7 @@ FROM `localityservice.gbif.occurrences` t;
 -- Make table locations_gbif_distinct
 -- In this step we discard duplicates created due to distinct interpretations by GBIF
 -- of interpreted_countrycode at exactly the same coordinates. It's not entirely clear
--- why this happens, but may be due records with the same location passing through the
+-- why this happens, but may be due to records with the same location passing through the
 -- processing pipeline at different times and methods or underlying data. In any case, 
 -- we need to remove them.
 CREATE OR REPLACE TABLE localityservice.gbif.locations_gbif_distinct
@@ -356,9 +356,9 @@ REGEXP_REPLACE(REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(funct
 REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(for_match_with_coords)),NFKC)),r"[\s]+",'') AS matchme_with_coords,
 REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(for_match)),NFKC)),r"[\s]+",'') AS matchme,
 REGEXP_REPLACE(functions.saveNumbers(NORMALIZE_AND_CASEFOLD(functions.removeSymbols(functions.simplifyDiacritics(for_match_sans_coords)),NFKC)),r"[\s]+",'') AS matchme_sans_coords
-FROM temp_locations_gbif_distinct
+FROM `localityservice.gbif.temp_locations_gbif_distinct`
 WHERE dwc_location_hash NOT IN (SELECT dwc_location_hash
-FROM temp_locations_gbif_distinct
+FROM `localityservice.gbif.temp_locations_gbif_distinct`
 GROUP BY dwc_location_hash
 HAVING count(*)>1);
 -- End table locations_gbif_distinct
@@ -395,5 +395,8 @@ AS coordinates_score,
 'GBIF' AS source
 FROM `localityservice.gbif.locations_distinct_with_epsg`;
 -- End table locations_distinct_with_scores
+-- Remove the table localityservice.gbif.temp_locations_gbif_distinct
+-- Remove the table localityservice.gbif.locations_gbif_distinct
+
 END;
 --------------------------------------------------------------------------------
