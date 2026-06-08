@@ -15,9 +15,9 @@
 
 __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
-__copyright__ = "Copyright 2022 Rauthiflor LLC"
+__copyright__ = "Copyright 2026 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2022-06-20T18:23-03:00"
+__version__ = __filename__ + ' ' + "2026-02-05T18:25-03:00"
 
 import os
 import uuid
