@@ -1,3 +1,16 @@
+.app-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+}
+
+.app-logo {
+    height: 1em;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
 body {
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
