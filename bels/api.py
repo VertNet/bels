@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2026 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2026-02-05T18:25-03:00"
+__version__ = __filename__ + ' ' + "2026-10-09T16:54-03:00"
 
 import os
 import uuid
@@ -198,7 +198,7 @@ def bels_csv():
         logging.info(s)
         app.logger.info(s)
 
-        return f'An email with a link to the results will be sent to {email}.'
+        return render_template('submitted.html', email=email, filename=filename)
     except Exception as e:
         s = f'Failure publishing request {message_json}'
         logging.info(s)

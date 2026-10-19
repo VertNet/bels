@@ -1,70 +1,112 @@
 <!DOCTYPE html>
 <!--
-    /*
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
-    
+
     http://www.apache.org/licenses/LICENSE-2.0
-    
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-    
-    __author__ = "John Wieczorek"
-    __copyright__ = {__copyright__}
-    __version__ = {__version__}
-    */
-    -->
-<html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<!--        <LINK href="api.css" rel="stylesheet" type="text/css"> -->
-        <TITLE>BELS Georeference Matcher</TITLE>
-<!-- TODO: Add an icon to the title bar> -->
-<!--        <link rel="icon" href="icon_path" type="image/icon type"> -->
-    </head>
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BELS Georeference Matcher</title>
+    <link rel="icon" href="{{ url_for('static', filename='bels.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bels.css') }}">
+</head>
+<body>
+<main class="container">
+    <header class="page-header">
+        <p class="eyebrow">Biodiversity Enhanced Location Services (BELS)</p>
+        <h1>Georeference Matcher</h1>
+        <p class="lede">Find existing georeferences that best match biodiversity locality records.</p>
+    </header>
 
-    <h1>Biodiversity Enhanced Location Services (BELS) - Georeference Matcher</h1>
-    <p>Upload a comma-separated input file that contains 
-       <a href="https://dwc.tdwg.org/terms/#location" target="_blank">location information</a>. Choose an email address to which to send the notification when the results are ready. Choose an output file name. This name will form an identifying part of the results file name, which will be a gzipped CSV file or files with an extension .csv.gz added.</p>
-    <form method="post" action="/api/bels_csv" enctype="multipart/form-data">
-        <p><input type=file name=csv>
-        <p><input type=email name=email placeholder="Notification email address" size="50">
-        <p><input type=text name=filename placeholder="Output file name only (output will be gzipped CSV)" size="50">
-        <p><input type=submit value=Submit>
-    </form>
-        <DIV id="divLinks" style="background-color: #FFFFFF";>
-            <HR>
-            <TABLE cellspacing="0" border="0" width="100%">
-                <TBODY>
-                    <TR>
-                        <TD width="60%" valign="MIDDLE">
-                            <FONT size="2">
-                                <P align="LEFT">
-                                    Copyright 2022 Rauthiflor LLC
-                            </FONT>
-                        </TD>
-                        <TD width="40%" valign="MIDDLE" align="RIGHT">
-                            <A rel="license" href="http://www.apache.org/licenses/LICENSE-2.0">
-                            <img alt="Creative Commons License" style="border-width:0" 
-                                src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png"></A>
-                        </TD>
-                    </TR>
-                </TBODY>
-            </TABLE>
-            <TABLE cellspacing="0" border="0" width="100%">
-                <TBODY>
-                    <TR>
-                        <TD width="50%" valign="MIDDLE" align="RIGHT">
-                            <i>Version {{ version }}</i>
-                        </TD>
-                    </TR>
-                </TBODY>
-            </TABLE>
-            <HR>
-        </DIV>
-    </body>
-</html>        
+    <section>
+        <h2>About the service</h2>
+        <p>
+            Upload a comma-separated CSV containing
+            <a href="https://dwc.tdwg.org/terms/#location" target="_blank" rel="noopener">Darwin Core Location information</a>.
+            BELS compares each record with a gazetteer of previously georeferenced biodiversity records and returns your original data with georeference results appended.
+        </p>
+
+        <div class="links" aria-label="Documentation and examples">
+            <a class="secondary-button"
+               href="{{ url_for('static', filename='BELS_Georeference_Matcher_User_Manual.pdf') }}"
+               target="_blank" rel="noopener">User Manual</a>
+            <a class="secondary-button"
+               href="{{ url_for('static', filename='bels_example.csv') }}"
+               download>Example CSV</a>
+            <a class="secondary-button"
+               href="https://github.com/VertNet/bels/blob/main/bels/vocabularies/darwin_cloud.txt"
+               target="_blank" rel="noopener">Recognized field names</a>
+        </div>
+    </section>
+
+    <section class="requirements">
+        <h2>Input requirements</h2>
+        <ul>
+            <li>Comma-separated CSV file with a header row</li>
+            <li>Maximum upload size: 32 MB</li>
+            <li>At least one field interpretable as <code>country</code> or <code>countryCode</code></li>
+            <li>
+                Darwin Core Location fields such as <code>stateProvince</code>, <code>county</code>,
+                <code>municipality</code>, <code>locality</code>, <code>decimalLatitude</code>, and
+                <code>decimalLongitude</code> may be used for matching
+            </li>
+        </ul>
+    </section>
+
+    <section class="submission">
+        <h2>Submit records for georeferencing</h2>
+
+        <form method="post" action="/api/bels_csv" enctype="multipart/form-data">
+            <div class="form-field">
+                <label for="csv">1. CSV file</label>
+                <input id="csv" type="file" name="csv" accept=".csv,text/csv" required>
+            </div>
+
+            <div class="form-field">
+                <label for="email">2. Notification email</label>
+                <p class="help">A download link will be sent here when processing is complete.</p>
+                <input id="email" type="email" name="email" autocomplete="email" size="50" required>
+            </div>
+
+            <div class="form-field">
+                <label for="filename">3. Output file name</label>
+                <p class="help">Enter the base name only. The result will be returned as a gzipped CSV file.</p>
+                <input id="filename" type="text" name="filename" size="50" required>
+            </div>
+
+            <button type="submit">Submit for georeferencing</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>How matching works</h2>
+        <p>
+            If a record already contains a complete georeference, BELS retains it. Otherwise BELS searches for the best available match using progressively less coordinate information:
+        </p>
+        <ol>
+            <li>locality information with decimal and verbatim coordinates;</li>
+            <li>locality information with verbatim coordinates;</li>
+            <li>locality information without coordinates.</li>
+        </ol>
+        <p>
+            See the <a href="{{ url_for('static', filename='BELS_Georeference_Matcher_User_Manual.pdf') }}" target="_blank" rel="noopener">User Manual</a>
+            for details about matching, field-name interpretation, and output fields.
+        </p>
+    </section>
+
+    <footer>
+        <p>Copyright 2022 Rauthiflor LLC &middot; <i>Version {{ version }}</i></p>
+    </footer>
+</main>
+</body>
+</html>

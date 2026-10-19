@@ -14,6 +14,7 @@ dist/
 downloads/
 eggs/
 .eggs/
+bin/
 lib/
 lib64/
 parts/
@@ -132,3 +133,6 @@ dmypy.json
 auth.json
 default_env.txt
 bels_env.txt
+bels/CACHEDIR.TAG
+bels/pyvenv.cfg
+ideas/

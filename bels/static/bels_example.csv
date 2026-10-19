@@ -1,0 +1,4 @@
+id,country,countryCode,stateProvince,county,municipality,locality,verbatimLatitude,verbatimLongitude,decimalLatitude,decimalLongitude
+1,Philippines,PH,,,,Bacon,,,13.040245,124.039609
+2,Portugal,,Bragança,,Bragança,Carção,41.67,-6.58,,
+3,United Kingdom,GB,England,Kent County,,Barnworth,,,,
