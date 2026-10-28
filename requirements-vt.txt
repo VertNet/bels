@@ -1,0 +1,60 @@
+# Pinned environment for the PostgreSQL version of BELS (development at VT ARC).
+# requirements.txt is left unpinned for the App Engine deployment.
+#
+# Python 3.11 (matches the App Engine python311 runtime).
+# Install with: pip install --prefer-binary -r requirements-vt.txt
+#
+# chardet is pinned to 5.2.0: test_csv_file_encoding in test/dwca_utils_tests.py
+# expects its detection results (4.x and 6.x+ fail that test).
+# cryptography is pinned to 48.0.1, the newest release with a prebuilt wheel for
+# Intel macOS.
+aniso8601==10.0.1
+blinker==1.9.0
+certifi==2026.10.19
+cffi==2.1.1
+chardet==5.2.0
+charset-normalizer==3.5.2
+click==8.5.0
+cryptography==48.0.1
+Flask==3.1.3
+Flask-RESTful==0.3.10
+google-api-core==2.42.0
+google-auth==2.62.0
+google-cloud-bigquery==3.46.2
+google-cloud-core==2.8.0
+google-cloud-pubsub==2.43.0
+google-cloud-storage==3.17.1
+google-crc32c==1.9.0
+google-resumable-media==2.11.0
+googleapis-common-protos==1.75.5
+grpc-google-iam-v1==0.14.5
+grpcio==1.84.0
+grpcio-status==1.84.0
+gunicorn==26.2.0
+idna==3.20
+itsdangerous==2.2.0
+Jinja2==3.1.6
+MarkupSafe==3.0.4
+opentelemetry-api==1.45.1
+opentelemetry-sdk==1.45.1
+opentelemetry-semantic-conventions==0.66b1
+packaging==26.3
+proto-plus==1.29.0
+protobuf==7.36.2
+psycopg==3.3.6
+psycopg-binary==3.3.6
+psycopg-pool==3.3.3
+pyarrow==26.0.0
+pyasn1==0.6.4
+pyasn1_modules==0.4.2
+pycparser==3.11
+python-dateutil==2.9.0.post0
+python-http-client==3.3.7
+pytz==2026.5
+regex==2026.9.29
+requests==2.34.2
+sendgrid==6.12.5
+six==1.17.0
+typing_extensions==4.16.0
+urllib3==2.8.0
+Werkzeug==3.1.9

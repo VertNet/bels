@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = 'job.py'
-__version__ = __filename__ + ' ' + "2022-06-21T21:54-03:00"
+__version__ = __filename__ + ' ' + "2026-10-21T16:06-07:00"
 
 import base64
 import json
@@ -31,7 +31,7 @@ import sys
 import time
 import sendgrid
 
-from sendgrid.helpers.mail import Email, To, Bcc, Content, Mail
+from sendgrid.helpers.mail import Email, To, Bcc, Content, Mail, From, Subject
 from contextlib import contextmanager
 from google.cloud import bigquery
 from google.cloud import storage

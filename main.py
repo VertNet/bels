@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "main.py"
-__version__ = __filename__ + ' ' + "2022-06-20T10:44-03:00"
+__version__ = __filename__ + ' ' + "2026-10-21T14:36-07:00"
 
 """
 This file is provided as a wrapper to execute code from google cloud functions
@@ -29,8 +29,11 @@ from google.cloud import storage
 
 # Expose api endpoint
 app = bels.api.app
-bq_client = bigquery.Client()
-storage_client = storage.Client()
+bq_client = None
+storage_client = None
+if bels.api.BELS_BACKEND == 'bigquery':
+    bq_client = bigquery.Client()
+    storage_client = storage.Client()
 
 def csv_processing_entrypoint(event, context):
     """Background Cloud Function to be triggered by Pub/Sub.

@@ -17,7 +17,7 @@ __author__ = "Marie-Elise Lecoq"
 __contributors__ = "John Wieczorek"
 __copyright__ = "Copyright 2026 Rauthiflor LLC"
 __filename__ = "api.py"
-__version__ = __filename__ + ' ' + "2026-10-09T16:54-03:00"
+__version__ = __filename__ + ' ' + "2026-10-21T16:06-07:00"
 
 import os
 import uuid
@@ -38,16 +38,32 @@ from dwca_vocab_utils import darwinize_list
 from bels_query import BELS_Client
 from resources import BestGeoref
 
-bels_client = BELS_Client()
+# BELS_BACKEND selects the gazetteer database: 'bigquery' (default, as deployed on App
+# Engine) or 'postgres' (connection settings in pg_query.py). With 'postgres' no Google
+# clients are created, and /api/bels_csv queues jobs in BELS_BULK_DIR for pg_job.py
+# instead of Cloud Storage and Pub/Sub; without BELS_BULK_DIR it is not available.
+BELS_BACKEND = os.getenv('BELS_BACKEND', 'bigquery').lower()
+if BELS_BACKEND not in ['bigquery', 'postgres']:
+    raise ValueError(f"BELS_BACKEND must be 'bigquery' or 'postgres', not '{BELS_BACKEND}'")
+
+if BELS_BACKEND == 'postgres':
+    from pg_query import PG_BELS_Client
+    from pg_job import bulk_dir, submit_job
+    bels_client = PG_BELS_Client()
+else:
+    bels_client = BELS_Client()
 bels_client.populate()
 #bels_client.country_report(10)
 
-storage_client = storage.Client()
+storage_client = None
+publisher = None
+if BELS_BACKEND == 'bigquery':
+    storage_client = storage.Client()
+    publisher = pubsub_v1.PublisherClient()
 
 app = Flask(__name__)
 api = Api(app)
 
-publisher = pubsub_v1.PublisherClient()
 #PROJECT_ID = os.getenv('GOOGLE_CLOUD_PROJECT')
 PROJECT_ID = 'localityservice'
 INPUT_LOCATION = 'bels_input'
@@ -60,6 +76,11 @@ api.add_resource(BestGeoref, '/api/bestgeoref', resource_class_kwargs={'bels_cli
 
 @app.route('/api/bels_csv', methods=['POST'])
 def bels_csv():
+    if BELS_BACKEND == 'postgres' and bulk_dir() is None:
+        s = 'Georeferencing a CSV file is not available yet on this server.'
+        app.logger.error(s)
+        return s, 503  # 503 Service Unavailable
+
     # Retrieve the HTTP POST request parameter value for 'email' from 'request.form' 
     # dictionary.
     # Specifies the email address to which to send the notification
@@ -73,7 +94,7 @@ def bels_csv():
 
     # Do not accept invalid email addresses.
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-    if re.match(regex, email) == False:
+    if re.match(regex, email) is None:
         s = f'{email} is not a valid email address.'
         app.logger.error(s)
         return s, 400  # 400 Bad Request
@@ -165,6 +186,14 @@ def bels_csv():
         app.logger.error(s)
         return s, 400  # 400 Bad Request
 
+    if BELS_BACKEND == 'postgres':
+        message_json = submit_job(bulk_dir(), csv_content, email, filename,
+            cleaned_fieldnames)
+        s = f'New request queued:\n{message_json}'
+        logging.info(s)
+        app.logger.info(s)
+        return render_template('submitted.html', email=email, filename=filename)
+
     bucket = storage_client.get_bucket(PROJECT_ID)
 
     # Google Cloud Storage location for uploaded file
@@ -209,7 +238,10 @@ def bels_csv():
 
 @app.route('/')
 def index(version=None):
-    return render_template('index.html', version=__version__)
+    # The 32 MB upload limit is App Engine's. With postgres there is no such limit, so
+    # the page recommends a number of records instead (not enforced).
+    return render_template('index.html', version=__version__,
+                           upload_limit=(BELS_BACKEND == 'bigquery'))
     
 if __name__ == "__main__":
     # With debug=True the reloader will be run, so the BELS_Client will be initiated twice.
