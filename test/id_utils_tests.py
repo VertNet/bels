@@ -29,6 +29,7 @@ import unittest
 from decimal import *
 
 from id_utils import simplify_diacritics
+from id_utils import bigquery_coordinate_str
 from id_utils import casefold_and_normalize
 from id_utils import location_match_str
 from id_utils import location_str
@@ -126,32 +127,48 @@ class IDUtilsTestCase(unittest.TestCase):
 
     def test_simplify_diacritics(self):
         print('Running test_simplify_diacritics')
+        # As in the BigQuery function simplifyDiacritics, ß becomes ss
         teststr='ábçdèfghïjkłmñoœpqrßtûvwxÿž'
-        target='abcdefghijklmnoœpqrstuvwxyz'
+        target='abcdefghijklmnoœpqrsstuvwxyz'
         simpstr = simplify_diacritics(teststr)
         self.assertEqual(simpstr, target)
         
         teststr='Görlitz-Biesnitz, {Gartensparte ("Am Löhnschen Park"); Hecke am Spartenlokal "Zum Edelweiß": [ca.] 15 m hügelaufwärts vom Aushängeschild an der Seitenfront}'
-        target= 'Gorlitz-Biesnitz, {Gartensparte ("Am Lohnschen Park"); Hecke am Spartenlokal "Zum Edelweis": [ca.] 15 m hugelaufwarts vom Aushangeschild an der Seitenfront}'
+        target= 'Gorlitz-Biesnitz, {Gartensparte ("Am Lohnschen Park"); Hecke am Spartenlokal "Zum Edelweiss": [ca.] 15 m hugelaufwarts vom Aushangeschild an der Seitenfront}'
         simpstr = simplify_diacritics(teststr)
         self.assertEqual(simpstr, target)
 
     def test_remove_symbols(self):
         print('Running test_remove_symbols')
+        # As in the BigQuery function removeSymbols, the backslashes in teststr are
+        # not removed.
         teststr='’<>:‒–—―…!«»‐?‘’“”;⁄␠·&@*•^¤¢$€£¥₩₪†‡°¡¿¬#№%‰‱¶′§~¨_|¦⁂☞∴‽※}{\\]\\[\\"\\)\\('
-        target=''
+        target='\\\\\\\\\\'
         simpstr=remove_symbols(teststr)
         self.assertEqual(simpstr, target)
 
         teststr='-+,/’<>:‒–—―…!«»‐?‘’“”;⁄␠·&@*•^¤¢$€£¥₩₪†‡°¡¿¬#№%‰‱¶′§~¨_|¦⁂☞∴‽※}{\\]\\[\\"\\)\\('
-        target='-+,/'
+        target='-+,/\\\\\\\\\\'
+        simpstr=remove_symbols(teststr)
+        self.assertEqual(simpstr, target)
+
+        # As in the BigQuery function removeSymbols, the plain apostrophe is removed.
+        teststr="O'Brien's Creek"
+        target='OBriens Creek'
+        simpstr=remove_symbols(teststr)
+        self.assertEqual(simpstr, target)
+
+        # The range »-‐ (U+00BB to U+2010) removes non-Latin scripts, as in BigQuery.
+        teststr='Москва'
+        target=''
         simpstr=remove_symbols(teststr)
         self.assertEqual(simpstr, target)
         
     def test_remove_whitespace(self):
         print('Running test_remove_whitespace')
+        # As in BigQuery REGEXP_REPLACE, where \s is only [\t\n\f\r ], \v is not removed.
         teststr='a  b  c  d  e  1,2 3.4 5/6 -7.0 +8,9 \t\v\r\n '
-        target='abcde1,23.45/6-7.0+8,9'
+        target='abcde1,23.45/6-7.0+8,9\v'
         simpstr=remove_whitespace(teststr)
         self.assertEqual(simpstr, target)
         
@@ -175,6 +192,10 @@ class IDUtilsTestCase(unittest.TestCase):
         target='áixåviii ábçdèfghïjkłmñoœpqrsstûvwxÿž'
         cn = casefold_and_normalize(teststr)
         self.assertEqual(cn, target)
+        # NFKC gives capitals that must be casefolded after normalization, as in the
+        # stored strings, e.g. the mis-encoded apostrophe in "Campbellâ€™s"
+        self.assertEqual(casefold_and_normalize('™ ᴶᴴ ℃'), 'tm jh °c')
+        self.assertEqual(super_simplify('Campbellâ€™s Cove'), 'campbellatmscove')
 
     def test_dwc_location_hash(self):
         print('Running test_dwc_location_hash')
@@ -259,8 +280,52 @@ class IDUtilsTestCase(unittest.TestCase):
         }
         lowerloc = lower_dict_keys(loc)
         locstr=location_match_str(locationmatchwithcoordstermlist, lowerloc)
-        target='2 3 4 5 6 7 8 9  11 12 13 14 15 16 17 18 19 20 21.1234567 -22.1234567 '
+        # As in BigQuery, the value is rounded to 9 places (NUMERIC), then to 7.
+        # Decimal(21.12345675) is 21.1234567499999..., which rounds to 21.123456750,
+        # then to 21.1234568.
+        target='2 3 4 5 6 7 8 9  11 12 13 14 15 16 17 18 19 20 21.1234568 -22.1234568 '
         self.assertEqual(locstr, target)
+
+        # BigQuery includes verbatimlocality unless upper(locality)=upper(verbatimlocality),
+        # without trimming.
+        loc = {'locality':'Abc', 'verbatimlocality':'ABC'}
+        locstr=location_match_str(locationmatchsanscoordstermlist, loc)
+        target='       Abc         '
+        self.assertEqual(locstr, target)
+
+        loc = {'locality':'Abc', 'verbatimlocality':'Abc '}
+        locstr=location_match_str(locationmatchsanscoordstermlist, loc)
+        target='       Abc Abc         '
+        self.assertEqual(locstr, target)
+
+        loc = {'locality':None, 'verbatimlocality':'Abc'}
+        locstr=location_match_str(locationmatchsanscoordstermlist, loc)
+        target='        Abc        '
+        self.assertEqual(locstr, target)
+
+    def test_bigquery_coordinate_str(self):
+        print('Running test_bigquery_coordinate_str')
+        # Expected values follow
+        # SAFE_CAST(round(10000000*safe_cast(value as NUMERIC))/10000000 AS STRING)
+        tests = [
+            ('0.5', '0.5'),
+            ('0.05', '0.05'),
+            ('-0.5', '-0.5'),
+            ('20', '20'),
+            ('20.0000000', '20'),
+            ('13.040245', '13.040245'),
+            ('0', '0'),
+            ('-0.00000001', '0'),
+            ('-1.23456785', '-1.2345679'),
+            ('-46.5171462499', '-46.5171463'),
+            ('abc', ''),
+            ('1_0', ''),
+            ('NaN', ''),
+            ('Infinity', '')
+        ]
+        for value, target in tests:
+            valuestr = bigquery_coordinate_str(value)
+            self.assertEqual(valuestr, target, f'value: {value}')
 
 if __name__ == '__main__':
     print('=== id_utils_test.py ===')

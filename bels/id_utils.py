@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "id_utils.py"
-__version__ = __filename__ + ' ' + "2022-06-09T01:15-03:00"
+__version__ = __filename__ + ' ' + "2026-10-20T14:35-07:00"
 
 import hashlib
 import base64
@@ -51,19 +51,23 @@ def location_match_str(termlist, inputdict):
         # print('term: %s inputdict[%s]: %s' % (term, term, inputdict[term]))
         try:
             if term=='decimallatitude' or term=='decimallongitude':
-                rawvalue = inputdict[term]
-                numericvalue = Decimal(rawvalue)
-                valuestr = str(numericvalue.quantize(Decimal('1.0000000'))).strip('0').strip('.')
-                # print('term: %s numericvalue: %s valuestr: %s' % (term, numericvalue, valuestr))
                 # In BigQuery the coordinates for matching are truncated versions using:
                 # SAFE_CAST(round(10000000*safe_cast(v_decimallatitude as NUMERIC))/10000000 AS STRING)
+                # The cast to NUMERIC rounds to 9 decimal places before the round to 7,
+                # and the cast to STRING drops trailing zeros but keeps a leading zero.
+                valuestr = bigquery_coordinate_str(inputdict[term])
+                # print('term: %s valuestr: %s' % (term, valuestr))
                 idstr += valuestr
             elif term=='locality':
                 locstr = inputdict[term]
                 idstr += inputdict[term]
             elif term=='verbatimlocality':
                 if inputdict[term] is not None:
-                    if locstr.lower().strip() != inputdict[term].lower().strip():
+                    # BigQuery adds v_verbatimlocality unless
+                    # upper(v_locality)=upper(v_verbatimlocality), without trimming.
+                    if locstr is None:
+                        locstr = ''
+                    if locstr.upper() != inputdict[term].upper():
                         idstr += inputdict[term]
 
             else:
@@ -72,6 +76,33 @@ def location_match_str(termlist, inputdict):
             pass
         idstr += ' '
     return idstr
+
+def bigquery_coordinate_str(rawvalue):
+    ''' Formats a decimal coordinate the way the gazetteer did in BigQuery with
+        SAFE_CAST(round(10000000*safe_cast(value as NUMERIC))/10000000 AS STRING)
+    parameters:
+        rawvalue - the coordinate value as given in the input
+    returns:
+        str - the coordinate string, or '' if the value is not a valid NUMERIC
+    '''
+    functionname = 'bigquery_coordinate_str()'
+
+    # SAFE_CAST to NUMERIC gives NULL, and therefore '', for these
+    if isinstance(rawvalue, str) and '_' in rawvalue:
+        return ''
+    getcontext().rounding = ROUND_HALF_UP
+    try:
+        numericvalue = Decimal(rawvalue)
+        if numericvalue.is_finite() == False:
+            return ''
+        # NUMERIC has 9 decimal places
+        numericvalue = numericvalue.quantize(Decimal('1.000000000'))
+        roundedvalue = numericvalue.quantize(Decimal('1.0000000'))
+    except Exception:
+        return ''
+    if roundedvalue == 0:
+        return '0'
+    return format(roundedvalue.normalize(), 'f')
 
 def location_str(inputdict):
     ''' Constructs a string from Darwin Core Locations to use in the construction of an
@@ -138,7 +169,9 @@ def remove_symbols(inputstr):
     returns:
         cleaned - the cleaned string
     '''
-    cleaned = re.sub(r'[’<>:‒–—―…!«»-‐?‘’“”;⁄␠·&@*•^¤¢$€£¥₩₪†‡°¡¿¬#№%‰‱¶′§~¨_|¦⁂☞∴‽※}{\\\]\[\"\)\(]+', '', inputstr)
+    # Same characters as the BigQuery function removeSymbols, including the ' and
+    # the range »-‐, and not including the backslash.
+    cleaned = re.sub(r'[’\'<>:‒–—―…!«»-‐?‘’“”;⁄␠·&@*•^¤¢$€£¥₩₪†‡°¡¿¬#№%‰‱¶′§~¨_|¦⁂☞∴‽※}{\]\[\"\)\(]+', '', inputstr)
     return cleaned
 
 def remove_whitespace(inputstr):
@@ -148,7 +181,8 @@ def remove_whitespace(inputstr):
     returns:
         cleaned - the cleaned string
     '''
-    cleaned = re.sub(r'[\s]+','',inputstr)
+    # In BigQuery (RE2), \s is only [\t\n\f\r ]
+    cleaned = re.sub(r'[\t\n\f\r ]+','',inputstr)
     return cleaned
 
 def save_numbers(inputstr):
@@ -158,7 +192,8 @@ def save_numbers(inputstr):
     returns:
         cleaned - the cleaned string
     '''
-    cleaned = re.sub(r'(?<!\d)[.,\-\/\+](?!\d)',' ',inputstr)
+    # In the BigQuery JavaScript function, \d is only [0-9]
+    cleaned = re.sub(r'(?<!\d)[.,\-\/\+](?!\d)',' ',inputstr, flags=re.ASCII)
     return cleaned
 
 def simplify_diacritics(inputstr):
@@ -247,7 +282,9 @@ def simplify_diacritics(inputstr):
       {'base':'p','letters':r'[\u0070\u24DF\uFF50\u1E55\u1E57\u01A5\u1D7D\uA751\uA753\uA755]'}, 
       {'base':'q','letters':r'[\u0071\u24E0\uFF51\u024B\uA757\uA759]'}, 
       {'base':'r','letters':r'[\u0072\u24E1\uFF52\u0155\u1E59\u0159\u0211\u0213\u1E5B\u1E5D\u0157\u1E5F\u024D\u027D\uA75B\uA7A7\uA783]'}, 
-      {'base':'s','letters':r'[\u0073\u24E2\uFF53\u00DF\u015B\u1E65\u015D\u1E61\u0161\u1E67\u1E63\u1E69\u0219\u015F\u023F\uA7A9\uA785\u1E9B]'}, 
+      {'base':'s','letters':r'[\u0073\u24E2\uFF53\u015B\u1E65\u015D\u1E61\u0161\u1E67\u1E63\u1E69\u0219\u015F\u023F\uA7A9\uA785\u1E9B]'}, 
+      # As in the BigQuery function simplifyDiacritics, ß becomes ss
+      {'base':'ss','letters':r'[\u00DF]'}, 
       {'base':'t','letters':r'[\u0074\u24E3\uFF54\u1E6B\u1E97\u0165\u1E6D\u021B\u0163\u1E71\u1E6F\u0167\u01AD\u0288\u2C66\uA787]'}, 
       {'base':'tz','letters':r'[\uA729]'}, 
       {'base':'u','letters':r'[\u0075\u24E4\uFF55\u00F9\u00FA\u00FB\u0169\u1E79\u016B\u1E7B\u016D\u00FC\u01DC\u01D8\u01D6\u01DA\u1EE7\u016F\u0171\u01D4\u0215\u0217\u01B0\u1EEB\u1EE9\u1EEF\u1EED\u1EF1\u1EE5\u1E73\u0173\u1E77\u1E75\u0289]'}, 
@@ -265,7 +302,8 @@ def simplify_diacritics(inputstr):
     return str
 
 def casefold_and_normalize(inputstr):
-    ''' casefolds, then unicode normalizes inputstr"
+    ''' unicode normalizes (NFKC), then casefolds inputstr, as BigQuery
+        NORMALIZE_AND_CASEFOLD(inputstr, NFKC) does
     parameters:
         inputstr - the string to normalize and casefold
     returns:
@@ -273,7 +311,9 @@ def casefold_and_normalize(inputstr):
     '''
     functionname = 'casefold_and_normalize()'
 
+    # Normalize first: NFKC can produce capitals (™ becomes TM, ᴶ becomes J), which
+    # BigQuery casefolds. Checked against all 729 million stored gazetteer strings.
     str=inputstr
-    cf = str.casefold()
-    ns = unicodedata.normalize('NFKC',cf)
-    return ns
+    ns = unicodedata.normalize('NFKC',str)
+    cf = ns.casefold()
+    return cf

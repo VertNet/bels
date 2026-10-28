@@ -59,7 +59,11 @@
         <h2>Input requirements</h2>
         <ul>
             <li>Comma-separated CSV file with a header row</li>
+            {% if upload_limit %}
             <li>Maximum upload size: 32 MB</li>
+            {% else %}
+            <li>Recommended maximum: 100,000 records per file</li>
+            {% endif %}
             <li>At least one field interpretable as <code>country</code> or <code>countryCode</code></li>
             <li>
                 Darwin Core Location fields such as <code>stateProvince</code>, <code>county</code>,

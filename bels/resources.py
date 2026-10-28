@@ -17,7 +17,7 @@ __author__ = "John Wieczorek"
 __contributors__ = ""
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "resources.py"
-__version__ = __filename__ + ' ' + "2022-06-21T01:25-03:00"
+__version__ = __filename__ + ' ' + "2026-10-21T14:36-07:00"
 
 import base64
 import logging
@@ -28,9 +28,6 @@ from flask_restful import Resource
 from google.cloud import bigquery
 
 from bels_query import bels_original_georef
-from bels_query import get_best_sans_coords_georef_reduced
-from bels_query import get_best_with_verbatim_coords_georef_reduced
-from bels_query import get_best_with_coords_georef_reduced
 from bels_query import has_decimal_coords
 from bels_query import has_georef
 from bels_query import has_verbatim_coords
@@ -42,12 +39,23 @@ from dwca_vocab_utils import Darwinizer
 from dwca_utils import lower_dict_keys
 from id_utils import location_match_str, super_simplify
 
+# Flask-RESTful creates a BestGeoref for every request, so the Darwinizer is loaded
+# once per process here instead of in __init__. It is only read after loading.
+darwinizer = None
+
+def get_darwinizer():
+    global darwinizer
+    if darwinizer is None:
+        darwinizer = Darwinizer('./bels/vocabularies/darwin_cloud.txt')
+    return darwinizer
+
 class BestGeoref(Resource):
     def __init__(self, bels_client):
         self.__name__='BestGeoref'
+        # bels_client is a bels_query.BELS_Client (BigQuery) or a
+        # pg_query.PG_BELS_Client (PostgreSQL).
         self.bels_client = bels_client
-        self.bq_client = bels_client.bq_client
-        self.darwinizer = Darwinizer('./bels/vocabularies/darwin_cloud.txt')
+        self.darwinizer = get_darwinizer()
         logging.basicConfig(level=logging.DEBUG)
 
     def post(self):
@@ -95,8 +103,8 @@ class BestGeoref(Resource):
             logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
             return response, 200
         
-        if self.bq_client is None:
-            response = {"Message": {"status": "error", "result": "No BigQuery client."}}
+        if self.bels_client.has_client() == False:
+            response = {"Message": {"status": "error", "result": f"No {self.bels_client.backend} client."}}
             logging.debug(f'BestGeoref request: {requestjson}\nresponse: {response}')
             return response, 500
 
@@ -109,19 +117,19 @@ class BestGeoref(Resource):
             if has_decimal_coords(lowerloc) == True:
                 matchme = location_match_str(locationmatchwithcoordstermlist, lowerloc)
                 matchstr = super_simplify(matchme)
-                result = get_best_with_coords_georef_reduced(self.bq_client, matchstr)
+                result = self.bels_client.lookup_with_coords(matchstr)
                 if result is None:
                     print(f'No match with coords found {matchstr}')
             if result is None and has_verbatim_coords(lowerloc): 
                 matchme = location_match_str(locationmatchverbatimcoordstermlist, lowerloc)
                 matchstr = super_simplify(matchme)
-                result = get_best_with_verbatim_coords_georef_reduced(self.bq_client, matchstr)
+                result = self.bels_client.lookup_verbatim_coords(matchstr)
                 if result is None:
                     print(f'No match with verbatim coords found {matchstr}')
             if result is None:
                 matchme = location_match_str(locationmatchsanscoordstermlist, lowerloc)
                 matchstr = super_simplify(matchme)
-                result = get_best_sans_coords_georef_reduced(self.bq_client, matchstr)    
+                result = self.bels_client.lookup_sans_coords(matchstr)
                 if result is None:
                     print(f'No match sans coords found {matchstr}')
 

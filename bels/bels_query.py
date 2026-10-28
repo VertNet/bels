@@ -16,7 +16,7 @@
 __author__ = "John Wieczorek"
 __copyright__ = "Copyright 2022 Rauthiflor LLC"
 __filename__ = "bels_query.py"
-__version__ = __filename__ + ' ' + "2022-06-20T13:25-03:00"
+__version__ = __filename__ + ' ' + "2026-10-21T14:36-07:00"
 
 import json
 import logging
@@ -132,6 +132,8 @@ def bels_original_georef(locdict):
     return row
 
 class BELS_Client():
+    backend = 'BigQuery'
+
     def __init__(self, bq_client=None):
         self.bq_client = bq_client;
         if self.bq_client is None:
@@ -141,6 +143,20 @@ class BELS_Client():
 
     def get_bq_client(self):
         return self.bq_client
+
+    def has_client(self):
+        return self.bq_client is not None
+
+    # The lookups used by /api/bestgeoref. pg_query.PG_BELS_Client provides the same
+    # methods for PostgreSQL.
+    def lookup_with_coords(self, matchstr):
+        return get_best_with_coords_georef_reduced(self.bq_client, matchstr)
+
+    def lookup_verbatim_coords(self, matchstr):
+        return get_best_with_verbatim_coords_georef_reduced(self.bq_client, matchstr)
+
+    def lookup_sans_coords(self, matchstr):
+        return get_best_sans_coords_georef_reduced(self.bq_client, matchstr)
 
     def populate(self, table_id=None):
         self.countrycode_dict = {}
